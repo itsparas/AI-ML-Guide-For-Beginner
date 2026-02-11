@@ -36,7 +36,7 @@ const Home = () => {
   } = useProgressStore();
   const navigate = useNavigate();
   const [quote] = useState(() => getRandomQuote());
-  const [viewMode, setViewMode] = useState("graph"); // 'graph' or 'list'
+  const [viewMode, setViewMode] = useState("list"); // 'graph' or 'list'
 
   // Ensure AI/ML track is active when visiting home
   React.useEffect(() => {

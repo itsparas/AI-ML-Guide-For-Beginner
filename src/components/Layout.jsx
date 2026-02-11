@@ -106,10 +106,10 @@ const Layout = ({ children }) => {
                 ) : (
                   <>
                     <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">
-                      M
+                      CA
                     </div>
                     <h1 className="text-base font-semibold gradient-text leading-none">
-                      Mastery Roadmap
+                      CodeAtlas
                     </h1>
                   </>
                 )}

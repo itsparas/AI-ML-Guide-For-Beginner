@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Layout from "./components/Layout";
 import useProgressStore from "./store/useProgressStore";
 import "./index.css";
@@ -11,6 +11,14 @@ const TopicPage = React.lazy(() => import("./pages/TopicPage"));
 const DsaHome = React.lazy(() => import("./pages/DsaHome"));
 const DsaSectionPage = React.lazy(() => import("./pages/DsaSectionPage"));
 const ComingSoonPage = React.lazy(() => import("./pages/ComingSoonPage"));
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 const LoadingFallback = () => (
   <div className="flex items-center justify-center min-h-screen">
@@ -36,6 +44,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Layout>
         <Suspense fallback={<LoadingFallback />}>
           <Routes>

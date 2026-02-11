@@ -78,7 +78,7 @@ const Home = () => {
             transition={{ delay: 0.05 }}
             className="text-4xl md:text-6xl font-bold mb-4"
           >
-            <span className="gradient-text">Mastery Roadmap</span>
+            <span className="gradient-text">CodeAtlas</span>
           </motion.h1>
 
           <motion.p
