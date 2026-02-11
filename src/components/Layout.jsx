@@ -78,21 +78,6 @@ const Layout = ({ children }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              {/* Progress pill */}
-              <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 glass rounded-full text-xs">
-                <div className="w-20 h-1.5 bg-surface-700 rounded-full overflow-hidden">
-                  <motion.div
-                    className="h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${progress}%` }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </div>
-                <span className="text-surface-300 font-medium">
-                  {progress}%
-                </span>
-              </div>
-
               {/* Search button */}
               <button
                 onClick={() => setSearchOpen(true)}

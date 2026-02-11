@@ -8,9 +8,34 @@ import {
   FaTimes,
   FaHome,
   FaBookmark,
+  FaPython,
+  FaDatabase,
+  FaBrain,
+  FaNetworkWired,
+  FaLanguage,
+  FaEye,
+  FaGamepad,
+  FaDocker,
+  FaRocket,
+  FaLaptopCode,
 } from "react-icons/fa";
+import { TbMathFunction } from "react-icons/tb";
 import { phasesWithTopics } from "../utils/dataUtils";
 import useProgressStore from "../store/useProgressStore";
+
+const phaseIconMap = {
+  0: FaPython,
+  1: TbMathFunction,
+  2: FaDatabase,
+  3: FaBrain,
+  4: FaNetworkWired,
+  5: FaLanguage,
+  6: FaEye,
+  7: FaGamepad,
+  8: FaDocker,
+  9: FaRocket,
+  10: FaLaptopCode,
+};
 
 const Sidebar = ({ collapsed }) => {
   const location = useLocation();
@@ -32,12 +57,12 @@ const Sidebar = ({ collapsed }) => {
   };
 
   const sidebarContent = (
-    <nav className="flex flex-col h-full">
+    <nav className="flex flex-col h-full" style={{ overflowX: 'visible' }}>
       {/* Logo */}
-      <div className="p-4 pb-3 border-b border-white/5">
+      <div className={`border-b border-white/5 ${collapsed ? "p-2 pb-3" : "p-4 pb-3"}`}>
         <Link
           to="/"
-          className="flex items-center gap-3"
+          className={`flex items-center gap-3 ${collapsed ? "justify-center" : ""}`}
           onClick={handleLinkClick}
         >
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-primary-500/20 flex-shrink-0">
@@ -95,71 +120,89 @@ const Sidebar = ({ collapsed }) => {
           const isExpanded = expandedPhase === phase.id;
           const isActivePhase = location.pathname === `/phase/${phase.id}`;
           const isComplete = progress === 100;
+          const PhaseIcon = phaseIconMap[phase.id];
 
           return (
-            <div key={phase.id} className="mb-0.5">
+            <div key={phase.id} className="mb-0.5" style={{ overflow: 'visible' }}>
               {/* Phase header */}
-              <button
-                onClick={() => togglePhase(phase.id)}
-                className={`w-full flex items-center gap-2.5 px-3 py-2.5 text-left transition-all duration-200 hover:bg-white/5 ${
-                  isActivePhase
-                    ? "bg-white/[0.08] border-r-2"
-                    : ""
-                }`}
-                style={isActivePhase ? { borderRightColor: phase.color } : {}}
-              >
-                {!collapsed ? (
-                  <>
-                    {/* Phase number badge */}
-                    <div
-                      className={`w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-bold flex-shrink-0 ${
-                        isComplete ? "bg-emerald-500/20 text-emerald-400" : ""
-                      }`}
-                      style={
-                        !isComplete
-                          ? { backgroundColor: `${phase.color}18`, color: phase.color }
-                          : {}
-                      }
-                    >
-                      {isComplete ? <FaCheck className="text-[10px]" /> : phase.id}
-                    </div>
-
-                    <div className="flex-1 min-w-0">
-                      <span className="block text-[13px] font-medium truncate leading-tight">
-                        {phase.shortTitle}
-                      </span>
-                    </div>
-
-                    <div className="flex-shrink-0">
-                      {isExpanded ? (
-                        <FaChevronDown className="text-[9px] text-surface-500" />
-                      ) : (
-                        <FaChevronRight className="text-[9px] text-surface-500" />
-                      )}
-                    </div>
-                  </>
-                ) : (
-                  <div className="mx-auto relative" title={phase.shortTitle}>
-                    <div
-                      className="w-8 h-8 rounded-lg flex items-center justify-center text-[11px] font-bold"
-                      style={{ backgroundColor: `${phase.color}20`, color: phase.color }}
-                    >
-                      {phase.id}
-                    </div>
-                    {progress > 0 && progress < 100 && (
-                      <div
-                        className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full"
-                        style={{ backgroundColor: phase.color }}
-                      />
-                    )}
-                    {isComplete && (
-                      <div className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 flex items-center justify-center">
-                        <FaCheck className="text-[6px] text-white" />
-                      </div>
+              {!collapsed ? (
+                <button
+                  onClick={() => togglePhase(phase.id)}
+                  className={`w-full flex items-center gap-2.5 px-3 py-2.5 text-left transition-all duration-200 hover:bg-white/5 ${
+                    isActivePhase ? "bg-white/[0.08] border-r-2" : ""
+                  }`}
+                  style={isActivePhase ? { borderRightColor: phase.color } : {}}
+                >
+                  {/* Phase icon badge */}
+                  <div
+                    className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                      isComplete ? "bg-emerald-500/20 text-emerald-400" : ""
+                    }`}
+                    style={
+                      !isComplete
+                        ? { backgroundColor: `${phase.color}18`, color: phase.color }
+                        : {}
+                    }
+                  >
+                    {isComplete ? (
+                      <FaCheck className="text-[10px]" />
+                    ) : PhaseIcon ? (
+                      <PhaseIcon className="text-sm" />
+                    ) : (
+                      <span className="text-[11px] font-bold">{phase.id}</span>
                     )}
                   </div>
-                )}
-              </button>
+
+                  <div className="flex-1 min-w-0">
+                    <span className="block text-[13px] font-medium truncate leading-tight">
+                      {phase.shortTitle}
+                    </span>
+                  </div>
+
+                  <div className="flex-shrink-0">
+                    {isExpanded ? (
+                      <FaChevronDown className="text-[9px] text-surface-500" />
+                    ) : (
+                      <FaChevronRight className="text-[9px] text-surface-500" />
+                    )}
+                  </div>
+                </button>
+              ) : (
+                <Link
+                  to={`/phase/${phase.id}`}
+                  onClick={handleLinkClick}
+                  className="flex items-center justify-center py-2.5 px-1.5 relative group transition-all duration-200 hover:bg-white/5"
+                  style={isActivePhase ? { backgroundColor: 'rgba(255,255,255,0.08)' } : {}}
+                  title={`Phase ${phase.id}: ${phase.shortTitle}`}
+                >
+                  <div
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200 group-hover:scale-110 group-hover:shadow-lg ${
+                      isComplete
+                        ? "bg-emerald-500/20 text-emerald-400"
+                        : isActivePhase
+                          ? "ring-2 ring-offset-1 ring-offset-surface-900"
+                          : ""
+                    }`}
+                    style={{
+                      backgroundColor: isComplete ? undefined : `${phase.color}18`,
+                      color: isComplete ? undefined : phase.color,
+                      ...(isActivePhase && !isComplete ? { ringColor: phase.color } : {}),
+                    }}
+                  >
+                    {isComplete ? (
+                      <FaCheck className="text-sm" />
+                    ) : PhaseIcon ? (
+                      <PhaseIcon className="text-base" />
+                    ) : (
+                      <span className="text-xs font-bold">{phase.id}</span>
+                    )}
+                  </div>
+                  {/* Tooltip - absolutely positioned, escapes overflow */}
+                  <span className="fixed left-20 px-3 py-2 rounded-lg bg-surface-800/95 backdrop-blur-sm border border-white/20 text-sm font-medium text-surface-100 whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[9999] shadow-xl">
+                    {phase.shortTitle}
+                  </span>
+                </Link>
+              )}
 
               {/* Topics */}
               <AnimatePresence>
@@ -233,6 +276,7 @@ const Sidebar = ({ collapsed }) => {
         className={`hidden md:flex flex-col fixed top-0 left-0 h-full z-50 glass border-r border-white/5 transition-all duration-300 ${
           collapsed ? "w-16" : "w-72"
         }`}
+        style={{ overflowX: 'visible' }}
       >
         {sidebarContent}
       </aside>
