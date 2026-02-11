@@ -1,0 +1,320 @@
+[
+  {
+    "id": "model-serialization",
+    "title": "Model Serialization & Export",
+    "phase": 8,
+    "difficulty": "intermediate",
+    "estimatedHours": 6,
+    "description": "Model serialization converts trained ML models into files that can be saved, loaded, and deployed across different environments. Pickle and Joblib are Python-native serialization formats — joblib is preferred for sklearn models because it efficiently handles large NumPy arrays. However, pickle/joblib models are Python-version and library-version dependent, which creates deployment headaches. ONNX (Open Neural Network Exchange) provides a standard format that works across frameworks — export a PyTorch model to ONNX, then inference it with ONNX Runtime in C++, JavaScript, or any language. This is crucial for production: a model trained in PyTorch on a GPU cluster can be served in a C++ application for microsecond latency. TorchScript (torch.jit) compiles PyTorch models for deployment without requiring a Python runtime. TensorFlow's SavedModel format captures the complete model including weights and computation graph. In real-world MLOps, model serialization is part of the CI/CD pipeline: models are trained, serialized and versioned (often with DVC or MLflow), stored in model registries, and deployed to serving infrastructure. A fintech company might train a fraud detection model in Python, export it to ONNX, and serve it from a Java-based transaction processing system for sub-millisecond inference.",
+    "whyItMatters": "A model that can't be saved and loaded is useless outside a notebook. Understanding serialization formats and their tradeoffs (size, speed, compatibility, portability) is essential for deploying ML models to production systems.",
+    "subtopics": [
+      "Pickle & Joblib (sklearn models)",
+      "ONNX Format & ONNX Runtime",
+      "TorchScript (tracing & scripting)",
+      "TensorFlow SavedModel & TF Lite",
+      "Model Versioning & Registries",
+      "Model Compression (quantization, pruning, distillation)",
+      "Inference Optimization (TensorRT, OpenVINO)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "ONNX Explained",
+        "url": "https://www.youtube.com/watch?v=2pWv7GOvuf0",
+        "channel": "Krish Naik"
+      },
+      {
+        "title": "Model Deployment Tutorial",
+        "url": "https://www.youtube.com/watch?v=cJUHMjnrJRI",
+        "channel": "Krish Naik"
+      }
+    ],
+    "references": [
+      { "title": "ONNX Documentation", "url": "https://onnx.ai/" },
+      {
+        "title": "TorchScript Documentation",
+        "url": "https://pytorch.org/docs/stable/jit.html"
+      }
+    ],
+    "prerequisites": ["pytorch", "tensorflow-keras", "ml-sklearn-practical"],
+    "tags": ["mlops", "serialization", "onnx", "deployment"]
+  },
+  {
+    "id": "ml-apis",
+    "title": "Building ML APIs (Flask, FastAPI)",
+    "phase": 8,
+    "difficulty": "intermediate",
+    "estimatedHours": 10,
+    "description": "Wrapping ML models in REST APIs is the most common way to serve predictions in production. FastAPI has become the go-to framework for ML serving due to its automatic API documentation (OpenAPI/Swagger), built-in data validation with Pydantic, native async support for concurrent requests, and type hints that improve code quality. A typical ML API receives input data (JSON), preprocesses it, runs inference through the loaded model, post-processes results, and returns predictions. In production, an e-commerce company's recommendation API might receive a user ID and browsing history, look up the user's feature vector, score items using a pre-loaded XGBoost model, and return ranked product recommendations — all in under 100 milliseconds. Key production considerations include: input validation (ensuring features are within expected ranges), error handling (graceful degradation when the model fails), model loading strategies (load once at startup, not per-request), batch inference endpoints for bulk predictions, health check endpoints for monitoring, authentication/authorization, rate limiting, and logging predictions for monitoring. Flask is simpler but lacks async support and automatic validation. For high-throughput serving, specialized frameworks like Triton Inference Server (NVIDIA), TorchServe (PyTorch), or TF Serving (TensorFlow) handle batching, model versioning, and GPU scheduling automatically.",
+    "whyItMatters": "An ML model trapped in a Jupyter notebook has zero business value. APIs are how models serve real users and integrate with applications. FastAPI is the industry standard for ML serving, and understanding API design is essential for any ML engineer role.",
+    "subtopics": [
+      "FastAPI Basics (routes, request/response models, Pydantic)",
+      "Flask for ML Serving (lightweight alternative)",
+      "Model Loading & Warm-up Strategies",
+      "Input Validation & Error Handling",
+      "Synchronous vs Asynchronous Endpoints",
+      "Batch Prediction Endpoints",
+      "API Documentation (OpenAPI/Swagger)",
+      "Authentication & Rate Limiting",
+      "Logging & Monitoring Predictions",
+      "TorchServe & TF Serving",
+      "Triton Inference Server",
+      "Load Testing (Locust, wrk)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Deploy ML Models with FastAPI",
+        "url": "https://www.youtube.com/watch?v=h5wLuVDr0oc",
+        "channel": "Patrick Loeber"
+      },
+      {
+        "title": "FastAPI Full Course",
+        "url": "https://www.youtube.com/watch?v=7t2alSnE2-I",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      {
+        "title": "FastAPI Documentation",
+        "url": "https://fastapi.tiangolo.com/"
+      },
+      {
+        "title": "Flask Documentation",
+        "url": "https://flask.palletsprojects.com/"
+      }
+    ],
+    "prerequisites": ["python-programming", "model-serialization"],
+    "tags": ["mlops", "api", "fastapi", "flask", "deployment", "serving"]
+  },
+  {
+    "id": "docker-ml",
+    "title": "Docker for ML",
+    "phase": 8,
+    "difficulty": "intermediate",
+    "estimatedHours": 8,
+    "description": "Docker containerizes your entire ML application — code, dependencies, runtime, model weights — into a portable, reproducible unit that runs identically on any machine. This solves the 'it works on my machine' problem that plagues ML deployment. Without Docker, deploying a model means manually installing Python, CUDA drivers, specific library versions, and hoping nothing conflicts — on every server. With Docker, you define a Dockerfile specifying the base image (python:3.11-slim or nvidia/cuda for GPU), install dependencies (COPY requirements.txt, RUN pip install), copy your code and model, and specify the startup command. Docker Compose orchestrates multi-container setups — for example, a model API container, a Redis cache container, and a monitoring container. In production, a large fintech company might have their fraud detection model in a Docker container with pinned dependencies, a CI/CD pipeline that automatically tests and rebuilds the image when code changes, and Kubernetes auto-scaling the container based on traffic. Docker images are stored in registries (Docker Hub, AWS ECR, Google Container Registry) and deployed to cloud services (ECS, Cloud Run, Azure Container Instances). Multi-stage builds reduce image size by separating build dependencies from runtime dependencies. GPU support with NVIDIA Container Toolkit enables GPU inference inside containers.",
+    "whyItMatters": "Docker is the industry standard for deploying ML systems. Every major company containerizes their ML services. Kubernetes, cloud deployment, and CI/CD all build on Docker. Without Docker skills, you cannot deploy ML models professionally.",
+    "subtopics": [
+      "Docker Fundamentals (images, containers, Dockerfile)",
+      "Dockerfile for ML (base images, dependencies, CUDA)",
+      "Building & Running Containers",
+      "Docker Compose for Multi-Service Apps",
+      "Volume Mounts for Data & Models",
+      "Docker Registry (push, pull, versioning)",
+      "Multi-Stage Builds for Smaller Images",
+      "GPU Support (NVIDIA Container Toolkit)",
+      "Environment Variables & Secrets",
+      "Docker Best Practices for ML"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Docker Tutorial for Beginners",
+        "url": "https://www.youtube.com/watch?v=pTFZFxd4hOI",
+        "channel": "Programming with Mosh"
+      },
+      {
+        "title": "Docker for Data Science",
+        "url": "https://www.youtube.com/watch?v=0qG_0CPQhpg",
+        "channel": "Coder's Corner"
+      }
+    ],
+    "references": [
+      { "title": "Docker Documentation", "url": "https://docs.docker.com/" },
+      {
+        "title": "Docker for ML Guide",
+        "url": "https://aws.amazon.com/blogs/machine-learning/using-docker-in-machine-learning/"
+      }
+    ],
+    "prerequisites": ["command-line-linux", "ml-apis"],
+    "tags": ["mlops", "docker", "containers", "deployment", "devops"]
+  },
+  {
+    "id": "ml-pipelines",
+    "title": "ML Pipelines & Orchestration",
+    "phase": 8,
+    "difficulty": "advanced",
+    "estimatedHours": 10,
+    "description": "Production ML requires automated, reliable pipelines that handle the entire lifecycle: data ingestion, validation, preprocessing, training, evaluation, and deployment — often running on schedules or triggered by events. Apache Airflow defines workflows as DAGs (Directed Acyclic Graphs), scheduling tasks with dependencies, retries, and alerting. A typical ML pipeline DAG might: (1) fetch new data from a database daily, (2) validate data quality (schema checks, distribution drift), (3) preprocess and feature-engineer, (4) train a model and log metrics, (5) compare against the current production model, (6) if better, deploy automatically (or create a PR for human review). Prefect and Dagster are modern alternatives with better developer experience and dynamic workflows. Kubeflow Pipelines runs on Kubernetes for scalable, reproducible ML workflows. At Uber, the Michelangelo platform orchestrates thousands of ML models — from training to serving — using automated pipelines. Feature stores (Feast, Tecton) centralize feature computation, ensuring consistency between training and serving (preventing training-serving skew). Data versioning with DVC (Data Version Control) tracks datasets and models alongside code in Git, enabling reproducibility. The goal is to move from manual, notebook-based experimentation to automated, monitored, reproducible production systems.",
+    "whyItMatters": "Production ML fails without proper pipelines and orchestration. Manual model training is unreproducible and error-prone. Automated pipelines enable continuous training, monitoring, and deployment — the foundation of mature ML systems.",
+    "subtopics": [
+      "Apache Airflow (DAGs, operators, sensors, scheduling)",
+      "Prefect & Dagster (modern alternatives)",
+      "Kubeflow Pipelines (Kubernetes-native)",
+      "Data Validation (Great Expectations, Pandera)",
+      "Feature Stores (Feast, Tecton)",
+      "Data Versioning (DVC)",
+      "Pipeline Patterns (retrain, evaluate, deploy)",
+      "Training-Serving Skew Prevention",
+      "Scheduling & Event-Driven Pipelines",
+      "ZenML for MLOps Pipelines"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Apache Airflow Tutorial",
+        "url": "https://www.youtube.com/watch?v=K9AnJ9_ZAXE",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "MLOps Full Course",
+        "url": "https://www.youtube.com/watch?v=9BgIDqAzfuA",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      {
+        "title": "Apache Airflow Documentation",
+        "url": "https://airflow.apache.org/docs/"
+      },
+      { "title": "DVC Documentation", "url": "https://dvc.org/doc" },
+      { "title": "Feast Feature Store", "url": "https://feast.dev/" }
+    ],
+    "prerequisites": ["docker-ml", "ml-apis"],
+    "tags": ["mlops", "pipelines", "airflow", "orchestration", "automation"]
+  },
+  {
+    "id": "experiment-tracking",
+    "title": "Experiment Tracking & Model Management",
+    "phase": 8,
+    "difficulty": "intermediate",
+    "estimatedHours": 8,
+    "description": "Without experiment tracking, ML research is chaos — you lose track of which hyperparameters produced which results, can't reproduce past experiments, and can't compare model versions. MLflow is the most popular open-source platform: it logs parameters, metrics, and artifacts for each experiment run, provides a comparison UI, handles model versioning in its Model Registry, and supports deployment. Weights & Biases (W&B) is a cloud platform beloved by researchers for its beautiful dashboards, real-time training visualization, hyperparameter sweep management, and collaborative features. In practice, a team training hundreds of model variations would log every run with: learning rate, batch size, architecture choices, dataset version, training time, and evaluation metrics. Then they use W&B's parallel coordinates plot to discover that learning_rate=3e-4 with batch_size=32 consistently outperforms other configurations. The Model Registry provides a staging workflow: a model goes from 'experimental' → 'staging' → 'production', with each transition requiring review. Neptune.ai, Comet ML, and ClearML are alternatives with different strengths. This discipline transforms ML from ad-hoc experimentation to systematic, reproducible science. Every major AI research lab and ML team uses experiment tracking — it's as fundamental as version control for code.",
+    "whyItMatters": "Experiment tracking is the difference between professional and amateur ML practice. Without it, you can't reproduce results, compare experiments, or systematically improve models. Every ML team uses MLflow or W&B.",
+    "subtopics": [
+      "MLflow Components (Tracking, Projects, Models, Registry)",
+      "W&B (Weights & Biases) Setup & Dashboard",
+      "Logging Parameters, Metrics & Artifacts",
+      "Experiment Comparison & Visualization",
+      "Hyperparameter Sweeps (W&B Sweeps, Optuna + MLflow)",
+      "Model Registry & Versioning",
+      "Model Lifecycle Management (staging → production)",
+      "Neptune.ai & Comet ML",
+      "Integrating Tracking into Training Code",
+      "Team Collaboration & Reproducibility"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "MLflow Tutorial",
+        "url": "https://www.youtube.com/watch?v=qdcHHrsXA48",
+        "channel": "Krish Naik"
+      },
+      {
+        "title": "Weights & Biases Tutorial",
+        "url": "https://www.youtube.com/watch?v=9zrmUIlScdY",
+        "channel": "Weights & Biases"
+      }
+    ],
+    "references": [
+      {
+        "title": "MLflow Documentation",
+        "url": "https://mlflow.org/docs/latest/index.html"
+      },
+      { "title": "W&B Documentation", "url": "https://docs.wandb.ai/" }
+    ],
+    "prerequisites": ["ml-sklearn-practical", "pytorch"],
+    "tags": [
+      "mlops",
+      "experiment-tracking",
+      "mlflow",
+      "wandb",
+      "reproducibility"
+    ]
+  },
+  {
+    "id": "model-monitoring",
+    "title": "Model Monitoring & Drift Detection",
+    "phase": 8,
+    "difficulty": "advanced",
+    "estimatedHours": 8,
+    "description": "Deploying a model is just the beginning — in production, model performance degrades over time due to data drift (input data distribution changes), concept drift (the relationship between features and target changes), and system issues. A fraud detection model trained on pre-COVID data might fail post-COVID because spending patterns changed dramatically. A real estate pricing model becomes inaccurate when market conditions shift. Monitoring catches these problems before they impact business outcomes. Key monitoring aspects: prediction distribution monitoring (are model outputs shifting?), feature drift detection (are input features changing? using PSI, KS test, or Wasserstein distance), performance monitoring (tracking accuracy/latency against labeled ground truth data when available), and system monitoring (latency, throughput, error rates, resource usage). Evidently AI, WhyLabs, and Arize are platforms specializing in ML monitoring and observability. Alerting rules trigger retraining when drift exceeds thresholds. Shadow deployment (running a new model alongside the old one without serving its predictions) and A/B testing (serving different models to different users) safely validate model changes. At Uber, models are continuously monitored, and automated pipelines retrain monthly with fresh data, with human review gates before deployment.",
+    "whyItMatters": "A model's accuracy on training data means nothing if it degrades in production. Data drift is inevitable. Without monitoring, you're flying blind — serving stale predictions that hurt business outcomes without knowing it. Monitoring is a core MLOps competency.",
+    "subtopics": [
+      "Data Drift Detection (PSI, KS Test, Wasserstein Distance)",
+      "Concept Drift & Label Drift",
+      "Prediction Distribution Monitoring",
+      "Feature Importance Shift",
+      "Performance Monitoring (when labels are available)",
+      "System Monitoring (latency, throughput, errors)",
+      "Evidently AI for Drift Reports & Dashboards",
+      "WhyLabs & Arize for ML Observability",
+      "Alerting & Automated Retraining Triggers",
+      "Shadow Deployment & Canary Releases",
+      "A/B Testing for Model Comparisons"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "ML Model Monitoring Explained",
+        "url": "https://www.youtube.com/watch?v=9BgIDqAzfuA",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Data Drift Detection",
+        "url": "https://www.youtube.com/watch?v=9BgIDqAzfuA",
+        "channel": "Evidently AI"
+      }
+    ],
+    "references": [
+      {
+        "title": "Evidently AI Documentation",
+        "url": "https://docs.evidentlyai.com/"
+      },
+      {
+        "title": "Google's ML System Monitoring (paper)",
+        "url": "https://research.google/pubs/pub46555/"
+      }
+    ],
+    "prerequisites": ["ml-apis", "experiment-tracking"],
+    "tags": ["mlops", "monitoring", "drift", "production", "observability"]
+  },
+  {
+    "id": "cloud-ml-deployment",
+    "title": "Cloud Deployment & ML Platforms",
+    "phase": 8,
+    "difficulty": "advanced",
+    "estimatedHours": 12,
+    "description": "Cloud platforms provide managed infrastructure for training and deploying ML models at scale. AWS SageMaker is the most comprehensive ML platform — it provides managed Jupyter notebooks, built-in algorithms, distributed training on GPU clusters, model hosting with auto-scaling, A/B testing, and monitoring. Google Cloud Vertex AI integrates with Google's TensorFlow ecosystem, offers AutoML for no-code model building, and provides Vertex AI Pipelines for orchestration. Azure ML provides a studio interface, MLflow integration, and managed endpoints. For serving, Streamlit and Gradio let you build interactive ML demos in minutes — perfect for prototyping and stakeholder presentations. Streamlit turns Python scripts into web apps with sliders, file uploaders, and chart widgets. Gradio creates shareable interfaces (including Hugging Face Spaces) for model interaction. In production decisions: serverless options (AWS Lambda, Google Cloud Functions) work for low-traffic models with lightweight dependencies; Container-based serving (ECS, Cloud Run, GKE) handles medium-scale with more flexibility; and managed ML platforms (SageMaker, Vertex AI) handle high-scale enterprise workloads. CI/CD for ML extends traditional CI/CD with model testing, data validation, and performance regression checks. Understanding cloud pricing is crucial — GPU instance costs can quickly exceed $10,000/month without proper management.",
+    "whyItMatters": "Production ML runs on cloud platforms. Understanding SageMaker, Vertex AI, or Azure ML is a key requirement for ML engineering roles. Streamlit and Gradio enable rapid prototyping and stakeholder communication.",
+    "subtopics": [
+      "AWS SageMaker (training, hosting, endpoints)",
+      "Google Cloud Vertex AI",
+      "Azure Machine Learning",
+      "Serverless ML (Lambda, Cloud Functions)",
+      "Container Deployment (ECS, Cloud Run, GKE)",
+      "Streamlit for ML Demos",
+      "Gradio for Interactive Interfaces",
+      "Hugging Face Spaces",
+      "CI/CD for ML (GitHub Actions, GitLab CI)",
+      "Infrastructure as Code (Terraform for ML)",
+      "Cost Optimization for ML Workloads",
+      "Kubernetes for ML (K8s basics, GPU scheduling)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Deploy ML Models with Streamlit",
+        "url": "https://www.youtube.com/watch?v=Ib2_9i9MhPc",
+        "channel": "Patrick Loeber"
+      },
+      {
+        "title": "AWS SageMaker Tutorial",
+        "url": "https://www.youtube.com/watch?v=LkR3GNDB3TI",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Gradio Tutorial",
+        "url": "https://www.youtube.com/watch?v=RiCQzBluTxU",
+        "channel": "Hugging Face"
+      }
+    ],
+    "references": [
+      {
+        "title": "Streamlit Documentation",
+        "url": "https://docs.streamlit.io/"
+      },
+      { "title": "Gradio Documentation", "url": "https://gradio.app/docs/" },
+      {
+        "title": "AWS SageMaker Developer Guide",
+        "url": "https://docs.aws.amazon.com/sagemaker/"
+      }
+    ],
+    "prerequisites": ["docker-ml", "ml-apis"],
+    "tags": ["mlops", "cloud", "sagemaker", "streamlit", "gradio", "deployment"]
+  }
+]

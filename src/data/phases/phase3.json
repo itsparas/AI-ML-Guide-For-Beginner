@@ -1,0 +1,431 @@
+[
+  {
+    "id": "ml-overview",
+    "title": "What is Machine Learning? Types & Workflow",
+    "phase": 3,
+    "difficulty": "beginner",
+    "estimatedHours": 6,
+    "description": "Machine learning is a subset of artificial intelligence where systems learn patterns from data without being explicitly programmed. Instead of writing rules like 'if email contains Nigerian prince, mark as spam', you feed the model thousands of labeled emails and it discovers the patterns itself. There are three main types: Supervised learning (you provide labeled data — input-output pairs — and the model learns the mapping; used for spam detection, house price prediction, medical diagnosis), Unsupervised learning (no labels — the model finds hidden structure in data; used for customer segmentation, anomaly detection, topic modeling), and Reinforcement learning (an agent learns by interacting with an environment and receiving rewards; used for game playing, robotics, self-driving cars). The ML workflow follows a systematic pipeline: define the problem, collect and clean data, perform EDA, engineer features, select and train models, evaluate performance, tune hyperparameters, and deploy to production. In practice at a company like Airbnb, this means defining 'predict booking probability for a listing', collecting historical booking data, engineering features like 'days_until_check_in' and 'listing_rating_trend', training gradient boosting models, evaluating with precision and recall (not just accuracy, because most visits don't result in bookings), and A/B testing the model against the current system before full rollout.",
+    "whyItMatters": "Understanding the types of ML and the end-to-end workflow is the foundation for everything else. Without this big-picture view, you'll learn algorithms in isolation without knowing when or why to use each one. Every ML interview starts with these fundamentals.",
+    "subtopics": [
+      "Supervised vs Unsupervised vs Reinforcement Learning",
+      "Regression vs Classification",
+      "The ML Workflow (Problem → Data → Model → Evaluate → Deploy)",
+      "Parametric vs Non-Parametric Models",
+      "Generative vs Discriminative Models",
+      "No Free Lunch Theorem",
+      "Scikit-learn Library Overview",
+      "Training, Validation, Test Set Philosophy"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Machine Learning for Everybody – Full Course",
+        "url": "https://www.youtube.com/watch?v=i_LwzRVP7bg",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "But what is a Neural Network?",
+        "url": "https://www.youtube.com/watch?v=aircAruvnKk",
+        "channel": "3Blue1Brown"
+      },
+      {
+        "title": "Machine Learning Course for Beginners",
+        "url": "https://www.youtube.com/watch?v=NWONeJKn6kc",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      {
+        "title": "Google ML Crash Course",
+        "url": "https://developers.google.com/machine-learning/crash-course"
+      },
+      {
+        "title": "Scikit-learn User Guide",
+        "url": "https://scikit-learn.org/stable/user_guide.html"
+      },
+      {
+        "title": "Stanford CS229 Lecture Notes",
+        "url": "https://cs229.stanford.edu/main_notes.pdf"
+      }
+    ],
+    "prerequisites": ["python-programming", "numpy", "pandas"],
+    "tags": ["ml", "fundamentals", "supervised", "unsupervised", "workflow"]
+  },
+  {
+    "id": "linear-regression",
+    "title": "Linear & Polynomial Regression",
+    "phase": 3,
+    "difficulty": "beginner",
+    "estimatedHours": 8,
+    "description": "Linear regression is the 'Hello World' of machine learning and one of the most widely used algorithms in practice. It models the relationship between input features (X) and a continuous target variable (y) as a linear equation: y = w₁x₁ + w₂x₂ + ... + b. Despite its simplicity, linear regression powers real-world systems at massive scale. Zillow uses linear regression variants to estimate home prices based on square footage, location, number of bedrooms, and hundreds of other features. Insurance companies use it to predict claim amounts. Economists use it to model GDP growth. The key idea is minimizing the Mean Squared Error (MSE) between predictions and actual values. Gradient descent iteratively adjusts the weights to reduce this error — or, for the closed-form solution, the Normal Equation computes optimal weights directly: w = (XᵀX)⁻¹Xᵀy. When the relationship isn't linear, Polynomial Regression adds higher-degree terms (x², x³, x₁x₂) to capture curves. However, this introduces the risk of overfitting — a degree-20 polynomial perfectly fits training data but fails on new data. Regularization solves this: Ridge Regression (L2, adds λ||w||² to the loss) shrinks weights toward zero, while LASSO (L1, adds λ||w||₁) can force weights to exactly zero, effectively performing feature selection. ElasticNet combines both. Understanding the assumptions of linear regression (linearity, independence, homoscedasticity, normality of residuals) helps you diagnose when it's appropriate and when it's not.",
+    "whyItMatters": "Linear regression is the foundation of all supervised learning. Understanding its loss function, optimization, and regularization gives you the mental model for understanding every other algorithm. It's also still widely used in production for its interpretability and speed.",
+    "subtopics": [
+      "Simple Linear Regression (one feature)",
+      "Multiple Linear Regression (many features)",
+      "Cost Function: Mean Squared Error (MSE)",
+      "Normal Equation (closed-form solution)",
+      "Gradient Descent for Linear Regression",
+      "Polynomial Regression",
+      "Regularization: Ridge (L2), LASSO (L1), ElasticNet",
+      "Assumptions of Linear Regression",
+      "Residual Analysis & Diagnostic Plots",
+      "R² Score & Adjusted R²",
+      "Feature Importance in Linear Models",
+      "Implementation with scikit-learn"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Linear Regression, Clearly Explained!!!",
+        "url": "https://www.youtube.com/watch?v=7ArmBVF2dCs",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Regularization Part 1: Ridge (L2) Regression",
+        "url": "https://www.youtube.com/watch?v=Q81RR3yKn30",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Machine Learning — Linear Regression (Andrew Ng)",
+        "url": "https://www.youtube.com/watch?v=4b4MUYve_U8",
+        "channel": "Stanford Online"
+      }
+    ],
+    "references": [
+      {
+        "title": "Scikit-learn Linear Models",
+        "url": "https://scikit-learn.org/stable/modules/linear_model.html"
+      },
+      {
+        "title": "An Introduction to Statistical Learning (Chapter 3)",
+        "url": "https://www.statlearning.com/"
+      }
+    ],
+    "prerequisites": [
+      "ml-overview",
+      "linear-algebra",
+      "calculus",
+      "optimization"
+    ],
+    "tags": ["supervised", "regression", "linear-model", "regularization"]
+  },
+  {
+    "id": "classification-algorithms",
+    "title": "Classification Algorithms",
+    "phase": 3,
+    "difficulty": "beginner",
+    "estimatedHours": 16,
+    "description": "Classification is one of the most common ML tasks — predicting which category an input belongs to. Logistic Regression (despite its name, it's for classification) uses the sigmoid function to output probabilities between 0 and 1, then applies a threshold. It's used at scale for credit scoring — banks like Capital One use it to predict whether a loan applicant will default. Decision Trees split data recursively based on feature values, creating an interpretable flowchart of decisions. Random Forests combine hundreds of decision trees, each trained on a random subset of data and features (bagging), and average their predictions — this dramatically reduces overfitting. Netflix used random forests for early recommendation experiments. Support Vector Machines (SVMs) find the hyperplane that maximally separates classes, using kernel tricks to handle nonlinear boundaries. SVMs were state-of-the-art for handwriting recognition and remain powerful for small-to-medium datasets. K-Nearest Neighbors (KNN) classifies based on the majority class among the K closest training points — simple but effective for recommendation systems. Naive Bayes applies Bayes' theorem with a strong independence assumption — it's still the go-to algorithm for spam filtering because it handles high-dimensional text data well. Gradient Boosting (XGBoost, LightGBM, CatBoost) builds trees sequentially, each correcting the errors of the previous one — these dominate Kaggle competitions and production ML at companies like Microsoft (LightGBM) and Yandex (CatBoost).",
+    "whyItMatters": "Classification algorithms are used everywhere: email spam detection, medical diagnosis, customer churn prediction, fraud detection, sentiment analysis, image recognition. Understanding this family of algorithms gives you tools for the majority of real-world ML problems.",
+    "subtopics": [
+      "Logistic Regression & Sigmoid Function",
+      "Decision Trees (ID3, C4.5, CART)",
+      "Random Forests (Bagging + Feature Randomness)",
+      "Support Vector Machines (Linear & Kernel SVM)",
+      "K-Nearest Neighbors (KNN)",
+      "Naive Bayes (Gaussian, Multinomial, Bernoulli)",
+      "Gradient Boosting Machines",
+      "XGBoost Deep Dive",
+      "LightGBM & CatBoost",
+      "Comparing Classifiers: When to Use What",
+      "Handling Imbalanced Classes (SMOTE, Class Weights)",
+      "Multi-class vs Multi-label Classification"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Logistic Regression — Clearly Explained",
+        "url": "https://www.youtube.com/watch?v=yIYKR4sgzI8",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Decision Trees — Clearly Explained",
+        "url": "https://www.youtube.com/watch?v=7VeUPuFGJHk",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "XGBoost — Clearly Explained",
+        "url": "https://www.youtube.com/watch?v=OtD8wVaFm6E",
+        "channel": "StatQuest"
+      }
+    ],
+    "references": [
+      {
+        "title": "Scikit-learn Classification Guide",
+        "url": "https://scikit-learn.org/stable/supervised_learning.html"
+      },
+      {
+        "title": "XGBoost Documentation",
+        "url": "https://xgboost.readthedocs.io/"
+      }
+    ],
+    "prerequisites": [
+      "ml-overview",
+      "linear-algebra",
+      "probability-statistics"
+    ],
+    "tags": ["supervised", "classification", "decision-trees", "svm", "xgboost"]
+  },
+  {
+    "id": "unsupervised-learning",
+    "title": "Unsupervised Learning & Clustering",
+    "phase": 3,
+    "difficulty": "intermediate",
+    "estimatedHours": 12,
+    "description": "Unsupervised learning discovers hidden structure in unlabeled data — no human labels required. This is incredibly valuable because most real-world data is unlabeled (labeling is expensive and time-consuming). K-Means clustering partitions data into K groups by iteratively assigning points to the nearest centroid and updating centroids. Uber uses K-Means to cluster pickup locations for demand prediction. Hierarchical clustering builds a tree (dendrogram) of cluster merges, useful when you don't know K in advance. DBSCAN (Density-Based Spatial Clustering) finds arbitrarily shaped clusters and automatically identifies outliers — perfect for geographic data or anomaly detection. A cybersecurity company might use DBSCAN on network traffic data to identify clusters of normal behavior and flag outlier points as potential intrusions. Dimensionality reduction with PCA, t-SNE, and UMAP helps visualize high-dimensional data in 2D/3D. t-SNE is particularly popular for visualizing word embeddings (you can see semantically similar words cluster together) and neural network activations. Anomaly detection (Isolation Forest, Local Outlier Factor, One-Class SVM) identifies rare events — used for fraud detection, manufacturing defect detection, and network intrusion detection. Association Rule Mining (Apriori, FP-Growth) discovers relationships between items — the classic 'customers who buy diapers also buy beer' finding from retail data analysis. Amazon's product recommendations partially rely on association rules.",
+    "whyItMatters": "Most real-world data is unlabeled. Customer segmentation, anomaly detection, data exploration, and recommendation systems all use unsupervised methods. These techniques help you understand your data's structure before even starting supervised learning.",
+    "subtopics": [
+      "K-Means Clustering (algorithm, elbow method, silhouette score)",
+      "Hierarchical Clustering (agglomerative, dendrograms)",
+      "DBSCAN (density-based, epsilon, min_samples)",
+      "Gaussian Mixture Models (GMMs)",
+      "PCA for Dimensionality Reduction (implemented & understood)",
+      "t-SNE for Visualization",
+      "UMAP for Visualization & Dimensionality Reduction",
+      "Anomaly Detection (Isolation Forest, LOF, One-Class SVM)",
+      "Association Rule Mining (Apriori, FP-Growth)",
+      "Choosing the Right Number of Clusters",
+      "Cluster Evaluation Metrics"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "K-Means Clustering — Clearly Explained",
+        "url": "https://www.youtube.com/watch?v=4b5d3muPQmA",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "DBSCAN Clustering — Clearly Explained",
+        "url": "https://www.youtube.com/watch?v=RDZUdRSDOok",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "t-SNE — Clearly Explained",
+        "url": "https://www.youtube.com/watch?v=NEaUSP4YerM",
+        "channel": "StatQuest"
+      }
+    ],
+    "references": [
+      {
+        "title": "Scikit-learn Clustering Guide",
+        "url": "https://scikit-learn.org/stable/modules/clustering.html"
+      },
+      {
+        "title": "UMAP Documentation",
+        "url": "https://umap-learn.readthedocs.io/"
+      }
+    ],
+    "prerequisites": ["ml-overview", "linear-algebra", "feature-engineering"],
+    "tags": [
+      "unsupervised",
+      "clustering",
+      "dimensionality-reduction",
+      "anomaly-detection"
+    ]
+  },
+  {
+    "id": "model-evaluation",
+    "title": "Model Evaluation & Validation",
+    "phase": 3,
+    "difficulty": "intermediate",
+    "estimatedHours": 10,
+    "description": "Evaluating models correctly is one of the most critical skills in ML. A model that appears to perform well but is evaluated incorrectly can fail catastrophically in production. The fundamental concept is the bias-variance tradeoff: a model with high bias (too simple) underfits the data, while a model with high variance (too complex) overfits — memorizing training data but failing on new data. Cross-validation (K-Fold CV) provides a robust estimate of model performance by training and evaluating on different data splits. For classification, accuracy alone is often misleading — if 99% of transactions are legitimate and 1% are fraudulent, a model predicting 'legitimate' every time achieves 99% accuracy but catches zero fraud. Instead, you need precision (of all predicted fraud, how many are actually fraud?), recall (of all actual fraud, how many did you catch?), F1-score (harmonic mean balancing precision and recall), and the ROC-AUC curve (plotting true positive rate vs false positive rate at different thresholds). For regression, you use MSE, RMSE, MAE, and R². Hyperparameter tuning with Grid Search (exhaustive but expensive), Random Search (surprisingly effective), and Bayesian Optimization (smart and efficient) finds the best model configuration. Learning curves help diagnose whether adding more data will help (high bias = more data won't help; high variance = more data will help).",
+    "whyItMatters": "A model is only as good as its evaluation. Choosing wrong metrics leads to models that look good on paper but fail in production. Understanding the bias-variance tradeoff, cross-validation, and proper metrics is what separates ML engineers from beginners.",
+    "subtopics": [
+      "Train/Validation/Test Split Strategies",
+      "K-Fold Cross-Validation (Stratified, Group, Time Series)",
+      "Confusion Matrix Interpretation",
+      "Precision, Recall, F1-Score",
+      "ROC Curve & AUC",
+      "Precision-Recall Curves",
+      "Regression Metrics (MSE, RMSE, MAE, R², Adjusted R²)",
+      "Bias-Variance Tradeoff (visual intuition)",
+      "Overfitting vs Underfitting Diagnosis",
+      "Learning Curves & Validation Curves",
+      "Hyperparameter Tuning (Grid Search, Random Search)",
+      "Bayesian Optimization (Optuna, Hyperopt)",
+      "Nested Cross-Validation for Unbiased Estimates"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "ROC and AUC — Clearly Explained!",
+        "url": "https://www.youtube.com/watch?v=4jRBRDbJemM",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Cross Validation — Clearly Explained!",
+        "url": "https://www.youtube.com/watch?v=fSytzGwwBVw",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Bias and Variance — ML Concepts",
+        "url": "https://www.youtube.com/watch?v=EuBBz3bI-aA",
+        "channel": "StatQuest"
+      }
+    ],
+    "references": [
+      {
+        "title": "Scikit-learn Model Evaluation",
+        "url": "https://scikit-learn.org/stable/modules/model_evaluation.html"
+      },
+      {
+        "title": "Optuna — Hyperparameter Optimization",
+        "url": "https://optuna.org/"
+      }
+    ],
+    "prerequisites": ["ml-overview", "probability-statistics"],
+    "tags": [
+      "evaluation",
+      "metrics",
+      "cross-validation",
+      "overfitting",
+      "hyperparameters"
+    ]
+  },
+  {
+    "id": "ensemble-methods",
+    "title": "Ensemble Methods",
+    "phase": 3,
+    "difficulty": "intermediate",
+    "estimatedHours": 8,
+    "description": "Ensemble methods combine multiple models to produce better predictions than any single model alone — the 'wisdom of crowds' applied to ML. There are three main strategies: Bagging (Bootstrap Aggregating) trains multiple models on random subsets of data and averages their predictions, reducing variance. Random Forests are the most famous bagging method — they combine hundreds of decision trees, each trained on a bootstrap sample with random feature subsets, achieving robust performance with minimal tuning. Boosting trains models sequentially, with each new model focusing on the errors of the previous ones. AdaBoost increases the weight of misclassified samples so the next model pays more attention to them. Gradient Boosting generalizes this by fitting each new tree to the residual errors (gradients) of the ensemble. XGBoost (eXtreme Gradient Boosting) adds regularization, handles missing values, and uses efficient parallel computation — it dominated Kaggle competitions from 2015-2020. LightGBM from Microsoft uses histogram-based splitting for faster training on large datasets. CatBoost from Yandex handles categorical features natively without explicit encoding. Stacking trains a meta-model on the predictions of base models — combining the strengths of different types of learners (e.g., using a logistic regression to combine predictions from a random forest, SVM, and neural network). In production at companies like Airbnb, ensemble methods are used for search ranking, pricing, and fraud detection.",
+    "whyItMatters": "Gradient boosting (XGBoost/LightGBM) is the #1 algorithm for tabular data in both competitions and industry. Nearly every Kaggle competition winner uses an ensemble. These methods are the go-to for production ML on structured data.",
+    "subtopics": [
+      "Bagging (Bootstrap Aggregating)",
+      "Random Forests in Depth",
+      "Feature Importance from Ensembles",
+      "AdaBoost (Adaptive Boosting)",
+      "Gradient Boosting Machines (GBMs)",
+      "XGBoost in Depth (parameters, regularization, early stopping)",
+      "LightGBM (leaf-wise growth, histogram binning)",
+      "CatBoost (ordered boosting, categorical handling)",
+      "Stacking (meta-learning)",
+      "Blending & Averaging",
+      "Ensemble Diversity & Why It Works"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Random Forests — Clearly Explained",
+        "url": "https://www.youtube.com/watch?v=J4Wdy0Wc_xQ",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "AdaBoost — Clearly Explained",
+        "url": "https://www.youtube.com/watch?v=LsK-xG1cLYA",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Gradient Boost — Clearly Explained",
+        "url": "https://www.youtube.com/watch?v=3CC4N4z3GJc",
+        "channel": "StatQuest"
+      }
+    ],
+    "references": [
+      {
+        "title": "XGBoost Documentation",
+        "url": "https://xgboost.readthedocs.io/"
+      },
+      {
+        "title": "LightGBM Documentation",
+        "url": "https://lightgbm.readthedocs.io/"
+      },
+      {
+        "title": "Ensemble Methods in ML (MLMastery)",
+        "url": "https://machinelearningmastery.com/ensemble-methods-for-deep-learning-neural-networks/"
+      }
+    ],
+    "prerequisites": ["classification-algorithms", "model-evaluation"],
+    "tags": ["ensemble", "boosting", "bagging", "xgboost", "random-forest"]
+  },
+  {
+    "id": "ml-sklearn-practical",
+    "title": "Scikit-learn Practical Mastery",
+    "phase": 3,
+    "difficulty": "intermediate",
+    "estimatedHours": 10,
+    "description": "Scikit-learn (sklearn) is the most important ML library for classical machine learning. Its consistent API (fit, predict, transform), comprehensive documentation, and extensive collection of algorithms make it the go-to tool for building ML pipelines. In production ML systems, sklearn's Pipeline and ColumnTransformer classes are essential for building reproducible, maintainable preprocessing and modeling workflows. A Pipeline chains together preprocessing steps (scaling, encoding, imputation) and a model into a single object — this prevents data leakage during cross-validation (a common and dangerous mistake where test data influences preprocessing) and makes deployment clean (pickle the pipeline, not individual transformers). ColumnTransformer lets you apply different transformations to different columns — StandardScaler to numerical features and OneHotEncoder to categorical features simultaneously. Sklearn's model selection tools (cross_val_score, GridSearchCV, RandomizedSearchCV) provide robust evaluation. In real-world practice, a data scientist might build a pipeline: SimpleImputer → StandardScaler → PCA → RandomForestClassifier, wrapped in a GridSearchCV for hyperparameter tuning — all in ~20 lines of code. This pipeline can be serialized with joblib and deployed to production, ensuring that the exact same preprocessing applied during training is applied during inference.",
+    "whyItMatters": "Scikit-learn is the industry standard for classical ML. Its Pipeline API prevents data leakage, ensures reproducibility, and simplifies deployment. Knowing sklearn deeply is required for every ML job and is the foundation before moving to deep learning frameworks.",
+    "subtopics": [
+      "The Estimator API (fit, predict, transform)",
+      "Pipeline & ColumnTransformer",
+      "Preprocessing (StandardScaler, OneHotEncoder, LabelEncoder)",
+      "SimpleImputer & KNNImputer",
+      "Custom Transformers (TransformerMixin, BaseEstimator)",
+      "Model Selection (cross_val_score, GridSearchCV)",
+      "Feature Selection APIs (SelectKBest, RFE)",
+      "Saving & Loading Models (joblib, pickle)",
+      "Multi-output & Multi-task Learning",
+      "Sklearn Pipelines in Production"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Scikit-learn Full Course",
+        "url": "https://www.youtube.com/watch?v=0B5eIE_1vpU",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Scikit-learn Pipeline Tutorial",
+        "url": "https://www.youtube.com/watch?v=w9IGkBfOoic",
+        "channel": "Data School"
+      }
+    ],
+    "references": [
+      {
+        "title": "Scikit-learn Official Tutorial",
+        "url": "https://scikit-learn.org/stable/tutorial/index.html"
+      },
+      {
+        "title": "Hands-On ML with Scikit-Learn (Aurélien Géron)",
+        "url": "https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125974/"
+      }
+    ],
+    "prerequisites": ["ml-overview", "numpy", "pandas"],
+    "tags": ["sklearn", "pipeline", "practical", "preprocessing", "production"]
+  },
+  {
+    "id": "ml-end-to-end",
+    "title": "End-to-End ML Project Workflow",
+    "phase": 3,
+    "difficulty": "intermediate",
+    "estimatedHours": 12,
+    "description": "Building a complete ML project from start to finish is where all the pieces come together. An end-to-end workflow includes: (1) Problem definition — framing a business question as an ML task (is this classification or regression? what metric matters most?); (2) Data collection — gathering data from databases, APIs, or files; (3) EDA — understanding distributions, correlations, missing patterns; (4) Data preprocessing — cleaning, encoding, handling imbalances; (5) Feature engineering — creating informative features from raw data; (6) Model selection — trying multiple algorithms and comparing with cross-validation; (7) Hyperparameter tuning — optimizing model performance; (8) Error analysis — examining where and why the model fails; (9) Final evaluation on held-out test set; (10) Deployment and monitoring. In real-world practice, this is rarely a linear process — you iterate. After error analysis, you might go back to feature engineering. After deployment monitoring, you might need to retrain with new data. A concrete example: building a customer churn prediction system for a telecom company. You'd collect customer usage data, billing information, and support ticket history from SQL databases; engineer features like 'call_minutes_trend', 'number_of_complaints_last_3_months', 'contract_remaining_days'; train XGBoost and logistic regression models; optimize for recall (catching churners is more important than minimizing false alarms); and deploy as a batch scoring pipeline that runs nightly.",
+    "whyItMatters": "Knowing individual algorithms isn't enough — you must know how to connect them into a working system. This is what employers and Kaggle competitions actually test. The gap between knowing sklearn functions and building production ML systems is this workflow knowledge.",
+    "subtopics": [
+      "Problem Framing & Business Understanding",
+      "Data Collection Strategy",
+      "EDA-Driven Feature Discovery",
+      "Baseline Model Establishment",
+      "Iterative Model Improvement",
+      "Error Analysis & Failure Mode Identification",
+      "Final Model Selection & Test Evaluation",
+      "Model Documentation & Reproducibility",
+      "Creating a Data Science Report/Notebook",
+      "From Notebook to Production Code"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "End-to-End ML Project",
+        "url": "https://www.youtube.com/watch?v=Wqmtf9SA_kk",
+        "channel": "Krish Naik"
+      },
+      {
+        "title": "ML Project from Scratch — House Prices",
+        "url": "https://www.youtube.com/watch?v=Wqmtf9SA_kk",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      {
+        "title": "Hands-On ML Book (Chapter 2: End-to-End Project)",
+        "url": "https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125974/"
+      },
+      {
+        "title": "Kaggle — Getting Started Competitions",
+        "url": "https://www.kaggle.com/competitions?hostSegmentIdFilter=5"
+      }
+    ],
+    "prerequisites": [
+      "classification-algorithms",
+      "model-evaluation",
+      "feature-engineering"
+    ],
+    "tags": ["workflow", "end-to-end", "project", "production", "pipeline"]
+  }
+]

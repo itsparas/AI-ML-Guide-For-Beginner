@@ -1,0 +1,279 @@
+[
+  {
+    "id": "python-programming",
+    "title": "Python Programming",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 30,
+    "description": "Python is the undisputed language of AI and machine learning. It powers virtually every major ML framework — TensorFlow, PyTorch, scikit-learn, and Hugging Face all use Python as their primary interface. Python's readable syntax makes complex algorithms approachable, while its rich ecosystem of libraries handles everything from data manipulation to deep learning. In real-world AI teams at Google, Meta, OpenAI, and thousands of startups, Python is the daily driver. You'll use it to load datasets, build models, run experiments, and deploy services. A data scientist at Netflix might write Python to build a recommendation model, while a researcher at DeepMind uses it to train reinforcement learning agents. Python's versatility extends from quick Jupyter Notebook experiments to production microservices. Key concepts you must master include variables and data types (int, float, string, list, dict, tuple, set), control flow (if/elif/else, for/while loops), functions and lambda expressions, object-oriented programming (classes, inheritance, polymorphism, encapsulation), file I/O (reading CSV, JSON, text files), error handling (try/except/finally), list comprehensions, generators, decorators, and working with modules and packages. Understanding Pythonic patterns and PEP 8 style conventions will make your code professional and maintainable.",
+    "whyItMatters": "Every single tool, library, and framework in the AI/ML ecosystem is built on or interfaces with Python. Without strong Python skills, you cannot write data pipelines, build models, or deploy AI systems. Python is the #1 language on Kaggle, in ML research papers, and in industry job postings for data scientists.",
+    "eli5": "Imagine you want to teach a robot to do things. Python is the language you use to talk to that robot. It's like learning English before you can read books — Python is the 'English' of the AI world. You write simple instructions like 'look at this picture' or 'read these numbers,' and the computer follows them. Almost every AI tool understands Python, so once you learn it, you can use ALL the cool AI toys. Think of Python as LEGO instructions — they're step-by-step, easy to read, and you can build amazing things with them!",
+    "subtopics": [
+      "Variables, Data Types & Type Casting",
+      "Strings, Lists, Tuples, Sets, Dictionaries",
+      "Control Flow (if/elif/else, for, while)",
+      "Functions, *args, **kwargs, Lambda",
+      "List/Dict/Set Comprehensions",
+      "Object-Oriented Programming (Classes, Inheritance, Polymorphism)",
+      "File Handling (read/write CSV, JSON, text)",
+      "Error Handling (try/except/finally)",
+      "Modules, Packages, pip",
+      "Generators & Iterators",
+      "Decorators & Context Managers",
+      "Virtual Environments (venv, conda)",
+      "Python Best Practices & PEP 8"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Python Full Course for Beginners",
+        "url": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Python Tutorial — Python for Beginners (6 Hours)",
+        "url": "https://www.youtube.com/watch?v=_uQrJ0TkZlc",
+        "channel": "Programming with Mosh"
+      },
+      {
+        "title": "Python OOP Tutorial",
+        "url": "https://www.youtube.com/watch?v=ZDa-Z5JzLYM",
+        "channel": "Corey Schafer"
+      }
+    ],
+    "references": [
+      {
+        "title": "Official Python Tutorial",
+        "url": "https://docs.python.org/3/tutorial/"
+      },
+      {
+        "title": "Automate the Boring Stuff with Python",
+        "url": "https://automatetheboringstuff.com/"
+      },
+      { "title": "Real Python Tutorials", "url": "https://realpython.com/" }
+    ],
+    "prerequisites": [],
+    "tags": ["python", "programming", "fundamentals"]
+  },
+  {
+    "id": "git-github",
+    "title": "Git & GitHub",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 8,
+    "description": "Git is the version control system used by virtually every software team and AI research lab in the world. It tracks changes to your code, lets you experiment in branches without breaking your main project, and enables collaboration with other developers. GitHub is the platform where millions of open-source AI/ML projects live — from TensorFlow to Hugging Face model repositories. In a real-world AI workflow, you'll use Git to version your training scripts, track changes to model configurations, collaborate with teammates on feature engineering, and maintain reproducible experiment histories. For example, when a team at a startup is building a fraud detection model, they use Git branches to test different feature sets, pull requests to review each other's preprocessing code, and tags to mark model versions that go to production. Understanding Git is also essential for contributing to open-source ML projects, which is one of the best ways to learn and build your portfolio. Key skills include initializing repositories, staging and committing changes, branching and merging, resolving conflicts, using .gitignore for data files (never commit large datasets!), writing meaningful commit messages, creating pull requests, and using GitHub for project management with Issues and Projects.",
+    "whyItMatters": "Version control is non-negotiable in professional AI/ML work. Without Git, you cannot collaborate with teams, track experiment changes, contribute to open-source projects, or maintain reproducible research. Every ML job posting lists Git as a required skill.",
+    "eli5": "You know how in video games you can save your progress? Git is like a save button for your code. Every time you make changes, you save a checkpoint. If something breaks, you can go back to a working save! GitHub is like a cloud drive where you keep all your saves so your friends can play too. Imagine you and your friend are both drawing on the same picture — Git makes sure you don't accidentally erase each other's work. It keeps track of who drew what, and if you both drew on the same spot, it asks you to decide which one to keep.",
+    "subtopics": [
+      "Git init, clone, status, log",
+      "Staging, Committing, Push, Pull",
+      "Branching & Merging",
+      "Resolving Merge Conflicts",
+      ".gitignore for Data Science (ignoring datasets, model files)",
+      "Pull Requests & Code Review",
+      "GitHub Repositories, Issues, Projects",
+      "Git for ML Experiments (tagging model versions)",
+      "GitHub Actions basics for automation"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Git and GitHub for Beginners — Crash Course",
+        "url": "https://www.youtube.com/watch?v=RGOj5yH7evk",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Git Tutorial for Beginners",
+        "url": "https://www.youtube.com/watch?v=8JJ101D3knE",
+        "channel": "Programming with Mosh"
+      }
+    ],
+    "references": [
+      {
+        "title": "Pro Git Book (free)",
+        "url": "https://git-scm.com/book/en/v2"
+      },
+      { "title": "GitHub Learning Lab", "url": "https://skills.github.com/" }
+    ],
+    "prerequisites": [],
+    "tags": ["git", "github", "version-control", "collaboration"]
+  },
+  {
+    "id": "jupyter-colab",
+    "title": "Jupyter Notebooks & Google Colab",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 5,
+    "description": "Jupyter Notebooks are the standard interactive computing environment for data science and AI/ML research. They allow you to write code, see output immediately, create visualizations, and add markdown explanations — all in a single document. This makes them perfect for exploratory data analysis, prototyping models, and sharing reproducible research. Google Colab extends this by providing free GPU and TPU access in the cloud, which is essential for training deep learning models if you don't have expensive hardware. In real-world practice, a data scientist at Spotify might use Jupyter Notebooks to explore listening patterns, visualize user clusters, and prototype a recommendation model — then share the notebook with the team for review. Researchers publish their work as notebooks on GitHub, making entire papers reproducible. Kaggle competitions are dominated by notebook-based workflows where competitors share their EDA, feature engineering, and model training in clear, documented notebooks. Key skills include creating and managing notebooks, using markdown cells for documentation, running cells and managing kernel state, installing packages with !pip, using magic commands (%timeit, %matplotlib inline), connecting Colab to Google Drive, mounting datasets, and leveraging free GPU/TPU runtimes for deep learning experiments.",
+    "whyItMatters": "Jupyter Notebooks are where 90% of AI/ML experimentation happens. They're used in Kaggle competitions, academic research, data science interviews, and rapid prototyping at every major tech company. Google Colab democratizes deep learning by providing free GPU access.",
+    "eli5": "Think of a Jupyter Notebook like a magic notebook. You write something in it, press play, and it DOES the thing you wrote! You can write a math formula, press play, and see the answer right there. You can even make it draw charts and pictures. It's like a science lab journal, but instead of just writing results, the notebook actually runs your experiments! Google Colab is the same magic notebook, but it lives on the internet and gives you a super-powerful computer for free — kind of like borrowing a race car when you only have a bicycle.",
+    "subtopics": [
+      "Installing and Launching Jupyter Notebook/JupyterLab",
+      "Creating Cells (Code vs Markdown)",
+      "Kernel Management & Execution Order",
+      "Magic Commands (%timeit, %matplotlib, !pip)",
+      "Google Colab Setup & Interface",
+      "Connecting Colab to Google Drive",
+      "Using Free GPU/TPU in Colab",
+      "Notebook Best Practices (documentation, reproducibility)",
+      "Exporting Notebooks (HTML, PDF, .py scripts)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Jupyter Notebook Tutorial for Beginners",
+        "url": "https://www.youtube.com/watch?v=HW29067qVWk",
+        "channel": "Corey Schafer"
+      },
+      {
+        "title": "Google Colab Tutorial for Beginners",
+        "url": "https://www.youtube.com/watch?v=inN8seMm7UI",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      {
+        "title": "Jupyter Documentation",
+        "url": "https://jupyter.org/documentation"
+      },
+      {
+        "title": "Google Colab FAQ",
+        "url": "https://research.google.com/colaboratory/faq.html"
+      }
+    ],
+    "prerequisites": ["python-programming"],
+    "tags": ["jupyter", "colab", "notebooks", "interactive-computing"]
+  },
+  {
+    "id": "virtual-environments",
+    "title": "Virtual Environments & Package Management",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 4,
+    "description": "Virtual environments are isolated Python environments that prevent dependency conflicts between projects. Imagine you're working on two ML projects — one uses TensorFlow 2.10 and the other requires TensorFlow 2.15. Without virtual environments, installing one version would break the other project. In production ML systems, dependency management is critical for reproducibility. When a model works in your development environment, you need to guarantee it works identically in production. Tools like venv (Python's built-in), conda (popular in data science for managing both Python and non-Python dependencies like CUDA), and pip (Python's package installer) form the foundation of professional ML workflows. In a real-world scenario, an ML engineer at Uber might use conda environments for each microservice — one for the feature engineering pipeline using specific pandas and numpy versions, another for the model training service with PyTorch and CUDA dependencies, and a third for the API serving layer with FastAPI. Requirements files (requirements.txt or environment.yml) ensure that anyone can recreate your exact environment. This becomes especially important when you dockerize your ML applications for deployment.",
+    "whyItMatters": "Dependency conflicts are one of the most common and frustrating problems in ML development. Virtual environments ensure reproducibility — a fundamental requirement for scientific computing and production deployments. Every professional ML project uses them.",
+    "eli5": "Imagine you have a toy box for your LEGO and a separate toy box for your action figures. You don't mix them because it gets messy! Virtual environments are like separate toy boxes for each project. Project A might need blue bricks and Project B needs red bricks — if you dump them all together, you can't find anything. Virtual environments keep each project's tools in its own box so nothing gets mixed up. When you want to share your project with a friend, you just give them the list of what's in your toy box, and they can get the exact same pieces!",
+    "subtopics": [
+      "Python venv: Creating, Activating, Deactivating",
+      "pip: Installing, Freezing, Requirements Files",
+      "Conda: Environments, Channels, environment.yml",
+      "Conda vs pip vs venv: When to Use What",
+      "Managing CUDA/cuDNN with Conda",
+      "pyenv for Python Version Management",
+      "Poetry for Modern Dependency Management",
+      "Reproducing Environments Across Machines"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Python Virtual Environments Tutorial",
+        "url": "https://www.youtube.com/watch?v=APOPm01BVrk",
+        "channel": "Corey Schafer"
+      },
+      {
+        "title": "Conda for Data Science",
+        "url": "https://www.youtube.com/watch?v=23aQdrS58e0",
+        "channel": "Corey Schafer"
+      }
+    ],
+    "references": [
+      {
+        "title": "Python venv Documentation",
+        "url": "https://docs.python.org/3/library/venv.html"
+      },
+      {
+        "title": "Conda User Guide",
+        "url": "https://docs.conda.io/projects/conda/en/latest/user-guide/"
+      }
+    ],
+    "prerequisites": ["python-programming"],
+    "tags": ["environments", "dependencies", "conda", "pip", "reproducibility"]
+  },
+  {
+    "id": "cs-fundamentals",
+    "title": "Computer Science Fundamentals",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 15,
+    "description": "Understanding core computer science concepts makes you a far more effective ML practitioner. Algorithm complexity (Big-O notation) helps you understand why certain ML algorithms scale well and others don't — for instance, why k-NN has O(n) prediction time (it must check every training point) while a decision tree has O(log n) (it follows a path down the tree). Data structures like hash maps, arrays, heaps, and trees appear throughout ML implementations. Hash maps power feature dictionaries, arrays are the backbone of NumPy tensors, priority queues help in beam search during text generation, and tree structures literally are the model in decision trees and random forests. In real-world AI systems at companies like Google, understanding algorithmic complexity determines whether your model can serve predictions in milliseconds (required for real-time applications) or takes seconds (only suitable for batch processing). A recommendation system at Amazon must score millions of items in real-time, so the engineering team must deeply understand space-time tradeoffs. Knowledge of recursion helps you understand backpropagation, dynamic programming connects to reinforcement learning's Bellman equations, and graph algorithms underpin graph neural networks.",
+    "whyItMatters": "ML isn't just about calling sklearn.fit() — understanding algorithm complexity, data structures, and computational thinking helps you debug models, optimize pipelines, and design scalable AI systems. Many ML interview questions test CS fundamentals alongside ML knowledge.",
+    "eli5": "Computer Science basics are like learning the rules of a board game before you play. If someone asks you to find a name in a phone book, you don't read every single page — you open it in the middle and decide if you need to go forward or backward. That's called 'binary search,' and it's way faster! Big-O notation is just a way to say 'how slow does this get when there's more stuff?' Like, finding your friend in a line of 10 people is easy, but in a crowd of 10,000? You need smarter tricks. These are the smart tricks that make AI fast instead of slow.",
+    "subtopics": [
+      "Big-O Notation (Time & Space Complexity)",
+      "Arrays, Linked Lists, Stacks, Queues",
+      "Hash Maps & Sets",
+      "Trees & Binary Search Trees",
+      "Sorting Algorithms (QuickSort, MergeSort)",
+      "Searching Algorithms (Binary Search)",
+      "Recursion & Dynamic Programming",
+      "Graph Basics (BFS, DFS)",
+      "Computational Complexity Classes (P, NP)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Data Structures and Algorithms Full Course",
+        "url": "https://www.youtube.com/watch?v=8hly31xKli0",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Big-O Notation in 5 Minutes",
+        "url": "https://www.youtube.com/watch?v=__vX2sjlpXU",
+        "channel": "CS Dojo"
+      }
+    ],
+    "references": [
+      {
+        "title": "Big-O Cheat Sheet",
+        "url": "https://www.bigocheatsheet.com/"
+      },
+      {
+        "title": "Visualgo — Visualising Algorithms",
+        "url": "https://visualgo.net/"
+      }
+    ],
+    "prerequisites": ["python-programming"],
+    "tags": ["algorithms", "data-structures", "big-o", "cs-fundamentals"]
+  },
+  {
+    "id": "command-line-linux",
+    "title": "Command Line & Linux Basics",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 6,
+    "description": "Most ML workloads run on Linux servers, whether in the cloud (AWS, GCP, Azure) or on-premise GPU clusters. Knowing the command line is essential for SSH-ing into remote machines, managing datasets, running training scripts, monitoring GPU usage, and navigating cloud environments. In a real-world ML workflow, you'll frequently SSH into a remote GPU server, use tmux or screen to keep long training runs alive after disconnecting, monitor GPU utilization with nvidia-smi, manage large datasets with wget/curl, and pipe output between commands. A machine learning engineer at a self-driving car company might SSH into a multi-GPU server, launch a distributed training job with a bash script, monitor it with nvidia-smi and htop, and copy results back using scp or rsync. Understanding Linux file permissions, environment variables (critical for API keys), cron jobs (for scheduled retraining), and process management (ps, kill, nohup) are all daily skills. Docker, which you'll learn later, is entirely command-line driven. Even tools like Kubernetes for orchestrating ML deployments require CLI proficiency.",
+    "whyItMatters": "Production ML systems run on Linux servers. Cloud GPU instances, Docker containers, Kubernetes clusters — they're all Linux. Without CLI skills, you cannot train models remotely, manage cloud deployments, or work in professional ML infrastructure.",
+    "eli5": "You know how you usually click on folders and icons on your computer? The command line is like talking to your computer by typing instead of clicking. It's like the difference between pointing at things and using words. Typing is often faster — imagine telling someone 'move all the blue toys to the top shelf' instead of picking them up one by one. Most of the big powerful computers that train AI don't have screens or mice — you can only talk to them by typing commands. It's like texting your computer instead of using it in person!",
+    "subtopics": [
+      "File System Navigation (cd, ls, pwd, mkdir, rm)",
+      "File Operations (cp, mv, cat, head, tail, grep)",
+      "File Permissions (chmod, chown)",
+      "Environment Variables & PATH",
+      "SSH & Remote Server Access",
+      "tmux / screen for Persistent Sessions",
+      "Process Management (ps, top, htop, kill, nohup)",
+      "Bash Scripting Basics",
+      "nvidia-smi for GPU Monitoring",
+      "wget, curl for Downloading Data"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Linux Command Line Full Course",
+        "url": "https://www.youtube.com/watch?v=ZtqBQ68cfJc",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Bash Scripting Tutorial for Beginners",
+        "url": "https://www.youtube.com/watch?v=tK9Oc6AEnR4",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      {
+        "title": "Linux Command Line Basics (Ubuntu)",
+        "url": "https://ubuntu.com/tutorials/command-line-for-beginners"
+      },
+      {
+        "title": "The Linux Command Line (free book)",
+        "url": "https://linuxcommand.org/tlcl.php"
+      }
+    ],
+    "prerequisites": [],
+    "tags": ["linux", "command-line", "bash", "ssh", "devops"]
+  }
+]

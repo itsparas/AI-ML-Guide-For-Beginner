@@ -1,0 +1,147 @@
+{
+  "youtubeChannels": [
+    {
+      "name": "3Blue1Brown",
+      "url": "https://www.youtube.com/@3blue1brown",
+      "focus": "Visual math and neural network intuition"
+    },
+    {
+      "name": "StatQuest with Josh Starmer",
+      "url": "https://www.youtube.com/@statquest",
+      "focus": "Statistics and ML algorithms explained simply"
+    },
+    {
+      "name": "Andrej Karpathy",
+      "url": "https://www.youtube.com/@AndrejKarpathy",
+      "focus": "Neural Networks: Zero to Hero"
+    },
+    {
+      "name": "Sentdex",
+      "url": "https://www.youtube.com/@sentdex",
+      "focus": "Practical Python ML tutorials"
+    },
+    {
+      "name": "freeCodeCamp",
+      "url": "https://www.youtube.com/@freecodecamp",
+      "focus": "Full-length free courses"
+    },
+    {
+      "name": "Krish Naik",
+      "url": "https://www.youtube.com/@krishnaik06",
+      "focus": "End-to-end ML/DL tutorials"
+    },
+    {
+      "name": "Stanford Online",
+      "url": "https://www.youtube.com/@stanfordonline",
+      "focus": "CS229, CS231n lectures"
+    },
+    {
+      "name": "MIT OpenCourseWare",
+      "url": "https://www.youtube.com/@mitocw",
+      "focus": "MIT 6.S191, 18.06 Linear Algebra"
+    },
+    {
+      "name": "DeepLearning.AI",
+      "url": "https://www.youtube.com/@Deeplearningai",
+      "focus": "Andrew Ng's courses and content"
+    },
+    {
+      "name": "Two Minute Papers",
+      "url": "https://www.youtube.com/@TwoMinutePapers",
+      "focus": "Latest AI research summaries"
+    },
+    {
+      "name": "Yannic Kilcher",
+      "url": "https://www.youtube.com/@YannicKilcher",
+      "focus": "Paper explanations and AI news"
+    },
+    {
+      "name": "CodeEmporium",
+      "url": "https://www.youtube.com/@CodeEmporium",
+      "focus": "Transformer and NLP deep dives"
+    }
+  ],
+  "quotes": [
+    {
+      "text": "Machine learning is the last invention that humanity will ever need to make.",
+      "author": "Nick Bostrom"
+    },
+    {
+      "text": "AI is probably the most important thing humanity has ever worked on.",
+      "author": "Sundar Pichai"
+    },
+    {
+      "text": "The key to artificial intelligence has always been the representation.",
+      "author": "Jeff Hawkins"
+    },
+    {
+      "text": "Success in creating AI would be the biggest event in human history.",
+      "author": "Stephen Hawking"
+    },
+    {
+      "text": "It's not magic; it's math. And the math is beautiful.",
+      "author": "3Blue1Brown"
+    },
+    {
+      "text": "In God we trust. All others must bring data.",
+      "author": "W. Edwards Deming"
+    },
+    {
+      "text": "The goal of machine learning is to make machines learn from experience.",
+      "author": "Tom Mitchell"
+    },
+    { "text": "Data is the new oil.", "author": "Clive Humby" },
+    {
+      "text": "An approximate answer to the right problem is worth a good deal more than an exact answer to an approximate problem.",
+      "author": "John Tukey"
+    },
+    {
+      "text": "The best way to predict the future is to create it.",
+      "author": "Peter Drucker"
+    },
+    {
+      "text": "What I cannot create, I do not understand.",
+      "author": "Richard Feynman"
+    },
+    {
+      "text": "Gradient descent can find the minimum of any differentiable function. That's the whole trick.",
+      "author": "Andrej Karpathy"
+    },
+    {
+      "text": "Torture the data, and it will confess to anything.",
+      "author": "Ronald Coase"
+    },
+    {
+      "text": "All models are wrong, but some are useful.",
+      "author": "George Box"
+    },
+    {
+      "text": "If you want to master something, teach it.",
+      "author": "Richard Feynman"
+    },
+    {
+      "text": "Learning never exhausts the mind.",
+      "author": "Leonardo da Vinci"
+    }
+  ],
+  "difficultyLevels": [
+    {
+      "key": "beginner",
+      "label": "Beginner",
+      "color": "#10B981",
+      "description": "No prior ML knowledge required"
+    },
+    {
+      "key": "intermediate",
+      "label": "Intermediate",
+      "color": "#F59E0B",
+      "description": "Requires foundational ML understanding"
+    },
+    {
+      "key": "advanced",
+      "label": "Advanced",
+      "color": "#EF4444",
+      "description": "Requires solid ML/DL experience"
+    }
+  ]
+}

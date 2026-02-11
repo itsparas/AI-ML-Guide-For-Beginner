@@ -1,0 +1,402 @@
+[
+  {
+    "id": "time-series",
+    "title": "Time Series Forecasting",
+    "phase": 9,
+    "difficulty": "advanced",
+    "estimatedHours": 12,
+    "description": "Time series forecasting predicts future values based on historical temporal patterns. It's one of the most commercially valuable ML applications — financial institutions forecast stock prices and economic indicators, retailers predict demand for inventory planning, energy companies forecast electricity consumption, and weather services predict temperatures. Classical methods include ARIMA (AutoRegressive Integrated Moving Average), which models linear patterns and trends, and its seasonal variant SARIMA. Facebook Prophet is designed for business time series with strong seasonal effects and holidays — it's used internally at Meta for capacity planning and forecasting growth metrics. LSTM and GRU networks capture complex non-linear temporal dependencies that classical methods miss — they're used for predicting traffic patterns (Google Maps), server load forecasting (cloud providers), and medical time series (ICU vital sign monitoring). Modern transformer-based time series models (Temporal Fusion Transformer, PatchTST, TimesFM) achieve state-of-the-art results by applying attention mechanisms to temporal data. Key concepts include stationarity (most models require stationary data, achieved through differencing), autocorrelation (how past values relate to future values), seasonality decomposition, and handling multiple related time series (multivariate forecasting). Evaluation requires special care — you cannot randomly split time series (future data cannot inform past predictions), so you use walk-forward validation.",
+    "whyItMatters": "Time series forecasting is one of the most demanded ML skills in finance, retail, energy, and operations. Every business that plans for the future needs forecasting. It's a specialized skill that commands high salaries.",
+    "subtopics": [
+      "Time Series Components (trend, seasonality, residual)",
+      "Stationarity & Dickey-Fuller Test",
+      "Autocorrelation (ACF) & Partial Autocorrelation (PACF)",
+      "ARIMA & SARIMA",
+      "Facebook Prophet",
+      "Exponential Smoothing (Holt-Winters)",
+      "LSTM/GRU for Time Series",
+      "Transformer-based Forecasting (TFT, PatchTST)",
+      "Multivariate Time Series",
+      "Walk-Forward Validation",
+      "Feature Engineering for Time Series",
+      "Anomaly Detection in Time Series"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Time Series Analysis Full Course",
+        "url": "https://www.youtube.com/watch?v=_vQ0W_qXMxk",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "ARIMA Explained",
+        "url": "https://www.youtube.com/watch?v=Y2khrpVo6qI",
+        "channel": "StatQuest"
+      }
+    ],
+    "references": [
+      {
+        "title": "Forecasting: Principles & Practice (free textbook)",
+        "url": "https://otexts.com/fpp3/"
+      },
+      {
+        "title": "Facebook Prophet Documentation",
+        "url": "https://facebook.github.io/prophet/"
+      }
+    ],
+    "prerequisites": ["probability-statistics", "rnns-sequences"],
+    "tags": ["specialization", "time-series", "forecasting", "arima", "prophet"]
+  },
+  {
+    "id": "recommender-systems",
+    "title": "Recommender Systems",
+    "phase": 9,
+    "difficulty": "advanced",
+    "estimatedHours": 10,
+    "description": "Recommender systems are among the most impactful ML applications in industry — they drive 35% of Amazon's revenue, 80% of Netflix viewing, and are the core product of TikTok, Spotify, and YouTube. Collaborative filtering (CF) finds similar users or items: 'users who liked X also liked Y'. Matrix factorization (SVD, ALS) decomposes the user-item interaction matrix into low-rank factors, discovering latent features (a movie's 'feel-good factor', a user's 'preference for indie films'). Content-based filtering uses item features (genre, description, price) to find similar items. Hybrid systems combine both approaches. Deep learning has transformed recommender systems: neural collaborative filtering replaces dot products with neural networks, two-tower models (separate user and item encoders) enable efficient retrieval from millions of items, and sequential models (using transformers) capture how user preferences evolve over session/time. The industrial recommendation pipeline typically has two stages: retrieval (fast, coarse — narrow millions of items to hundreds using approximate nearest neighbor search with libraries like FAISS) and ranking (slow, accurate — score hundreds of candidates with a complex model). Cold-start problems (new users or items with no interaction history) require content-based or popularity-based fallbacks. Real-time personalization, multi-objective optimization (engagement + satisfaction + fairness), and handling implicit feedback (clicks, views, dwell time vs explicit ratings) are active research and engineering challenges.",
+    "whyItMatters": "Recommender systems are the highest-revenue ML application. They're the core business of Netflix, Amazon, TikTok, Spotify, and YouTube. Understanding recommendation algorithms is essential for roles at any major tech company.",
+    "subtopics": [
+      "Collaborative Filtering (user-based, item-based)",
+      "Matrix Factorization (SVD, ALS, NMF)",
+      "Content-Based Filtering",
+      "Hybrid Recommender Systems",
+      "Deep Learning for Recommendations (NCF, Two-Tower)",
+      "Sequential Recommendations (session-based, transformer)",
+      "Retrieval + Ranking Pipeline",
+      "Approximate Nearest Neighbor Search (FAISS, Annoy)",
+      "Cold Start Problem & Solutions",
+      "Implicit vs Explicit Feedback",
+      "Multi-Objective Optimization (engagement + diversity)",
+      "Evaluation Metrics (NDCG, MAP, Hit Rate, Coverage)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Recommender Systems Course",
+        "url": "https://www.youtube.com/watch?v=9gBC9R-msAk",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "How Netflix Recommender Works",
+        "url": "https://www.youtube.com/watch?v=ZspR5PZemcs",
+        "channel": "TechWorld with Nana"
+      }
+    ],
+    "references": [
+      {
+        "title": "Recommender Systems Handbook",
+        "url": "https://link.springer.com/book/10.1007/978-1-0716-2197-4"
+      },
+      {
+        "title": "Google Recommendation System Course",
+        "url": "https://developers.google.com/machine-learning/recommendation"
+      }
+    ],
+    "prerequisites": ["linear-algebra", "neural-networks-fundamentals"],
+    "tags": [
+      "specialization",
+      "recommendations",
+      "collaborative-filtering",
+      "personalization"
+    ]
+  },
+  {
+    "id": "graph-neural-networks",
+    "title": "Graph Neural Networks (GNNs)",
+    "phase": 9,
+    "difficulty": "advanced",
+    "estimatedHours": 10,
+    "description": "Many real-world data structures are naturally graphs — social networks (users connected by friendships), molecular structures (atoms connected by bonds), knowledge graphs (entities connected by relations), citation networks (papers citing papers), and transportation networks (stations connected by routes). Traditional neural networks can't handle graph-structured data because graphs have variable topology, no fixed ordering, and permutation-invariant structure. GNNs solve this through message passing: each node aggregates information from its neighbors, updates its representation, and after multiple rounds, captures both local structure and global context. Graph Convolutional Networks (GCNs) generalize convolutions to graphs. GraphSAGE enables inductive learning (generalizing to unseen nodes). Graph Attention Networks (GATs) learn which neighbors to pay more attention to. In real-world applications, Pinterest uses GNNs (PinSage) for visual recommendation, serving 3 billion predictions daily. Drug discovery companies use GNNs to predict molecular properties and drug interactions — treating molecules as graphs where atoms are nodes and bonds are edges. Fraud detection systems model transaction networks as graphs, identifying suspicious patterns of money flow. Google Maps uses graph-based models for travel time prediction. PyTorch Geometric (PyG) and DGL are the main libraries for implementing GNNs.",
+    "whyItMatters": "Graph-structured data is everywhere — social networks, molecules, knowledge bases, supply chains. GNNs are a rapidly growing field with high-impact applications in drug discovery, social network analysis, fraud detection, and knowledge reasoning.",
+    "subtopics": [
+      "Graph Basics (nodes, edges, adjacency matrix)",
+      "Message Passing Framework",
+      "Graph Convolutional Networks (GCNs)",
+      "GraphSAGE (inductive learning)",
+      "Graph Attention Networks (GATs)",
+      "Node Classification, Link Prediction, Graph Classification",
+      "Knowledge Graphs & Graph Embeddings",
+      "GNNs for Molecular Property Prediction",
+      "PyTorch Geometric (PyG)",
+      "DGL (Deep Graph Library)",
+      "Scalable GNNs for Large Graphs"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Graph Neural Networks Explained",
+        "url": "https://www.youtube.com/watch?v=GXhBEj11RPs",
+        "channel": "Aleksa Gordić"
+      },
+      {
+        "title": "Stanford CS224W: ML with Graphs",
+        "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rPLKxIpqhjhPgdQy7imNkDn",
+        "channel": "Stanford Online"
+      }
+    ],
+    "references": [
+      {
+        "title": "A Gentle Introduction to GNNs",
+        "url": "https://distill.pub/2021/gnn-intro/"
+      },
+      {
+        "title": "PyTorch Geometric Documentation",
+        "url": "https://pytorch-geometric.readthedocs.io/"
+      },
+      {
+        "title": "CS224W Course Materials",
+        "url": "https://web.stanford.edu/class/cs224w/"
+      }
+    ],
+    "prerequisites": ["neural-networks-fundamentals", "linear-algebra"],
+    "tags": ["specialization", "gnn", "graphs", "molecules", "social-networks"]
+  },
+  {
+    "id": "explainable-ai",
+    "title": "Explainable AI (XAI) & Ethics",
+    "phase": 9,
+    "difficulty": "advanced",
+    "estimatedHours": 10,
+    "description": "As AI systems make increasingly consequential decisions — loan approvals, medical diagnoses, criminal sentencing, hiring — understanding WHY a model makes a prediction is as important as the prediction itself. Explainable AI (XAI) provides techniques to interpret black-box models. SHAP (SHapley Additive exPlanations) uses game theory to assign each feature a contribution to the prediction — it's the gold standard for feature attribution, used by banks to explain loan denials to regulators. LIME (Local Interpretable Model-agnostic Explanations) approximates any complex model with a simple, interpretable model locally around a specific prediction. Attention maps in transformers and Grad-CAM in CNNs visualize which parts of the input the model focuses on. Feature importance from tree-based models (Random Forest, XGBoost) shows which features matter most globally. Beyond explainability, AI ethics encompasses bias and fairness (models trained on biased data perpetuate discrimination — Amazon's AI recruiting tool penalized women, facial recognition has higher error rates for darker-skinned individuals), privacy (differential privacy, federated learning), transparency (model cards documenting intended use and limitations), accountability (who is responsible when AI makes harmful decisions), and sustainability (training large models has enormous carbon footprints). The EU AI Act and other regulations increasingly require explainability for high-risk AI applications.",
+    "whyItMatters": "Regulations like the EU AI Act require explainability for high-risk AI. Banks must explain credit decisions. Healthcare AI must be trustworthy. Understanding XAI and ethics is increasingly a legal requirement, not just a nice-to-have.",
+    "subtopics": [
+      "SHAP (SHapley Additive exPlanations)",
+      "LIME (Local Interpretable Model-agnostic Explanations)",
+      "Feature Importance (global vs local)",
+      "Attention Visualization & Grad-CAM",
+      "Partial Dependence Plots (PDPs)",
+      "Counterfactual Explanations",
+      "Model Cards & Documentation",
+      "Bias Detection & Fairness Metrics",
+      "Algorithmic Fairness (demographic parity, equalized odds)",
+      "Differential Privacy",
+      "EU AI Act & Regulatory Compliance",
+      "Responsible AI Development Practices"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "SHAP Explained — Machine Learning Interpretability",
+        "url": "https://www.youtube.com/watch?v=VB9uV-x0vEo",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Explainable AI Course",
+        "url": "https://www.youtube.com/watch?v=OZJ1IgSgP9E",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      {
+        "title": "Interpretable ML Book (free)",
+        "url": "https://christophm.github.io/interpretable-ml-book/"
+      },
+      { "title": "SHAP Library", "url": "https://shap.readthedocs.io/" },
+      {
+        "title": "Google Responsible AI Practices",
+        "url": "https://ai.google/responsibility/responsible-ai-practices/"
+      }
+    ],
+    "prerequisites": [
+      "classification-algorithms",
+      "neural-networks-fundamentals"
+    ],
+    "tags": ["specialization", "explainability", "fairness", "ethics", "shap"]
+  },
+  {
+    "id": "automl",
+    "title": "AutoML & Automated Machine Learning",
+    "phase": 9,
+    "difficulty": "intermediate",
+    "estimatedHours": 6,
+    "description": "AutoML automates the most tedious parts of the ML workflow — feature engineering, model selection, hyperparameter tuning, and architecture search. Auto-sklearn automatically tries numerous sklearn pipelines and ensembles the best ones, often outperforming manual model selection. TPOT (Tree-based Pipeline Optimization Tool) uses genetic programming to evolve optimal pipelines. H2O AutoML provides a cloud-friendly platform with leaderboard-based model comparison. Google's AutoML and Azure's AutoML offer no-code/low-code ML for business users. Neural Architecture Search (NAS) automates the design of neural network architectures — Google used NAS to discover EfficientNet, which outperformed human-designed architectures. In industry, AutoML serves two purposes: democratizing ML for non-experts (enabling analysts to build models without deep ML knowledge) and providing strong baselines for ML engineers (run AutoML first to establish what's achievable, then try to beat it with custom approaches). Optuna and Ray Tune are popular for hyperparameter optimization with advanced strategies like Bayesian optimization and early stopping of poor trials (Hyperband). AutoML doesn't replace ML engineers — it handles the mechanical optimization while humans focus on problem framing, feature engineering, and system design. Understanding AutoML tools makes you more productive.",
+    "whyItMatters": "AutoML establishes strong baselines quickly and democratizes ML. In time-constrained projects, AutoML can deliver 80% of the value in 20% of the time. Understanding these tools makes you a more efficient and productive ML practitioner.",
+    "subtopics": [
+      "Auto-sklearn",
+      "TPOT",
+      "H2O AutoML",
+      "Google Cloud AutoML",
+      "Neural Architecture Search (NAS)",
+      "Optuna for Hyperparameter Optimization",
+      "Ray Tune for Distributed HP Search",
+      "Hyperband & ASHA (early stopping)",
+      "AutoML for Features (Featuretools)",
+      "When to Use AutoML vs Manual ML"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "AutoML Explained",
+        "url": "https://www.youtube.com/watch?v=V7u5B-LEKDI",
+        "channel": "Krish Naik"
+      },
+      {
+        "title": "Optuna Tutorial",
+        "url": "https://www.youtube.com/watch?v=P6NwZVl8ttc",
+        "channel": "Patrick Loeber"
+      }
+    ],
+    "references": [
+      {
+        "title": "Auto-sklearn Documentation",
+        "url": "https://automl.github.io/auto-sklearn/"
+      },
+      { "title": "Optuna Documentation", "url": "https://optuna.org/" },
+      {
+        "title": "H2O AutoML Guide",
+        "url": "https://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html"
+      }
+    ],
+    "prerequisites": ["ml-sklearn-practical", "model-evaluation"],
+    "tags": ["specialization", "automl", "optimization", "automation"]
+  },
+  {
+    "id": "diffusion-multimodal",
+    "title": "Multimodal AI & Foundation Models",
+    "phase": 9,
+    "difficulty": "advanced",
+    "estimatedHours": 10,
+    "description": "Multimodal AI systems process and connect multiple types of data — text, images, audio, video — in a unified framework. This represents the frontier of AI, moving toward systems with human-like understanding across modalities. CLIP (OpenAI) learns a shared embedding space for images and text, enabling zero-shot image classification (describe what you want to find, no training needed), image-text retrieval, and text-guided image generation. GPT-4V (Vision) and Gemini accept both text and image inputs, enabling visual question answering ('What's in this image?'), chart/diagram understanding, and reasoning about visual content. LLaVA (Large Language-and-Vision Assistant) is an open-source multimodal model you can fine-tune for custom visual understanding tasks. DALL-E 3 and Stable Diffusion 3 generate high-quality images from text descriptions, understanding complex compositional prompts. Foundation models are large, general-purpose models pretrained on massive datasets that can be adapted to many downstream tasks — SAM (Segment Anything) for any segmentation task, Whisper for any speech recognition task, DINO for any visual feature extraction. The trend is toward increasingly general models: from single-task → multi-task → multi-modal → potentially AGI. Understanding how to use, fine-tune, and build applications with these foundation models is the most forward-looking skill in AI.",
+    "whyItMatters": "Multimodal AI and foundation models represent the cutting edge and future of AI. GPT-4V, Gemini, and CLIP are already powering next-generation products. Understanding these systems is essential for staying relevant in the rapidly evolving AI landscape.",
+    "subtopics": [
+      "CLIP Architecture & Zero-Shot Classification",
+      "Vision-Language Models (GPT-4V, Gemini, LLaVA)",
+      "Text-to-Image Models (DALL-E 3, Stable Diffusion 3)",
+      "Text-to-Video Models (Sora, Runway, Pika)",
+      "Audio-Visual Models (AudioLDM, MusicGen)",
+      "Foundation Model Paradigm",
+      "Contrastive Learning (CLIP, SimCLR)",
+      "Scaling Laws for Multimodal Models",
+      "Adaptive Methods (adapters, LoRA for multimodal)",
+      "Open-Source Multimodal Models",
+      "AI Agents & Agentic Frameworks (AutoGPT, CrewAI)",
+      "Edge AI & TinyML"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "CLIP Explained",
+        "url": "https://www.youtube.com/watch?v=T9XSU0pKX2E",
+        "channel": "Yannic Kilcher"
+      },
+      {
+        "title": "Multimodal AI — The Future",
+        "url": "https://www.youtube.com/watch?v=mkI7EPD1vp8",
+        "channel": "Two Minute Papers"
+      }
+    ],
+    "references": [
+      { "title": "CLIP Paper", "url": "https://arxiv.org/abs/2103.00020" },
+      {
+        "title": "Gemini Technical Report",
+        "url": "https://arxiv.org/abs/2312.11805"
+      },
+      {
+        "title": "Foundation Models Overview (Stanford)",
+        "url": "https://arxiv.org/abs/2108.07258"
+      }
+    ],
+    "prerequisites": ["transformers-architecture", "cnns"],
+    "tags": [
+      "specialization",
+      "multimodal",
+      "clip",
+      "foundation-models",
+      "frontier"
+    ]
+  },
+  {
+    "id": "federated-learning",
+    "title": "Federated Learning & Privacy-Preserving ML",
+    "phase": 9,
+    "difficulty": "advanced",
+    "estimatedHours": 6,
+    "description": "Federated learning trains ML models across decentralized devices while keeping data local — the model travels to the data, not the data to the model. This is crucial when data is sensitive (medical records), regulated (GDPR, HIPAA), or too large to centralize. Google pioneered federated learning for Gboard (keyboard prediction): millions of Android phones locally train on users' typing patterns, sending only model updates (gradients) to a central server that aggregates them. No raw text data ever leaves the device. Apple uses similar approaches for Siri suggestions and QuickType. In healthcare, hospitals can collaboratively train diagnostic models without sharing patient data across institutional boundaries — NVIDIA's FLARE platform enables multi-hospital federated learning for tumor segmentation. Key challenges include non-IID data (data on different devices is not identically distributed), communication efficiency (sending model updates for billion-parameter models is expensive, addressed by gradient compression), client heterogeneity (devices have different computing capabilities), and adversarial attacks (Byzantine clients sending malicious updates). Differential privacy adds calibrated noise to model updates, providing mathematical guarantees that individual data points can't be extracted from the trained model. Homomorphic encryption allows computation on encrypted data. These privacy-preserving techniques are increasingly important as AI regulation grows globally.",
+    "whyItMatters": "Privacy regulations (GDPR, HIPAA, CCPA) are making centralized data collection harder. Federated learning enables ML where data can't move. It's already deployed at Google, Apple, and hospitals worldwide, and demand for privacy-preserving ML skills is growing rapidly.",
+    "subtopics": [
+      "Federated Learning Architecture (client-server)",
+      "FedAvg Algorithm",
+      "Non-IID Data Challenges",
+      "Communication Efficiency (gradient compression)",
+      "Differential Privacy for ML",
+      "Secure Aggregation",
+      "Flower Framework (open-source FL)",
+      "NVIDIA FLARE",
+      "Federated Learning for Healthcare",
+      "Split Learning",
+      "Homomorphic Encryption Basics"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Federated Learning Explained",
+        "url": "https://www.youtube.com/watch?v=nBGQQHPkyNY",
+        "channel": "Google AI"
+      },
+      {
+        "title": "Differential Privacy Explained",
+        "url": "https://www.youtube.com/watch?v=gI0Z7kMAbBI",
+        "channel": "Udacity"
+      }
+    ],
+    "references": [
+      {
+        "title": "Google AI Blog: Federated Learning",
+        "url": "https://blog.research.google/2017/04/federated-learning-collaborative.html"
+      },
+      {
+        "title": "Flower Framework Documentation",
+        "url": "https://flower.ai/docs/"
+      },
+      {
+        "title": "Advances and Open Problems in Federated Learning",
+        "url": "https://arxiv.org/abs/1912.04977"
+      }
+    ],
+    "prerequisites": ["neural-networks-fundamentals", "dl-training-techniques"],
+    "tags": ["specialization", "federated-learning", "privacy", "distributed"]
+  },
+  {
+    "id": "ai-safety-alignment",
+    "title": "AI Safety, Alignment & Future Trends",
+    "phase": 9,
+    "difficulty": "advanced",
+    "estimatedHours": 6,
+    "description": "AI safety and alignment focus on ensuring AI systems behave as intended and remain beneficial as they become more capable. The alignment problem asks: how do you specify what you want an AI to do, verify that it's doing it correctly, and ensure it continues to do so as its capabilities grow? RLHF (Reinforcement Learning from Human Feedback) is the primary technique used to align large language models — it trains a reward model on human preferences, then uses PPO to fine-tune the LLM to generate outputs that score highly on this reward model. Constitutional AI (Anthropic) uses AI to evaluate its own outputs against a set of principles. Scalable oversight explores how humans can maintain meaningful control over AI systems that are more capable than any individual human. Red teaming systematically probes AI systems for harmful behaviors, biases, and failure modes. Interpretability research (mechanistic interpretability, probing classifiers, activation patching) tries to understand what models have learned internally. The broader field of AI governance includes policy discussions about regulation, open-source vs closed-source models, compute governance, and international coordination on AI safety. Understanding these topics is increasingly important not just for safety researchers but for any AI practitioner — responsible AI development is becoming a professional and legal requirement.",
+    "whyItMatters": "As AI systems become more powerful and widely deployed, safety and alignment become critical. RLHF already shapes every major LLM. Understanding AI safety is essential for responsible development and is increasingly required by employers and regulators.",
+    "subtopics": [
+      "The Alignment Problem",
+      "RLHF (Reinforcement Learning from Human Feedback)",
+      "Constitutional AI & RLAIF",
+      "Red Teaming AI Systems",
+      "Mechanistic Interpretability",
+      "Scalable Oversight & Debate",
+      "AI Governance & Regulation",
+      "Compute Governance",
+      "Open Source vs Closed Source Debate",
+      "AGI Timelines & Preparedness",
+      "AI Existential Risk Perspectives"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "AI Alignment Problem Explained",
+        "url": "https://www.youtube.com/watch?v=pYXy-A4siMw",
+        "channel": "Robert Miles"
+      },
+      {
+        "title": "RLHF Explained",
+        "url": "https://www.youtube.com/watch?v=2MBJOuVq380",
+        "channel": "Yannic Kilcher"
+      }
+    ],
+    "references": [
+      {
+        "title": "AI Alignment Forum",
+        "url": "https://www.alignmentforum.org/"
+      },
+      {
+        "title": "Anthropic Research",
+        "url": "https://www.anthropic.com/research"
+      },
+      {
+        "title": "DeepMind Safety Research",
+        "url": "https://deepmind.google/safety-and-responsibility/"
+      }
+    ],
+    "prerequisites": ["deep-rl", "transformers-nlp"],
+    "tags": ["specialization", "safety", "alignment", "rlhf", "ethics"]
+  }
+]

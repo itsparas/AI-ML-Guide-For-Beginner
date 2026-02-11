@@ -1,0 +1,329 @@
+[
+  {
+    "id": "image-processing-opencv",
+    "title": "Image Processing with OpenCV",
+    "phase": 6,
+    "difficulty": "intermediate",
+    "estimatedHours": 10,
+    "description": "OpenCV (Open Computer Vision) is the most comprehensive computer vision library, with 2,500+ optimized algorithms used in everything from smartphone camera apps to autonomous vehicles. Understanding image fundamentals is essential: images are 3D arrays (height × width × channels), pixels have intensity values (0-255 for 8-bit), and color spaces (BGR, RGB, HSV, grayscale) serve different purposes — HSV is better for color-based segmentation because it separates color from brightness. Core operations include resizing, cropping, rotating (geometric transformations using affine matrices), and filtering (blur for noise reduction, Gaussian blur for smooth denoising, median filter for salt-and-pepper noise). Edge detection with Canny detects boundaries — used in lane detection for self-driving cars. Morphological operations (erosion, dilation, opening, closing) clean up binary masks — used in medical image processing to separate overlapping cells. Contour detection finds object boundaries and is used for shape analysis, document scanning (detecting page edges), and object counting. In industrial applications, OpenCV powers quality inspection on manufacturing lines (detecting defects in products), augmented reality apps (face filters on Instagram/Snapchat), surveillance systems, and robotic vision. The library interfaces seamlessly with deep learning frameworks, serving as the preprocessing layer for feeding images into CNN models.",
+    "whyItMatters": "OpenCV is the standard for image preprocessing in CV pipelines. Before any deep learning model sees an image, OpenCV handles loading, resizing, augmentation, and preprocessing. It's also essential for real-time CV applications where deep learning alone is too slow.",
+    "subtopics": [
+      "Image Representation (pixels, channels, color spaces)",
+      "Reading, Writing, Displaying Images",
+      "Color Space Conversions (BGR, RGB, HSV, Grayscale)",
+      "Geometric Transformations (resize, rotate, crop, warp)",
+      "Image Filtering (blur, Gaussian, median, bilateral)",
+      "Edge Detection (Canny, Sobel, Laplacian)",
+      "Thresholding (binary, adaptive, Otsu's)",
+      "Morphological Operations (erosion, dilation, opening, closing)",
+      "Contour Detection & Shape Analysis",
+      "Template Matching",
+      "Feature Detection (SIFT, ORB, SURF)",
+      "Video Processing (reading, writing, frame extraction)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "OpenCV Course — Full Tutorial with Python",
+        "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "OpenCV Python Tutorial",
+        "url": "https://www.youtube.com/watch?v=WQeoO7MI0Bs",
+        "channel": "Murtaza's Workshop"
+      }
+    ],
+    "references": [
+      {
+        "title": "OpenCV Python Documentation",
+        "url": "https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html"
+      },
+      {
+        "title": "PyImageSearch (Adrian Rosebrock)",
+        "url": "https://pyimagesearch.com/"
+      }
+    ],
+    "prerequisites": ["numpy", "python-programming"],
+    "tags": ["computer-vision", "opencv", "image-processing", "preprocessing"]
+  },
+  {
+    "id": "object-detection",
+    "title": "Object Detection (YOLO, R-CNN Family)",
+    "phase": 6,
+    "difficulty": "advanced",
+    "estimatedHours": 14,
+    "description": "Object detection goes beyond classification by not only identifying what objects are in an image but also where they are — drawing bounding boxes around each detected object. This powers critical real-world systems: self-driving cars detect pedestrians, vehicles, and traffic signs in real-time; warehouse robots locate packages on shelves; security systems identify specific individuals; and medical imaging systems detect tumors, lesions, and fractures. The R-CNN family (R-CNN → Fast R-CNN → Faster R-CNN) pioneered two-stage detection: first propose candidate regions, then classify each region. While accurate, two-stage detectors are slower. YOLO (You Only Look Once) introduced single-stage detection — processing the entire image in one pass, achieving real-time speeds. YOLO divides the image into a grid, and each cell predicts bounding boxes and class probabilities simultaneously. YOLOv8 (by Ultralytics) is the current state-of-the-art for practical applications, offering easy training, deployment, and strong performance. SSD (Single Shot MultiBox Detector) is another fast single-stage detector. Anchor-free detectors like FCOS and CenterNet simplify the architecture by directly predicting object centers and sizes. In production, Tesla processes 8 camera feeds at 36 FPS each using optimized detection models, while Amazon Go stores use object detection to track which products customers pick up.",
+    "whyItMatters": "Object detection is one of the highest-demand CV skills in industry. Autonomous driving, robotics, security, retail analytics, and medical imaging all require robust object detection. YOLO alone powers thousands of production applications.",
+    "subtopics": [
+      "Object Detection vs Classification vs Segmentation",
+      "Bounding Boxes, IoU (Intersection over Union)",
+      "Non-Maximum Suppression (NMS)",
+      "R-CNN Family (R-CNN, Fast R-CNN, Faster R-CNN)",
+      "Region Proposal Networks (RPN)",
+      "YOLO Architecture (v1 through v8)",
+      "SSD (Single Shot MultiBox Detector)",
+      "Anchor-Based vs Anchor-Free Detection",
+      "Training Custom Object Detectors",
+      "Evaluation Metrics (mAP, AP50, AP75)",
+      "COCO Dataset & Benchmark",
+      "Real-Time Detection Optimization"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "YOLO Object Detection — Full Course",
+        "url": "https://www.youtube.com/watch?v=WgPbbWmnXJ8",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "YOLOv8 Tutorial",
+        "url": "https://www.youtube.com/watch?v=Z-65nqxUdl4",
+        "channel": "Nicolai AI"
+      },
+      {
+        "title": "Object Detection Explained",
+        "url": "https://www.youtube.com/watch?v=yR7k19YBqiw",
+        "channel": "Krish Naik"
+      }
+    ],
+    "references": [
+      {
+        "title": "Ultralytics YOLOv8 Documentation",
+        "url": "https://docs.ultralytics.com/"
+      },
+      {
+        "title": "MMDetection (OpenMMLab)",
+        "url": "https://mmdetection.readthedocs.io/"
+      },
+      { "title": "COCO Dataset", "url": "https://cocodataset.org/" }
+    ],
+    "prerequisites": ["cnns", "dl-training-techniques"],
+    "tags": ["computer-vision", "object-detection", "yolo", "rcnn", "real-time"]
+  },
+  {
+    "id": "image-segmentation",
+    "title": "Image Segmentation",
+    "phase": 6,
+    "difficulty": "advanced",
+    "estimatedHours": 10,
+    "description": "Image segmentation assigns a label to every pixel in an image, providing much finer-grained understanding than object detection. Semantic segmentation labels each pixel with a class (road, sidewalk, building, sky) — Waymo and Cruise use it for autonomous driving to understand drivable surfaces. Instance segmentation distinguishes between individual objects of the same class — Mask R-CNN simultaneously detects objects and generates pixel-level masks, used in robotics for grasping individual objects from a pile. Panoptic segmentation combines both, labeling every pixel and distinguishing instances. U-Net, originally designed for biomedical image segmentation, has become the workhorse architecture — its encoder-decoder structure with skip connections preserves fine spatial details crucial for accurate boundaries. In medicine, U-Net segments tumors in MRI scans, retinal vessels in eye images, and organs in CT scans, sometimes enabling earlier diagnosis than human radiologists. DeepLab uses atrous/dilated convolutions and spatial pyramid pooling to capture multi-scale context. SAM (Segment Anything Model) by Meta AI can segment any object in any image with just a point or box prompt — a foundation model for segmentation. In practical applications, video conferencing background blur (Google Meet, Zoom) uses real-time person segmentation, and satellite image analysis uses segmentation to measure deforestation, urban sprawl, and crop health.",
+    "whyItMatters": "Segmentation provides pixel-perfect understanding needed for medical imaging, autonomous driving, video editing, augmented reality, and satellite analysis. It's the most detailed form of visual scene understanding and a high-demand skill in industry.",
+    "subtopics": [
+      "Semantic vs Instance vs Panoptic Segmentation",
+      "U-Net Architecture (encoder-decoder with skip connections)",
+      "Fully Convolutional Networks (FCN)",
+      "DeepLab (Atrous Convolutions, ASPP)",
+      "Mask R-CNN (instance segmentation)",
+      "Segment Anything Model (SAM)",
+      "Loss Functions (Dice Loss, Focal Loss, Cross-Entropy)",
+      "Data Augmentation for Segmentation",
+      "Medical Image Segmentation Applications",
+      "Evaluation Metrics (IoU, Dice Score, Pixel Accuracy)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Image Segmentation Explained",
+        "url": "https://www.youtube.com/watch?v=IHq1t7NxS8k",
+        "channel": "Computerphile"
+      },
+      {
+        "title": "U-Net Paper Walkthrough",
+        "url": "https://www.youtube.com/watch?v=IHq1t7NxS8k",
+        "channel": "Yannic Kilcher"
+      },
+      {
+        "title": "Segment Anything by Meta AI",
+        "url": "https://www.youtube.com/watch?v=sLihGnNkSsM",
+        "channel": "Two Minute Papers"
+      }
+    ],
+    "references": [
+      { "title": "U-Net Paper", "url": "https://arxiv.org/abs/1505.04597" },
+      {
+        "title": "Segment Anything (Meta AI)",
+        "url": "https://segment-anything.com/"
+      },
+      {
+        "title": "MMSegmentation",
+        "url": "https://mmsegmentation.readthedocs.io/"
+      }
+    ],
+    "prerequisites": ["cnns", "object-detection"],
+    "tags": ["computer-vision", "segmentation", "unet", "medical-imaging"]
+  },
+  {
+    "id": "image-generation-cv",
+    "title": "Image Generation & Stable Diffusion",
+    "phase": 6,
+    "difficulty": "advanced",
+    "estimatedHours": 12,
+    "description": "Image generation AI has exploded with the advent of diffusion models. Stable Diffusion, DALL-E, and Midjourney can generate photorealistic images from text descriptions, and this technology is already transforming creative industries. The core idea of diffusion models: start with a clean image, gradually add Gaussian noise until it becomes pure noise (forward process), then train a neural network to reverse this — denoising step by step (reverse process). At inference time, you start from random noise and iteratively denoise to generate a new image. Stable Diffusion's architecture combines three components: a text encoder (CLIP) that converts prompts to embeddings, a U-Net with attention that performs denoising in latent space (not pixel space, which is key for efficiency), and a VAE decoder that converts the latent image back to pixel space. ControlNet adds precise control — conditioning generation on edge maps, depth maps, pose skeletons, or other structural guides. In production, Adobe Firefly uses diffusion models for generative fill in Photoshop, Canva uses them for design generation, game studios generate concept art and textures, and e-commerce companies generate product images with different backgrounds. Understanding how to train custom diffusion models (DreamBooth for personalization, LoRA for efficient fine-tuning) and control generation (guidance scale, negative prompts, img2img) enables building practical creative AI tools.",
+    "whyItMatters": "Generative image AI is one of the most visible and commercially impactful applications of deep learning. Understanding diffusion models, Stable Diffusion, and image generation pipelines opens career opportunities in creative AI, content generation, and visual computing.",
+    "subtopics": [
+      "Diffusion Process (forward noise, reverse denoising)",
+      "Stable Diffusion Architecture (CLIP + U-Net + VAE)",
+      "Classifier-Free Guidance (CFG scale)",
+      "Samplers (DDPM, DDIM, Euler, DPM++)",
+      "Image-to-Image Generation",
+      "Inpainting & Outpainting",
+      "ControlNet (conditioning on edges, depth, pose)",
+      "DreamBooth (personalization fine-tuning)",
+      "LoRA for Stable Diffusion",
+      "SDXL & Latest SD Versions",
+      "ComfyUI & Diffusers Library",
+      "Ethical Considerations & Content Safety"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "How Stable Diffusion Works",
+        "url": "https://www.youtube.com/watch?v=1CIpzeNxIhU",
+        "channel": "Gonkee"
+      },
+      {
+        "title": "Stable Diffusion — What, Why, How",
+        "url": "https://www.youtube.com/watch?v=J87hffSMB60",
+        "channel": "Computerphile"
+      },
+      {
+        "title": "ComfyUI Tutorial for Beginners",
+        "url": "https://www.youtube.com/watch?v=AbB33AxrcZo",
+        "channel": "Sebastian Kamph"
+      }
+    ],
+    "references": [
+      {
+        "title": "Hugging Face Diffusers Library",
+        "url": "https://huggingface.co/docs/diffusers/"
+      },
+      {
+        "title": "Stable Diffusion Web UI (Automatic1111)",
+        "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui"
+      },
+      {
+        "title": "High-Resolution Image Synthesis (LDM paper)",
+        "url": "https://arxiv.org/abs/2112.10752"
+      }
+    ],
+    "prerequisites": ["generative-models", "cnns"],
+    "tags": [
+      "computer-vision",
+      "diffusion",
+      "stable-diffusion",
+      "image-generation"
+    ]
+  },
+  {
+    "id": "vision-transformers",
+    "title": "Vision Transformers (ViT) & Modern CV",
+    "phase": 6,
+    "difficulty": "advanced",
+    "estimatedHours": 8,
+    "description": "Vision Transformers (ViT) demonstrated that the transformer architecture, originally designed for text, works remarkably well for images. Instead of using convolutions, ViT splits an image into fixed-size patches (typically 16×16), flattens each patch into a vector, adds positional embeddings, and processes them through a standard transformer encoder. When trained on large datasets (JFT-300M), ViT matches or exceeds CNNs while being simpler architecturally. This insight sparked a revolution: DeiT (Data-efficient Image Transformer) showed ViTs can be trained on smaller datasets with proper augmentation and distillation; Swin Transformer introduced hierarchical feature maps and shifted windows for efficiency, becoming the default backbone for detection and segmentation; BEiT and MAE use masked image modeling (analogous to BERT's masked language modeling) for self-supervised pretraining. CLIP (Contrastive Language-Image Pre-training by OpenAI) learns to connect images and text in a shared embedding space — enabling zero-shot image classification, image search with natural language queries, and text-to-image generation (it's the text encoder in Stable Diffusion). DINO and DINOv2 by Meta train ViTs with self-supervision, learning rich visual features without any labels. Modern CV increasingly uses hybrid approaches: ViT backbones with CNN heads, or architectures like ConvNeXt that bring transformer design principles back to CNNs.",
+    "whyItMatters": "ViTs and CLIP represent the convergence of NLP and CV. Understanding these models is essential because they're the backbones of modern multimodal AI (GPT-4V, Gemini), image search systems, and the foundation of text-to-image generation.",
+    "subtopics": [
+      "ViT Architecture (patch embedding, positional encoding, CLS token)",
+      "DeiT (training ViT with less data)",
+      "Swin Transformer (hierarchical features, shifted windows)",
+      "CLIP (connecting vision and language)",
+      "Zero-Shot Image Classification with CLIP",
+      "MAE (Masked Autoencoders for self-supervised learning)",
+      "DINO & Self-Supervised Vision Transformers",
+      "ConvNeXt (modernizing CNNs with transformer ideas)",
+      "Detection & Segmentation with ViT Backbones",
+      "Vision-Language Models (BLIP, BLIP-2, LLaVA)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Vision Transformer (ViT) Explained",
+        "url": "https://www.youtube.com/watch?v=TrdevFK_am4",
+        "channel": "Yannic Kilcher"
+      },
+      {
+        "title": "CLIP: Connecting Text and Images",
+        "url": "https://www.youtube.com/watch?v=T9XSU0pKX2E",
+        "channel": "Yannic Kilcher"
+      },
+      {
+        "title": "Swin Transformer Explained",
+        "url": "https://www.youtube.com/watch?v=SndHALawoag",
+        "channel": "AI Bites"
+      }
+    ],
+    "references": [
+      {
+        "title": "An Image is Worth 16x16 Words (ViT paper)",
+        "url": "https://arxiv.org/abs/2010.11929"
+      },
+      { "title": "CLIP Paper", "url": "https://arxiv.org/abs/2103.00020" },
+      {
+        "title": "timm Library (PyTorch Image Models)",
+        "url": "https://huggingface.co/docs/timm/"
+      }
+    ],
+    "prerequisites": ["cnns", "transformers-architecture"],
+    "tags": [
+      "computer-vision",
+      "vision-transformers",
+      "vit",
+      "clip",
+      "modern-cv"
+    ]
+  },
+  {
+    "id": "cv-practical-projects",
+    "title": "CV Practical Applications",
+    "phase": 6,
+    "difficulty": "intermediate",
+    "estimatedHours": 10,
+    "description": "Computer vision has countless practical applications that you can build to solidify your skills and showcase in your portfolio. Face Detection and Recognition uses MTCNN or MediaPipe for detection and FaceNet/ArcFace for recognition — used in phone unlocking, photo organization, and access control. OCR (Optical Character Recognition) with Tesseract, EasyOCR, or PaddleOCR extracts text from images — used in document digitization, receipt scanning, and license plate reading. Pose Estimation with MediaPipe or OpenPose estimates human body joint positions — used in fitness apps (counting reps), motion capture for animation, and sports analytics. Medical imaging applies CNNs to detect diseases: classifying skin lesions (melanoma detection), detecting diabetic retinopathy from retinal images, and identifying pneumonia in chest X-rays. Real-time video analysis with YOLOv8 and OpenCV enables traffic monitoring, wildlife tracking, and warehouse automation. Each project brings together multiple skills: data collection and augmentation, model selection and training, evaluation, and deployment. Building these end-to-end projects demonstrates to employers that you can deliver real-world value with CV, not just run notebook experiments.",
+    "whyItMatters": "Building practical CV projects bridges the gap between theory and real-world application. Portfolio projects showcasing face detection, OCR, or medical imaging demonstrate job-ready skills. These are the most common CV tasks in industry.",
+    "subtopics": [
+      "Face Detection (MTCNN, MediaPipe, RetinaFace)",
+      "Face Recognition (FaceNet, ArcFace, DeepFace library)",
+      "OCR (Tesseract, EasyOCR, PaddleOCR)",
+      "Pose Estimation (MediaPipe, OpenPose)",
+      "Medical Image Classification (skin lesions, X-rays)",
+      "Gesture Recognition & Hand Tracking",
+      "Real-Time Video Processing Pipelines",
+      "Deploying CV Models (ONNX, TensorRT)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Face Recognition Full Course",
+        "url": "https://www.youtube.com/watch?v=sz25xxF_AVE",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "OCR with Python and Tesseract",
+        "url": "https://www.youtube.com/watch?v=PY_N1XdFp4w",
+        "channel": "Murtaza's Workshop"
+      },
+      {
+        "title": "Pose Estimation with MediaPipe",
+        "url": "https://www.youtube.com/watch?v=06TE_U21FK4",
+        "channel": "Nicholas Renotte"
+      }
+    ],
+    "references": [
+      {
+        "title": "MediaPipe Documentation",
+        "url": "https://developers.google.com/mediapipe"
+      },
+      {
+        "title": "DeepFace Library",
+        "url": "https://github.com/serengil/deepface"
+      },
+      {
+        "title": "EasyOCR Documentation",
+        "url": "https://github.com/JaidedAI/EasyOCR"
+      }
+    ],
+    "prerequisites": ["cnns", "image-processing-opencv"],
+    "tags": [
+      "computer-vision",
+      "projects",
+      "face-detection",
+      "ocr",
+      "pose-estimation"
+    ]
+  }
+]

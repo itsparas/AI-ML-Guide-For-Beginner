@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans bg-surface-950 text-surface-100 antialiased;
+    overflow-x: hidden;
+  }
+
+  .dark body {
+    @apply bg-surface-950 text-surface-100;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface-500;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl;
+  }
+
+  .glass-hover {
+    @apply hover:bg-white/10 hover:border-white/20 transition-all duration-300;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-accent-400 to-primary-400;
+    background-size: 200% auto;
+    animation: gradient 3s ease infinite;
+  }
+
+  .gradient-border {
+    @apply border border-transparent;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  .card-glow {
+    position: relative;
+  }
+
+  .card-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(99, 102, 241, 0.3),
+      rgba(217, 70, 239, 0.3),
+      rgba(99, 102, 241, 0.1)
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .card-glow:hover::before {
+    opacity: 1;
+  }
+
+  .node-connector {
+    @apply absolute w-0.5 bg-gradient-to-b from-primary-500/50 to-accent-500/50;
+  }
+
+  .phase-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .btn-primary {
+    @apply px-6 py-2.5 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-xl font-semibold 
+           hover:from-primary-500 hover:to-accent-500 transition-all duration-300 shadow-lg shadow-primary-500/25
+           active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2.5 glass rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 active:scale-95;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Light mode overrides */
+:root {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
+}
+
+.light body {
+  @apply bg-surface-50 text-surface-900;
+}
+
+.light .glass {
+  @apply bg-white/70 backdrop-blur-xl border border-surface-200 shadow-lg;
+}
+
+.light ::-webkit-scrollbar-track {
+  @apply bg-surface-100;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  @apply bg-surface-300;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  @apply bg-surface-400;
+}
+
+/* React Flow overrides */
+.react-flow__attribution {
+  display: none !important;
+}
+
+.react-flow__edge-path {
+  stroke-linecap: round;
+}
+
+.react-flow__minimap {
+  border-radius: 12px !important;
+}
+
+.react-flow__controls {
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+
+.react-flow__controls button {
+  border-radius: 0 !important;
+}
+
+.light .react-flow__background {
+  background-color: #f8fafc !important;
+}
+
+.light .react-flow__minimap {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.light .react-flow__controls button {
+  background-color: white !important;
+  border-color: #e2e8f0 !important;
+  color: #334155 !important;
+}

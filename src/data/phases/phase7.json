@@ -1,0 +1,317 @@
+[
+  {
+    "id": "rl-fundamentals",
+    "title": "Reinforcement Learning Fundamentals",
+    "phase": 7,
+    "difficulty": "advanced",
+    "estimatedHours": 14,
+    "description": "Reinforcement Learning (RL) is fundamentally different from supervised and unsupervised learning. Instead of learning from labeled data, an agent learns by interacting with an environment, taking actions, and receiving rewards (or penalties). The goal is to learn a policy — a strategy for choosing actions — that maximizes cumulative reward over time. Markov Decision Processes (MDPs) provide the mathematical framework: states, actions, transition probabilities, and rewards. The Bellman equation recursively defines the value of being in a state as the immediate reward plus the discounted value of future states. Q-Learning learns the value of state-action pairs (Q-values) without needing a model of the environment — it's how DeepMind's agents learned to play Atari games better than humans. SARSA is an on-policy alternative to Q-Learning. The exploration-exploitation tradeoff is central to RL: should the agent exploit what it knows (take the best action so far) or explore unknown actions (which might be better)? Epsilon-greedy gradually shifts from exploration to exploitation. In real-world applications, RL powers recommendation systems (YouTube's video recommendation uses RL to optimize long-term engagement), robotics (OpenAI trained a robot hand to solve a Rubik's cube), game AI (AlphaGo, AlphaFold, OpenAI Five for Dota 2), trading strategies, and autonomous vehicle decision-making.",
+    "whyItMatters": "RL represents a fundamentally different learning paradigm. It powers breakthrough AI achievements (AlphaGo, ChatGPT's RLHF, robotics). Understanding RL opens doors to game AI, robotics, trading, and the alignment of large language models.",
+    "subtopics": [
+      "Agent, Environment, State, Action, Reward",
+      "Markov Decision Processes (MDPs)",
+      "Return, Discount Factor (γ)",
+      "Value Functions (V) & Action-Value Functions (Q)",
+      "The Bellman Equation",
+      "Dynamic Programming (Policy/Value Iteration)",
+      "Monte Carlo Methods",
+      "Temporal Difference Learning (TD(0), TD(λ))",
+      "Q-Learning (off-policy, tabular)",
+      "SARSA (on-policy)",
+      "Exploration vs Exploitation (ε-greedy, UCB, Boltzmann)",
+      "OpenAI Gymnasium Environment"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Reinforcement Learning Course — Full Machine Learning Tutorial",
+        "url": "https://www.youtube.com/watch?v=ELE2_Mftqoc",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "An Introduction to Reinforcement Learning",
+        "url": "https://www.youtube.com/watch?v=JgvyzIkgxF0",
+        "channel": "Arxiv Insights"
+      },
+      {
+        "title": "David Silver RL Course (DeepMind)",
+        "url": "https://www.youtube.com/watch?v=2pWv7GOvuf0",
+        "channel": "DeepMind"
+      }
+    ],
+    "references": [
+      {
+        "title": "Sutton & Barto: RL — An Introduction (free)",
+        "url": "http://incompleteideas.net/book/the-book.html"
+      },
+      {
+        "title": "OpenAI Gymnasium Documentation",
+        "url": "https://gymnasium.farama.org/"
+      },
+      {
+        "title": "Spinning Up in Deep RL (OpenAI)",
+        "url": "https://spinningup.openai.com/"
+      }
+    ],
+    "prerequisites": [
+      "probability-statistics",
+      "python-programming",
+      "optimization"
+    ],
+    "tags": ["reinforcement-learning", "mdp", "q-learning", "fundamentals"]
+  },
+  {
+    "id": "deep-rl",
+    "title": "Deep Reinforcement Learning (DQN, Policy Gradients)",
+    "phase": 7,
+    "difficulty": "advanced",
+    "estimatedHours": 16,
+    "description": "Deep RL combines neural networks with reinforcement learning to handle environments with massive state spaces where tabular Q-Learning fails. Deep Q-Networks (DQN), introduced by DeepMind in 2013, use a neural network to approximate Q-values, famously learning to play Atari games from raw pixels. Key innovations include experience replay (storing transitions in a buffer and sampling mini-batches for training, breaking correlation) and target networks (a slowly-updated copy of the Q-network for stable training targets). Policy Gradient methods directly learn a policy (probability distribution over actions) instead of estimating values. REINFORCE uses the policy gradient theorem to update policy parameters in the direction that increases expected reward. Actor-Critic methods combine value estimation (critic) with policy learning (actor) — the critic evaluates how good the actor's actions are, reducing variance compared to pure policy gradients. A2C (Advantage Actor-Critic) and A3C (Asynchronous A3C) improve training stability and speed through parallel environments. PPO (Proximal Policy Optimization) by OpenAI is the most widely used deep RL algorithm — it clips the policy update to prevent destructive large changes, making training stable and reliable. PPO is used to train ChatGPT via RLHF (Reinforcement Learning from Human Feedback), where human preferences train a reward model that guides the LLM to generate more helpful, harmless, and honest responses.",
+    "whyItMatters": "Deep RL achieved superhuman game play (AlphaGo, AlphaZero), enabled ChatGPT's alignment (PPO + RLHF), and is the foundation of robotics research. Understanding DQN and PPO is essential for advanced AI work, especially in LLM alignment and autonomous systems.",
+    "subtopics": [
+      "Deep Q-Networks (DQN)",
+      "Experience Replay & Target Networks",
+      "Double DQN, Dueling DQN, Prioritized Replay",
+      "Policy Gradient Theorem",
+      "REINFORCE Algorithm",
+      "Advantage Function & Baseline",
+      "Actor-Critic Architecture",
+      "A2C & A3C (Asynchronous Methods)",
+      "PPO (Proximal Policy Optimization)",
+      "SAC (Soft Actor-Critic)",
+      "RLHF (Reinforcement Learning from Human Feedback)",
+      "Multi-Agent RL Basics"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Deep Reinforcement Learning — CS285 UC Berkeley",
+        "url": "https://www.youtube.com/playlist?list=PL_iWQOsE6TfVYGEGiAOMaOzzv41Jfm_Ps",
+        "channel": "Sergey Levine"
+      },
+      {
+        "title": "Policy Gradient Methods Explained",
+        "url": "https://www.youtube.com/watch?v=5P7I-xPq8u8",
+        "channel": "Arxiv Insights"
+      },
+      {
+        "title": "PPO Explained",
+        "url": "https://www.youtube.com/watch?v=MEt6rrxH8W4",
+        "channel": "Arxiv Insights"
+      }
+    ],
+    "references": [
+      {
+        "title": "Spinning Up in Deep RL (PPO)",
+        "url": "https://spinningup.openai.com/en/latest/algorithms/ppo.html"
+      },
+      {
+        "title": "Stable Baselines3 Documentation",
+        "url": "https://stable-baselines3.readthedocs.io/"
+      },
+      {
+        "title": "CleanRL (single-file RL implementations)",
+        "url": "https://docs.cleanrl.dev/"
+      }
+    ],
+    "prerequisites": [
+      "rl-fundamentals",
+      "neural-networks-fundamentals",
+      "pytorch"
+    ],
+    "tags": ["reinforcement-learning", "deep-rl", "dqn", "ppo", "rlhf"]
+  },
+  {
+    "id": "rl-alphago",
+    "title": "AlphaGo, AlphaZero & Game AI",
+    "phase": 7,
+    "difficulty": "advanced",
+    "estimatedHours": 6,
+    "description": "AlphaGo's victory over world Go champion Lee Sedol in 2016 was a watershed moment in AI history. Go has 10^170 possible board positions (more than atoms in the universe), making brute-force search impossible. AlphaGo combined deep neural networks (to evaluate positions and suggest moves) with Monte Carlo Tree Search (MCTS, which simulates random games to estimate the value of positions). AlphaGo was trained on millions of human expert games, then improved through self-play. AlphaZero went further — starting with zero human knowledge, it learned Go, Chess, and Shogi purely through self-play, surpassing AlphaGo in 40 hours of training. Its key insight: the combination of a neural network (that learns both policy and value heads) with MCTS (that uses the network to guide search) creates a powerful learning system. MuZero extended this to environments without known rules — it learns a world model internally. These systems demonstrate fundamental RL concepts at scale: self-play generates unlimited training data, MCTS provides sophisticated exploration, and neural networks generalize across positions. The principles from game AI have broader applications: AlphaFold (protein structure prediction, potentially Nobel Prize-worthy) used similar ideas, and planning-based RL is applied to logistics, scheduling, and resource allocation.",
+    "whyItMatters": "AlphaGo is one of AI's greatest achievements. Understanding how it works teaches you about MCTS, self-play, and the combination of search and learning — concepts applicable far beyond games to planning, optimization, and scientific discovery.",
+    "subtopics": [
+      "Monte Carlo Tree Search (MCTS)",
+      "AlphaGo Architecture (policy network, value network, MCTS)",
+      "AlphaGo Training Pipeline (imitation learning + self-play)",
+      "AlphaZero (tabula rasa learning, no human data)",
+      "MuZero (learned world model)",
+      "Self-Play as a Training Paradigm",
+      "Neural Network + Search Combination",
+      "AlphaFold & Scientific Applications of RL",
+      "OpenAI Five (Dota 2) & StarCraft II AI"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "AlphaGo — The Movie",
+        "url": "https://www.youtube.com/watch?v=WXuK6gekU1Y",
+        "channel": "DeepMind"
+      },
+      {
+        "title": "AlphaZero Explained",
+        "url": "https://www.youtube.com/watch?v=7L2sUGcOgh0",
+        "channel": "Two Minute Papers"
+      },
+      {
+        "title": "How AlphaFold Solved Protein Folding",
+        "url": "https://www.youtube.com/watch?v=nGVFbPKrRWQ",
+        "channel": "Two Minute Papers"
+      }
+    ],
+    "references": [
+      {
+        "title": "AlphaGo Paper (Nature)",
+        "url": "https://www.nature.com/articles/nature16961"
+      },
+      {
+        "title": "AlphaZero Paper (Science)",
+        "url": "https://www.science.org/doi/10.1126/science.aar6404"
+      },
+      { "title": "MuZero Paper", "url": "https://arxiv.org/abs/1911.08265" }
+    ],
+    "prerequisites": ["deep-rl"],
+    "tags": ["reinforcement-learning", "alphago", "mcts", "game-ai", "deepmind"]
+  },
+  {
+    "id": "rl-robotics",
+    "title": "RL for Robotics & Real-World Applications",
+    "phase": 7,
+    "difficulty": "advanced",
+    "estimatedHours": 8,
+    "description": "Applying RL to the real world — especially robotics — presents unique challenges compared to simulated environments. Sim-to-real transfer trains agents in simulation (where data is cheap and safe) then deploys to physical robots, but the 'reality gap' (simulations never perfectly match reality) must be bridged through domain randomization (varying physics, textures, lighting in simulation) and system identification. Safety constraints are paramount: a robot arm shouldn't explore by swinging wildly in a factory. Safe RL uses constrained optimization to bound dangerous behaviors during learning. Sample efficiency is critical because real-world interactions are expensive and slow — model-based RL learns a dynamics model of the environment to plan and dream, reducing required real interactions by 10-100x. Offline RL learns from pre-collected datasets without any environment interaction, enabling RL from historical data (medical treatment optimization from patient records, industrial process optimization from sensor logs). Real-world RL applications include: robotic manipulation (Boston Dynamics, Everyday Robots), autonomous driving (Waymo's simulation + real-world training), recommendation systems (YouTube, TikTok optimizing engagement), resource management (Google DeepMind's data center cooling reduced energy by 40%), and drug discovery (optimizing molecule properties).",
+    "whyItMatters": "Real-world RL applications represent the frontier of AI impact. From robotics to resource optimization to healthcare, RL is being applied to problems with enormous economic and social value. Understanding practical RL challenges is essential for industry applications.",
+    "subtopics": [
+      "Sim-to-Real Transfer",
+      "Domain Randomization",
+      "Safe Reinforcement Learning",
+      "Model-Based RL (World Models, Dreamer, MBPO)",
+      "Offline RL (learning from static datasets)",
+      "Imitation Learning & Inverse RL",
+      "Reward Shaping & Reward Engineering",
+      "Hierarchical RL (options framework)",
+      "Multi-Agent RL in Practice",
+      "RL for Recommendation Systems",
+      "RL for Resource Optimization"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Robot Learning — Berkeley CS285",
+        "url": "https://www.youtube.com/watch?v=Wnl-Qh2UHGg",
+        "channel": "Sergey Levine"
+      },
+      {
+        "title": "Sim-to-Real Transfer in Robotics",
+        "url": "https://www.youtube.com/watch?v=Wnl-Qh2UHGg",
+        "channel": "OpenAI"
+      }
+    ],
+    "references": [
+      {
+        "title": "Awesome RL (curated resource list)",
+        "url": "https://github.com/aikorea/awesome-rl"
+      },
+      {
+        "title": "Google DeepMind Robotics",
+        "url": "https://deepmind.google/discover/blog/?category=Robotics"
+      }
+    ],
+    "prerequisites": ["deep-rl"],
+    "tags": ["reinforcement-learning", "robotics", "real-world", "sim-to-real"]
+  },
+  {
+    "id": "rl-gymnasium",
+    "title": "RL Environments & Practical Implementation",
+    "phase": 7,
+    "difficulty": "intermediate",
+    "estimatedHours": 8,
+    "description": "Getting hands-on with RL requires working with standardized environments. OpenAI Gymnasium (formerly Gym) is the standard library providing a consistent interface to hundreds of RL environments, from simple to complex. Classic control environments (CartPole — balance a pole on a cart, MountainCar — drive up a hill, Acrobot — swing up a double pendulum) are perfect for learning basic RL algorithms. Atari environments let you train agents to play classic video games from pixel observations. MuJoCo environments simulate continuous-control robotics tasks (Ant, HalfCheetah, Humanoid) for testing advanced policies. Stable Baselines3 (SB3) provides reliable implementations of popular RL algorithms (DQN, PPO, A2C, SAC) that you can use out-of-the-box or customize. The typical workflow: create an environment with gym.make(), implement or load an algorithm, train for millions of steps while monitoring reward curves, evaluate the trained agent, and visualize its behavior. PettingZoo extends Gymnasium to multi-agent settings. For custom environments, implementing the Gymnasium API (reset(), step(), observation_space, action_space) lets you apply RL to your own problems. Understanding reward engineering (designing reward functions that elicit desired behavior) is a practical skill — poorly designed rewards lead to reward hacking where the agent finds unintended shortcuts.",
+    "whyItMatters": "Practical RL requires hands-on implementation with real environments. Gymnasium and Stable Baselines3 are the standard tools. Building, training, and evaluating RL agents on these environments develops intuition that theory alone cannot provide.",
+    "subtopics": [
+      "Gymnasium API (make, reset, step, render)",
+      "Classic Environments (CartPole, MountainCar, LunarLander)",
+      "Observation and Action Spaces (Discrete, Box, MultiBinary)",
+      "Atari Environments & Wrappers",
+      "Stable Baselines3 (DQN, PPO, A2C, SAC)",
+      "Training & Evaluation Loops",
+      "Reward Curve Monitoring (TensorBoard, W&B)",
+      "Custom Environment Implementation",
+      "Reward Engineering & Reward Hacking",
+      "Hyperparameter Tuning for RL"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Reinforcement Learning with Stable Baselines3",
+        "url": "https://www.youtube.com/watch?v=Mut_u40Sqz4",
+        "channel": "Nicholas Renotte"
+      },
+      {
+        "title": "OpenAI Gym Tutorial",
+        "url": "https://www.youtube.com/watch?v=cO5g5qLrLSo",
+        "channel": "Nicholas Renotte"
+      }
+    ],
+    "references": [
+      {
+        "title": "Gymnasium Documentation",
+        "url": "https://gymnasium.farama.org/"
+      },
+      {
+        "title": "Stable Baselines3 Documentation",
+        "url": "https://stable-baselines3.readthedocs.io/"
+      }
+    ],
+    "prerequisites": ["rl-fundamentals", "python-programming"],
+    "tags": [
+      "reinforcement-learning",
+      "gymnasium",
+      "stable-baselines",
+      "implementation"
+    ]
+  },
+  {
+    "id": "rl-multi-agent",
+    "title": "Multi-Agent & Advanced RL",
+    "phase": 7,
+    "difficulty": "advanced",
+    "estimatedHours": 6,
+    "description": "Multi-Agent RL (MARL) studies environments where multiple agents interact — cooperating, competing, or coexisting. This is closer to the real world where multiple intelligent entities operate simultaneously: autonomous vehicles negotiate intersections, trading algorithms interact in financial markets, and robots coordinate in warehouses. MARL introduces challenges beyond single-agent RL: the environment is non-stationary (other agents are learning too), credit assignment is harder (which agent's actions caused the team reward), and the joint state-action space grows exponentially with agents. Approaches include independent learners (each agent learns its own policy, treating others as part of the environment), centralized training with decentralized execution (CTDE, agents share information during training but act independently at deployment), and communication-based methods (agents learn to send messages to each other). AlphaStar (StarCraft II) trains multiple agents in a league, each specializing in different strategies. OpenAI Five (Dota 2) trains 5 cooperative agents to beat world champions. Emergent communication is fascinating — agents develop their own 'languages' to coordinate when given a communication channel. These ideas extend to real-world coordination problems in logistics, traffic management, and multi-robot systems.",
+    "whyItMatters": "Real-world AI systems rarely operate in isolation. Autonomous vehicles must coordinate, trading bots interact in markets, and warehouse robots must cooperate. Multi-agent RL is essential for building AI systems that work in complex, multi-stakeholder environments.",
+    "subtopics": [
+      "Multi-Agent RL Formulation (Stochastic Games, Dec-POMDPs)",
+      "Independent Learners",
+      "Centralized Training Decentralized Execution (CTDE)",
+      "Communication Learning Between Agents",
+      "Cooperative vs Competitive vs Mixed Settings",
+      "AlphaStar & League Training",
+      "Emergent Behavior & Communication",
+      "PettingZoo Library for Multi-Agent Environments",
+      "Curriculum Learning in RL"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Multi-Agent RL Overview",
+        "url": "https://www.youtube.com/watch?v=p_n5fF8apiE",
+        "channel": "Yannic Kilcher"
+      },
+      {
+        "title": "AlphaStar: Mastering StarCraft II",
+        "url": "https://www.youtube.com/watch?v=cUTMhmVh1qs",
+        "channel": "DeepMind"
+      }
+    ],
+    "references": [
+      {
+        "title": "PettingZoo Documentation",
+        "url": "https://pettingzoo.farama.org/"
+      },
+      {
+        "title": "Multi-Agent RL: A Selective Overview",
+        "url": "https://arxiv.org/abs/1911.10635"
+      }
+    ],
+    "prerequisites": ["deep-rl"],
+    "tags": [
+      "reinforcement-learning",
+      "multi-agent",
+      "cooperative",
+      "competitive"
+    ]
+  }
+]

@@ -1,0 +1,223 @@
+[
+  {
+    "id": "beginner-projects",
+    "title": "Beginner ML Projects",
+    "phase": 10,
+    "difficulty": "beginner",
+    "estimatedHours": 20,
+    "description": "Beginner projects solidify your understanding of the ML workflow by applying it to well-known datasets with clear solutions. The Iris Classification project uses scikit-learn to classify three iris species based on petal and sepal measurements — it's the perfect first project (150 samples, 4 features, clean data). The Titanic Survival Prediction (Kaggle's most popular beginner competition) teaches real-world skills: handling missing values (age, cabin), feature engineering (extracting title from name, family size), encoding categorical variables (sex, embarked), and comparing classifiers. The House Price Prediction (Kaggle's other classic) introduces regression with 79 features, teaching you to handle skewed distributions, create feature interactions, and use ensemble methods. The MNIST Handwritten Digit Recognition is your first deep learning project (classifying 28x28 grayscale digit images), typically using a simple CNN that achieves 99%+ accuracy. For each project, follow the complete workflow: load and explore data (EDA), preprocess, try multiple models, evaluate properly (stratified cross-validation for classification, RMSE for regression), tune hyperparameters, and document your process in a clean Jupyter Notebook. Publishing these projects on GitHub with well-written READMEs and clear documentation starts building your portfolio.",
+    "whyItMatters": "You can't learn ML from theory alone — you must build projects. These classic datasets have been used by millions of learners, have known baselines, and teach the complete ML workflow. They're also common in interviews and portfolio reviews.",
+    "subtopics": [
+      "Iris Flower Classification",
+      "Titanic Survival Prediction",
+      "House Price Prediction (Ames/Boston)",
+      "MNIST Digit Recognition",
+      "Wine Quality Prediction",
+      "Heart Disease Prediction",
+      "Customer Churn Prediction",
+      "Student Performance Prediction",
+      "Movie Rating Prediction",
+      "Complete EDA → Model → Evaluation Workflow"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Kaggle Titanic Competition — Full Walkthrough",
+        "url": "https://www.youtube.com/watch?v=I3FBJdiExcg",
+        "channel": "Ken Jee"
+      },
+      {
+        "title": "ML Project from Scratch",
+        "url": "https://www.youtube.com/watch?v=Wqmtf9SA_kk",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      {
+        "title": "Kaggle Getting Started Competitions",
+        "url": "https://www.kaggle.com/competitions?hostSegmentIdFilter=5"
+      },
+      {
+        "title": "UCI Machine Learning Repository",
+        "url": "https://archive.ics.uci.edu/"
+      }
+    ],
+    "prerequisites": ["ml-sklearn-practical", "model-evaluation"],
+    "tags": ["projects", "beginner", "kaggle", "portfolio"]
+  },
+  {
+    "id": "intermediate-projects",
+    "title": "Intermediate ML/DL Projects",
+    "phase": 10,
+    "difficulty": "intermediate",
+    "estimatedHours": 40,
+    "description": "Intermediate projects challenge you to combine multiple skills and build more complex, real-world applications. A Sentiment Analysis project involves building a complete NLP pipeline: collect text data (tweets/reviews), preprocess, fine-tune a BERT or DistilBERT model using Hugging Face, evaluate with precision/recall/F1, and deploy as an API or Streamlit app. An Image Classifier project uses transfer learning to fine-tune a pretrained ResNet or EfficientNet on a custom dataset (you could classify dog breeds, identify plant diseases, or categorize food images), implement data augmentation, and create a working web demo. A Chatbot project builds a conversational AI using LangChain and an LLM API (OpenAI, Anthropic), implementing RAG to answer questions about custom documents (your own PDFs, websites, or knowledge base). A Credit Card Fraud Detection project tackles class imbalance (99.83% legitimate, 0.17% fraud) using SMOTE, isolation forests, and XGBoost, evaluating with AUPRC (Area Under Precision-Recall Curve) rather than accuracy. A Movie/Music Recommender System implements collaborative filtering and content-based methods, comparing matrix factorization with neural approaches. Each project should be deployed — even a simple Streamlit/Gradio demo shows employers you can deliver working software, not just notebooks.",
+    "whyItMatters": "Intermediate projects demonstrate that you can apply ML to real problems, handle messy data, deploy working applications, and choose appropriate techniques. They form the core of a compelling ML portfolio that gets interviews.",
+    "subtopics": [
+      "Sentiment Analyzer (BERT fine-tuning + Streamlit)",
+      "Custom Image Classifier (transfer learning + deployment)",
+      "Chatbot with RAG (LangChain + LLM API)",
+      "Fraud Detection (imbalanced classification)",
+      "Movie/Music Recommender System",
+      "Text Summarization Tool",
+      "Stock Price Predictor (LSTM + time series)",
+      "Object Detection with Custom Dataset (YOLOv8)",
+      "Named Entity Recognition System",
+      "End-to-End Data Pipeline Project"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Build a Chatbot with LangChain",
+        "url": "https://www.youtube.com/watch?v=lG7Uxts9SXs",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Train YOLOv8 on Custom Dataset",
+        "url": "https://www.youtube.com/watch?v=Z-65nqxUdl4",
+        "channel": "Nicolai AI"
+      }
+    ],
+    "references": [
+      {
+        "title": "Kaggle Intermediate Competitions",
+        "url": "https://www.kaggle.com/competitions"
+      },
+      { "title": "Papers with Code", "url": "https://paperswithcode.com/" }
+    ],
+    "prerequisites": ["beginner-projects", "huggingface", "cnns"],
+    "tags": ["projects", "intermediate", "deployment", "portfolio"]
+  },
+  {
+    "id": "advanced-projects",
+    "title": "Advanced AI Projects",
+    "phase": 10,
+    "difficulty": "advanced",
+    "estimatedHours": 60,
+    "description": "Advanced projects push your skills to the limit and demonstrate mastery-level capabilities to employers. Fine-tuning a Large Language Model: use QLoRA to fine-tune a 7B-parameter model (Llama 2, Mistral) on a domain-specific dataset, optimizing for your use case (code generation, medical QA, legal document analysis). End-to-End MLOps Pipeline: build a complete production system with automated data ingestion, preprocessing with Great Expectations for data validation, model training, experiment tracking with MLflow, containerized deployment with Docker, API serving with FastAPI, monitoring with Evidently AI, and CI/CD with GitHub Actions — this single project demonstrates full-stack ML engineering. Real-Time Object Detection Application: build a complete video processing pipeline with YOLOv8, real-time inference, a web interface for live camera feeds, and edge deployment (ONNX/TensorRT). AI Agent: build an autonomous agent using LangChain that can research topics, write code, analyze data, and generate reports with tool use. Multi-Modal Application: build an image captioning or visual QA system combining vision and language models. Each of these projects should be fully documented, deployed, and presented in your portfolio with clear README files, architecture diagrams, and live demos.",
+    "whyItMatters": "Advanced projects are what differentiate you at a senior level. An end-to-end MLOps pipeline shows you can operate in production. Fine-tuning LLMs shows cutting-edge skills. These projects directly demonstrate your ability to deliver business value with AI.",
+    "subtopics": [
+      "Fine-tune an LLM with QLoRA (Llama 2, Mistral)",
+      "End-to-End MLOps Pipeline",
+      "Real-Time Object Detection Application",
+      "AI Agent with Tool Use (LangChain)",
+      "Multi-Modal Application (vision + language)",
+      "Stable Diffusion LoRA Training",
+      "Kaggle Competition (aim for top 10%)",
+      "Distributed Training Project (multi-GPU)",
+      "Research Paper Reproduction"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Fine-Tuning LLMs with QLoRA",
+        "url": "https://www.youtube.com/watch?v=J_3AsMXfVRQ",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "End-to-End MLOps Project",
+        "url": "https://www.youtube.com/watch?v=9BgIDqAzfuA",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      { "title": "QLoRA Paper", "url": "https://arxiv.org/abs/2305.14314" },
+      {
+        "title": "Made With ML (MLOps Course)",
+        "url": "https://madewithml.com/"
+      }
+    ],
+    "prerequisites": ["intermediate-projects", "langchain-agents", "docker-ml"],
+    "tags": ["projects", "advanced", "production", "portfolio"]
+  },
+  {
+    "id": "kaggle-guide",
+    "title": "Kaggle Competitions Guide",
+    "phase": 10,
+    "difficulty": "intermediate",
+    "estimatedHours": 15,
+    "description": "Kaggle is the world's largest data science competition platform, with 15+ million members. Competing on Kaggle is one of the fastest ways to improve your ML skills and build a recognized portfolio. Getting Started competitions (Titanic, House Prices, Digit Recognizer) teach the basics with clean datasets and simple goals. Featured competitions offer real-world problems from companies like Google, Airbnb, and Two Sigma with cash prizes (up to $1M). Research competitions advance scientific frontiers in healthcare, climate, and biology. The typical competition workflow: start by reading the problem description carefully, explore the evaluation metric (optimizing for AUC is different from optimizing for RMSE), create a robust cross-validation strategy that mirrors the test set, run thorough EDA, engineer features (this is often the winning factor), try multiple models and ensemble the best ones, and iterate based on public leaderboard feedback (but beware of overfitting to it). Top Kaggle strategies include: blending predictions from diverse model types, creating leak-free validation schemes, stacking meta-models, and analyzing what features the top solutions use. Kaggle ranks users with medals (bronze/silver/gold) and tiers (Novice → Expert → Master → Grandmaster). Becoming a Kaggle Expert or Master is a strong credential that employers recognize. Kaggle Notebooks and Discussions are also incredible learning resources — top competitors share their complete solutions after competitions end.",
+    "whyItMatters": "Kaggle is the most recognized ML credential outside of formal education. Kaggle medals on a resume immediately signal practical ML competence. The competitive format forces you to learn proper validation, feature engineering, and model optimization.",
+    "subtopics": [
+      "Kaggle Platform Overview",
+      "Competition Types & Tiers",
+      "Setting Up a Competition Workflow",
+      "Cross-Validation Strategies for Competitions",
+      "Feature Engineering for Competitions",
+      "Ensemble & Stacking Strategies",
+      "Avoiding Public Leaderboard Overfitting",
+      "Learning from Top Solutions",
+      "Kaggle Datasets & Notebooks",
+      "Building a Kaggle Profile",
+      "Kaggle Competition Best Practices"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "How to Win Kaggle Competitions",
+        "url": "https://www.youtube.com/watch?v=GJBOMWpLpTQ",
+        "channel": "Ken Jee"
+      },
+      {
+        "title": "Kaggle Walkthrough — Beginner Guide",
+        "url": "https://www.youtube.com/watch?v=I3FBJdiExcg",
+        "channel": "Ken Jee"
+      }
+    ],
+    "references": [
+      { "title": "Kaggle", "url": "https://www.kaggle.com/" },
+      {
+        "title": "How to Win a Data Science Competition (Coursera)",
+        "url": "https://www.coursera.org/learn/competitive-data-science"
+      }
+    ],
+    "prerequisites": [
+      "model-evaluation",
+      "ensemble-methods",
+      "feature-engineering"
+    ],
+    "tags": ["projects", "kaggle", "competitions", "portfolio"]
+  },
+  {
+    "id": "portfolio-career",
+    "title": "Building Your AI/ML Portfolio & Career",
+    "phase": 10,
+    "difficulty": "beginner",
+    "estimatedHours": 10,
+    "description": "A strong portfolio is your ticket to an AI/ML career. Your GitHub should showcase 5-10 well-documented projects that demonstrate breadth (different problem types: NLP, CV, tabular, time series) and depth (at least one end-to-end project with deployment). Each project should have: a clear README with problem statement, approach, results, and instructions to reproduce; clean, well-organized code (not messy notebooks); visualizations of results; and ideally a live demo (Streamlit/Gradio/Hugging Face Spaces). Technical blogging amplifies your portfolio — writing explanations of ML concepts on Medium, dev.to, or a personal blog demonstrates communication skills and deep understanding. Blog posts like 'How I fine-tuned BERT for legal document classification' or 'Building a real-time object detection system' attract attention from recruiters and peers. Contributing to open-source ML projects (scikit-learn, PyTorch, Hugging Face) demonstrates collaboration skills and earns community credibility. For job preparation: ML interviews typically have coding rounds (LeetCode-style + ML-specific), ML system design (design a recommendation system, design a fraud detection pipeline), and ML theory/applied questions (explain backpropagation, describe the bias-variance tradeoff, compare XGBoost vs neural networks). Networking through ML communities (MLOps Community, Hugging Face Discord, local meetups) and building a personal brand on LinkedIn and Twitter/X is increasingly important.",
+    "whyItMatters": "Skills without visibility don't get you hired. A strong portfolio, technical blog, and professional network are what convert knowledge into career opportunities. Many ML engineers report that blogs and GitHub projects were their primary interview conversation topics.",
+    "subtopics": [
+      "GitHub Portfolio Setup & Organization",
+      "Project Documentation Best Practices (README, demo, results)",
+      "Technical Blogging (Medium, dev.to, hashnode)",
+      "Contributing to Open-Source ML Projects",
+      "Building a Personal Brand (LinkedIn, Twitter/X)",
+      "ML Interview Preparation (coding, system design, theory)",
+      "ML System Design Interview Patterns",
+      "Resume Writing for AI/ML Roles",
+      "Networking in the ML Community",
+      "Continuous Learning Strategy"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "How to Build a Data Science Portfolio",
+        "url": "https://www.youtube.com/watch?v=WVViBAqkGL0",
+        "channel": "Ken Jee"
+      },
+      {
+        "title": "ML Interview Preparation Guide",
+        "url": "https://www.youtube.com/watch?v=pYXy-A4siMw",
+        "channel": "Daniel Bourke"
+      }
+    ],
+    "references": [
+      {
+        "title": "Machine Learning Interviews Book",
+        "url": "https://huyenchip.com/ml-interviews-book/"
+      },
+      {
+        "title": "ML System Design Interview Guide",
+        "url": "https://www.educative.io/courses/machine-learning-system-design"
+      },
+      { "title": "Made With ML", "url": "https://madewithml.com/" }
+    ],
+    "prerequisites": [],
+    "tags": ["career", "portfolio", "blog", "interviews", "networking"]
+  }
+]

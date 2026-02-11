@@ -1,0 +1,468 @@
+[
+  {
+    "id": "neural-networks-fundamentals",
+    "title": "Neural Networks from Scratch",
+    "phase": 4,
+    "difficulty": "intermediate",
+    "estimatedHours": 16,
+    "description": "Understanding neural networks from the ground up is transformative for your ML career. A neural network is a function approximator composed of layers of interconnected neurons. Each neuron computes a weighted sum of its inputs, adds a bias, and applies a nonlinear activation function. The perceptron (single neuron) can only learn linear boundaries, but stacking layers with nonlinear activations (ReLU, Sigmoid, Tanh) creates a universal function approximator capable of learning any continuous function. The magic happens during training via backpropagation — the chain rule of calculus applied through the network's computational graph to compute gradients of the loss with respect to every weight. These gradients tell us how to adjust each weight to reduce prediction error. In Andrej Karpathy's famous 'Neural Networks: Zero to Hero' series, he builds neural networks from raw Python and NumPy, showing how forward passes compute predictions and backward passes compute gradients. This ground-up understanding is what separates ML engineers who can debug training failures from those who just call model.fit(). In practice, activation functions matter enormously: ReLU (max(0,x)) solved the vanishing gradient problem that made deep networks trainable, Sigmoid is used in output layers for binary classification, and Softmax converts raw scores to probabilities for multi-class classification. Weight initialization (Xavier for sigmoid/tanh, He for ReLU) prevents gradients from exploding or vanishing at the start of training.",
+    "whyItMatters": "If you don't understand how neural networks work from scratch — forward pass, loss computation, backpropagation, gradient descent — then deep learning is a black box. Building from scratch (as Karpathy teaches) gives you the intuition to debug, innovate, and understand every modern architecture.",
+    "subtopics": [
+      "The Perceptron & Biological Inspiration",
+      "Activation Functions (ReLU, Sigmoid, Tanh, Softmax, GELU, Swish)",
+      "Forward Pass (Matrix Multiplication + Activation)",
+      "Loss Functions (MSE, Cross-Entropy, Binary Cross-Entropy)",
+      "Backpropagation (Chain Rule Through Computational Graphs)",
+      "Gradient Descent & Parameter Updates",
+      "Weight Initialization (Xavier/Glorot, He/Kaiming)",
+      "Universal Approximation Theorem",
+      "Implementing a Neural Network from Scratch in NumPy",
+      "Computational Graphs & Automatic Differentiation",
+      "Vanishing & Exploding Gradients"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Neural Networks: Zero to Hero (full series)",
+        "url": "https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ",
+        "channel": "Andrej Karpathy"
+      },
+      {
+        "title": "But what is a Neural Network? | Deep Learning Chapter 1",
+        "url": "https://www.youtube.com/watch?v=aircAruvnKk",
+        "channel": "3Blue1Brown"
+      },
+      {
+        "title": "What is Backpropagation? | Deep Learning Chapter 3",
+        "url": "https://www.youtube.com/watch?v=Ilg3gGewQ5U",
+        "channel": "3Blue1Brown"
+      }
+    ],
+    "references": [
+      {
+        "title": "Neural Networks and Deep Learning (Michael Nielsen, free)",
+        "url": "http://neuralnetworksanddeeplearning.com/"
+      },
+      {
+        "title": "CS231n: Neural Network Notes",
+        "url": "https://cs231n.github.io/"
+      },
+      {
+        "title": "Micrograd by Andrej Karpathy",
+        "url": "https://github.com/karpathy/micrograd"
+      }
+    ],
+    "prerequisites": [
+      "linear-algebra",
+      "calculus",
+      "optimization",
+      "python-programming"
+    ],
+    "tags": [
+      "deep-learning",
+      "neural-networks",
+      "backpropagation",
+      "fundamentals"
+    ]
+  },
+  {
+    "id": "tensorflow-keras",
+    "title": "TensorFlow & Keras",
+    "phase": 4,
+    "difficulty": "intermediate",
+    "estimatedHours": 14,
+    "description": "TensorFlow is Google's open-source deep learning framework, and Keras is its high-level API that makes building neural networks accessible without sacrificing power. TensorFlow powers production AI at Google (Search, Translate, Photos, YouTube recommendations), and Keras's intuitive API lets you build, train, and deploy models with minimal code. The Sequential API is perfect for simple stack-of-layers models, while the Functional API handles complex architectures with multiple inputs, outputs, and shared layers. A typical workflow involves: defining layers (Dense, Conv2D, LSTM, Dropout, BatchNormalization), compiling the model (specifying optimizer, loss function, and metrics), training with model.fit() (where callbacks handle early stopping, learning rate scheduling, and checkpointing), and evaluating with model.evaluate(). TensorBoard provides real-time visualization of training metrics, model graphs, and embedding projections. In production, TensorFlow Serving handles model deployment, TensorFlow Lite converts models for mobile/edge devices, and TensorFlow.js runs models in the browser. For example, Google Photos uses TensorFlow to classify and search through billions of images, and the Google Keyboard (Gboard) uses TensorFlow Lite for on-device next-word prediction. TF's tf.data API efficiently handles large-scale data pipelines with prefetching and parallel loading.",
+    "whyItMatters": "TensorFlow is the most widely deployed DL framework in production, used by Google, Airbnb, Twitter, and thousands of companies. Its ecosystem (TFLite, TF Serving, TF.js, TFX) covers the entire ML lifecycle from training to production deployment across all platforms.",
+    "subtopics": [
+      "TensorFlow Basics (tensors, operations, eager execution)",
+      "Keras Sequential API",
+      "Keras Functional API (complex architectures)",
+      "Common Layers (Dense, Conv2D, LSTM, Dropout, BatchNorm)",
+      "Compiling Models (optimizers, losses, metrics)",
+      "Training with model.fit() & Callbacks",
+      "Custom Training Loops with GradientTape",
+      "TensorBoard for Visualization",
+      "Saving & Loading Models (SavedModel, H5)",
+      "TF Data API (tf.data.Dataset)",
+      "Transfer Learning with Keras Applications",
+      "TensorFlow Lite for Mobile Deployment",
+      "Mixed Precision Training"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "TensorFlow 2.0 Complete Course",
+        "url": "https://www.youtube.com/watch?v=tPYj3fFJGjk",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Deep Learning with TensorFlow (MIT 6.S191)",
+        "url": "https://www.youtube.com/watch?v=QDX-1M5Nj7s",
+        "channel": "Alexander Amini"
+      },
+      {
+        "title": "Keras with TensorFlow Course",
+        "url": "https://www.youtube.com/watch?v=qFJeN9V1ZsI",
+        "channel": "deeplizard"
+      }
+    ],
+    "references": [
+      {
+        "title": "TensorFlow Official Tutorials",
+        "url": "https://www.tensorflow.org/tutorials"
+      },
+      { "title": "Keras Documentation", "url": "https://keras.io/" },
+      {
+        "title": "Deep Learning with Python (François Chollet)",
+        "url": "https://www.manning.com/books/deep-learning-with-python"
+      }
+    ],
+    "prerequisites": ["neural-networks-fundamentals", "numpy"],
+    "tags": ["deep-learning", "tensorflow", "keras", "framework", "google"]
+  },
+  {
+    "id": "pytorch",
+    "title": "PyTorch Deep Dive",
+    "phase": 4,
+    "difficulty": "intermediate",
+    "estimatedHours": 14,
+    "description": "PyTorch, developed by Meta (Facebook) AI Research, has become the dominant framework in AI research and is rapidly growing in production use. Its 'define-by-run' (dynamic computational graph) approach means you write standard Python code for your forward pass — no compilation step, no static graph definition. This makes debugging natural (use regular Python debugger), dynamic architectures possible (tree-structured networks, variable-length sequences), and experimentation fast. PyTorch's autograd system automatically computes gradients through any Python computation, which is the magic behind training neural networks. The nn.Module class provides a clean interface for building models: define layers in __init__(), define computation flow in forward(). The DataLoader handles batching, shuffling, and parallel data loading with multiple workers. In practice, nearly every major AI research paper since 2019 uses PyTorch — from GPT to Stable Diffusion to SAM (Segment Anything). Companies like Tesla (Autopilot), OpenAI (GPT series), and many others use PyTorch at scale. PyTorch Lightning abstracts away boilerplate training code while keeping the flexibility PyTorch offers. Hugging Face Transformers is built on PyTorch. For distributed training across multiple GPUs, DistributedDataParallel (DDP) provides near-linear scaling.",
+    "whyItMatters": "PyTorch dominates AI research — 80%+ of papers at NeurIPS, ICML, and ICLR use it. If you want to implement papers, contribute to open source, or work at research-focused companies (OpenAI, Meta AI, DeepMind), PyTorch is essential.",
+    "subtopics": [
+      "Tensors (creation, operations, GPU transfer with .to(device))",
+      "Autograd (automatic differentiation, .backward(), .grad)",
+      "nn.Module (building custom models)",
+      "Common Layers (Linear, Conv2d, RNN, LSTM, Transformer)",
+      "Loss Functions (CrossEntropyLoss, MSELoss, BCELoss)",
+      "Optimizers (SGD, Adam, AdamW, learning rate schedulers)",
+      "DataLoader & Dataset (custom datasets, transforms)",
+      "Training Loop Pattern (zero_grad → forward → loss → backward → step)",
+      "GPU Training (CUDA, .to(device))",
+      "Saving & Loading Models (state_dict, checkpoint)",
+      "PyTorch Lightning for Clean Training Code",
+      "Distributed Training (DataParallel, DDP)",
+      "TorchScript for Production Deployment"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "PyTorch for Deep Learning — Full Course",
+        "url": "https://www.youtube.com/watch?v=V_xro1bcAuE",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Neural Networks: Zero to Hero",
+        "url": "https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ",
+        "channel": "Andrej Karpathy"
+      },
+      {
+        "title": "PyTorch Tutorials",
+        "url": "https://www.youtube.com/watch?v=c36lUUr864M",
+        "channel": "Patrick Loeber"
+      }
+    ],
+    "references": [
+      {
+        "title": "PyTorch Official Tutorials",
+        "url": "https://pytorch.org/tutorials/"
+      },
+      {
+        "title": "Deep Learning with PyTorch (free book)",
+        "url": "https://pytorch.org/assets/deep-learning/Deep-Learning-with-PyTorch.pdf"
+      },
+      {
+        "title": "PyTorch Lightning Documentation",
+        "url": "https://lightning.ai/docs/pytorch/stable/"
+      }
+    ],
+    "prerequisites": ["neural-networks-fundamentals", "numpy"],
+    "tags": ["deep-learning", "pytorch", "framework", "research", "meta"]
+  },
+  {
+    "id": "cnns",
+    "title": "Convolutional Neural Networks (CNNs)",
+    "phase": 4,
+    "difficulty": "intermediate",
+    "estimatedHours": 14,
+    "description": "CNNs revolutionized computer vision and remain the backbone of image understanding. Instead of treating images as flat vectors (which loses spatial structure), CNNs use learnable filters (kernels) that slide across the image, detecting local patterns like edges, textures, and shapes. Early layers learn simple features (horizontal/vertical edges), middle layers combine these into parts (eyes, wheels, corners), and deep layers recognize complex objects (faces, cars, cats). Pooling layers downsample feature maps, providing translation invariance and reducing computation. The architecture typically alternates Conv→ReLU→Pool blocks followed by fully-connected layers for classification. CNNs achieved superhuman image recognition in 2015 (ResNet on ImageNet), and today they power real-world systems: iPhone Face ID uses a CNN for face recognition, Tesla Autopilot uses CNNs for road scene understanding, medical imaging AI uses CNNs to detect tumors in X-rays and MRIs (sometimes outperforming radiologists), and agricultural drones use CNNs to identify diseased crops. Key architectural innovations include skip connections (ResNet, allowing gradients to flow through 100+ layer networks), inception modules (GoogLeNet, capturing multi-scale features), depthwise separable convolutions (MobileNet, enabling mobile deployment), and squeeze-and-excitation blocks (SENet, learning channel-wise attention). Understanding these architectures helps you choose the right backbone for your task and customize for your needs.",
+    "whyItMatters": "CNNs are the foundation of all modern computer vision. They power self-driving cars, medical imaging, quality inspection in manufacturing, satellite image analysis, and augmented reality. Understanding convolutions is also essential for 1D signals (audio, time series) and is used in some NLP models.",
+    "subtopics": [
+      "Convolution Operation (filters/kernels, stride, padding)",
+      "Feature Maps & Learned Representations",
+      "Pooling Layers (MaxPool, AvgPool, Global Average Pooling)",
+      "Architecture Design (ConvBlock → Pool → FC)",
+      "Classic Architectures (LeNet, AlexNet, VGG)",
+      "ResNet & Skip Connections (solving vanishing gradients)",
+      "Inception/GoogLeNet (multi-scale features)",
+      "MobileNet (depthwise separable convolutions for mobile)",
+      "EfficientNet (compound scaling)",
+      "Data Augmentation (flips, rotations, color jitter, Mixup, CutMix)",
+      "Transfer Learning with Pretrained CNNs (ImageNet weights)",
+      "1D Convolutions for Sequences & Time Series"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "But what is a convolution?",
+        "url": "https://www.youtube.com/watch?v=KuXjwB4LzSA",
+        "channel": "3Blue1Brown"
+      },
+      {
+        "title": "CNN Explainer — Interactive Visualization",
+        "url": "https://www.youtube.com/watch?v=HGwBXDKFk9I",
+        "channel": "Jay Alammar"
+      },
+      {
+        "title": "Stanford CS231n — Convolutional Neural Networks",
+        "url": "https://www.youtube.com/watch?v=bNb2fEVKeEo",
+        "channel": "Stanford Online"
+      }
+    ],
+    "references": [
+      {
+        "title": "CS231n CNN Notes",
+        "url": "https://cs231n.github.io/convolutional-networks/"
+      },
+      {
+        "title": "CNN Explainer (Interactive)",
+        "url": "https://poloclub.github.io/cnn-explainer/"
+      },
+      {
+        "title": "PyTorch Vision Models",
+        "url": "https://pytorch.org/vision/stable/models.html"
+      }
+    ],
+    "prerequisites": ["neural-networks-fundamentals", "linear-algebra"],
+    "tags": ["deep-learning", "cnn", "computer-vision", "image-classification"]
+  },
+  {
+    "id": "rnns-sequences",
+    "title": "Recurrent Neural Networks & Sequence Models",
+    "phase": 4,
+    "difficulty": "intermediate",
+    "estimatedHours": 12,
+    "description": "RNNs process sequential data by maintaining a hidden state that gets updated at each time step, creating a 'memory' of previous inputs. This makes them natural for tasks where order matters: language (word order changes meaning), time series (past values predict future), speech (phoneme sequences form words), and music (notes form melodies). However, vanilla RNNs suffer from vanishing gradients — they can't learn long-range dependencies because gradients shrink exponentially during backpropagation through time (BPTT). LSTM (Long Short-Term Memory) solves this with a cell state and three gates (forget, input, output) that control information flow, allowing the network to maintain relevant information over hundreds of time steps. GRU (Gated Recurrent Unit) simplifies LSTM with two gates (reset, update) while achieving similar performance with fewer parameters. In real-world applications, LSTMs were used for Google Translate (before transformers replaced them), Apple's Siri for speech recognition, music generation at Google Magenta, and stock price prediction at quantitative trading firms. Bidirectional RNNs process sequences in both directions, capturing both past and future context. While transformers have largely replaced RNNs for NLP, RNNs remain valuable for streaming data (processing one token at a time without needing the full sequence) and small-scale sequence tasks where transformer overhead isn't justified.",
+    "whyItMatters": "Understanding RNNs and the vanishing gradient problem is essential background for understanding why transformers were invented. LSTMs are still used in time series forecasting, real-time speech processing, and edge devices where transformer models are too large.",
+    "subtopics": [
+      "Sequence Modeling Problems (many-to-one, many-to-many, etc.)",
+      "Vanilla RNN Architecture & Forward Pass",
+      "Backpropagation Through Time (BPTT)",
+      "Vanishing & Exploding Gradients in RNNs",
+      "LSTM Architecture (cell state, forget/input/output gates)",
+      "GRU Architecture (reset/update gates)",
+      "Bidirectional RNNs",
+      "Stacked/Deep RNNs",
+      "Sequence-to-Sequence (Seq2Seq) Models",
+      "Teacher Forcing",
+      "Attention Mechanism (Bahdanau, Luong) — bridge to Transformers",
+      "RNNs in PyTorch/TensorFlow"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Recurrent Neural Networks (RNN) — Deep Learning with Python",
+        "url": "https://www.youtube.com/watch?v=AsNTP8Kwu80",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "LSTM is DEAD. Long live LSTM!",
+        "url": "https://www.youtube.com/watch?v=8HyCNIVRbSU",
+        "channel": "Yannic Kilcher"
+      },
+      {
+        "title": "Stanford CS231n Lecture 10: RNNs",
+        "url": "https://www.youtube.com/watch?v=6niqTuYFZLQ",
+        "channel": "Stanford Online"
+      }
+    ],
+    "references": [
+      {
+        "title": "Understanding LSTM Networks (Chris Olah)",
+        "url": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/"
+      },
+      {
+        "title": "The Unreasonable Effectiveness of RNNs (Karpathy)",
+        "url": "https://karpathy.github.io/2015/05/21/rnn-effectiveness/"
+      }
+    ],
+    "prerequisites": ["neural-networks-fundamentals", "calculus"],
+    "tags": ["deep-learning", "rnn", "lstm", "gru", "sequences"]
+  },
+  {
+    "id": "transformers-architecture",
+    "title": "Transformer Architecture",
+    "phase": 4,
+    "difficulty": "advanced",
+    "estimatedHours": 18,
+    "description": "The Transformer, introduced in the 2017 paper 'Attention is All You Need', is arguably the most important architecture in modern AI. It powers GPT-4, Claude, Gemini, BERT, Stable Diffusion, DALL-E, and virtually every state-of-the-art AI system. The key innovation is self-attention (scaled dot-product attention): for each token in a sequence, the model computes how much 'attention' to pay to every other token, creating context-aware representations. Unlike RNNs that process sequentially (slow, forgetting long-range context), transformers process all tokens in parallel (fast, capturing global context). Multi-head attention runs multiple attention mechanisms simultaneously, each learning different types of relationships (syntax in one head, semantics in another). The architecture consists of encoder (processes input) and decoder (generates output) blocks, each containing multi-head attention, layer normalization, and feedforward networks with residual connections. Positional encoding injects position information since attention is position-agnostic. In practice, BERT (encoder-only) revolutionized NLP tasks like question answering and sentiment analysis. GPT (decoder-only) generates text with stunning fluency and is the basis for ChatGPT. T5 (encoder-decoder) treats every NLP task as text-to-text. Vision Transformers (ViT) apply the same architecture to images by treating image patches as tokens. Understanding transformers deeply — attention computation, KV-cache for efficient inference, Flash Attention for memory-efficient training — is essential for modern AI work.",
+    "whyItMatters": "Transformers are the architecture behind the AI revolution. GPT-4, Claude, Gemini, DALL-E, Stable Diffusion, Whisper — they're all transformers. Understanding this architecture is the single most important deep learning skill you can develop today.",
+    "subtopics": [
+      "Attention Mechanism Intuition (Query, Key, Value)",
+      "Scaled Dot-Product Attention (mathematical formulation)",
+      "Multi-Head Attention",
+      "Positional Encoding (sinusoidal, learned, RoPE, ALiBi)",
+      "Encoder Architecture",
+      "Decoder Architecture & Masked Attention",
+      "Residual Connections & Layer Normalization",
+      "Feedforward Networks in Transformers",
+      "Encoder-Decoder vs Encoder-Only vs Decoder-Only",
+      "BERT (encoder-only, bidirectional, MLM pretraining)",
+      "GPT (decoder-only, autoregressive, causal attention)",
+      "Training: Pretraining vs Fine-tuning Paradigm",
+      "KV-Cache for Efficient Inference",
+      "Flash Attention & Memory-Efficient Attention",
+      "Scaling Laws (Chinchilla, compute-optimal training)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Attention is All You Need — Paper Explained",
+        "url": "https://www.youtube.com/watch?v=iDulhoQ2pro",
+        "channel": "Yannic Kilcher"
+      },
+      {
+        "title": "Let's build GPT: from scratch, in code",
+        "url": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
+        "channel": "Andrej Karpathy"
+      },
+      {
+        "title": "The Illustrated Transformer (video)",
+        "url": "https://www.youtube.com/watch?v=4Bdc55j80l8",
+        "channel": "Jay Alammar"
+      }
+    ],
+    "references": [
+      {
+        "title": "The Illustrated Transformer (Jay Alammar)",
+        "url": "https://jalammar.github.io/illustrated-transformer/"
+      },
+      {
+        "title": "Attention is All You Need (original paper)",
+        "url": "https://arxiv.org/abs/1706.03762"
+      },
+      {
+        "title": "The Annotated Transformer (Harvard NLP)",
+        "url": "https://nlp.seas.harvard.edu/2018/04/03/attention.html"
+      }
+    ],
+    "prerequisites": [
+      "neural-networks-fundamentals",
+      "rnns-sequences",
+      "linear-algebra"
+    ],
+    "tags": ["deep-learning", "transformers", "attention", "gpt", "bert"]
+  },
+  {
+    "id": "generative-models",
+    "title": "Generative Models (GANs, VAEs, Diffusion)",
+    "phase": 4,
+    "difficulty": "advanced",
+    "estimatedHours": 14,
+    "description": "Generative models learn to create new data that resembles the training data — generating realistic images, music, text, and synthetic data. GANs (Generative Adversarial Networks) use two competing networks: a Generator that creates fake samples and a Discriminator that tries to distinguish real from fake. Through this adversarial game, the Generator learns to produce increasingly realistic outputs. StyleGAN (by NVIDIA) generates photorealistic faces that don't exist (thispersondoesnotexist.com), and pix2pix/CycleGAN enable image-to-image translation (turning sketches into photos, horses into zebras). VAEs (Variational Autoencoders) encode data into a structured latent space and generate new data by sampling from this space — they're used for drug molecule generation and data augmentation. Diffusion Models are the latest revolution: they learn to gradually denoise random noise into coherent images, achieving unprecedented quality. Stable Diffusion, DALL-E 2/3, and Midjourney all use diffusion models. The process starts with pure Gaussian noise and iteratively removes noise using a trained denoising network (typically a U-Net with attention), guided by text embeddings from CLIP. In production, generative models are used for game asset creation, architectural visualization, synthetic training data generation (when real data is scarce or sensitive), and creative tools.",
+    "whyItMatters": "Generative AI is the fastest-growing area of AI. Understanding GANs, VAEs, and especially diffusion models is essential for working with image generation, synthetic data, and creative AI tools that are transforming industries from entertainment to healthcare.",
+    "subtopics": [
+      "Autoencoders (encoder-decoder, bottleneck representation)",
+      "Variational Autoencoders (VAEs) & The Reparameterization Trick",
+      "GAN Architecture (Generator vs Discriminator)",
+      "GAN Training Dynamics & Mode Collapse",
+      "GAN Variants (DCGAN, WGAN, StyleGAN, Conditional GAN)",
+      "Diffusion Models (Forward & Reverse Process)",
+      "Denoising Score Matching",
+      "U-Net Architecture in Diffusion Models",
+      "Text-Conditioned Generation (Classifier-Free Guidance)",
+      "Stable Diffusion Architecture (CLIP + U-Net + VAE)",
+      "Flow-Based Models (Normalizing Flows)",
+      "Evaluating Generative Models (FID, IS, CLIP Score)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Diffusion Models — Introduction",
+        "url": "https://www.youtube.com/watch?v=HoKDTa5jHvg",
+        "channel": "Yannic Kilcher"
+      },
+      {
+        "title": "Generative Adversarial Networks (GANs)",
+        "url": "https://www.youtube.com/watch?v=8L11aMN5KY8",
+        "channel": "Computerphile"
+      },
+      {
+        "title": "Variational Autoencoders — EXPLAINED!",
+        "url": "https://www.youtube.com/watch?v=fcvYpzHmhvA",
+        "channel": "CodeEmporium"
+      }
+    ],
+    "references": [
+      {
+        "title": "Lil'Log: What are Diffusion Models?",
+        "url": "https://lilianweng.github.io/posts/2021-07-11-diffusion-models/"
+      },
+      {
+        "title": "GAN Lab (Interactive)",
+        "url": "https://poloclub.github.io/ganlab/"
+      },
+      {
+        "title": "Denoising Diffusion Probabilistic Models (paper)",
+        "url": "https://arxiv.org/abs/2006.11239"
+      }
+    ],
+    "prerequisites": ["neural-networks-fundamentals", "probability-statistics"],
+    "tags": ["deep-learning", "generative", "gans", "vae", "diffusion"]
+  },
+  {
+    "id": "dl-training-techniques",
+    "title": "Deep Learning Training Techniques",
+    "phase": 4,
+    "difficulty": "intermediate",
+    "estimatedHours": 10,
+    "description": "Training deep neural networks effectively requires mastering a toolkit of techniques that prevent overfitting, stabilize training, and improve convergence. Dropout randomly deactivates neurons during training (typically 20-50% of units), forcing the network to learn redundant representations and acting as an ensemble of subnetworks — Hinton (who invented dropout at Google) showed it dramatically reduces overfitting. Batch Normalization normalizes activations within each mini-batch, allowing higher learning rates, faster convergence, and some regularization — it's used in virtually every modern architecture. L1/L2 regularization adds weight penalties to the loss function, encouraging simpler models. Transfer learning takes a model pretrained on a large dataset (like ImageNet's 14 million images) and fine-tunes it on your smaller dataset — this is the standard approach in practice because training from scratch requires massive data and compute. A medical imaging startup might take a ResNet pretrained on ImageNet and fine-tune it on 1,000 chest X-rays to detect pneumonia, achieving results that would otherwise require millions of examples. Learning rate scheduling (warmup, cosine annealing, reduce-on-plateau) adjusts the learning rate during training — starting high for fast progress and decaying for fine-grained convergence. Mixed-precision training uses 16-bit floats for speed while keeping 32-bit precision where it matters, nearly doubling training speed on modern GPUs.",
+    "whyItMatters": "These techniques make the difference between a model that converges and one that doesn't. Every production deep learning system uses dropout, batch norm, transfer learning, and learning rate scheduling. Without them, you're leaving massive performance on the table.",
+    "subtopics": [
+      "Dropout (standard, spatial, DropPath)",
+      "Batch Normalization (how it works, inference mode)",
+      "Layer Normalization & Group Normalization",
+      "L1/L2 Weight Regularization (Weight Decay)",
+      "Early Stopping",
+      "Transfer Learning Strategy (freeze/unfreeze layers)",
+      "Fine-tuning Pretrained Models",
+      "Learning Rate Scheduling (Step, Cosine, Warmup, OneCycle)",
+      "Gradient Clipping",
+      "Mixed Precision Training (FP16/BF16)",
+      "Data Augmentation Strategies",
+      "Label Smoothing",
+      "Exponential Moving Average (EMA) of Weights"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Dropout Regularization — Clearly Explained!",
+        "url": "https://www.youtube.com/watch?v=ARq74QuavAo",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Batch Normalization — Clearly Explained!",
+        "url": "https://www.youtube.com/watch?v=dXB-KQYkzNU",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Transfer Learning with PyTorch",
+        "url": "https://www.youtube.com/watch?v=K0lWSB2QoIQ",
+        "channel": "Patrick Loeber"
+      }
+    ],
+    "references": [
+      {
+        "title": "Deep Learning Book: Regularization Chapter",
+        "url": "https://www.deeplearningbook.org/contents/regularization.html"
+      },
+      {
+        "title": "A Recipe for Training Neural Networks (Karpathy)",
+        "url": "https://karpathy.github.io/2019/04/25/recipe/"
+      }
+    ],
+    "prerequisites": [
+      "neural-networks-fundamentals",
+      "tensorflow-keras",
+      "pytorch"
+    ],
+    "tags": [
+      "deep-learning",
+      "regularization",
+      "training",
+      "transfer-learning",
+      "optimization"
+    ]
+  }
+]

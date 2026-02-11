@@ -1,0 +1,274 @@
+[
+  {
+    "id": "linear-algebra",
+    "title": "Linear Algebra",
+    "phase": 1,
+    "difficulty": "beginner",
+    "estimatedHours": 20,
+    "description": "Linear algebra is the mathematical backbone of machine learning. Every dataset is a matrix, every image is a tensor, and every neural network operation is a matrix multiplication. When you feed a batch of 32 images (each 224x224x3) into a CNN, you're performing tensor operations. The weights of a neural network layer are stored as a matrix W, and the forward pass computes y = Wx + b — a linear transformation. Understanding eigenvalues and eigenvectors is crucial for PCA (Principal Component Analysis), which reduces dataset dimensionality by finding the directions of maximum variance. Singular Value Decomposition (SVD) powers recommendation systems (like Netflix's early recommendation engine), image compression, and latent semantic analysis in NLP. At Google, the original PageRank algorithm that ranked web pages was fundamentally an eigenvector computation on the web's link matrix. In computer vision, linear transformations (rotation, scaling, shearing) are represented as matrices applied to pixel coordinates. Understanding vector spaces, linear independence, rank, and null space helps you diagnose when your model has problems — for instance, a rank-deficient feature matrix indicates multicollinearity, which breaks ordinary least squares regression.",
+    "whyItMatters": "Neural networks are literally sequences of matrix multiplications and nonlinear activations. PCA, SVD, embeddings, and attention mechanisms are all linear algebra. Without it, you're treating ML as a black box — you can call fit() but can't understand or debug what's happening inside.",
+    "subtopics": [
+      "Scalars, Vectors, Matrices, Tensors",
+      "Matrix Operations (Addition, Multiplication, Transpose)",
+      "Dot Product & Cross Product",
+      "Linear Transformations & Matrix Representations",
+      "Determinants & Matrix Inverse",
+      "Systems of Linear Equations (Gaussian Elimination)",
+      "Vector Spaces, Basis, Rank, Null Space",
+      "Eigenvalues & Eigenvectors",
+      "Eigendecomposition",
+      "Singular Value Decomposition (SVD)",
+      "Positive Definite Matrices",
+      "Norms (L1, L2, Frobenius)",
+      "Orthogonality & Projections",
+      "Applications in ML: PCA, Embeddings, Attention"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Essence of Linear Algebra (full series)",
+        "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
+        "channel": "3Blue1Brown"
+      },
+      {
+        "title": "MIT 18.06 Linear Algebra (Gilbert Strang)",
+        "url": "https://www.youtube.com/playlist?list=PL49CF3715CB9EF31D",
+        "channel": "MIT OpenCourseWare"
+      },
+      {
+        "title": "Linear Algebra for Machine Learning",
+        "url": "https://www.youtube.com/watch?v=uZeDTwWcnuY",
+        "channel": "StatQuest"
+      }
+    ],
+    "references": [
+      {
+        "title": "Interactive Linear Algebra (free textbook)",
+        "url": "https://textbooks.math.gatech.edu/ila/"
+      },
+      {
+        "title": "Mathematics for Machine Learning (book)",
+        "url": "https://mml-book.github.io/"
+      },
+      {
+        "title": "Khan Academy Linear Algebra",
+        "url": "https://www.khanacademy.org/math/linear-algebra"
+      }
+    ],
+    "prerequisites": [],
+    "tags": ["math", "linear-algebra", "matrices", "vectors", "eigenvalues"]
+  },
+  {
+    "id": "calculus",
+    "title": "Calculus & Multivariable Calculus",
+    "phase": 1,
+    "difficulty": "beginner",
+    "estimatedHours": 18,
+    "description": "Calculus is the engine behind how neural networks learn. Every time a model trains, it uses gradient descent — which relies on computing derivatives (gradients) of the loss function with respect to each model parameter. Backpropagation, the algorithm that trains neural networks, is fundamentally a systematic application of the chain rule of calculus through the network's computational graph. When you train a GPT model with billions of parameters, the optimizer computes partial derivatives of the loss with respect to each of those billions of weights, then nudges each weight in the direction that reduces the loss. The chain rule handles composite functions, which is exactly what a deep neural network is — layers of functions composed together. Integrals appear in probability distributions (computing expected values, normalizing distributions) and in understanding areas under ROC curves for model evaluation. In real-world applications, understanding the gradient landscape helps you diagnose training problems: vanishing gradients mean your deep network isn't learning early layers, exploding gradients mean training is unstable, and saddle points mean your optimizer might get stuck. Techniques like learning rate scheduling, gradient clipping, and adaptive optimizers (Adam, RMSProp) all make sense only when you understand the calculus foundations.",
+    "whyItMatters": "Backpropagation IS the chain rule of calculus applied to computational graphs. Gradient descent IS calculus. Without understanding derivatives and gradients, you cannot understand how any neural network trains, why certain architectures work, or how to debug training failures.",
+    "subtopics": [
+      "Limits & Continuity",
+      "Derivatives & Differentiation Rules",
+      "Chain Rule (critical for backpropagation)",
+      "Partial Derivatives",
+      "Gradients & Directional Derivatives",
+      "The Jacobian & Hessian Matrices",
+      "Integrals & The Fundamental Theorem",
+      "Multivariable Calculus & Vector Calculus",
+      "Taylor Series Approximations",
+      "Automatic Differentiation (how PyTorch/TF compute gradients)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Essence of Calculus (full series)",
+        "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr",
+        "channel": "3Blue1Brown"
+      },
+      {
+        "title": "Multivariable Calculus (Khan Academy)",
+        "url": "https://www.youtube.com/playlist?list=PLSQl0a2vh4HC5feHa6Rc5c0wbRTx56nF7",
+        "channel": "Khan Academy"
+      },
+      {
+        "title": "Backpropagation Calculus — Deep Learning Chapter 4",
+        "url": "https://www.youtube.com/watch?v=tIeHLnjs5U8",
+        "channel": "3Blue1Brown"
+      }
+    ],
+    "references": [
+      {
+        "title": "Mathematics for Machine Learning: Calculus",
+        "url": "https://mml-book.github.io/book/chapter05.pdf"
+      },
+      {
+        "title": "Khan Academy Calculus",
+        "url": "https://www.khanacademy.org/math/calculus-1"
+      }
+    ],
+    "prerequisites": [],
+    "tags": ["math", "calculus", "derivatives", "gradients", "chain-rule"]
+  },
+  {
+    "id": "probability-statistics",
+    "title": "Probability & Statistics",
+    "phase": 1,
+    "difficulty": "beginner",
+    "estimatedHours": 22,
+    "description": "Probability and statistics form the theoretical framework for understanding uncertainty, making predictions, and evaluating models. Machine learning is fundamentally about learning probability distributions from data. A spam classifier estimates P(spam|email features), a language model estimates P(next word|previous words), and a Bayesian neural network maintains probability distributions over weights. Bayes' theorem is everywhere: in Naive Bayes classifiers (used in spam filtering), in Bayesian optimization (for hyperparameter tuning), and in probabilistic programming. Understanding probability distributions is essential — the Gaussian (normal) distribution appears in data normalization, weight initialization (Xavier, He initialization), and Gaussian mixture models; the Bernoulli and Binomial distributions model binary outcomes; the Poisson distribution models event counts. Statistical hypothesis testing helps you determine if a model improvement is statistically significant or just due to random chance. In A/B testing at companies like Airbnb or Uber, data scientists use confidence intervals, p-values, and statistical power calculations to decide whether a new recommendation model actually performs better than the old one, or if the apparent improvement is just noise.",
+    "whyItMatters": "ML models are fundamentally probability machines — they estimate conditional probabilities from data. Statistical thinking helps you evaluate model performance rigorously, avoid p-hacking, understand uncertainty, and make data-driven decisions. Bayesian methods are increasingly important in modern ML.",
+    "subtopics": [
+      "Sample Space, Events, Axioms of Probability",
+      "Conditional Probability & Independence",
+      "Bayes' Theorem & Bayesian Thinking",
+      "Random Variables (Discrete & Continuous)",
+      "Probability Distributions (Uniform, Bernoulli, Binomial, Poisson, Gaussian, Exponential)",
+      "Expected Value, Variance, Standard Deviation",
+      "Covariance & Correlation",
+      "Central Limit Theorem",
+      "Maximum Likelihood Estimation (MLE)",
+      "Maximum A Posteriori Estimation (MAP)",
+      "Hypothesis Testing (null/alternative, p-values, significance)",
+      "Confidence Intervals",
+      "A/B Testing for Model Comparison",
+      "Sampling Methods (Bootstrap, Monte Carlo)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Statistics Fundamentals (full playlist)",
+        "url": "https://www.youtube.com/playlist?list=PLblh5JKOoLUK0FLuzwntyYI10UQFUhsY9",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Probability for Machine Learning",
+        "url": "https://www.youtube.com/watch?v=czBBqkJnfEg",
+        "channel": "Krish Naik"
+      },
+      {
+        "title": "Bayes Theorem — the geometry of changing beliefs",
+        "url": "https://www.youtube.com/watch?v=HZGCoVF3YvM",
+        "channel": "3Blue1Brown"
+      }
+    ],
+    "references": [
+      {
+        "title": "Think Stats (free book)",
+        "url": "https://greenteapress.com/thinkstats2/"
+      },
+      {
+        "title": "Seeing Theory — Visual Probability",
+        "url": "https://seeing-theory.brown.edu/"
+      },
+      {
+        "title": "Khan Academy Statistics",
+        "url": "https://www.khanacademy.org/math/statistics-probability"
+      }
+    ],
+    "prerequisites": ["calculus"],
+    "tags": ["math", "probability", "statistics", "bayes", "distributions"]
+  },
+  {
+    "id": "optimization",
+    "title": "Optimization Theory",
+    "phase": 1,
+    "difficulty": "intermediate",
+    "estimatedHours": 12,
+    "description": "Optimization is the process of finding the best parameters for a model — the entire training process of a neural network is an optimization problem. The goal is to minimize a loss function (like cross-entropy for classification or MSE for regression) by adjusting model parameters. Gradient descent, the cornerstone algorithm of ML, iteratively moves parameters in the direction of steepest descent on the loss surface. But real-world loss surfaces are complex, high-dimensional landscapes with local minima, saddle points, and flat regions. Stochastic Gradient Descent (SGD) adds noise by using random batches, which paradoxically helps escape local minima. Adam optimizer combines momentum (keeping track of past gradient directions) with adaptive learning rates per parameter. In practice at companies like OpenAI, training large language models requires careful optimization — learning rate warmup, cosine annealing schedules, gradient accumulation for large effective batch sizes, and mixed-precision training. Convex optimization is the gold standard because convex problems have a single global minimum — algorithms like SVMs solve convex optimization problems, guaranteeing optimal solutions. Lagrange multipliers handle constrained optimization, used in SVMs to find the maximum margin hyperplane with constraints.",
+    "whyItMatters": "Model training IS optimization. Understanding loss landscapes, convergence properties, and optimizer behavior is essential for training models successfully. Poor optimization choices lead to models that don't converge, train slowly, or get stuck in bad local minima.",
+    "subtopics": [
+      "Optimization Problem Formulation",
+      "Gradient Descent (Batch, Stochastic, Mini-Batch)",
+      "Learning Rate & Its Effects",
+      "Momentum & Nesterov Accelerated Gradient",
+      "Adaptive Methods (AdaGrad, RMSProp, Adam, AdamW)",
+      "Learning Rate Scheduling (Step, Cosine, Warmup)",
+      "Convex vs Non-Convex Optimization",
+      "Lagrange Multipliers & Constrained Optimization",
+      "Loss Surfaces, Local Minima, Saddle Points",
+      "Second-Order Methods (Newton's Method, L-BFGS)",
+      "Gradient Clipping & Numerical Stability"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Gradient Descent — Neural Networks",
+        "url": "https://www.youtube.com/watch?v=IHZwWFHWa-w",
+        "channel": "3Blue1Brown"
+      },
+      {
+        "title": "Optimizers Explained — Adam, SGD, etc.",
+        "url": "https://www.youtube.com/watch?v=mdKjMPmcWjY",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Convex Optimization (Stanford)",
+        "url": "https://www.youtube.com/watch?v=McLq1hEq3UY",
+        "channel": "Stanford Online"
+      }
+    ],
+    "references": [
+      {
+        "title": "Convex Optimization (Boyd & Vandenberghe)",
+        "url": "https://web.stanford.edu/~boyd/cvxbook/"
+      },
+      {
+        "title": "An overview of gradient descent optimization algorithms",
+        "url": "https://ruder.io/optimizing-gradient-descent/"
+      }
+    ],
+    "prerequisites": ["calculus", "linear-algebra"],
+    "tags": ["math", "optimization", "gradient-descent", "adam", "convergence"]
+  },
+  {
+    "id": "information-theory",
+    "title": "Information Theory",
+    "phase": 1,
+    "difficulty": "intermediate",
+    "estimatedHours": 8,
+    "description": "Information theory, founded by Claude Shannon, provides the mathematical framework for quantifying information, uncertainty, and the relationship between distributions. In machine learning, cross-entropy loss — the most common loss function for classification tasks — comes directly from information theory. When you train a classifier, you're minimizing the cross-entropy between the true label distribution and the model's predicted distribution. Entropy measures the uncertainty in a distribution: a fair coin has maximum entropy (most uncertain), while a biased coin has low entropy. Decision trees use information gain (reduction in entropy) to decide which feature to split on at each node. KL divergence (Kullback-Leibler divergence) measures how one probability distribution differs from another — it's used in Variational Autoencoders (VAEs) to regularize the latent space, in knowledge distillation (transferring knowledge from a large model to a small one), and in reinforcement learning (PPO uses KL constraints). Mutual information quantifies the dependence between variables and is used in feature selection. In real-world NLP, perplexity (2^cross-entropy) measures how well a language model predicts text — GPT-4's quality is often evaluated partly through perplexity scores. Understanding information theory gives you deep insight into why certain loss functions work, how compression relates to learning, and the theoretical limits of prediction.",
+    "whyItMatters": "Cross-entropy (the most used classification loss), KL divergence (used in VAEs and RL), information gain (used in decision trees), and perplexity (used to evaluate language models) all come from information theory. It's the mathematical language of modern ML loss functions.",
+    "subtopics": [
+      "Entropy (Shannon Entropy)",
+      "Joint & Conditional Entropy",
+      "Cross-Entropy & Its Role as a Loss Function",
+      "KL Divergence (Kullback-Leibler)",
+      "Mutual Information",
+      "Information Gain (for Decision Trees)",
+      "Perplexity (for Language Models)",
+      "Data Compression & Minimum Description Length",
+      "Bits-Back Coding & Connection to VAEs"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Entropy, Cross-Entropy, and KL Divergence",
+        "url": "https://www.youtube.com/watch?v=ErfnhcEV1O8",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Information Theory Basics",
+        "url": "https://www.youtube.com/watch?v=2s3aJfRr9gE",
+        "channel": "Aurélien Géron"
+      },
+      {
+        "title": "A Short Introduction to Entropy, Cross-Entropy and KL-Divergence",
+        "url": "https://www.youtube.com/watch?v=ErfnhcEV1O8",
+        "channel": "Aurélien Géron"
+      }
+    ],
+    "references": [
+      {
+        "title": "Visual Information Theory (Chris Olah)",
+        "url": "https://colah.github.io/posts/2015-09-Visual-Information/"
+      },
+      {
+        "title": "Information Theory, Inference, and Learning Algorithms",
+        "url": "https://www.inference.org.uk/itila/book.html"
+      }
+    ],
+    "prerequisites": ["probability-statistics"],
+    "tags": [
+      "math",
+      "information-theory",
+      "entropy",
+      "cross-entropy",
+      "kl-divergence"
+    ]
+  }
+]

@@ -1,0 +1,362 @@
+[
+  {
+    "id": "numpy",
+    "title": "NumPy — Numerical Computing",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 10,
+    "description": "NumPy is the foundation of the entire Python scientific computing ecosystem. It provides the ndarray (n-dimensional array) object, which is the fundamental data structure underlying pandas DataFrames, scikit-learn models, TensorFlow tensors, and PyTorch tensors. NumPy's vectorized operations execute in optimized C code, making them 10–100x faster than equivalent Python loops. In real-world data science, when a data engineer at Spotify needs to compute similarity scores between millions of songs, they use NumPy's vectorized dot product instead of nested Python loops — reducing computation time from hours to seconds. Broadcasting allows operations between arrays of different shapes without copying data, which is essential for efficient computation. At the core of every neural network framework, matrix multiplications (np.dot, np.matmul) perform the forward pass computations. Understanding array indexing, slicing, reshaping, and stacking is critical because you'll constantly need to manipulate data shapes to match model input requirements. For example, converting a batch of 100 RGB images from shape (100, 224, 224, 3) to (100, 3, 224, 224) for a PyTorch model requires np.transpose. Random number generation with np.random is used for weight initialization, data augmentation, and Monte Carlo simulations.",
+    "whyItMatters": "NumPy arrays are the universal data format in Python ML. Every single library — pandas, scikit-learn, TensorFlow, PyTorch — either uses NumPy arrays directly or interfaces with them. Vectorization knowledge directly translates to writing efficient ML code.",
+    "subtopics": [
+      "Creating Arrays (np.array, np.zeros, np.ones, np.arange, np.linspace)",
+      "Array Attributes (shape, dtype, ndim, size)",
+      "Indexing & Slicing (basic, fancy, boolean)",
+      "Reshaping (reshape, ravel, flatten, transpose)",
+      "Broadcasting Rules & Applications",
+      "Vectorized Operations (element-wise, ufuncs)",
+      "Aggregation (sum, mean, std, min, max, argmax)",
+      "Linear Algebra (np.dot, np.matmul, np.linalg)",
+      "Random Number Generation (np.random)",
+      "Stacking & Splitting (concatenate, vstack, hstack)",
+      "Memory Layout & Performance Optimization"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "NumPy Full Course",
+        "url": "https://www.youtube.com/watch?v=QUT1VHiLmmI",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "NumPy Tutorial for Beginners",
+        "url": "https://www.youtube.com/watch?v=GB9ByFAIAH4",
+        "channel": "Keith Galli"
+      },
+      {
+        "title": "Python NumPy Tutorial for Beginners",
+        "url": "https://www.youtube.com/watch?v=9JUAPgtkKpI",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      {
+        "title": "NumPy Official User Guide",
+        "url": "https://numpy.org/doc/stable/user/index.html"
+      },
+      {
+        "title": "NumPy 100 Exercises",
+        "url": "https://github.com/rougier/numpy-100"
+      }
+    ],
+    "prerequisites": ["python-programming", "linear-algebra"],
+    "tags": ["data", "numpy", "arrays", "vectorization", "numerical-computing"]
+  },
+  {
+    "id": "pandas",
+    "title": "Pandas — Data Manipulation",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 15,
+    "description": "Pandas is the Swiss Army knife of data manipulation in Python. It provides DataFrame and Series objects that make working with structured (tabular) data intuitive and powerful. In real-world data science, raw data is always messy — it has missing values, inconsistent formats, duplicate rows, and needs extensive transformation before any ML model can use it. A data scientist at an e-commerce company might receive a CSV with millions of customer transactions, each with missing shipping addresses, inconsistent date formats, and duplicate order IDs. Using pandas, they would: load the data with pd.read_csv, identify missing values with .isnull().sum(), fill or drop them with .fillna() or .dropna(), convert dates with pd.to_datetime, remove duplicates with .drop_duplicates(), and engineer new features like 'total_spend_last_30_days' using .groupby() and .rolling(). The .groupby() operation is essential for aggregating data — for example, calculating average order value per customer segment. Merging datasets with .merge() (like SQL JOINs) is a daily operation when combining feature tables. Pandas also integrates seamlessly with matplotlib and seaborn for visualization. Memory optimization using appropriate dtypes (category instead of object, int32 instead of int64) is important for large datasets.",
+    "whyItMatters": "80% of an ML project is data preparation, and pandas is the primary tool for it. Every Kaggle competition starts with pandas for EDA. Every industry data pipeline uses pandas for transformation. If you can't wrangle data with pandas, you can't do ML.",
+    "subtopics": [
+      "Series & DataFrame Creation",
+      "Reading/Writing Data (CSV, Excel, JSON, SQL, Parquet)",
+      "Indexing & Selection (loc, iloc, boolean indexing)",
+      "Handling Missing Data (isnull, fillna, dropna, interpolate)",
+      "Data Types & Type Conversion (astype, to_datetime, category)",
+      "GroupBy, Aggregation & Pivot Tables",
+      "Merging, Joining & Concatenating DataFrames",
+      "String & DateTime Operations",
+      "Apply, Map, Applymap Functions",
+      "Sorting & Ranking",
+      "Window Functions (rolling, expanding, ewm)",
+      "Memory Optimization Techniques",
+      "Method Chaining for Clean Code"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Pandas Tutorial — Data Analysis with Python",
+        "url": "https://www.youtube.com/watch?v=vmEHCJofslg",
+        "channel": "Programming with Mosh"
+      },
+      {
+        "title": "Complete Python Pandas Tutorial",
+        "url": "https://www.youtube.com/watch?v=2uvysYbKdjM",
+        "channel": "Keith Galli"
+      },
+      {
+        "title": "Pandas Full Course (5 hours)",
+        "url": "https://www.youtube.com/watch?v=PcvsOaixUh8",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      {
+        "title": "Pandas Official Documentation",
+        "url": "https://pandas.pydata.org/docs/"
+      },
+      {
+        "title": "Pandas Exercises",
+        "url": "https://github.com/guipsamora/pandas_exercises"
+      }
+    ],
+    "prerequisites": ["python-programming", "numpy"],
+    "tags": ["data", "pandas", "dataframe", "data-wrangling", "tabular-data"]
+  },
+  {
+    "id": "data-visualization",
+    "title": "Data Visualization",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 12,
+    "description": "Data visualization is how you explore data, communicate findings, and diagnose model behavior. The ability to create clear, informative visualizations is often what separates a good data scientist from a great one. Matplotlib is the foundational plotting library — it gives you fine-grained control over every element of a plot, from axis labels to color maps. Seaborn builds on matplotlib to provide beautiful statistical visualizations with minimal code — a single sns.heatmap(correlation_matrix) instantly reveals which features are correlated in your dataset. Plotly creates interactive, web-based visualizations that you can zoom, hover, and explore — essential for dashboards and presentations to stakeholders. In practice at a healthcare AI company, a data scientist might use a Seaborn pair plot to discover that two diagnostic features are highly correlated (suggesting multicollinearity), use a Plotly scatter plot to let doctors interactively explore patient clusters, and use Matplotlib subplots to create a publication-quality figure showing model performance across different patient groups. Understanding when to use which chart type is crucial: histograms and KDE plots for distributions, scatter plots for relationships, box plots for comparing groups, heatmaps for correlations, line plots for time series, and bar charts for categorical comparisons.",
+    "whyItMatters": "Visualization is the primary tool for EDA (Exploratory Data Analysis), which is the first step of every ML project. It helps you understand data distributions, spot outliers, discover patterns, and diagnose model performance. Non-technical stakeholders understand charts, not confusion matrices.",
+    "subtopics": [
+      "Matplotlib Basics (figure, axes, subplots)",
+      "Plot Types (line, scatter, bar, histogram, pie)",
+      "Customization (colors, labels, legends, annotations)",
+      "Seaborn Statistical Plots (distplot, boxplot, violinplot, pairplot)",
+      "Seaborn Heatmaps for Correlation Matrices",
+      "Plotly Interactive Visualizations",
+      "Plotly Express for Quick Charts",
+      "Choosing the Right Chart for Your Data",
+      "Color Theory & Accessibility in Visualization",
+      "Matplotlib for Publication-Quality Figures"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Matplotlib Full Tutorial",
+        "url": "https://www.youtube.com/watch?v=UO98lJQ3QGI",
+        "channel": "Keith Galli"
+      },
+      {
+        "title": "Seaborn Tutorial",
+        "url": "https://www.youtube.com/watch?v=6GUZXDef2U0",
+        "channel": "Derek Banas"
+      },
+      {
+        "title": "Plotly Python Tutorial",
+        "url": "https://www.youtube.com/watch?v=GGL6U0k8WYA",
+        "channel": "Charming Data"
+      }
+    ],
+    "references": [
+      {
+        "title": "Matplotlib Gallery",
+        "url": "https://matplotlib.org/stable/gallery/index.html"
+      },
+      {
+        "title": "Seaborn Tutorial",
+        "url": "https://seaborn.pydata.org/tutorial.html"
+      },
+      {
+        "title": "Python Graph Gallery",
+        "url": "https://www.python-graph-gallery.com/"
+      }
+    ],
+    "prerequisites": ["numpy", "pandas"],
+    "tags": ["data", "visualization", "matplotlib", "seaborn", "plotly"]
+  },
+  {
+    "id": "data-cleaning",
+    "title": "Data Cleaning & Preprocessing",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 10,
+    "description": "Real-world data is never clean. It arrives with missing values, inconsistent formats, duplicate records, outliers, and errors. Data cleaning is arguably the most important and time-consuming part of any ML project — the adage 'garbage in, garbage out' is profoundly true. A fraud detection model at a bank might receive transaction data where 15% of merchant category codes are missing, amounts are sometimes negative (returns), timestamps are in three different timezone formats, and some customer IDs appear in both numeric and alphanumeric formats. Handling missing values requires domain knowledge: sometimes you impute with the median (for skewed numerical data), sometimes with the mode (for categorical data), sometimes with forward/backward fill (for time series), and sometimes you drop rows entirely. Outlier detection using IQR, z-scores, or isolation forests prevents extreme values from distorting model training. Encoding categorical variables is crucial: one-hot encoding works for nominal categories (color: red/blue/green), ordinal encoding for ordered categories (size: S/M/L/XL), and target encoding for high-cardinality features (zip_code with thousands of values). Text cleaning involves lowercasing, removing special characters, handling Unicode, and standardizing formats. Each of these decisions directly impacts model performance.",
+    "whyItMatters": "Data quality is the #1 factor in model performance. Andrew Ng's 'data-centric AI' movement emphasizes that improving data quality often yields better results than improving model architecture. Professional ML work is 70-80% data preparation.",
+    "subtopics": [
+      "Identifying & Handling Missing Values (MCAR, MAR, MNAR)",
+      "Imputation Strategies (mean, median, mode, KNN, MICE)",
+      "Detecting & Handling Outliers (IQR, z-score, Isolation Forest)",
+      "Removing Duplicates & Inconsistencies",
+      "Encoding Categorical Variables (One-Hot, Label, Ordinal, Target)",
+      "Text Cleaning & Standardization",
+      "Date/Time Parsing & Feature Extraction",
+      "Data Type Optimization",
+      "Automated Data Quality Checks",
+      "Data Validation & Schema Enforcement"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Data Cleaning with Python and Pandas",
+        "url": "https://www.youtube.com/watch?v=bDhvCp3_lYw",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "How to Handle Missing Data",
+        "url": "https://www.youtube.com/watch?v=P_iMSYQnqAc",
+        "channel": "Krish Naik"
+      }
+    ],
+    "references": [
+      {
+        "title": "Kaggle Data Cleaning Course",
+        "url": "https://www.kaggle.com/learn/data-cleaning"
+      },
+      {
+        "title": "Scikit-learn Preprocessing",
+        "url": "https://scikit-learn.org/stable/modules/preprocessing.html"
+      }
+    ],
+    "prerequisites": ["pandas"],
+    "tags": ["data", "cleaning", "preprocessing", "missing-values", "outliers"]
+  },
+  {
+    "id": "feature-engineering",
+    "title": "Feature Engineering & Selection",
+    "phase": 2,
+    "difficulty": "intermediate",
+    "estimatedHours": 14,
+    "description": "Feature engineering is the art and science of creating new input variables that help ML models learn better patterns. It's often the difference between a mediocre model and a winning one — top Kaggle competitors consistently cite feature engineering as their biggest competitive advantage. In real-world applications, raw data rarely has the most informative representation. An e-commerce company predicting customer churn might start with basic features like 'purchase_date' and 'amount', but engineered features like 'days_since_last_purchase', 'average_spend_per_month', 'purchase_frequency_trend', and 'weekend_vs_weekday_ratio' are far more predictive. Feature scaling (StandardScaler for Gaussian-distributed features, MinMaxScaler for bounded features, RobustScaler for data with outliers) ensures that algorithms like SVM, KNN, and neural networks treat all features equally — without scaling, a feature ranging from 0–1,000,000 would dominate one ranging from 0–1. Dimensionality reduction with PCA compresses hundreds of features into a smaller set while preserving variance — critical for avoiding the curse of dimensionality. Feature selection methods (mutual information, LASSO regularization, recursive feature elimination) identify the most important features and remove noise, improving both model performance and interpretability.",
+    "whyItMatters": "Google's ML team says that feature engineering is responsible for the majority of model performance improvements in production systems. A well-engineered feature can outperform a complex model architecture. This skill separates ML engineers from beginners who just call model.fit().",
+    "subtopics": [
+      "Feature Scaling (StandardScaler, MinMaxScaler, RobustScaler)",
+      "Normalization vs Standardization",
+      "Log & Power Transforms (Box-Cox, Yeo-Johnson)",
+      "Polynomial Features & Interaction Terms",
+      "Binning & Discretization",
+      "Date/Time Feature Engineering",
+      "Text Feature Engineering (TF-IDF, n-grams, embeddings)",
+      "Aggregation Features (groupby-based)",
+      "PCA for Dimensionality Reduction",
+      "t-SNE & UMAP for Visualization",
+      "Feature Selection (Filter, Wrapper, Embedded Methods)",
+      "Mutual Information & Correlation-Based Selection",
+      "LASSO/Ridge for Feature Selection",
+      "Recursive Feature Elimination (RFE)",
+      "Feature Importance from Tree-Based Models"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Feature Engineering for Machine Learning",
+        "url": "https://www.youtube.com/watch?v=6WDFfaYtN6s",
+        "channel": "Krish Naik"
+      },
+      {
+        "title": "PCA — Principal Component Analysis",
+        "url": "https://www.youtube.com/watch?v=FgakZw6K1QQ",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "Feature Scaling — Why & How",
+        "url": "https://www.youtube.com/watch?v=mnKm3YP56PY",
+        "channel": "StatQuest"
+      }
+    ],
+    "references": [
+      {
+        "title": "Feature Engineering and Selection (free book)",
+        "url": "https://bookdown.org/max/FES/"
+      },
+      {
+        "title": "Kaggle Feature Engineering Course",
+        "url": "https://www.kaggle.com/learn/feature-engineering"
+      }
+    ],
+    "prerequisites": ["pandas", "numpy", "probability-statistics"],
+    "tags": [
+      "data",
+      "feature-engineering",
+      "scaling",
+      "pca",
+      "feature-selection"
+    ]
+  },
+  {
+    "id": "eda",
+    "title": "Exploratory Data Analysis (EDA)",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 8,
+    "description": "EDA is the systematic process of investigating a dataset to discover patterns, spot anomalies, test hypotheses, and check assumptions before building any model. It's the critical first step that determines whether your ML project succeeds or fails. A well-executed EDA reveals the story hidden in your data. In real-world practice, when a data science team at an insurance company receives claims data for a fraud detection project, their EDA might reveal that: (1) The dataset is highly imbalanced — only 1.2% of claims are fraudulent, meaning they need special techniques like SMOTE or class weights. (2) The 'claim_amount' distribution is heavily right-skewed, suggesting a log transform would help. (3) There's a suspicious correlation between 'policy_age' and 'claim_frequency' that reveals a data leakage issue. (4) Certain geographic regions have dramatically different fraud rates, suggesting location-based features would be valuable. Without EDA, they might train a model that achieves 98.8% accuracy by simply predicting 'not fraud' for everything — completely useless. EDA combines statistical summaries (describe, value_counts, nunique), visual exploration (histograms, box plots, scatter matrices, correlation heatmaps), and domain-driven hypothesis testing.",
+    "whyItMatters": "Skipping EDA is the most common mistake beginners make. It leads to data leakage, model bias, wasted effort on irrelevant features, and models that achieve great metrics but fail in production. Every Kaggle grandmaster starts with thorough EDA.",
+    "subtopics": [
+      "Summary Statistics (describe, info, dtypes, nunique)",
+      "Distribution Analysis (histograms, KDE, Q-Q plots)",
+      "Univariate, Bivariate, Multivariate Analysis",
+      "Correlation Analysis & Heatmaps",
+      "Class Imbalance Detection",
+      "Identifying Data Leakage in EDA",
+      "Target Variable Analysis",
+      "Missing Value Patterns Visualization",
+      "Automated EDA Libraries (Pandas Profiling, Sweetviz, D-Tale)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Exploratory Data Analysis with Python",
+        "url": "https://www.youtube.com/watch?v=xi0vhXFPegw",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "EDA — A Practical Guide",
+        "url": "https://www.youtube.com/watch?v=fHFOANOPMng",
+        "channel": "Krish Naik"
+      }
+    ],
+    "references": [
+      {
+        "title": "EDA with Python (Kaggle Tutorial)",
+        "url": "https://www.kaggle.com/code/imoore/intro-to-eda"
+      },
+      {
+        "title": "Pandas Profiling Documentation",
+        "url": "https://ydata-profiling.ydata.ai/"
+      }
+    ],
+    "prerequisites": ["pandas", "data-visualization"],
+    "tags": ["data", "eda", "exploration", "analysis", "visualization"]
+  },
+  {
+    "id": "data-formats",
+    "title": "Working with Different Data Sources",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 8,
+    "description": "Real-world data comes from diverse sources and formats, and an ML practitioner must be comfortable working with all of them. CSV files are the most common format on Kaggle and for simple datasets, but production systems use more efficient formats like Parquet (columnar storage, 10x smaller than CSV, dramatically faster for analytical queries) and Feather (fast serialization for pandas DataFrames). JSON is the standard format for web APIs, configuration files, and NoSQL databases like MongoDB. SQL databases (PostgreSQL, MySQL, SQLite) store the vast majority of structured business data — knowing how to write SQL queries to extract training data is an essential skill. At a company like Uber, training data for a surge pricing model might live in a PostgreSQL database, with real-time features streamed through Apache Kafka, historical rides stored in Parquet files on S3, and external weather data fetched from a REST API returning JSON. APIs (REST and GraphQL) let you collect data from external services — weather data for demand prediction, social media data for sentiment analysis, financial data for trading models. Web scraping with BeautifulSoup or Scrapy is used when no API is available. Understanding data pipelines (ETL: Extract, Transform, Load) is crucial for building production ML systems.",
+    "whyItMatters": "ML models are only as good as their data, and real-world data comes from databases, APIs, files, and streams — not just Kaggle CSVs. Being able to efficiently collect and handle data from multiple sources is a core professional skill.",
+    "subtopics": [
+      "CSV & TSV Files (pd.read_csv options, chunking)",
+      "JSON & JSONL Handling",
+      "Parquet & Feather Formats (columnar storage advantages)",
+      "SQL Basics (SELECT, JOIN, GROUP BY, subqueries)",
+      "SQLite with Python (sqlite3, SQLAlchemy)",
+      "Connecting to PostgreSQL/MySQL",
+      "REST APIs (requests library, pagination, rate limiting)",
+      "Web Scraping (BeautifulSoup, Scrapy basics)",
+      "Excel Files (openpyxl, xlrd)",
+      "HDF5 for Large Numerical Data",
+      "Data Pipeline Concepts (ETL/ELT)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "SQL Tutorial — Full Database Course",
+        "url": "https://www.youtube.com/watch?v=HXV3zeQKqGY",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Python API Tutorial for Beginners",
+        "url": "https://www.youtube.com/watch?v=GZvSYJDk-us",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Web Scraping with Python",
+        "url": "https://www.youtube.com/watch?v=XVv6mJpFOb0",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      {
+        "title": "Pandas IO Tools Documentation",
+        "url": "https://pandas.pydata.org/docs/user_guide/io.html"
+      },
+      { "title": "SQLBolt — Learn SQL", "url": "https://sqlbolt.com/" },
+      {
+        "title": "Apache Parquet Documentation",
+        "url": "https://parquet.apache.org/documentation/latest/"
+      }
+    ],
+    "prerequisites": ["python-programming", "pandas"],
+    "tags": ["data", "csv", "json", "sql", "api", "parquet"]
+  }
+]

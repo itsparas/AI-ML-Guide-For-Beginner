@@ -1,0 +1,378 @@
+[
+  {
+    "id": "text-preprocessing",
+    "title": "Text Preprocessing & Representation",
+    "phase": 5,
+    "difficulty": "intermediate",
+    "estimatedHours": 10,
+    "description": "Text data is fundamentally different from numerical data — it's unstructured, variable-length, and rich with nuance. Before any NLP model can process text, it must be converted into numerical representations. Tokenization splits text into meaningful units (words, subwords, or characters). Subword tokenization (BPE used by GPT, WordPiece used by BERT, SentencePiece used by T5) balances vocabulary size with handling rare words. Preprocessing steps include lowercasing, removing punctuation, eliminating stopwords, stemming (reducing words to root form: 'running'→'run'), and lemmatization (more intelligent: 'better'→'good'). Bag of Words (BoW) represents documents as word frequency vectors, while TF-IDF (Term Frequency-Inverse Document Frequency) weighs words by their importance — common words like 'the' get low weight, while distinctive words get high weight. TF-IDF powered early search engines at Google. Word embeddings revolutionized NLP by representing words as dense vectors where semantic relationships are captured geometrically: king - man + woman ≈ queen. Word2Vec (Skip-gram and CBOW) learns embeddings by predicting context words; GloVe combines global co-occurrence statistics; FastText handles out-of-vocabulary words by using character n-grams. At Twitter, text preprocessing pipelines handle hashtags, mentions, emojis, URLs, and slang — each requiring domain-specific handling. Proper text preprocessing can improve model accuracy by 20-30%.",
+    "whyItMatters": "All NLP starts with text preprocessing and representation. Garbage preprocessing produces garbage NLP models. Understanding tokenization, TF-IDF, and embeddings is essential for every NLP task from sentiment analysis to chatbots to search engines.",
+    "subtopics": [
+      "Tokenization (word, sentence, subword — BPE, WordPiece, SentencePiece)",
+      "Text Normalization (lowercasing, punctuation, special characters)",
+      "Stopword Removal & When NOT to Remove Stopwords",
+      "Stemming (Porter Stemmer) vs Lemmatization (WordNet)",
+      "Regular Expressions for Text Cleaning",
+      "Bag of Words (BoW) & CountVectorizer",
+      "TF-IDF (Term Frequency — Inverse Document Frequency)",
+      "Word2Vec (Skip-gram & CBOW)",
+      "GloVe Embeddings",
+      "FastText (character n-grams for OOV words)",
+      "Document Embeddings (Doc2Vec)",
+      "spaCy & NLTK Libraries"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "NLP with Python — Full Course",
+        "url": "https://www.youtube.com/watch?v=fOvTtapxa9c",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Word2Vec — Clearly Explained!",
+        "url": "https://www.youtube.com/watch?v=viZrOnJclY0",
+        "channel": "StatQuest"
+      },
+      {
+        "title": "TF-IDF Explained",
+        "url": "https://www.youtube.com/watch?v=D2V1okCEsiE",
+        "channel": "Krish Naik"
+      }
+    ],
+    "references": [
+      { "title": "spaCy Documentation", "url": "https://spacy.io/" },
+      { "title": "NLTK Book (free)", "url": "https://www.nltk.org/book/" },
+      {
+        "title": "Word2Vec Tutorial",
+        "url": "https://radimrehurek.com/gensim/models/word2vec.html"
+      }
+    ],
+    "prerequisites": ["python-programming", "linear-algebra"],
+    "tags": [
+      "nlp",
+      "text-preprocessing",
+      "tokenization",
+      "embeddings",
+      "word2vec"
+    ]
+  },
+  {
+    "id": "transformers-nlp",
+    "title": "Transformers for NLP (BERT, GPT, T5)",
+    "phase": 5,
+    "difficulty": "intermediate",
+    "estimatedHours": 16,
+    "description": "Transformer-based models have completely transformed NLP. BERT (Bidirectional Encoder Representations from Transformers, by Google, 2018) uses an encoder-only architecture pretrained with Masked Language Modeling (randomly masking 15% of tokens and predicting them) and Next Sentence Prediction. This bidirectional pretraining lets BERT understand context from both sides of a word, making it exceptional for tasks like question answering, named entity recognition, and text classification. GPT (Generative Pre-trained Transformer, by OpenAI) uses a decoder-only architecture trained autoregressively (predicting the next token). GPT-3/4 demonstrated that scaling these models to billions of parameters unlocks emergent capabilities like few-shot learning, reasoning, and code generation. T5 (Text-to-Text Transfer Transformer, by Google) treats every NLP task as text generation: classification becomes 'classify: [text]' → 'positive/negative', translation becomes 'translate English to French: [text]' → '[french text]'. In production, companies fine-tune BERT for domain-specific tasks: clinical BERT for medical text, FinBERT for financial sentiment, LegalBERT for legal documents. Understanding the pretraining → fine-tuning paradigm, attention patterns, and model selection (when to use BERT vs GPT vs T5) is essential for modern NLP work.",
+    "whyItMatters": "BERT and GPT are the foundation of modern NLP. Every production NLP system — search engines, chatbots, translation services, content moderation — uses transformer-based models. Understanding these architectures is non-negotiable for any AI/ML career.",
+    "subtopics": [
+      "BERT Architecture & Pretraining (MLM, NSP)",
+      "BERT Fine-tuning for Downstream Tasks",
+      "GPT Architecture & Autoregressive Training",
+      "GPT-2, GPT-3, GPT-4 Evolution & Scaling",
+      "T5 & Text-to-Text Framework",
+      "RoBERTa, ALBERT, DistilBERT, DeBERTa",
+      "Tokenizer Internals (WordPiece, BPE)",
+      "Fine-tuning Strategies (full, head-only, adapter)",
+      "Parameter-Efficient Fine-tuning (LoRA, QLoRA, Prefix Tuning)",
+      "In-Context Learning & Few-Shot Prompting",
+      "Instruction Tuning & RLHF",
+      "Scaling Laws & Emergent Abilities"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "BERT Explained!",
+        "url": "https://www.youtube.com/watch?v=xI0HHN5XKDo",
+        "channel": "CodeEmporium"
+      },
+      {
+        "title": "Let's Build GPT from Scratch",
+        "url": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
+        "channel": "Andrej Karpathy"
+      },
+      {
+        "title": "BERT, GPT, and Transformers Explained",
+        "url": "https://www.youtube.com/watch?v=-9evrZnBorA",
+        "channel": "Jay Alammar"
+      }
+    ],
+    "references": [
+      {
+        "title": "The Illustrated BERT (Jay Alammar)",
+        "url": "https://jalammar.github.io/illustrated-bert/"
+      },
+      {
+        "title": "Hugging Face Course",
+        "url": "https://huggingface.co/learn/nlp-course"
+      },
+      { "title": "BERT Paper", "url": "https://arxiv.org/abs/1810.04805" }
+    ],
+    "prerequisites": ["transformers-architecture", "text-preprocessing"],
+    "tags": ["nlp", "bert", "gpt", "transformers", "fine-tuning"]
+  },
+  {
+    "id": "huggingface",
+    "title": "Hugging Face Transformers Library",
+    "phase": 5,
+    "difficulty": "intermediate",
+    "estimatedHours": 10,
+    "description": "Hugging Face has become the central hub of the ML community — the 'GitHub of machine learning'. Their Transformers library provides a unified API to access 200,000+ pretrained models for NLP, computer vision, audio, and multimodal tasks. The pipeline() function lets you use state-of-the-art models in one line: pipeline('sentiment-analysis')('I love this product!') → {'label': 'POSITIVE', 'score': 0.998}. For fine-tuning, the Trainer API handles training loops, evaluation, mixed precision, distributed training, and logging with minimal code. The Datasets library provides access to thousands of curated datasets with efficient arrow-based storage. Tokenizers provides blazing-fast tokenization implemented in Rust. In production, companies use Hugging Face's Model Hub to share and deploy models. A startup building a customer support chatbot might: (1) browse the Hub for a suitable base model, (2) fine-tune it on their support ticket data using the Trainer API, (3) push the fine-tuned model back to the Hub, and (4) deploy it using Hugging Face Inference Endpoints or their own infrastructure. The Hugging Face ecosystem has become so central that Google, Meta, Microsoft, and hundreds of companies publish their models there. Learning this ecosystem gives you immediate access to cutting-edge AI.",
+    "whyItMatters": "Hugging Face is the most important ML ecosystem after PyTorch. It provides instant access to state-of-the-art models and makes fine-tuning accessible. The vast majority of production NLP systems today use Hugging Face models.",
+    "subtopics": [
+      "Pipelines for Quick Inference (sentiment, NER, QA, summarization)",
+      "AutoModel & AutoTokenizer (loading any model)",
+      "Fine-tuning with Trainer API",
+      "Datasets Library (loading, processing, streaming)",
+      "Tokenizers Library (fast tokenization)",
+      "Model Hub (browsing, uploading, versioning)",
+      "PEFT Library (LoRA, QLoRA for efficient fine-tuning)",
+      "Accelerate for Distributed Training",
+      "Evaluate Library (metrics computation)",
+      "Gradio for Model Demos",
+      "Inference API & Inference Endpoints"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Hugging Face Transformers Course",
+        "url": "https://www.youtube.com/watch?v=QEaBAZQCtwE",
+        "channel": "Hugging Face"
+      },
+      {
+        "title": "Fine-tuning with Hugging Face",
+        "url": "https://www.youtube.com/watch?v=GSt00_-0ncQ",
+        "channel": "Krish Naik"
+      },
+      {
+        "title": "Hugging Face Crash Course",
+        "url": "https://www.youtube.com/watch?v=QEaBAZQCtwE",
+        "channel": "AssemblyAI"
+      }
+    ],
+    "references": [
+      {
+        "title": "Hugging Face NLP Course (free)",
+        "url": "https://huggingface.co/learn/nlp-course"
+      },
+      {
+        "title": "Transformers Documentation",
+        "url": "https://huggingface.co/docs/transformers/"
+      },
+      {
+        "title": "Hugging Face Model Hub",
+        "url": "https://huggingface.co/models"
+      }
+    ],
+    "prerequisites": ["transformers-nlp", "pytorch"],
+    "tags": [
+      "nlp",
+      "huggingface",
+      "pretrained-models",
+      "fine-tuning",
+      "ecosystem"
+    ]
+  },
+  {
+    "id": "nlp-tasks",
+    "title": "Core NLP Tasks & Applications",
+    "phase": 5,
+    "difficulty": "intermediate",
+    "estimatedHours": 12,
+    "description": "NLP encompasses a wide range of practical tasks that power real-world applications. Text Classification assigns categories to documents — Gmail uses it for spam detection, Netflix for genre classification, and companies for routing customer support tickets. Sentiment Analysis determines the emotional tone of text — Amazon analyzes millions of product reviews, financial firms gauge market sentiment from news and social media, and brands monitor public perception in real-time. Named Entity Recognition (NER) identifies names, organizations, locations, dates, and domain-specific entities in text — used in legal document analysis (extracting party names, dates, amounts), healthcare (extracting drug names, dosages, conditions from clinical notes), and finance (extracting company names and monetary values from earnings reports). Machine Translation (Google Translate, DeepL) uses sequence-to-sequence transformers to translate between languages. Text Summarization condenses long documents into key points — used for news aggregation, meeting note generation, and research paper summarization. Question Answering systems (powering search engines and customer support) extract answers from context passages. Each of these tasks has standardized benchmarks (GLUE, SuperGLUE, SQuAD) and can be solved using fine-tuned transformer models.",
+    "whyItMatters": "These tasks represent the practical applications of NLP in industry. Most ML engineer job postings list text classification, NER, or sentiment analysis as required experience. Knowing how to frame and solve these tasks is essential for NLP practitioners.",
+    "subtopics": [
+      "Text Classification (single-label, multi-label)",
+      "Sentiment Analysis (binary, multi-class, aspect-based)",
+      "Named Entity Recognition (NER) (BIO tagging, spaCy, transformers)",
+      "Part-of-Speech Tagging",
+      "Machine Translation (Seq2Seq, attention, multilingual models)",
+      "Text Summarization (extractive vs abstractive)",
+      "Question Answering (extractive, generative, open-domain)",
+      "Text Generation & Language Modeling",
+      "Semantic Similarity & Sentence Encoders",
+      "Relation Extraction & Information Extraction",
+      "Topic Modeling (LDA, BERTopic)"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "NLP Tasks Explained",
+        "url": "https://www.youtube.com/watch?v=fOvTtapxa9c",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Sentiment Analysis with Python",
+        "url": "https://www.youtube.com/watch?v=QpzMWQvxXWk",
+        "channel": "Rob Mulla"
+      },
+      {
+        "title": "Named Entity Recognition Explained",
+        "url": "https://www.youtube.com/watch?v=pDHqq12w5D8",
+        "channel": "Krish Naik"
+      }
+    ],
+    "references": [
+      { "title": "GLUE Benchmark", "url": "https://gluebenchmark.com/" },
+      {
+        "title": "SQuAD Dataset",
+        "url": "https://rajpurkar.github.io/SQuAD-explorer/"
+      },
+      {
+        "title": "Kaggle NLP Competitions",
+        "url": "https://www.kaggle.com/competitions?tagIds=11208"
+      }
+    ],
+    "prerequisites": ["transformers-nlp", "text-preprocessing"],
+    "tags": ["nlp", "classification", "ner", "sentiment", "summarization"]
+  },
+  {
+    "id": "llm-prompt-engineering",
+    "title": "Prompt Engineering & Working with LLMs",
+    "phase": 5,
+    "difficulty": "intermediate",
+    "estimatedHours": 10,
+    "description": "Prompt engineering is the art of crafting inputs to large language models to get the best possible outputs. With the rise of GPT-4, Claude, Gemini, and other powerful LLMs, prompt engineering has become a critical production skill. Zero-shot prompting asks the model to perform a task without examples ('Classify this review as positive or negative: ...'). Few-shot prompting provides examples ('Here are some classified reviews: ... Now classify this one: ...'), dramatically improving performance. Chain-of-Thought (CoT) prompting asks the model to 'think step by step', which improves reasoning on math, logic, and complex tasks. Retrieval-Augmented Generation (RAG) combines LLMs with external knowledge bases — instead of relying solely on the model's training data, you retrieve relevant documents and include them in the prompt. This is how enterprise chatbots answer questions about company-specific documentation. In production at companies like Notion, Jasper, and hundreds of startups, prompt engineering determines product quality. System prompts set the model's behavior and constraints, temperature controls randomness, and structured output formatting (JSON mode) ensures parseable responses. The OpenAI API, Anthropic API, and similar interfaces are the primary ways developers integrate LLMs into applications.",
+    "whyItMatters": "LLMs are the fastest-moving area in AI. Prompt engineering skills are immediately applicable — companies are building LLM-powered products right now. Understanding RAG, system prompts, and API usage is essential for modern AI engineering roles.",
+    "subtopics": [
+      "Zero-Shot Prompting",
+      "Few-Shot Prompting",
+      "Chain-of-Thought (CoT) Prompting",
+      "System Prompts & Instruction Design",
+      "Temperature, Top-P, and Sampling Strategies",
+      "Structured Output (JSON Mode, Function Calling)",
+      "OpenAI API (Chat Completions, Embeddings)",
+      "RAG (Retrieval-Augmented Generation) Architecture",
+      "Vector Databases (Pinecone, Weaviate, ChromaDB, FAISS)",
+      "Document Chunking & Embedding Strategies",
+      "Prompt Injection & Security",
+      "Evaluation of LLM Outputs"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Prompt Engineering Full Course",
+        "url": "https://www.youtube.com/watch?v=_ZvnD96BbAo",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "RAG from Scratch",
+        "url": "https://www.youtube.com/watch?v=sVcwVQRHIc8",
+        "channel": "LangChain"
+      },
+      {
+        "title": "Building AI Apps with OpenAI API",
+        "url": "https://www.youtube.com/watch?v=uRQH2CFvedY",
+        "channel": "freeCodeCamp"
+      }
+    ],
+    "references": [
+      {
+        "title": "OpenAI Prompt Engineering Guide",
+        "url": "https://platform.openai.com/docs/guides/prompt-engineering"
+      },
+      {
+        "title": "Anthropic Prompt Engineering Guide",
+        "url": "https://docs.anthropic.com/claude/docs/prompt-engineering"
+      },
+      {
+        "title": "LangChain Documentation",
+        "url": "https://python.langchain.com/"
+      }
+    ],
+    "prerequisites": ["transformers-nlp"],
+    "tags": ["nlp", "llm", "prompt-engineering", "rag", "api"]
+  },
+  {
+    "id": "langchain-agents",
+    "title": "LangChain, LlamaIndex & AI Agents",
+    "phase": 5,
+    "difficulty": "advanced",
+    "estimatedHours": 12,
+    "description": "LangChain and LlamaIndex are frameworks that make it easy to build complex LLM-powered applications. LangChain provides abstractions for chains (sequential LLM calls), agents (LLMs that can use tools and make decisions), and memory (maintaining conversation context). An AI agent differs from a simple chatbot: it can reason about what action to take, execute tools (search the web, query a database, run code, call APIs), observe results, and iterate until the task is complete. ReAct (Reasoning + Acting) is a popular agent pattern where the LLM alternates between thinking and acting. LlamaIndex specializes in connecting LLMs to data — it provides optimized data ingestion, indexing, and querying for RAG applications. In production, a customer support agent might: (1) receive a question, (2) search the knowledge base for relevant articles, (3) check the user's account status via an API, (4) generate a personalized response citing specific policies, and (5) create a support ticket if needed. Companies like Replit (code generation), Harvey (legal AI), and many others build on these frameworks. Understanding agentic patterns — tool use, planning, reflection, multi-agent collaboration — is at the frontier of AI development.",
+    "whyItMatters": "AI agents represent the next evolution of AI applications. LangChain and LlamaIndex are the most popular frameworks for building these systems. Agentic AI is where the biggest opportunities and job openings are emerging in 2024-2025.",
+    "subtopics": [
+      "LangChain Chains (Sequential, Router, Branching)",
+      "LangChain Agents (ReAct, Function Calling, Plan-and-Execute)",
+      "Tool Use (web search, calculators, databases, APIs)",
+      "Memory Systems (Buffer, Summary, Vector Store)",
+      "LlamaIndex Document Loading & Indexing",
+      "LlamaIndex Query Engines",
+      "Multi-Agent Systems",
+      "Agent Evaluation & Debugging",
+      "LangSmith for Observability",
+      "CrewAI & AutoGen Frameworks",
+      "Building Production RAG Pipelines"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "LangChain Full Course",
+        "url": "https://www.youtube.com/watch?v=lG7Uxts9SXs",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Build AI Agents from Scratch",
+        "url": "https://www.youtube.com/watch?v=F8NKVhkZZWI",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "LlamaIndex Tutorial",
+        "url": "https://www.youtube.com/watch?v=cGurTn0ZP5A",
+        "channel": "Krish Naik"
+      }
+    ],
+    "references": [
+      {
+        "title": "LangChain Documentation",
+        "url": "https://python.langchain.com/"
+      },
+      {
+        "title": "LlamaIndex Documentation",
+        "url": "https://docs.llamaindex.ai/"
+      },
+      {
+        "title": "Building LLM Applications (Full Stack Deep Learning)",
+        "url": "https://fullstackdeeplearning.com/llm-bootcamp/"
+      }
+    ],
+    "prerequisites": ["llm-prompt-engineering", "huggingface"],
+    "tags": ["nlp", "langchain", "agents", "llamaindex", "rag"]
+  },
+  {
+    "id": "nlp-advanced-topics",
+    "title": "Advanced NLP: Multilinguality & Speech",
+    "phase": 5,
+    "difficulty": "advanced",
+    "estimatedHours": 8,
+    "description": "Advanced NLP extends beyond English text to multilingual, multimodal, and speech applications. Multilingual models like mBERT, XLM-RoBERTa, and NLLB (No Language Left Behind) handle 100+ languages, enabling companies to deploy a single model across global markets. Cross-lingual transfer allows a model trained on English labeled data to work on French or Japanese without any French/Japanese labels. Speech-to-text (Automatic Speech Recognition, ASR) with models like OpenAI's Whisper transcribes and translates audio across 99 languages — it powers meeting transcription (Otter.ai), voice assistants, and subtitle generation. Text-to-speech (TTS) with models like Bark and XTTS generates natural-sounding speech from text. Speech-to-speech translation combines ASR → translation → TTS for real-time language interpretation. Document AI processes structured documents (invoices, receipts, forms) using models like LayoutLM that understand both text content and spatial layout. Large multimodal models like GPT-4V, Gemini, and LLaVA can understand images alongside text, enabling visual question answering and image-based reasoning. These advanced capabilities are rapidly being integrated into production systems — Google Translate uses multilingual transformers, YouTube auto-generates captions with ASR, and banking apps extract information from photographed checks using Document AI.",
+    "whyItMatters": "The real world is multilingual and multimodal. Production NLP systems must handle multiple languages, speech, documents, and images. Understanding these advanced capabilities opens doors to global AI applications.",
+    "subtopics": [
+      "Multilingual Models (mBERT, XLM-RoBERTa, NLLB)",
+      "Cross-Lingual Transfer Learning",
+      "Speech Recognition (ASR) with Whisper",
+      "Text-to-Speech (TTS) Models",
+      "Document AI (LayoutLM, OCR + NLP)",
+      "Visual Question Answering (VQA)",
+      "Multimodal LLMs (GPT-4V, LLaVA, Gemini)",
+      "Conversational AI & Dialogue Systems"
+    ],
+    "youtubeVideos": [
+      {
+        "title": "OpenAI Whisper Tutorial",
+        "url": "https://www.youtube.com/watch?v=ABFqbY_rmEk",
+        "channel": "AssemblyAI"
+      },
+      {
+        "title": "Multilingual NLP with Hugging Face",
+        "url": "https://www.youtube.com/watch?v=QEaBAZQCtwE",
+        "channel": "Hugging Face"
+      }
+    ],
+    "references": [
+      {
+        "title": "Whisper (OpenAI)",
+        "url": "https://openai.com/research/whisper"
+      },
+      {
+        "title": "NLLB (Meta AI)",
+        "url": "https://ai.meta.com/research/no-language-left-behind/"
+      }
+    ],
+    "prerequisites": ["transformers-nlp", "huggingface"],
+    "tags": ["nlp", "multilingual", "speech", "multimodal", "advanced"]
+  }
+]
