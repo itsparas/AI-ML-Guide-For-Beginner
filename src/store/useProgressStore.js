@@ -22,6 +22,10 @@ const useProgressStore = create(
       mobileSidebarOpen: false,
       // ELI5 mode
       eli5Mode: false,
+      // Active track
+      activeTrack: null,
+      // DSA completed problem IDs
+      completedDsaProblems: [],
 
       // Actions
       toggleTopicComplete: (topicId) => {
@@ -81,6 +85,38 @@ const useProgressStore = create(
       },
 
       toggleEli5Mode: () => set({ eli5Mode: !get().eli5Mode }),
+
+      setActiveTrack: (trackId) => set({ activeTrack: trackId }),
+
+      // DSA actions
+      toggleDsaProblemComplete: (problemId) => {
+        const current = get().completedDsaProblems;
+        if (current.includes(problemId)) {
+          set({ completedDsaProblems: current.filter((id) => id !== problemId) });
+        } else {
+          set({ completedDsaProblems: [...current, problemId] });
+        }
+      },
+
+      isDsaProblemComplete: (problemId) => {
+        return get().completedDsaProblems.includes(problemId);
+      },
+
+      getDsaSectionProgress: (problemIds) => {
+        const completed = get().completedDsaProblems;
+        const done = problemIds.filter((id) => completed.includes(id)).length;
+        return problemIds.length > 0
+          ? Math.round((done / problemIds.length) * 100)
+          : 0;
+      },
+
+      getDsaOverallProgress: (allProblemIds) => {
+        const completed = get().completedDsaProblems;
+        const done = allProblemIds.filter((id) => completed.includes(id)).length;
+        return allProblemIds.length > 0
+          ? Math.round((done / allProblemIds.length) * 100)
+          : 0;
+      },
 
       toggleTheme: () => {
         const newTheme = get().theme === "dark" ? "light" : "dark";

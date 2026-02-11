@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -17,9 +17,13 @@ const PhasePage = () => {
   const { phaseId } = useParams();
   const phaseInfo = getPhaseInfo(parseInt(phaseId));
   const topics = getPhaseTopics(parseInt(phaseId));
-  const { completedTopics, bookmarkedTopics, getPhaseProgress, completedSubtopics } =
+  const { completedTopics, bookmarkedTopics, getPhaseProgress, completedSubtopics, setActiveTrack } =
     useProgressStore();
   const [difficultyFilter, setDifficultyFilter] = useState("all");
+
+  React.useEffect(() => {
+    setActiveTrack("aiml");
+  }, [setActiveTrack]);
 
   const topicIds = topics.map((t) => t.id);
   const progress = getPhaseProgress(topicIds);

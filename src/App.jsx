@@ -5,8 +5,12 @@ import useProgressStore from "./store/useProgressStore";
 import "./index.css";
 
 const Home = React.lazy(() => import("./pages/Home"));
+const AimlHome = React.lazy(() => import("./pages/AimlHome"));
 const PhasePage = React.lazy(() => import("./pages/PhasePage"));
 const TopicPage = React.lazy(() => import("./pages/TopicPage"));
+const DsaHome = React.lazy(() => import("./pages/DsaHome"));
+const DsaSectionPage = React.lazy(() => import("./pages/DsaSectionPage"));
+const ComingSoonPage = React.lazy(() => import("./pages/ComingSoonPage"));
 
 const LoadingFallback = () => (
   <div className="flex items-center justify-center min-h-screen">
@@ -35,9 +39,20 @@ function App() {
       <Layout>
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
+            {/* Landing */}
             <Route path="/" element={<Home />} />
+
+            {/* AI/ML Track */}
+            <Route path="/aiml" element={<AimlHome />} />
             <Route path="/phase/:phaseId" element={<PhasePage />} />
             <Route path="/topic/:topicId" element={<TopicPage />} />
+
+            {/* DSA Track */}
+            <Route path="/dsa" element={<DsaHome />} />
+            <Route path="/dsa/section/:sectionId" element={<DsaSectionPage />} />
+
+            {/* Coming Soon tracks */}
+            <Route path="/track/:trackId" element={<ComingSoonPage />} />
           </Routes>
         </Suspense>
       </Layout>

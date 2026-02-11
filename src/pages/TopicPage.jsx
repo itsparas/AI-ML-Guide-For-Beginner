@@ -25,6 +25,7 @@ const TopicPage = () => {
   const { topicId } = useParams();
   const topic = getTopicById(topicId);
   const {
+    setActiveTrack,
     toggleTopicComplete,
     isTopicComplete,
     toggleBookmark,
@@ -37,6 +38,10 @@ const TopicPage = () => {
   const complete = isTopicComplete(topicId);
   const bookmarked = isBookmarked(topicId);
   const [activeVideoIdx, setActiveVideoIdx] = useState(0);
+
+  useEffect(() => {
+    setActiveTrack("aiml");
+  }, [setActiveTrack]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
