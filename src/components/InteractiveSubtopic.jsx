@@ -100,7 +100,7 @@ const InteractiveSubtopic = ({ topicId, subtopic, index, phaseColor }) => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-4 pb-4 pt-1 ml-[4.25rem]">
+            <div className="px-4 pb-4 pt-1 ml-0 md:ml-[4.25rem]">
               {/* Quick tip */}
               <div className="flex items-start gap-2 mb-3 p-3 rounded-lg bg-primary-500/5 border border-primary-500/10">
                 <FaLightbulb className="text-amber-400 text-sm flex-shrink-0 mt-0.5" />
@@ -111,12 +111,12 @@ const InteractiveSubtopic = ({ topicId, subtopic, index, phaseColor }) => {
               </div>
 
               {/* Action links */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <a
                   href={googleSearchUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 transition-all text-surface-300 hover:text-surface-100"
+                  className="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 transition-all text-surface-300 hover:text-surface-100"
                 >
                   <FaSearch className="text-xs" /> Search Tutorial
                 </a>
@@ -124,7 +124,7 @@ const InteractiveSubtopic = ({ topicId, subtopic, index, phaseColor }) => {
                   href={youtubeSearchUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-red-500/5 hover:bg-red-500/10 border border-red-500/10 hover:border-red-500/20 transition-all text-red-300 hover:text-red-200"
+                  className="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-red-500/5 hover:bg-red-500/10 border border-red-500/10 hover:border-red-500/20 transition-all text-red-300 hover:text-red-200"
                 >
                   <span className="text-[10px]">▶</span> YouTube
                 </a>

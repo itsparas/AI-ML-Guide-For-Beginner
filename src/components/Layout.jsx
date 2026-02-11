@@ -65,13 +65,13 @@ const Layout = ({ children }) => {
               {/* Desktop hamburger — collapses desktop sidebar */}
               <button
                 onClick={toggleSidebar}
-                className="p-2 rounded-lg hover:bg-white/10 transition-colors hidden md:block"
+                className="p-2 rounded-lg hover:bg-white/10 transition-colors hidden md:flex"
                 aria-label="Toggle sidebar"
               >
                 <HiMenuAlt2 className="text-xl" />
               </button>
-              <div className="hidden sm:block">
-                <h1 className="text-base font-semibold gradient-text">
+              <div className="hidden sm:flex items-center">
+                <h1 className="text-base font-semibold gradient-text leading-none">
                   AI/ML Mastery Roadmap
                 </h1>
               </div>
@@ -95,7 +95,7 @@ const Layout = ({ children }) => {
               {/* Theme toggle */}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+                className="p-2 rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center"
                 aria-label="Toggle theme"
               >
                 {theme === "dark" ? (
