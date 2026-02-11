@@ -10,6 +10,7 @@ import {
   FaArrowRight,
   FaProjectDiagram,
   FaList,
+  FaListUl,
 } from "react-icons/fa";
 import {
   phasesWithTopics,
@@ -30,6 +31,7 @@ const Home = () => {
     getPhaseProgress,
     getCurrentPhase,
     getIncompleteTopics,
+    completedSubtopics,
   } = useProgressStore();
   const navigate = useNavigate();
   const [quote] = useState(() => getRandomQuote());
@@ -39,6 +41,8 @@ const Home = () => {
   const currentPhaseIdx = getCurrentPhase(phasesWithTopics);
   const completedCount = completedTopics.length;
   const totalTopics = allTopics.length;
+  const totalSubtopics = allTopics.reduce((sum, t) => sum + t.subtopics.length, 0);
+  const completedSubCount = Object.values(completedSubtopics).reduce((sum, arr) => sum + arr.length, 0);
 
   const handleSurpriseMe = () => {
     const incomplete = getIncompleteTopics(allTopics);
@@ -58,6 +62,11 @@ const Home = () => {
       icon: <FaCheckCircle className="text-emerald-400" />,
       value: completedCount,
       label: "Completed",
+    },
+    {
+      icon: <FaListUl className="text-cyan-400" />,
+      value: `${completedSubCount}/${totalSubtopics}`,
+      label: "Subtopics",
     },
     {
       icon: <FaClock className="text-amber-400" />,
@@ -162,13 +171,13 @@ const Home = () => {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="grid grid-cols-2 md:grid-cols-4 gap-3"
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3"
       >
         {stats.map((stat, i) => (
           <div key={i} className="glass rounded-2xl p-4 text-center card-glow">
             <div className="text-2xl mb-2">{stat.icon}</div>
             <div className="text-2xl font-bold">{stat.value}</div>
-            <div className="text-xs text-surface-500">{stat.label}</div>
+            <div className="text-sm text-surface-500">{stat.label}</div>
           </div>
         ))}
       </motion.section>
@@ -315,15 +324,15 @@ const Home = () => {
                             {phase.title}
                           </h3>
                           {isCurrent && (
-                            <span className="flex-shrink-0 text-[10px] px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-400 font-semibold">
+                            <span className="flex-shrink-0 text-xs px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-400 font-semibold">
                               CURRENT
                             </span>
                           )}
                         </div>
-                        <p className="text-xs text-surface-400 line-clamp-2 mb-2">
+                        <p className="text-sm text-surface-400 line-clamp-2 mb-2">
                           {phase.description}
                         </p>
-                        <div className="flex items-center gap-4 text-xs text-surface-500">
+                        <div className="flex items-center gap-4 text-sm text-surface-500">
                           <span>{phase.topics.length} topics</span>
                           <span>~{phase.estimatedWeeks} weeks</span>
                           <span

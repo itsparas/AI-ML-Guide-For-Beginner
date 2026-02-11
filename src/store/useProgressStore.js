@@ -8,12 +8,20 @@ const useProgressStore = create(
       completedTopics: [],
       // Bookmarked topics
       bookmarkedTopics: [],
+      // Completed subtopics: { topicId: [subtopicIndex, ...] }
+      completedSubtopics: {},
+      // Expanded subtopics (UI state, not persisted but we keep it here for simplicity)
+      expandedSubtopics: {},
       // Theme
       theme: "dark",
       // Onboarding seen
       onboardingSeen: false,
       // Sidebar collapsed
       sidebarCollapsed: false,
+      // Mobile sidebar open
+      mobileSidebarOpen: false,
+      // ELI5 mode
+      eli5Mode: false,
 
       // Actions
       toggleTopicComplete: (topicId) => {
@@ -42,6 +50,38 @@ const useProgressStore = create(
         return get().bookmarkedTopics.includes(topicId);
       },
 
+      toggleSubtopicComplete: (topicId, subtopicIdx) => {
+        const current = get().completedSubtopics;
+        const topicSubs = current[topicId] || [];
+        const updated = topicSubs.includes(subtopicIdx)
+          ? topicSubs.filter((i) => i !== subtopicIdx)
+          : [...topicSubs, subtopicIdx];
+        set({ completedSubtopics: { ...current, [topicId]: updated } });
+      },
+
+      isSubtopicComplete: (topicId, subtopicIdx) => {
+        const subs = get().completedSubtopics[topicId] || [];
+        return subs.includes(subtopicIdx);
+      },
+
+      getSubtopicProgress: (topicId, totalSubtopics) => {
+        const subs = get().completedSubtopics[topicId] || [];
+        return totalSubtopics > 0 ? Math.round((subs.length / totalSubtopics) * 100) : 0;
+      },
+
+      toggleExpandedSubtopic: (topicId, subtopicIdx) => {
+        const key = `${topicId}-${subtopicIdx}`;
+        const current = get().expandedSubtopics;
+        set({ expandedSubtopics: { ...current, [key]: !current[key] } });
+      },
+
+      isSubtopicExpanded: (topicId, subtopicIdx) => {
+        const key = `${topicId}-${subtopicIdx}`;
+        return get().expandedSubtopics[key] || false;
+      },
+
+      toggleEli5Mode: () => set({ eli5Mode: !get().eli5Mode }),
+
       toggleTheme: () => {
         const newTheme = get().theme === "dark" ? "light" : "dark";
         set({ theme: newTheme });
@@ -57,6 +97,9 @@ const useProgressStore = create(
       setOnboardingSeen: () => set({ onboardingSeen: true }),
 
       toggleSidebar: () => set({ sidebarCollapsed: !get().sidebarCollapsed }),
+
+      toggleMobileSidebar: () => set({ mobileSidebarOpen: !get().mobileSidebarOpen }),
+      closeMobileSidebar: () => set({ mobileSidebarOpen: false }),
 
       // Computed
       getPhaseProgress: (phaseTopicIds) => {

@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 import SearchModal from "./SearchModal";
 import OnboardingModal from "./OnboardingModal";
 import useProgressStore from "../store/useProgressStore";
-import { FaBars, FaSun, FaMoon } from "react-icons/fa";
+import { HiMenuAlt2, HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
 import { allTopicIds } from "../utils/dataUtils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -13,6 +13,7 @@ const Layout = ({ children }) => {
     toggleTheme,
     sidebarCollapsed,
     toggleSidebar,
+    toggleMobileSidebar,
     onboardingSeen,
     getOverallProgress,
   } = useProgressStore();
@@ -43,7 +44,7 @@ const Layout = ({ children }) => {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <Sidebar collapsed={sidebarCollapsed} onToggle={toggleSidebar} />
+      <Sidebar collapsed={sidebarCollapsed} />
 
       {/* Main content */}
       <div
@@ -53,22 +54,24 @@ const Layout = ({ children }) => {
         <header className="sticky top-0 z-40 glass border-b border-white/5">
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center gap-3">
+              {/* Mobile hamburger — opens mobile sidebar drawer */}
               <button
-                onClick={toggleSidebar}
+                onClick={toggleMobileSidebar}
                 className="p-2 rounded-lg hover:bg-white/10 transition-colors md:hidden"
-                aria-label="Toggle sidebar"
+                aria-label="Open mobile menu"
               >
-                <FaBars className="text-lg" />
+                <HiMenuAlt2 className="text-xl" />
               </button>
+              {/* Desktop hamburger — collapses desktop sidebar */}
               <button
                 onClick={toggleSidebar}
                 className="p-2 rounded-lg hover:bg-white/10 transition-colors hidden md:block"
                 aria-label="Toggle sidebar"
               >
-                <FaBars className="text-lg" />
+                <HiMenuAlt2 className="text-xl" />
               </button>
               <div className="hidden sm:block">
-                <h1 className="text-sm font-semibold gradient-text">
+                <h1 className="text-base font-semibold gradient-text">
                   AI/ML Mastery Roadmap
                 </h1>
               </div>
@@ -111,26 +114,11 @@ const Layout = ({ children }) => {
                 aria-label="Toggle theme"
               >
                 {theme === "dark" ? (
-                  <FaSun className="text-amber-400" />
+                  <HiOutlineSun className="text-xl text-amber-400" />
                 ) : (
-                  <FaMoon className="text-primary-400" />
+                  <HiOutlineMoon className="text-xl text-primary-400" />
                 )}
               </button>
-            </div>
-          </div>
-
-          {/* Mobile progress bar */}
-          <div className="sm:hidden px-4 pb-2">
-            <div className="flex items-center gap-2 text-xs text-surface-400">
-              <div className="flex-1 h-1 bg-surface-700 rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.5 }}
-                />
-              </div>
-              <span>{progress}%</span>
             </div>
           </div>
         </header>
