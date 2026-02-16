@@ -1,9 +1,4 @@
-import {
-  FaBrain,
-  FaCode,
-  FaServer,
-  FaLaptopCode,
-} from "react-icons/fa";
+import { FaBrain, FaCode, FaServer, FaLaptopCode } from "react-icons/fa";
 
 export const tracks = [
   {
@@ -51,7 +46,8 @@ export const tracks = [
         id: "hld",
         name: "High Level Design",
         shortName: "HLD",
-        description: "Architecture patterns, scalability, and distributed systems",
+        description:
+          "Architecture patterns, scalability, and distributed systems",
         color: "#f59e0b",
         expectedTopics: [
           "Scaling Fundamentals",
@@ -70,7 +66,8 @@ export const tracks = [
         id: "lld",
         name: "Low Level Design",
         shortName: "LLD",
-        description: "Design patterns, SOLID principles, and object-oriented design",
+        description:
+          "Design patterns, SOLID principles, and object-oriented design",
         color: "#fb923c",
         expectedTopics: [
           "SOLID Principles",
@@ -87,51 +84,23 @@ export const tracks = [
   },
   {
     id: "development",
-    name: "Development",
+    name: "Web Development",
     shortName: "Dev",
     description:
-      "Full-stack development with modern languages, frameworks, and best practices",
+      "Master HTML5, CSS3, and JavaScript — build stunning, interactive websites from scratch",
     Icon: FaLaptopCode,
     color: "#a78bfa",
     gradient: "from-violet-500 to-fuchsia-500",
-    status: "coming-soon",
+    status: "active",
     badge: "DEV",
-    basePath: "/track/development",
-    subtracks: [
-      {
-        id: "javascript",
-        name: "JavaScript / TypeScript",
-        shortName: "JS/TS",
-        color: "#facc15",
-        frameworks: ["React", "Next.js", "Node.js", "Express"],
-      },
-      {
-        id: "python",
-        name: "Python",
-        shortName: "Python",
-        color: "#3b82f6",
-        frameworks: ["Django", "Flask", "FastAPI"],
-      },
-      {
-        id: "java",
-        name: "Java",
-        shortName: "Java",
-        color: "#ef4444",
-        frameworks: ["Spring Boot", "Hibernate"],
-      },
-      {
-        id: "go",
-        name: "Go",
-        shortName: "Go",
-        color: "#06b6d4",
-        frameworks: ["Gin", "Fiber", "Echo"],
-      },
-    ],
+    basePath: "/dev",
+    subtracks: null,
   },
 ];
 
-export const getTrackById = (trackId) =>
-  tracks.find((t) => t.id === trackId);
+export const getTrackById = (trackId) => tracks.find((t) => t.id === trackId);
 
 export const activeTrackData = tracks.find((t) => t.status === "active");
-export const comingSoonTracks = tracks.filter((t) => t.status === "coming-soon");
+export const comingSoonTracks = tracks.filter(
+  (t) => t.status === "coming-soon",
+);

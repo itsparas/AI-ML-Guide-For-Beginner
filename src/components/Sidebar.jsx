@@ -22,6 +22,7 @@ import {
 } from "react-icons/fa";
 import { TbMathFunction } from "react-icons/tb";
 import { phasesWithTopics } from "../utils/dataUtils";
+import { devPhasesWithTopics, allDevTopics } from "../data/devUtils";
 import {
   dsaSections,
   dsaSectionIcons,
@@ -41,6 +42,13 @@ const phaseIconMap = {
   8: FaDocker,
   9: FaRocket,
   10: FaLaptopCode,
+};
+
+import { SiHtml5, SiCss3, SiJavascript } from "react-icons/si";
+const devPhaseIconMap = {
+  0: SiHtml5,
+  1: SiCss3,
+  2: SiJavascript,
 };
 
 const Sidebar = ({ collapsed }) => {
@@ -461,10 +469,249 @@ const Sidebar = ({ collapsed }) => {
     </>
   );
 
+  // ── Development Track Navigation ──
+  const devNavigation = (
+    <>
+      {/* Header */}
+      <div
+        className={`border-b border-white/5 ${collapsed ? "p-2 pb-3" : "px-4 py-5"}`}
+      >
+        <Link
+          to="/dev"
+          className={`flex items-center gap-3 ${collapsed ? "justify-center" : ""}`}
+          onClick={handleLinkClick}
+        >
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-white font-bold text-[10px] shadow-lg shadow-violet-500/20 flex-shrink-0">
+            DEV
+          </div>
+          {!collapsed && (
+            <div>
+              <h2
+                className="text-sm font-bold leading-tight mb-1"
+                style={{ color: "#a78bfa" }}
+              >
+                Web Dev Roadmap
+              </h2>
+              <p className="text-[11px] text-surface-500 leading-tight">
+                HTML • CSS • JavaScript
+              </p>
+            </div>
+          )}
+        </Link>
+      </div>
+
+      {/* Quick links */}
+      {!collapsed && (
+        <div className="px-3 pt-2.5 pb-1 flex gap-1.5">
+          <Link
+            to="/dev"
+            onClick={handleLinkClick}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+              location.pathname === "/dev"
+                ? "bg-violet-500/15 text-violet-400"
+                : "text-surface-400 hover:bg-white/5 hover:text-surface-200"
+            }`}
+          >
+            <FaHome className="text-[10px]" /> Home
+          </Link>
+          <Link
+            to="/"
+            onClick={handleLinkClick}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-surface-400 hover:bg-white/5 hover:text-surface-200 transition-colors"
+          >
+            <FaArrowLeft className="text-[10px]" /> Tracks
+          </Link>
+        </div>
+      )}
+
+      {/* Section label */}
+      {!collapsed && (
+        <div className="px-4 pt-1.5 pb-1.5">
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-surface-500">
+            Phases
+          </span>
+        </div>
+      )}
+
+      {/* Phase list */}
+      <div className="flex-1 overflow-y-auto pb-4 scrollbar-thin">
+        {devPhasesWithTopics.map((phase) => {
+          const topicIds = phase.topics.map((t) => t.id);
+          const progress = getPhaseProgress(topicIds);
+          const isExpanded = expandedPhase === `dev-${phase.id}`;
+          const isActivePhase = location.pathname === `/dev/phase/${phase.id}`;
+          const isComplete = progress === 100;
+          const PhaseIcon = devPhaseIconMap[phase.id];
+
+          return (
+            <div
+              key={`dev-${phase.id}`}
+              className="mb-0.5"
+              style={{ overflow: "visible" }}
+            >
+              {!collapsed ? (
+                <button
+                  onClick={() =>
+                    setExpandedPhase(
+                      expandedPhase === `dev-${phase.id}`
+                        ? null
+                        : `dev-${phase.id}`,
+                    )
+                  }
+                  className={`w-full flex items-center gap-2.5 px-3 py-2.5 text-left transition-all duration-200 hover:bg-white/5 ${
+                    isActivePhase ? "bg-white/[0.08] border-r-2" : ""
+                  }`}
+                  style={isActivePhase ? { borderRightColor: phase.color } : {}}
+                >
+                  <div
+                    className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                      isComplete ? "bg-emerald-500/20 text-emerald-400" : ""
+                    }`}
+                    style={
+                      !isComplete
+                        ? {
+                            backgroundColor: `${phase.color}18`,
+                            color: phase.color,
+                          }
+                        : {}
+                    }
+                  >
+                    {isComplete ? (
+                      <FaCheck className="text-[10px]" />
+                    ) : PhaseIcon ? (
+                      <PhaseIcon className="text-sm" />
+                    ) : (
+                      <span className="text-[11px] font-bold">{phase.id}</span>
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <span className="block text-[13px] font-medium truncate leading-tight">
+                      {phase.title}
+                    </span>
+                  </div>
+                  <div className="flex-shrink-0">
+                    {isExpanded ? (
+                      <FaChevronDown className="text-[9px] text-surface-500" />
+                    ) : (
+                      <FaChevronRight className="text-[9px] text-surface-500" />
+                    )}
+                  </div>
+                </button>
+              ) : (
+                <Link
+                  to={`/dev/phase/${phase.id}`}
+                  onClick={handleLinkClick}
+                  className="flex items-center justify-center py-2.5 px-1.5 relative group transition-all duration-200 hover:bg-white/5"
+                  style={
+                    isActivePhase
+                      ? { backgroundColor: "rgba(255,255,255,0.08)" }
+                      : {}
+                  }
+                >
+                  <div
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200 group-hover:scale-110 group-hover:shadow-lg ${
+                      isComplete
+                        ? "bg-emerald-500/20 text-emerald-400"
+                        : isActivePhase
+                          ? "ring-2 ring-offset-1 ring-offset-surface-900"
+                          : ""
+                    }`}
+                    style={{
+                      backgroundColor: isComplete
+                        ? undefined
+                        : `${phase.color}18`,
+                      color: isComplete ? undefined : phase.color,
+                    }}
+                  >
+                    {isComplete ? (
+                      <FaCheck className="text-sm" />
+                    ) : PhaseIcon ? (
+                      <PhaseIcon className="text-base" />
+                    ) : (
+                      <span className="text-xs font-bold">{phase.id}</span>
+                    )}
+                  </div>
+                  <span className="fixed left-20 px-3 py-2 rounded-lg bg-surface-800/95 backdrop-blur-sm border border-white/20 text-sm font-medium text-surface-100 whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[9999] shadow-xl">
+                    {phase.title}
+                  </span>
+                </Link>
+              )}
+
+              <AnimatePresence>
+                {isExpanded && !collapsed && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="py-1">
+                      {phase.topics.map((topic) => {
+                        const isTopicComplete = completedTopics.includes(
+                          topic.id,
+                        );
+                        const isActive =
+                          location.pathname === `/dev/topic/${topic.id}`;
+                        return (
+                          <Link
+                            key={topic.id}
+                            to={`/dev/topic/${topic.id}`}
+                            onClick={handleLinkClick}
+                            className={`flex items-center gap-2.5 pl-11 pr-3 py-2 text-[13px] transition-all duration-200 hover:bg-white/5 ${
+                              isActive
+                                ? "bg-white/[0.08] text-violet-400 font-medium"
+                                : "text-surface-400 hover:text-surface-200"
+                            }`}
+                          >
+                            {isTopicComplete ? (
+                              <FaCheck className="text-emerald-400 text-[9px] flex-shrink-0" />
+                            ) : (
+                              <span
+                                className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                                style={{
+                                  backgroundColor: isActive
+                                    ? "#a78bfa"
+                                    : "#475569",
+                                }}
+                              />
+                            )}
+                            <span className="truncate">{topic.title}</span>
+                          </Link>
+                        );
+                      })}
+                      <Link
+                        to={`/dev/phase/${phase.id}`}
+                        onClick={handleLinkClick}
+                        className="flex items-center gap-2 pl-11 pr-3 py-2 text-xs text-violet-400 hover:bg-white/5 font-medium"
+                      >
+                        View all →
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Footer */}
+      {!collapsed && (
+        <div className="p-3 border-t border-white/5">
+          <div className="text-[10px] text-surface-600 text-center">
+            {devPhasesWithTopics.length} phases • {allDevTopics.length} topics
+          </div>
+        </div>
+      )}
+    </>
+  );
+
   // Pick content based on active track
   const getSidebarContent = () => {
     if (activeTrack === "aiml") return aimlNavigation;
     if (activeTrack === "dsa") return dsaNavigation;
+    if (activeTrack === "development") return devNavigation;
     return null;
   };
 

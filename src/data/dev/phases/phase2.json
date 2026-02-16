@@ -1,0 +1,669 @@
+[
+  {
+    "id": "js-fundamentals",
+    "title": "JavaScript Fundamentals",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 5,
+    "description": "JavaScript is the programming language of the web. While HTML provides structure and CSS handles styling, JavaScript makes web pages interactive and dynamic. It's the only programming language that runs natively in every web browser. JavaScript is also used for back-end development (Node.js), mobile apps (React Native), desktop apps (Electron), and even AI/ML applications. The fundamentals start with variables: containers that store data. Modern JS uses 'let' (reassignable) and 'const' (fixed value) — avoid 'var' as it has confusing scoping behavior. JavaScript has several data types: strings (text in quotes), numbers (integers and decimals), booleans (true/false), null (intentional absence), undefined (not yet assigned), arrays (ordered lists), and objects (key-value collections). Operators perform operations: arithmetic (+, -, *, /, %), comparison (===, !==, >, <), and logical (&&, ||, !). Always use strict equality '===' instead of loose equality '==', which can produce surprising results due to type coercion. Template literals (backtick strings) allow embedding expressions: `Hello, ${name}!`. typeof checks a value's data type. Understanding these fundamentals is essential — every advanced concept builds on variables, types, and operators.",
+    "whyItMatters": "JavaScript is the world's most widely used programming language. Understanding its fundamentals is the gateway to front-end development, back-end development, mobile apps, and more. Every React, Vue, Angular, and Node.js application is built on these exact fundamentals.",
+    "eli5": "JavaScript is like a magic wand for web pages. HTML builds the page, CSS makes it pretty, and JavaScript makes it DO things — animate, respond to clicks, fetch data, and more. Variables are like labeled jars where you store things. A variable called 'score' might hold the number 100. 'const' means the jar is sealed shut (can't change), 'let' means you can swap what's inside. Data types are the different things you can put in jars: words (strings), numbers, yes/no (booleans), and lists (arrays).",
+    "subtopics": [
+      "What is JavaScript? Its Role in Web Development",
+      "Adding JS to HTML: <script>, defer, external files",
+      "console.log() — Your First Debugging Tool",
+      "Variables: let, const, var (and why to avoid var)",
+      "Data Types: String, Number, Boolean, null, undefined",
+      "Type Coercion and typeof Operator",
+      "Arithmetic Operators (+, -, *, /, %, **)",
+      "String Concatenation and Template Literals",
+      "Comparison: === vs == (strict vs loose equality)",
+      "Logical Operators: && (AND), || (OR), ! (NOT)",
+      "Comments: // single-line and /* multi-line */"
+    ],
+    "codeExamples": [
+      {
+        "title": "Variables, Types & Operators",
+        "language": "javascript",
+        "code": "// Variables — use const by default, let when you need to reassign\nconst name = \"Alice\";       // String (text)\nconst age = 25;              // Number\nconst isStudent = true;      // Boolean\nconst hobbies = [\"coding\", \"reading\", \"gaming\"]; // Array\n\nlet score = 0;               // let: value will change\nscore = score + 10;          // Now: 10\nscore += 5;                  // Shorthand: Now 15\n\n// Template literals — embed expressions in strings\nconsole.log(`Hello, ${name}! You are ${age} years old.`);\n// Output: \"Hello, Alice! You are 25 years old.\"\n\n// typeof — check data type\nconsole.log(typeof name);     // \"string\"\nconsole.log(typeof age);      // \"number\"\nconsole.log(typeof isStudent); // \"boolean\"\n\n// Strict equality (===) vs Loose equality (==)\nconsole.log(5 === \"5\");  // false (different types)\nconsole.log(5 == \"5\");   // true  (JS converts string to number — confusing!)\n// ALWAYS use === to avoid surprises",
+        "explanation": "Use 'const' for values that don't change, 'let' for values that do. Template literals (backtick strings) are cleaner than string concatenation. Always use === for comparison to avoid type coercion bugs."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "JavaScript Tutorial for Beginners",
+        "url": "https://www.youtube.com/watch?v=W6NZfCO5SIk",
+        "channel": "Programming with Mosh"
+      },
+      {
+        "title": "JavaScript Crash Course",
+        "url": "https://www.youtube.com/watch?v=hdI2bqOjy3c",
+        "channel": "Traversy Media"
+      },
+      {
+        "title": "100+ JavaScript Concepts You Need to Know",
+        "url": "https://www.youtube.com/watch?v=lkIFF4maKMU",
+        "channel": "Fireship"
+      }
+    ],
+    "references": [
+      {
+        "title": "JavaScript First Steps — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps"
+      },
+      {
+        "title": "The Modern JavaScript Tutorial",
+        "url": "https://javascript.info/"
+      },
+      {
+        "title": "JavaScript Reference — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
+      }
+    ],
+    "prerequisites": ["html-document-structure"],
+    "tags": [
+      "javascript",
+      "variables",
+      "data-types",
+      "operators",
+      "fundamentals"
+    ]
+  },
+  {
+    "id": "js-control-flow",
+    "title": "Control Flow",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 4,
+    "description": "Control flow determines the order in which code executes. By default, JavaScript runs code top-to-bottom, line by line. But real programs need to make decisions (if this, do that) and repeat actions (loop through items). Conditional statements let your code branch: 'if' checks a condition and runs code if true, 'else if' adds additional checks, and 'else' handles the fallback. The switch statement is cleaner than multiple if/else when comparing one value against many options. The ternary operator (condition ? valueIfTrue : valueIfFalse) is a shorthand for simple if/else. Loops repeat code: 'for' loops run a fixed number of times, 'while' loops run while a condition is true, 'do...while' always runs at least once. 'for...of' iterates over arrays, strings, and other iterables. 'for...in' iterates over object keys. The 'break' statement exits a loop early, and 'continue' skips to the next iteration. Understanding truthy and falsy values is crucial: 0, '', null, undefined, NaN, and false are 'falsy' (treated as false in conditions), everything else is 'truthy'. Short-circuit evaluation with && and || leverages this for concise code patterns.",
+    "whyItMatters": "Every program makes decisions and repeats tasks. Control flow is the backbone of programming logic. Form validation, game logic, data processing, API response handling — all require conditionals and loops. Understanding truthy/falsy values prevents common bugs in JavaScript.",
+    "eli5": "Control flow is like a choose-your-own-adventure book. At certain pages, you have to make a choice: 'If you want to fight the dragon, turn to page 20. If you want to run away, turn to page 35.' That's an if/else statement! Loops are like being asked to write 'I will pay attention' on the board 100 times — instead of writing it manually, a loop says 'repeat this 100 times.' Break is like the teacher saying 'okay, stop early.'",
+    "subtopics": [
+      "if, else if, else Statements",
+      "Comparison Operators in Conditions",
+      "Truthy and Falsy Values",
+      "Ternary Operator (condition ? a : b)",
+      "switch Statement for Multiple Cases",
+      "for Loop (initialization; condition; increment)",
+      "while and do...while Loops",
+      "for...of Loop (arrays, strings)",
+      "for...in Loop (object keys)",
+      "break and continue Statements",
+      "Short-Circuit Evaluation (&& and ||)",
+      "Nullish Coalescing (??) and Optional Chaining (?.)"
+    ],
+    "codeExamples": [
+      {
+        "title": "Conditionals & Loops",
+        "language": "javascript",
+        "code": "// If / else if / else\nconst score = 85;\nlet grade;\n\nif (score >= 90) {\n  grade = \"A\";\n} else if (score >= 80) {\n  grade = \"B\";\n} else if (score >= 70) {\n  grade = \"C\";\n} else {\n  grade = \"F\";\n}\nconsole.log(`Grade: ${grade}`); // \"Grade: B\"\n\n// Ternary — shorthand for simple if/else\nconst status = score >= 60 ? \"Pass\" : \"Fail\";\n\n// For loop\nfor (let i = 1; i <= 5; i++) {\n  console.log(`Count: ${i}`);\n}\n\n// For...of — iterate over an array\nconst fruits = [\"apple\", \"banana\", \"cherry\"];\nfor (const fruit of fruits) {\n  console.log(fruit);\n}\n\n// Truthy / Falsy\nconst username = \"\";\nif (username) {\n  console.log(`Hello, ${username}`);\n} else {\n  console.log(\"Please enter a username\"); // This runs (\"\" is falsy)\n}\n\n// Nullish coalescing\nconst theme = null;\nconst activeTheme = theme ?? \"dark\"; // \"dark\" (fallback for null/undefined)",
+        "explanation": "The ternary operator is perfect for simple if/else. for...of is the cleanest way to loop arrays. Falsy values (0, '', null, undefined, NaN, false) are treated as false in conditions. ?? provides defaults for null/undefined specifically."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "JavaScript If Else & Loops",
+        "url": "https://www.youtube.com/watch?v=IsG4Xd6LlsM",
+        "channel": "Programming with Mosh"
+      },
+      {
+        "title": "JavaScript Loops",
+        "url": "https://www.youtube.com/watch?v=s9wW2PpJsmQ",
+        "channel": "Web Dev Simplified"
+      }
+    ],
+    "references": [
+      {
+        "title": "Control Flow — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
+      },
+      {
+        "title": "Loops and Iteration — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
+      }
+    ],
+    "prerequisites": ["js-fundamentals"],
+    "tags": ["javascript", "if-else", "loops", "control-flow", "ternary"]
+  },
+  {
+    "id": "js-functions-scope",
+    "title": "Functions & Scope",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 5,
+    "description": "Functions are the building blocks of JavaScript programs. A function is a reusable block of code that performs a specific task. Instead of writing the same code multiple times, you define a function once and call it whenever needed. JavaScript supports multiple function syntaxes: function declarations (function add(a, b) { return a + b; }), function expressions (const add = function(a, b) { ... }), and arrow functions (const add = (a, b) => a + b). Arrow functions (=>) are the modern, preferred syntax — they're shorter and handle 'this' differently (they inherit 'this' from their enclosing scope). Functions can accept parameters (inputs) and return values (outputs). Default parameters provide fallback values: function greet(name = 'World'). Rest parameters (...args) collect multiple arguments into an array. Scope determines where variables are accessible: global scope (accessible everywhere), function scope (inside a function), and block scope (inside { }). let and const are block-scoped, while var is function-scoped — another reason to avoid var. Closures occur when a function 'remembers' variables from its outer scope even after the outer function has returned. Closures are used extensively in JavaScript patterns: callbacks, event handlers, data privacy, and module patterns. Higher-order functions (functions that accept or return other functions) are fundamental to JavaScript's functional programming capabilities.",
+    "whyItMatters": "Functions are the primary organizational unit in JavaScript. Every event handler, API call, component, and utility is a function. Understanding scope prevents variable collision bugs. Closures power React hooks, event handlers, and module patterns. Arrow functions are used in every modern JS project.",
+    "eli5": "A function is like a recipe. It has a name ('makePancakes'), ingredients (parameters: flour, eggs, milk), steps (the code inside), and a result (return value: pancakes!). You write the recipe once, then whenever you want pancakes, you just say 'makePancakes()' instead of repeating all the steps. Scope is like rooms in a house — a variable declared in the kitchen (function) can't be seen from the bedroom (another function), but a variable in the hallway (global) can be seen from anywhere.",
+    "subtopics": [
+      "Function Declarations vs Expressions",
+      "Arrow Functions (=>) — Modern Syntax",
+      "Parameters, Arguments & Default Parameters",
+      "Return Values",
+      "Rest Parameters (...args)",
+      "Scope: Global, Function, Block",
+      "let/const Block Scoping vs var Function Scoping",
+      "Hoisting (function declarations vs expressions)",
+      "Closures — Functions Remembering Their Scope",
+      "Callback Functions",
+      "Higher-Order Functions",
+      "IIFE (Immediately Invoked Function Expression)"
+    ],
+    "codeExamples": [
+      {
+        "title": "Functions — Declarations, Expressions & Arrows",
+        "language": "javascript",
+        "code": "// Function Declaration\nfunction add(a, b) {\n  return a + b;\n}\n\n// Arrow Function (modern, preferred)\nconst multiply = (a, b) => a * b;\n\n// Arrow with single parameter (parentheses optional)\nconst double = n => n * 2;\n\n// Default parameters\nconst greet = (name = \"World\") => `Hello, ${name}!`;\nconsole.log(greet());         // \"Hello, World!\"\nconsole.log(greet(\"Alice\"));  // \"Hello, Alice!\"\n\n// Higher-order function (takes a function as argument)\nconst numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers.map(n => n * 2);    // [2, 4, 6, 8, 10]\nconst evens = numbers.filter(n => n % 2 === 0); // [2, 4]\nconst sum = numbers.reduce((acc, n) => acc + n, 0); // 15\n\n// Closure — function remembers its scope\nfunction createCounter() {\n  let count = 0;  // \"private\" variable\n  return {\n    increment: () => ++count,\n    getCount: () => count,\n  };\n}\nconst counter = createCounter();\ncounter.increment(); // 1\ncounter.increment(); // 2\nconsole.log(counter.getCount()); // 2",
+        "explanation": "Arrow functions are shorter and preferred in modern JS. map/filter/reduce are higher-order functions (they take a function as input). The closure in createCounter 'remembers' the count variable even after createCounter finishes."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "JavaScript Functions",
+        "url": "https://www.youtube.com/watch?v=FOD408a0EzU",
+        "channel": "Programming with Mosh"
+      },
+      {
+        "title": "JavaScript Arrow Functions",
+        "url": "https://www.youtube.com/watch?v=h33Srr5J9nY",
+        "channel": "Web Dev Simplified"
+      },
+      {
+        "title": "Closures Explained",
+        "url": "https://www.youtube.com/watch?v=aHrvi2ECN_k",
+        "channel": "Fireship"
+      }
+    ],
+    "references": [
+      {
+        "title": "Functions — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
+      },
+      {
+        "title": "Closures — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
+      },
+      {
+        "title": "Arrow Functions — javascript.info",
+        "url": "https://javascript.info/arrow-functions"
+      }
+    ],
+    "prerequisites": ["js-control-flow"],
+    "tags": ["javascript", "functions", "arrow-functions", "scope", "closures"]
+  },
+  {
+    "id": "js-arrays-objects",
+    "title": "Arrays & Objects",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 5,
+    "description": "Arrays and objects are the two primary data structures in JavaScript. Arrays are ordered collections accessed by numeric index (starting at 0). They're perfect for lists, queues, and sequences. JavaScript arrays come with incredibly powerful built-in methods: push/pop (add/remove from end), unshift/shift (add/remove from start), splice (insert/remove at any position), slice (extract a portion), includes (check membership), indexOf/find/findIndex (search), sort and reverse (reorder). The functional array methods (map, filter, reduce, forEach, some, every, flat, flatMap) are used constantly in modern JavaScript, especially with React. Objects are collections of key-value pairs (properties). They represent real-world entities: a user object might have name, email, age properties. Access properties with dot notation (user.name) or bracket notation (user['name']). Object destructuring ({ name, age } = user) extracts multiple properties in one line. The spread operator (...) copies and merges arrays/objects: [...arr1, ...arr2] and { ...obj1, ...obj2 }. Rest parameters collect remaining items. JSON (JavaScript Object Notation) is the standard data format for APIs — it's essentially JavaScript objects as text. Understanding arrays and objects deeply is critical because 90% of JavaScript programming involves manipulating these data structures.",
+    "whyItMatters": "Arrays and objects are the data containers used in every JavaScript application. API responses are objects/arrays. React state is objects/arrays. Database queries return arrays of objects. The array methods (map, filter, reduce) are used dozens of times in any real project. Destructuring and spread are in every line of modern code.",
+    "eli5": "An array is like a numbered list: item 0 is 'apple', item 1 is 'banana', item 2 is 'cherry.' You can add items, remove items, sort them, or find specific ones. An object is like a contact card: it has labeled slots (name: 'Alice', age: 25, email: 'alice@mail.com'). Instead of remembering that the name is at position 0, you just ask for the 'name' property. JSON is how computers send these contact cards to each other over the internet.",
+    "subtopics": [
+      "Creating and Accessing Arrays",
+      "Array Methods: push, pop, shift, unshift, splice, slice",
+      "map() — Transform Every Element",
+      "filter() — Keep Elements That Match a Condition",
+      "reduce() — Accumulate to a Single Value",
+      "find(), findIndex(), includes(), indexOf()",
+      "sort(), reverse(), flat(), flatMap()",
+      "forEach() vs for...of",
+      "Creating and Accessing Objects",
+      "Object Destructuring ({ name, age } = user)",
+      "Array Destructuring ([first, second] = arr)",
+      "Spread Operator (...) for Arrays and Objects",
+      "Rest Parameters (...rest)",
+      "JSON.stringify() and JSON.parse()",
+      "Optional Chaining (?.) for Nested Objects"
+    ],
+    "codeExamples": [
+      {
+        "title": "Array Methods & Destructuring",
+        "language": "javascript",
+        "code": "const users = [\n  { name: \"Alice\", age: 25, role: \"developer\" },\n  { name: \"Bob\", age: 32, role: \"designer\" },\n  { name: \"Charlie\", age: 19, role: \"developer\" },\n  { name: \"Diana\", age: 28, role: \"manager\" },\n];\n\n// map — transform each item\nconst names = users.map(user => user.name);\n// [\"Alice\", \"Bob\", \"Charlie\", \"Diana\"]\n\n// filter — keep matching items\nconst devs = users.filter(user => user.role === \"developer\");\n// [{Alice...}, {Charlie...}]\n\n// find — get first match\nconst bob = users.find(user => user.name === \"Bob\");\n\n// reduce — accumulate a value\nconst totalAge = users.reduce((sum, user) => sum + user.age, 0); // 104\n\n// sort — reorder (mutates original!)\nconst sorted = [...users].sort((a, b) => a.age - b.age);\n\n// Destructuring\nconst { name, age, role } = users[0];\nconsole.log(name); // \"Alice\"\n\n// Spread — copy and merge\nconst moreUsers = [...users, { name: \"Eve\", age: 22, role: \"developer\" }];\n\nconst updated = { ...bob, age: 33 }; // Copy bob, override age",
+        "explanation": "map transforms, filter selects, reduce accumulates. Always spread [...arr] before sort() to avoid mutating the original. Destructuring extracts properties into variables. Spread copies arrays/objects immutably."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "8 Must-Know JavaScript Array Methods",
+        "url": "https://www.youtube.com/watch?v=R8rmfD9Y5-c",
+        "channel": "Web Dev Simplified"
+      },
+      {
+        "title": "JavaScript Objects Explained",
+        "url": "https://www.youtube.com/watch?v=BRN_UoUQzG0",
+        "channel": "Programming with Mosh"
+      },
+      {
+        "title": "Destructuring in 100 Seconds",
+        "url": "https://www.youtube.com/watch?v=UgEaJBz3bjY",
+        "channel": "Fireship"
+      }
+    ],
+    "references": [
+      {
+        "title": "Array Methods — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+      },
+      {
+        "title": "Working with Objects — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects"
+      },
+      {
+        "title": "Destructuring — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"
+      }
+    ],
+    "prerequisites": ["js-functions-scope"],
+    "tags": [
+      "javascript",
+      "arrays",
+      "objects",
+      "destructuring",
+      "spread",
+      "map-filter-reduce"
+    ]
+  },
+  {
+    "id": "js-dom-manipulation",
+    "title": "DOM Manipulation",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 5,
+    "description": "The DOM (Document Object Model) is the bridge between JavaScript and HTML. When a browser loads an HTML page, it creates a tree-like representation called the DOM — every HTML element becomes a 'node' in this tree that JavaScript can read and modify. DOM manipulation is how JavaScript makes web pages interactive: changing text content, adding/removing elements, toggling CSS classes, updating attributes, and responding to user actions. Selecting elements is the first step: document.querySelector() selects the first matching element using CSS selectors, and document.querySelectorAll() selects all matches. getElementById() is an older but still common method. Once selected, you can read/change properties: element.textContent (text), element.innerHTML (HTML), element.style (inline CSS), element.classList (CSS classes), element.setAttribute() (attributes), element.src, element.href, etc. Creating new elements uses document.createElement(), setting its content, then appending it to the DOM with parentElement.appendChild() or the newer append()/prepend() methods. Removing elements uses element.remove(). The classList API (add, remove, toggle, contains) is essential for CSS class manipulation — toggling dark mode, showing/hiding menus, and animating elements. While frameworks like React abstract away direct DOM manipulation, understanding the DOM is essential for debugging, performance optimization, and situations where you need vanilla JavaScript.",
+    "whyItMatters": "The DOM is the foundation of all web interactivity. Even React, Vue, and Angular ultimately manipulate the DOM — they just do it behind the scenes. Understanding the DOM helps you debug framework issues, optimize performance (avoiding unnecessary re-renders), and build features without framework dependency. DOM methods appear in every JavaScript interview.",
+    "eli5": "The DOM is like a family tree of your web page. The <html> tag is the grandparent, <body> is the parent, and all the <div>s, <p>s, and <h1>s are children and grandchildren. JavaScript can walk around this family tree, find specific family members, change their clothes (styles), give them new names (text content), add new babies (create elements), or remove family members. It's how JavaScript controls what you see on the page!",
+    "subtopics": [
+      "What is the DOM? The Document Tree",
+      "Selecting Elements: querySelector, querySelectorAll",
+      "getElementById, getElementsByClassName",
+      "Reading Content: textContent vs innerHTML",
+      "Changing Styles: element.style, classList",
+      "classList: add(), remove(), toggle(), contains()",
+      "Setting Attributes: setAttribute, getAttribute",
+      "Creating Elements: createElement, append, prepend",
+      "Removing Elements: removeChild, remove()",
+      "Cloning Elements: cloneNode(true)",
+      "Traversing: parentElement, children, nextSibling",
+      "Document Fragment for Batch DOM Updates"
+    ],
+    "codeExamples": [
+      {
+        "title": "DOM Selection & Manipulation",
+        "language": "javascript",
+        "code": "// Select elements\nconst heading = document.querySelector(\"h1\");\nconst buttons = document.querySelectorAll(\".btn\");\nconst form = document.getElementById(\"contact-form\");\n\n// Change content\nheading.textContent = \"Welcome to My Site\";\n\n// Change styles\nheading.style.color = \"#6366f1\";\nheading.style.fontSize = \"2.5rem\";\n\n// Toggle CSS classes (preferred over inline styles)\nheading.classList.add(\"active\");\nheading.classList.remove(\"hidden\");\nheading.classList.toggle(\"dark-mode\"); // Add if absent, remove if present\n\n// Create and add new elements\nconst card = document.createElement(\"div\");\ncard.className = \"card\";\ncard.innerHTML = `\n  <h3>New Card</h3>\n  <p>Created with JavaScript!</p>\n`;\ndocument.querySelector(\".container\").append(card);\n\n// Remove an element\nconst oldBanner = document.querySelector(\".banner\");\noldBanner?.remove();  // ?. prevents error if null\n\n// Loop through all buttons\nbuttons.forEach(btn => {\n  btn.classList.add(\"styled\");\n});",
+        "explanation": "querySelector uses CSS selectors to find elements. textContent changes text safely (no HTML injection risk). classList.toggle is perfect for dark mode switches. createElement + append adds new elements to the page."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "JavaScript DOM Tutorial",
+        "url": "https://www.youtube.com/watch?v=0ik6X4DJKCc",
+        "channel": "Programming with Mosh"
+      },
+      {
+        "title": "DOM Manipulation in 18 Minutes",
+        "url": "https://www.youtube.com/watch?v=y17RuWkWdn8",
+        "channel": "Web Dev Simplified"
+      },
+      {
+        "title": "DOM Crash Course",
+        "url": "https://www.youtube.com/watch?v=wiozYyXQEVk",
+        "channel": "Traversy Media"
+      }
+    ],
+    "references": [
+      {
+        "title": "Introduction to the DOM — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction"
+      },
+      {
+        "title": "Document.querySelector() — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector"
+      },
+      {
+        "title": "Element.classList — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Element/classList"
+      }
+    ],
+    "prerequisites": ["js-fundamentals"],
+    "tags": ["javascript", "dom", "manipulation", "selectors", "classList"]
+  },
+  {
+    "id": "js-events",
+    "title": "Events & Event Handling",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 4,
+    "description": "Events are signals that something has happened in the browser — a user clicks a button, types in an input, scrolls the page, submits a form, or the page finishes loading. Event handling is how JavaScript responds to these signals, making web pages interactive. The modern way to listen for events is element.addEventListener('event', handlerFunction). Common events include: click, dblclick, mouseover, mouseout, mousedown, mouseup (mouse events); keydown, keyup, keypress (keyboard events); input, change, focus, blur (form events); submit (form submission); scroll, resize (window events); DOMContentLoaded, load (page lifecycle). The event object passed to handlers contains useful information: event.target (the element that triggered the event), event.type, event.key (for keyboard events), event.preventDefault() (stop default behavior like form submission), and event.stopPropagation() (stop event bubbling). Event bubbling is a fundamental concept: when you click a button inside a div inside a section, the click event 'bubbles up' from the button to the div to the section to the body. Event delegation leverages this — instead of adding listeners to 100 list items, add one listener to the parent <ul> and check event.target to determine which item was clicked. This is more performant and handles dynamically added elements.",
+    "whyItMatters": "Events are how users interact with your website. Every click handler, form validation, keyboard shortcut, scroll effect, and drag-and-drop feature uses event handling. Event delegation is essential for performance and dynamic content. React's onClick/onChange/onSubmit are thin wrappers around these exact browser events.",
+    "eli5": "Events are like doorbells. When someone presses the doorbell (clicks a button), it triggers a response — you go answer the door (run a function). You can set up different doorbells for different things: one for clicks, one for typing, one for hovering. Event bubbling is like yelling in a room — if you yell inside a box, the sound travels out to the room, then out to the building. Event delegation is like having one security guard at the building entrance instead of one at every room door.",
+    "subtopics": [
+      "addEventListener() — The Modern Way",
+      "Mouse Events: click, dblclick, mouseover, mouseout",
+      "Keyboard Events: keydown, keyup, event.key",
+      "Form Events: input, change, focus, blur, submit",
+      "The Event Object: target, type, preventDefault()",
+      "event.preventDefault() — Stop Default Behavior",
+      "Event Bubbling and Capturing",
+      "event.stopPropagation()",
+      "Event Delegation Pattern",
+      "Window Events: scroll, resize, load",
+      "DOMContentLoaded vs load",
+      "removeEventListener and Cleanup"
+    ],
+    "codeExamples": [
+      {
+        "title": "Event Handling Patterns",
+        "language": "javascript",
+        "code": "// Click event\nconst button = document.querySelector(\".btn\");\nbutton.addEventListener(\"click\", (event) => {\n  console.log(\"Button clicked!\");\n  console.log(\"Clicked element:\", event.target);\n});\n\n// Form submission — prevent page reload\nconst form = document.querySelector(\"form\");\nform.addEventListener(\"submit\", (event) => {\n  event.preventDefault(); // Stop form from refreshing page\n  const formData = new FormData(form);\n  console.log(\"Name:\", formData.get(\"name\"));\n  console.log(\"Email:\", formData.get(\"email\"));\n});\n\n// Keyboard shortcut\ndocument.addEventListener(\"keydown\", (event) => {\n  if (event.ctrlKey && event.key === \"k\") {\n    event.preventDefault();\n    console.log(\"Search opened!\");\n  }\n});\n\n// Event Delegation — one listener for many items\nconst todoList = document.querySelector(\".todo-list\");\ntodoList.addEventListener(\"click\", (event) => {\n  if (event.target.matches(\".delete-btn\")) {\n    event.target.closest(\".todo-item\").remove();\n  }\n  if (event.target.matches(\".toggle-btn\")) {\n    event.target.closest(\".todo-item\").classList.toggle(\"done\");\n  }\n});",
+        "explanation": "preventDefault() stops forms from refreshing the page. Event delegation uses ONE listener on the parent to handle clicks on any child — even children added later dynamically. matches() and closest() help identify which child was clicked."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "JavaScript Events",
+        "url": "https://www.youtube.com/watch?v=YiOlaiscqDY",
+        "channel": "Programming with Mosh"
+      },
+      {
+        "title": "Event Listeners Explained",
+        "url": "https://www.youtube.com/watch?v=XF1_MlZ5l6M",
+        "channel": "Web Dev Simplified"
+      },
+      {
+        "title": "Event Delegation",
+        "url": "https://www.youtube.com/watch?v=3KJI1WZGDrg",
+        "channel": "Web Dev Simplified"
+      }
+    ],
+    "references": [
+      {
+        "title": "Introduction to Events — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events"
+      },
+      {
+        "title": "Event Reference — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/Events"
+      },
+      {
+        "title": "Event Delegation — javascript.info",
+        "url": "https://javascript.info/event-delegation"
+      }
+    ],
+    "prerequisites": ["js-dom-manipulation"],
+    "tags": [
+      "javascript",
+      "events",
+      "event-handling",
+      "delegation",
+      "addEventListener"
+    ]
+  },
+  {
+    "id": "js-es6-modern",
+    "title": "ES6+ Modern JavaScript",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 4,
+    "description": "ES6 (ECMAScript 2015) was a massive update to JavaScript that introduced features used in every modern codebase. Subsequent updates (ES7-ES2024) continued adding powerful features. Template literals use backticks for string interpolation: `Hello, ${name}!`. Arrow functions provide shorter syntax: (a, b) => a + b. Destructuring extracts values from arrays/objects: const { name, age } = user and const [first, ...rest] = arr. The spread operator (...) copies and merges arrays/objects immutably. Default parameters give function arguments fallback values. Modules (import/export) let you split code into separate files: export function add() {...} and import { add } from './math.js'. The class syntax provides cleaner object-oriented patterns with constructor, methods, inheritance (extends), and static methods. Symbols, iterators, generators, WeakMap, WeakSet, Map, and Set are advanced data structures. Optional chaining (?.) safely accesses nested properties without crashing: user?.address?.city returns undefined instead of throwing an error if address is null. Nullish coalescing (??) provides defaults only for null/undefined (not for 0 or ''). Promise.allSettled(), Array.at(), Object.hasOwn(), structuredClone(), and top-level await are recent additions. Knowing these features is essential — every React, Node.js, and modern JS project uses them extensively.",
+    "whyItMatters": "Every modern JavaScript project, framework, and library uses ES6+ syntax. React components are written entirely with these features. Reading and writing modern JS is a non-negotiable skill. Job interviews focus heavily on ES6+ concepts. Understanding modules is essential for any project beyond a single file.",
+    "eli5": "ES6 is like JavaScript getting a major upgrade, like your phone getting a big new OS update. Before ES6, you had to write long, complicated code to do simple things. After ES6, you got shortcuts: template literals are like mad libs (fill in the blanks in a sentence), destructuring is like opening a box and immediately sorting everything into labeled bins, and modules are like organizing your LEGO instructions into separate booklets instead of one giant manual.",
+    "subtopics": [
+      "Template Literals and Tagged Templates",
+      "let and const vs var",
+      "Arrow Functions (review with 'this' context)",
+      "Destructuring (Arrays and Objects)",
+      "Spread and Rest Operators (...)",
+      "Default Parameters",
+      "Modules: import / export (named vs default)",
+      "Classes: constructor, methods, extends",
+      "Map and Set Collections",
+      "Optional Chaining (?.) ",
+      "Nullish Coalescing (??)",
+      "Array.at(), Object.entries(), structuredClone()"
+    ],
+    "codeExamples": [
+      {
+        "title": "Essential ES6+ Features",
+        "language": "javascript",
+        "code": "// Modules (in separate files)\n// math.js\nexport const PI = 3.14159;\nexport function add(a, b) { return a + b; }\nexport default function multiply(a, b) { return a * b; }\n\n// app.js\nimport multiply, { PI, add } from './math.js';\n\n// Classes\nclass Animal {\n  constructor(name, sound) {\n    this.name = name;\n    this.sound = sound;\n  }\n  speak() {\n    return `${this.name} says ${this.sound}!`;\n  }\n}\n\nclass Dog extends Animal {\n  constructor(name) {\n    super(name, \"Woof\");  // Call parent constructor\n  }\n  fetch(item) {\n    return `${this.name} fetches the ${item}!`;\n  }\n}\n\nconst dog = new Dog(\"Rex\");\nconsole.log(dog.speak());    // \"Rex says Woof!\"\nconsole.log(dog.fetch(\"ball\")); // \"Rex fetches the ball!\"\n\n// Map — key-value pairs (keys can be ANY type)\nconst userRoles = new Map();\nuserRoles.set(\"alice\", \"admin\");\nuserRoles.set(\"bob\", \"editor\");\nconsole.log(userRoles.get(\"alice\")); // \"admin\"\n\n// Set — unique values only\nconst uniqueTags = new Set([\"html\", \"css\", \"html\", \"js\"]);\nconsole.log(uniqueTags.size); // 3 (duplicate \"html\" removed)",
+        "explanation": "Modules split code into files. export makes things available, import brings them in. Classes provide clean object-oriented patterns. Map allows any key type (not just strings). Set automatically removes duplicates."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "ES6 JavaScript Tutorial for Beginners",
+        "url": "https://www.youtube.com/watch?v=NCwa_xi0Uuc",
+        "channel": "Programming with Mosh"
+      },
+      {
+        "title": "JavaScript Modules Explained",
+        "url": "https://www.youtube.com/watch?v=cRHQNNcYf6s",
+        "channel": "Web Dev Simplified"
+      },
+      {
+        "title": "JavaScript ES6 Features",
+        "url": "https://www.youtube.com/watch?v=nZ1DMMsyVyI",
+        "channel": "Traversy Media"
+      }
+    ],
+    "references": [
+      {
+        "title": "ES6 Features Overview — es6-features.org",
+        "url": "http://es6-features.org/"
+      },
+      {
+        "title": "JavaScript Modules — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"
+      },
+      {
+        "title": "Classes — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes"
+      }
+    ],
+    "prerequisites": ["js-functions-scope"],
+    "tags": ["javascript", "es6", "modules", "classes", "modern-javascript"]
+  },
+  {
+    "id": "js-async",
+    "title": "Asynchronous JavaScript",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 5,
+    "description": "JavaScript is single-threaded — it can only do one thing at a time. But web applications need to fetch data from APIs, read files, wait for user input, and set timers — all without freezing the page. Asynchronous programming solves this by letting JavaScript start a task and continue executing other code while waiting for the result. Callbacks were the original async pattern: pass a function to be called when the task completes. But nested callbacks create 'callback hell' — deeply indented, hard-to-read code. Promises improved this: a Promise represents a future value that's either resolved (success) or rejected (error). You chain .then() for success and .catch() for errors. async/await (ES2017) makes Promises even cleaner: 'async' marks a function as asynchronous, and 'await' pauses execution until a Promise resolves — making async code look synchronous. The Fetch API is the modern way to make HTTP requests: fetch(url) returns a Promise that resolves to a Response object. Common patterns: fetch data from an API, display a loading state while waiting, handle errors gracefully, and process the JSON response. setTimeout and setInterval schedule delayed/repeated code execution. Promise.all() runs multiple promises in parallel. Understanding the event loop — JavaScript's mechanism for handling async operations — is key to predicting code execution order.",
+    "whyItMatters": "Nearly every modern web app fetches data from APIs. Understanding async/await and fetch is essential for any frontend or full-stack role. React useEffect hooks, API integrations, form submissions, and real-time features all rely on asynchronous patterns. The event loop is one of the most asked JavaScript interview questions.",
+    "eli5": "Imagine you're at a restaurant. Synchronous is like standing at the kitchen, watching the chef cook your food, and not doing anything else until it's ready. Asynchronous is like ordering your food, then reading a book while the kitchen prepares it. When the food is ready, the waiter brings it to you (the callback). Async/await is like saying 'I'll wait here, but I'm not blocking the whole restaurant — other customers can still order and eat.' Promises are like the receipt the waiter gives you — a promise that food is coming.",
+    "subtopics": [
+      "Synchronous vs Asynchronous Code",
+      "The JavaScript Event Loop",
+      "setTimeout and setInterval",
+      "Callbacks and 'Callback Hell'",
+      "Promises: new Promise, .then(), .catch(), .finally()",
+      "Promise Chaining",
+      "async Functions and the await Keyword",
+      "Error Handling with try/catch in async Functions",
+      "The Fetch API: fetch(), Response, .json()",
+      "Fetching Data from REST APIs",
+      "Promise.all(), Promise.race(), Promise.allSettled()",
+      "Loading States and Error Handling Patterns"
+    ],
+    "codeExamples": [
+      {
+        "title": "Async/Await & Fetch API",
+        "language": "javascript",
+        "code": "// Fetch data from an API using async/await\nasync function getUsers() {\n  try {\n    const response = await fetch(\"https://jsonplaceholder.typicode.com/users\");\n    \n    if (!response.ok) {\n      throw new Error(`HTTP error! Status: ${response.status}`);\n    }\n    \n    const users = await response.json();\n    console.log(users); // Array of user objects\n    return users;\n  } catch (error) {\n    console.error(\"Failed to fetch users:\", error.message);\n  }\n}\n\n// Call it\ngetUsers();\n\n// Fetch multiple APIs in parallel\nasync function getDashboardData() {\n  const [users, posts, comments] = await Promise.all([\n    fetch(\"/api/users\").then(r => r.json()),\n    fetch(\"/api/posts\").then(r => r.json()),\n    fetch(\"/api/comments\").then(r => r.json()),\n  ]);\n  \n  return { users, posts, comments };\n}\n\n// POST request — sending data\nasync function createPost(title, body) {\n  const response = await fetch(\"https://jsonplaceholder.typicode.com/posts\", {\n    method: \"POST\",\n    headers: { \"Content-Type\": \"application/json\" },\n    body: JSON.stringify({ title, body, userId: 1 }),\n  });\n  const newPost = await response.json();\n  console.log(\"Created:\", newPost);\n}",
+        "explanation": "async functions return Promises. await pauses until the Promise resolves. Always wrap await in try/catch for error handling. Promise.all() runs multiple fetches simultaneously for better performance. Always check response.ok to catch HTTP errors."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Async JavaScript Crash Course",
+        "url": "https://www.youtube.com/watch?v=PoRJizFvM7s",
+        "channel": "Traversy Media"
+      },
+      {
+        "title": "JavaScript Promises in 10 Minutes",
+        "url": "https://www.youtube.com/watch?v=DHvZLI7Db8E",
+        "channel": "Web Dev Simplified"
+      },
+      {
+        "title": "JavaScript Event Loop Explained",
+        "url": "https://www.youtube.com/watch?v=8aGhZQkoFbQ",
+        "channel": "JSConf"
+      }
+    ],
+    "references": [
+      {
+        "title": "Asynchronous JavaScript — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous"
+      },
+      {
+        "title": "Using Fetch — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"
+      },
+      {
+        "title": "The Event Loop — javascript.info",
+        "url": "https://javascript.info/event-loop"
+      }
+    ],
+    "prerequisites": ["js-functions-scope"],
+    "tags": ["javascript", "async", "await", "promises", "fetch", "api"]
+  },
+  {
+    "id": "js-error-handling",
+    "title": "Error Handling & Debugging",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 3,
+    "description": "Errors are inevitable in programming. What matters is how you handle them. JavaScript's try/catch/finally block lets you gracefully handle errors instead of crashing. The try block contains code that might throw an error, catch receives the error object and handles it (show user-friendly message, retry, log), and finally always runs regardless of success or failure (cleanup: close connections, hide loading spinners). You can throw custom errors with throw new Error('message') for validation and business logic checks. Error types include TypeError (wrong type), ReferenceError (undefined variable), SyntaxError (invalid code), RangeError (out of range), and custom errors. Debugging is the art of finding and fixing bugs. console.log() is the simplest tool, but Chrome DevTools offers much more: console.table() for arrays/objects, console.time() for performance, console.group() for organizing output. Breakpoints in the Sources panel let you pause execution and inspect variables step by step — far more powerful than console.log debugging. The debugger statement adds a programmatic breakpoint. The Network tab shows API request/response details. Common debugging strategies: reproduce the bug consistently, narrow down the location with binary search (commenting out code), check the browser console for error messages (they tell you the file, line, and error type), and use the call stack to trace execution flow.",
+    "whyItMatters": "Professional code must handle errors gracefully — a crashing app loses users and revenue. try/catch is used in every async operation, API call, and form validation. DevTools proficiency separates efficient developers from those who waste hours debugging. Every production application needs proper error handling and logging.",
+    "eli5": "Imagine you're following a recipe and something goes wrong — you're out of eggs. Without error handling, you'd just stop cooking and throw the whole meal away. With error handling (try/catch), you say 'TRY to use eggs. If there are no eggs (CATCH the problem), use applesauce instead.' FINALLY, clean the kitchen regardless. Debugging is like being a detective: following clues (error messages), examining the crime scene (DevTools), and finding the culprit (the bug).",
+    "subtopics": [
+      "try / catch / finally Blocks",
+      "The Error Object: message, name, stack",
+      "throw — Creating Custom Errors",
+      "Error Types: TypeError, ReferenceError, SyntaxError, RangeError",
+      "Error Handling in Async Code (try/catch with await)",
+      "console.log, console.error, console.warn",
+      "console.table(), console.time(), console.group()",
+      "Chrome DevTools: Elements, Console, Sources, Network",
+      "Breakpoints and the debugger Statement",
+      "Reading Error Stack Traces",
+      "Common Debugging Strategies",
+      "Linting with ESLint for Error Prevention"
+    ],
+    "codeExamples": [
+      {
+        "title": "Error Handling Patterns",
+        "language": "javascript",
+        "code": "// Basic try/catch\ntry {\n  const data = JSON.parse(\"invalid json\");\n} catch (error) {\n  console.error(\"Parse failed:\", error.message);\n  // \"Parse failed: Unexpected token i in JSON at position 0\"\n}\n\n// Custom errors for validation\nfunction validateAge(age) {\n  if (typeof age !== \"number\") throw new TypeError(\"Age must be a number\");\n  if (age < 0 || age > 150) throw new RangeError(\"Age must be 0-150\");\n  return true;\n}\n\ntry {\n  validateAge(\"twenty\");\n} catch (error) {\n  if (error instanceof TypeError) {\n    console.error(\"Type error:\", error.message);\n  } else if (error instanceof RangeError) {\n    console.error(\"Range error:\", error.message);\n  }\n}\n\n// Async error handling\nasync function fetchData(url) {\n  try {\n    const res = await fetch(url);\n    if (!res.ok) throw new Error(`HTTP ${res.status}`);\n    return await res.json();\n  } catch (error) {\n    console.error(\"Fetch failed:\", error.message);\n    return null;  // Return fallback value\n  } finally {\n    console.log(\"Request completed\");  // Always runs\n  }\n}\n\n// Debugging helpers\nconsole.table([{name: \"Alice\", age: 25}, {name: \"Bob\", age: 30}]);\nconsole.time(\"loop\");\nfor (let i = 0; i < 1000000; i++) {}\nconsole.timeEnd(\"loop\"); // \"loop: 2.5ms\"",
+        "explanation": "Always wrap async operations in try/catch. throw custom errors for validation. instanceof checks error types. console.table shows arrays/objects as tables. console.time measures performance. finally is perfect for cleanup."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "JavaScript Error Handling",
+        "url": "https://www.youtube.com/watch?v=blBoIyNhGvY",
+        "channel": "Web Dev Simplified"
+      },
+      {
+        "title": "Chrome DevTools Crash Course",
+        "url": "https://www.youtube.com/watch?v=gTVpBbFWry8",
+        "channel": "Traversy Media"
+      }
+    ],
+    "references": [
+      {
+        "title": "Error Handling — javascript.info",
+        "url": "https://javascript.info/error-handling"
+      },
+      {
+        "title": "Chrome DevTools — Google Developers",
+        "url": "https://developer.chrome.com/docs/devtools/"
+      },
+      {
+        "title": "Control Flow and Error Handling — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
+      }
+    ],
+    "prerequisites": ["js-fundamentals"],
+    "tags": [
+      "javascript",
+      "error-handling",
+      "debugging",
+      "try-catch",
+      "devtools"
+    ]
+  },
+  {
+    "id": "js-mini-projects",
+    "title": "Mini Projects & Practice",
+    "phase": 2,
+    "difficulty": "beginner",
+    "estimatedHours": 8,
+    "description": "The most effective way to learn programming is by building real projects. Theory and tutorials only go so far — it's when you face a blank screen and have to create something from scratch that concepts truly click. This section provides guided project ideas that combine HTML, CSS, and JavaScript skills you've learned throughout this roadmap. A Todo App teaches DOM manipulation, event handling, local storage, and CRUD operations. A Calculator reinforces event handling and mathematical logic. A Quiz App practices array manipulation, scoring logic, and dynamic UI updates. A Weather App introduces API integration, async/await with fetch, and real-time data display. Each project should follow a structured approach: plan the features, design the UI (HTML + CSS first), then add interactivity (JavaScript). Start with the simplest version (MVP), then add features incrementally. Use localStorage to persist data between page reloads. Focus on clean code: meaningful variable names, functions that do one thing, and proper error handling. After building these projects, package them into a portfolio website — this is what hiring managers and clients look at when evaluating developers.",
+    "whyItMatters": "Projects are the bridge between learning and employability. Hiring managers value portfolios over certificates. Building projects reveals gaps in understanding and forces you to solve real problems. The projects here combine HTML, CSS, and JavaScript — proving you can build complete, functional web applications from scratch.",
+    "eli5": "Learning to code by only reading tutorials is like learning to swim by only reading about swimming. At some point, you have to jump in the pool! These projects are your swimming pool. Start with a small splash (Todo App), then try some strokes (Calculator), and eventually you'll be doing laps (Weather App with APIs). Each project teaches you something new, and by the end, you'll have a portfolio to show off!",
+    "subtopics": [
+      "Project Planning: Requirements → Design → Build",
+      "Project 1: Todo App (CRUD + localStorage)",
+      "Project 2: Calculator (event handling + logic)",
+      "Project 3: Quiz App (arrays + scoring + timer)",
+      "Project 4: Weather App (fetch API + async/await)",
+      "Using localStorage for Data Persistence",
+      "Building Responsive UI with HTML + CSS",
+      "Adding Interactivity with Event Listeners",
+      "Code Organization: Separate Files, Clean Functions",
+      "Building a Portfolio Website",
+      "Deploying with GitHub Pages, Netlify, or Vercel",
+      "Next Steps: TypeScript, React, Node.js"
+    ],
+    "codeExamples": [
+      {
+        "title": "Todo App — Core Logic",
+        "language": "javascript",
+        "code": "// Todo App — Complete Core Logic\nconst form = document.querySelector(\"#todo-form\");\nconst input = document.querySelector(\"#todo-input\");\nconst list = document.querySelector(\"#todo-list\");\n\n// Load saved todos from localStorage\nlet todos = JSON.parse(localStorage.getItem(\"todos\")) || [];\n\n// Render todos to the DOM\nfunction renderTodos() {\n  list.innerHTML = todos.map((todo, index) => `\n    <li class=\"todo-item ${todo.done ? 'done' : ''}\">\n      <span onclick=\"toggleTodo(${index})\">${todo.text}</span>\n      <button onclick=\"deleteTodo(${index})\">&times;</button>\n    </li>\n  `).join(\"\");\n}\n\n// Add a new todo\nform.addEventListener(\"submit\", (e) => {\n  e.preventDefault();\n  const text = input.value.trim();\n  if (!text) return;\n  todos.push({ text, done: false });\n  input.value = \"\";\n  save();\n});\n\n// Toggle done state\nfunction toggleTodo(index) {\n  todos[index].done = !todos[index].done;\n  save();\n}\n\n// Delete a todo\nfunction deleteTodo(index) {\n  todos.splice(index, 1);\n  save();\n}\n\n// Save to localStorage and re-render\nfunction save() {\n  localStorage.setItem(\"todos\", JSON.stringify(todos));\n  renderTodos();\n}\n\nrenderTodos(); // Initial render",
+        "explanation": "This combines everything: DOM manipulation, events, array methods, localStorage, template literals, and JSON. The data flow is: user input → update array → save to localStorage → re-render DOM. This is the exact pattern used in React (state → render)."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Build 15 JavaScript Projects",
+        "url": "https://www.youtube.com/watch?v=3PHXvlpOkf4",
+        "channel": "freeCodeCamp"
+      },
+      {
+        "title": "Build a JavaScript Weather App",
+        "url": "https://www.youtube.com/watch?v=MIYQR-Ybrn4",
+        "channel": "Traversy Media"
+      },
+      {
+        "title": "Build a Todo App with Vanilla JS",
+        "url": "https://www.youtube.com/watch?v=Ttf3CEsEwMQ",
+        "channel": "Traversy Media"
+      }
+    ],
+    "references": [
+      {
+        "title": "Frontend Mentor — Practice Projects",
+        "url": "https://www.frontendmentor.io/"
+      },
+      {
+        "title": "JavaScript30 — 30 Day Challenge",
+        "url": "https://javascript30.com/"
+      },
+      {
+        "title": "freeCodeCamp Curriculum",
+        "url": "https://www.freecodecamp.org/"
+      },
+      {
+        "title": "GitHub Pages — Free Hosting",
+        "url": "https://pages.github.com/"
+      }
+    ],
+    "prerequisites": ["js-dom-manipulation", "js-events", "js-async"],
+    "tags": ["javascript", "projects", "practice", "portfolio", "todo-app"]
+  }
+]

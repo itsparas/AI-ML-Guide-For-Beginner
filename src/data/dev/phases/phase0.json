@@ -1,0 +1,537 @@
+[
+  {
+    "id": "how-the-web-works",
+    "title": "How the Web Works",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 3,
+    "description": "Before writing a single line of code, it's essential to understand how the internet and world wide web actually work. When you type a URL like 'google.com' into your browser and press Enter, a fascinating chain of events unfolds in milliseconds. Your browser first contacts a DNS (Domain Name System) server — think of it as the internet's phone book — to translate the human-readable domain name into a numerical IP address like 142.250.190.14. Your browser then sends an HTTP request to that server, asking for the webpage. The server processes this request and sends back an HTTP response containing HTML, CSS, and JavaScript files. Your browser then parses these files and renders the visual page you see. This is the client-server model: your browser is the 'client' that requests data, and the web server is the 'server' that responds with data. HTTP (HyperText Transfer Protocol) is the language they speak. HTTPS adds encryption via SSL/TLS certificates, ensuring your data (passwords, credit cards) can't be intercepted. Understanding this flow is foundational — every single concept you learn in web development (HTML structure, CSS styling, JavaScript interactivity, APIs, hosting) connects back to this request-response cycle. Professional developers debug network issues, optimize load times, and architect systems based on these fundamentals daily.",
+    "whyItMatters": "Every web technology you'll learn is built on top of this client-server architecture. Understanding how browsers fetch and render pages helps you debug issues, optimize performance, and make informed decisions about how to structure your code. Interviewers frequently ask about HTTP, DNS, and the request-response cycle.",
+    "eli5": "Imagine you're ordering a pizza. You (the browser) call the pizza shop (the server) and ask for a pepperoni pizza (the web page). The pizza shop makes your pizza and delivers it to your door. The phone number you dial is like a URL, the phone company that connects your call is like DNS, and the pizza delivery is like the HTTP response bringing the website to your screen. HTTPS is like ordering through a secret code so no one can steal your pizza order!",
+    "subtopics": [
+      "What is the Internet vs the World Wide Web",
+      "Client-Server Model",
+      "How DNS Works (Domain → IP Address)",
+      "HTTP Request & Response Cycle",
+      "HTTP Methods (GET, POST, PUT, DELETE)",
+      "HTTP Status Codes (200, 301, 404, 500)",
+      "HTTPS & SSL/TLS Encryption",
+      "How Browsers Render Web Pages",
+      "Web Hosting & Domain Names",
+      "Developer Tools: Network Tab"
+    ],
+    "codeExamples": [
+      {
+        "title": "A Simple HTTP Request (what your browser sends)",
+        "language": "http",
+        "code": "GET /index.html HTTP/1.1\nHost: www.example.com\nAccept: text/html\nUser-Agent: Mozilla/5.0",
+        "explanation": "When you visit a website, your browser sends a request like this. 'GET' means 'give me this page', '/index.html' is the file path, and 'Host' tells the server which website you want."
+      },
+      {
+        "title": "A Simple HTTP Response (what the server sends back)",
+        "language": "http",
+        "code": "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<!DOCTYPE html>\n<html>\n  <body>\n    <h1>Welcome!</h1>\n  </body>\n</html>",
+        "explanation": "'200 OK' means the request was successful. The server sends back HTML content that your browser then displays as a visual web page."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "How The Web Works — The Big Picture",
+        "url": "https://www.youtube.com/watch?v=hJHvdBlSxug",
+        "channel": "Academind"
+      },
+      {
+        "title": "How does the INTERNET work?",
+        "url": "https://www.youtube.com/watch?v=x3c1ih2NJEg",
+        "channel": "Lesics"
+      },
+      {
+        "title": "HTTP Crash Course & Exploration",
+        "url": "https://www.youtube.com/watch?v=iYM2zFP3Zn0",
+        "channel": "Traversy Media"
+      }
+    ],
+    "references": [
+      {
+        "title": "How the Web Works — MDN Web Docs",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works"
+      },
+      {
+        "title": "An Overview of HTTP — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"
+      },
+      {
+        "title": "What is DNS? — Cloudflare",
+        "url": "https://www.cloudflare.com/learning/dns/what-is-dns/"
+      }
+    ],
+    "prerequisites": [],
+    "tags": ["internet", "http", "dns", "client-server", "web-fundamentals"]
+  },
+  {
+    "id": "html-document-structure",
+    "title": "HTML Document Structure",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 4,
+    "description": "Every web page you've ever visited is built on HTML — HyperText Markup Language. HTML provides the structure and content of a web page, like the skeleton of a building. An HTML document follows a strict structure: it starts with a DOCTYPE declaration that tells the browser 'this is an HTML5 document.' Then comes the <html> root element that wraps everything. Inside <html>, there are two main sections: <head> (metadata that's invisible to users — page title, character encoding, CSS links, meta descriptions for SEO) and <body> (everything visible on the page — text, images, buttons, forms). HTML uses 'tags' — keywords wrapped in angle brackets like <h1>, <p>, <div>. Most tags come in pairs: an opening tag <p> and a closing tag </p>, with content in between. Some tags are self-closing like <img /> and <br />. Tags can have 'attributes' that provide additional information, like <a href='https://example.com'> where 'href' is an attribute specifying the link destination. Understanding this structure is absolutely fundamental — every framework (React, Vue, Angular) ultimately generates HTML. Even the most complex web applications are, at their core, HTML documents enhanced with CSS and JavaScript. Proper HTML structure also affects SEO, accessibility, and how search engines index your content.",
+    "whyItMatters": "HTML structure is the foundation of absolutely everything on the web. Every CSS style targets HTML elements. Every JavaScript interaction manipulates HTML elements. Every framework generates HTML. Getting the structure right affects SEO rankings, accessibility for screen readers, and how browsers render your page.",
+    "eli5": "Think of HTML like building with LEGO blocks. Each LEGO piece is a 'tag' — there are different shapes for different things. The <h1> block is a big heading, the <p> block is a paragraph of text, and the <img> block shows a picture. You stack these blocks inside each other to build your web page, just like stacking LEGO to build a house. The <head> is like the instruction manual that comes with the LEGO set — it's important but you don't see it in the finished building!",
+    "subtopics": [
+      "What is HTML? Markup vs Programming Language",
+      "<!DOCTYPE html> Declaration",
+      "The <html> Root Element & lang Attribute",
+      "The <head> Section (title, meta, link, script)",
+      "Character Encoding with <meta charset='UTF-8'>",
+      "The <body> Section",
+      "Tags, Elements & Attributes",
+      "Opening Tags, Closing Tags & Self-Closing Tags",
+      "Nesting Elements Properly",
+      "HTML Comments <!-- -->",
+      "Setting Up VS Code for HTML Development",
+      "Emmet Shortcuts for Fast HTML Writing"
+    ],
+    "codeExamples": [
+      {
+        "title": "Complete HTML5 Boilerplate",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"description\" content=\"My first web page\">\n  <title>My First Page</title>\n  <link rel=\"stylesheet\" href=\"styles.css\">\n</head>\n<body>\n  <h1>Hello, World!</h1>\n  <p>This is my first web page.</p>\n  \n  <script src=\"script.js\"></script>\n</body>\n</html>",
+        "explanation": "This is the standard HTML5 template. Every web page starts with this structure. The DOCTYPE tells the browser to use HTML5, <head> contains metadata, and <body> contains visible content."
+      },
+      {
+        "title": "Tags, Attributes & Nesting",
+        "language": "html",
+        "code": "<div class=\"container\">\n  <h2 id=\"welcome\">Welcome!</h2>\n  <p>Visit <a href=\"https://example.com\" target=\"_blank\">Example</a></p>\n  <img src=\"photo.jpg\" alt=\"A beautiful sunset\" width=\"400\">\n  <!-- This is a comment, invisible on the page -->\n</div>",
+        "explanation": "Tags like <div> wrap other elements (nesting). Attributes like 'class', 'id', 'href', 'src', and 'alt' add extra information. The 'alt' attribute is crucial for accessibility."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "HTML Full Course for Beginners",
+        "url": "https://www.youtube.com/watch?v=kUMe1FH4CHE",
+        "channel": "Dave Gray"
+      },
+      {
+        "title": "HTML Crash Course For Absolute Beginners",
+        "url": "https://www.youtube.com/watch?v=UB1O30fR-EE",
+        "channel": "Traversy Media"
+      },
+      {
+        "title": "Learn HTML in 1 Hour",
+        "url": "https://www.youtube.com/watch?v=HD13eq_Pmp8",
+        "channel": "Programming with Mosh"
+      }
+    ],
+    "references": [
+      {
+        "title": "Getting Started with HTML — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started"
+      },
+      {
+        "title": "HTML Reference — W3Schools",
+        "url": "https://www.w3schools.com/html/"
+      },
+      {
+        "title": "Emmet Cheat Sheet",
+        "url": "https://docs.emmet.io/cheat-sheet/"
+      }
+    ],
+    "prerequisites": ["how-the-web-works"],
+    "tags": ["html", "structure", "boilerplate", "fundamentals"]
+  },
+  {
+    "id": "text-and-typography",
+    "title": "Text & Typography Elements",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 3,
+    "description": "Text is the most fundamental type of content on the web. HTML provides a rich set of elements specifically designed for different types of text content. Headings (<h1> through <h6>) create a hierarchy — <h1> is the main page title, <h2> for major sections, <h3> for subsections, and so on. This hierarchy isn't just visual — search engines and screen readers use it to understand your page structure. Paragraphs (<p>) are the workhorse of text content. The <strong> and <em> tags add semantic emphasis (not just bold/italic — they convey meaning to assistive technology). Lists come in three flavors: ordered (<ol>) for numbered sequences, unordered (<ul>) for bullet points, and description lists (<dl>) for term-definition pairs. The <blockquote> element marks quoted content, while <code> and <pre> handle code snippets. Line breaks (<br>) and horizontal rules (<hr>) provide structural breaks. Understanding when to use which element is critical for semantic HTML — it's not about how text looks (that's CSS's job), it's about what the text means. A common beginner mistake is using <br><br> for spacing instead of proper paragraph tags, or using headings just to make text big rather than to create meaningful document structure.",
+    "whyItMatters": "Proper text markup directly impacts SEO — search engines weight <h1> content heavily for page relevance. Screen readers navigate pages by heading hierarchy, so incorrect heading levels make your site inaccessible. Semantic text elements ensure your content works everywhere: browsers, search engines, screen readers, RSS feeds, and AI scrapers.",
+    "eli5": "When you write a school essay, you have a title at the top (that's <h1>), chapter names (<h2>), regular paragraphs (<p>), and maybe a list of supplies (<ul> with <li> items). HTML text tags are just labels that tell the computer what kind of text something is. It's like color-coding your notes — headings in red, important words in bold, regular text in black. The computer doesn't see the colors, but the labels help it understand your page!",
+    "subtopics": [
+      "Heading Hierarchy: <h1> through <h6>",
+      "Paragraphs <p> and Line Breaks <br>",
+      "Bold (<strong>) vs Italic (<em>) — Semantic Meaning",
+      "Ordered Lists <ol> and Unordered Lists <ul>",
+      "Description Lists <dl>, <dt>, <dd>",
+      "Blockquotes <blockquote> and Citations <cite>",
+      "Preformatted Text <pre> and Inline Code <code>",
+      "Subscript <sub>, Superscript <sup>, and Abbreviations <abbr>",
+      "Horizontal Rules <hr> and Thematic Breaks",
+      "Special Characters & HTML Entities (&amp; &lt; &gt; &nbsp;)"
+    ],
+    "codeExamples": [
+      {
+        "title": "Text Elements in Action",
+        "language": "html",
+        "code": "<h1>My Blog</h1>\n<h2>Latest Articles</h2>\n\n<p>Welcome to my blog! I write about \n  <strong>web development</strong> and \n  <em>design principles</em>.\n</p>\n\n<h3>What You'll Learn</h3>\n<ul>\n  <li>HTML fundamentals</li>\n  <li>CSS styling techniques</li>\n  <li>JavaScript basics</li>\n</ul>\n\n<h3>Top 3 Programming Languages</h3>\n<ol>\n  <li>JavaScript</li>\n  <li>Python</li>\n  <li>TypeScript</li>\n</ol>\n\n<blockquote cite=\"https://example.com\">\n  <p>\"The best way to learn to code is by coding.\"</p>\n  <cite>— Every Developer Ever</cite>\n</blockquote>",
+        "explanation": "Notice the heading hierarchy (h1 > h2 > h3). <strong> means 'important' (not just bold), <em> means 'emphasized' (not just italic). Lists use <ul> for bullets and <ol> for numbers."
+      },
+      {
+        "title": "Code, Entities & Special Text",
+        "language": "html",
+        "code": "<p>Use the <code>console.log()</code> function to debug.</p>\n\n<pre><code>function greet(name) {\n  return `Hello, ${name}!`;\n}</code></pre>\n\n<p>Water is H<sub>2</sub>O. Einstein's formula: E=MC<sup>2</sup></p>\n\n<p>Use <abbr title=\"HyperText Markup Language\">HTML</abbr> to build pages.</p>\n\n<p>Special characters: &lt;div&gt; &amp; &copy; 2025</p>",
+        "explanation": "<code> is for inline code, <pre><code> is for code blocks. <sub> and <sup> handle subscripts/superscripts. HTML entities like &lt; display special characters that would otherwise be interpreted as HTML."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "HTML Text Formatting Tags",
+        "url": "https://www.youtube.com/watch?v=gW6cBZLUk6M",
+        "channel": "Web Dev Simplified"
+      },
+      {
+        "title": "HTML Lists Tutorial",
+        "url": "https://www.youtube.com/watch?v=5iXmOQ1q1Wk",
+        "channel": "Kevin Powell"
+      }
+    ],
+    "references": [
+      {
+        "title": "HTML Text Fundamentals — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals"
+      },
+      {
+        "title": "HTML Elements Reference — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
+      }
+    ],
+    "prerequisites": ["html-document-structure"],
+    "tags": ["html", "text", "headings", "lists", "typography"]
+  },
+  {
+    "id": "links-images-media",
+    "title": "Links, Images & Media",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 4,
+    "description": "The web's superpower is hyperlinks — the ability to connect any page to any other page with a simple click. The <a> (anchor) tag creates links using the 'href' attribute. Links can point to other websites (absolute URLs), other pages on your site (relative paths), sections within the same page (fragment identifiers using #), email addresses (mailto:), and phone numbers (tel:). The 'target' attribute controls where the link opens — '_blank' for a new tab, '_self' for the same tab. Images are the second most common content type, added via the self-closing <img> tag. The 'src' attribute specifies the image file, and the 'alt' attribute provides text description for accessibility (screen readers) and SEO. Modern HTML5 introduced native <video> and <audio> elements, replacing the need for Flash. The <video> tag supports multiple source formats for browser compatibility, along with controls, autoplay, muted, and loop attributes. The <picture> element enables responsive images — serving different image sizes based on screen width. The <iframe> element embeds external content like YouTube videos, Google Maps, or other web pages. Understanding image optimization (file formats, lazy loading, srcset for responsive images) is crucial for page performance — images often account for 50-70% of a page's total size.",
+    "whyItMatters": "Links are literally what make the 'web' a web — they connect everything together. Images make content engaging and shareable. Proper alt text is legally required for accessibility compliance in many countries. Understanding media optimization directly impacts page load speed, which affects SEO rankings and user experience.",
+    "eli5": "Links are like magic doors in a video game — click on one and you teleport to somewhere else! The <a> tag creates these doors. Images (<img>) are like stickers you paste onto your page. Videos (<video>) are like embedding a TV screen right in your page. And an iframe is like putting a window into your wall so you can see another room (another website) through it!",
+    "subtopics": [
+      "Anchor Tag <a> and href Attribute",
+      "Absolute vs Relative URLs",
+      "Opening Links in New Tab (target='_blank' rel='noopener')",
+      "Linking to Page Sections with Fragment IDs (#)",
+      "Email Links (mailto:) and Phone Links (tel:)",
+      "Image Tag <img>: src, alt, width, height",
+      "Image Formats: JPEG, PNG, SVG, WebP, AVIF",
+      "Responsive Images: srcset and <picture>",
+      "Lazy Loading Images (loading='lazy')",
+      "Video Element <video> with Controls",
+      "Audio Element <audio>",
+      "Embedding Content with <iframe> (YouTube, Maps)"
+    ],
+    "codeExamples": [
+      {
+        "title": "Links — Internal, External & Special",
+        "language": "html",
+        "code": "<!-- External link (opens in new tab) -->\n<a href=\"https://google.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Visit Google\n</a>\n\n<!-- Internal page link -->\n<a href=\"/about.html\">About Us</a>\n\n<!-- Jump to section on same page -->\n<a href=\"#contact\">Jump to Contact</a>\n\n<!-- Email and phone links -->\n<a href=\"mailto:hello@example.com\">Email Us</a>\n<a href=\"tel:+1234567890\">Call Us</a>\n\n<!-- Section anchor target -->\n<section id=\"contact\">\n  <h2>Contact Us</h2>\n</section>",
+        "explanation": "The 'rel=noopener noreferrer' on external links is a security best practice. Fragment links (#contact) scroll to the element with that ID. mailto: and tel: links open email clients and phone dialers."
+      },
+      {
+        "title": "Images, Video & Responsive Media",
+        "language": "html",
+        "code": "<!-- Basic image with alt text -->\n<img src=\"sunset.jpg\" alt=\"Golden sunset over the ocean\" width=\"800\" height=\"600\">\n\n<!-- Lazy-loaded image (loads when scrolled into view) -->\n<img src=\"photo.webp\" alt=\"Mountain landscape\" loading=\"lazy\">\n\n<!-- Responsive image with srcset -->\n<img \n  src=\"photo-800.jpg\" \n  srcset=\"photo-400.jpg 400w, photo-800.jpg 800w, photo-1200.jpg 1200w\"\n  sizes=\"(max-width: 600px) 400px, 800px\"\n  alt=\"Responsive photo\">\n\n<!-- HTML5 Video Player -->\n<video controls width=\"640\" poster=\"thumbnail.jpg\">\n  <source src=\"video.mp4\" type=\"video/mp4\">\n  <source src=\"video.webm\" type=\"video/webm\">\n  Your browser doesn't support video.\n</video>\n\n<!-- YouTube Embed -->\n<iframe \n  width=\"560\" height=\"315\"\n  src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\"\n  title=\"YouTube video\" \n  allowfullscreen>\n</iframe>",
+        "explanation": "Always include 'alt' text on images — it's essential for accessibility. 'loading=lazy' improves performance by loading images only when they're about to be visible. srcset lets browsers choose the right image size."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "HTML Links and Images",
+        "url": "https://www.youtube.com/watch?v=tsEQgGjSmkM",
+        "channel": "Dave Gray"
+      },
+      {
+        "title": "HTML Images, Media & Iframes",
+        "url": "https://www.youtube.com/watch?v=dM5V1epAbSs",
+        "channel": "The Net Ninja"
+      }
+    ],
+    "references": [
+      {
+        "title": "Creating Hyperlinks — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks"
+      },
+      {
+        "title": "Responsive Images — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images"
+      },
+      {
+        "title": "Image Formats Guide — web.dev",
+        "url": "https://web.dev/choose-the-right-image-format/"
+      }
+    ],
+    "prerequisites": ["html-document-structure"],
+    "tags": ["html", "links", "images", "video", "media", "responsive"]
+  },
+  {
+    "id": "html-forms-inputs",
+    "title": "HTML Forms & Inputs",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 5,
+    "description": "Forms are how users interact with websites — every login page, search bar, contact form, checkout flow, and survey is built with HTML forms. The <form> element wraps all form controls and defines where the data gets submitted (action attribute) and how (method: GET or POST). HTML5 introduced a powerful suite of input types beyond basic text: email (with built-in validation), password (masked dots), number (spin buttons), date (calendar picker), range (slider), color (color picker), file (upload), and more. Each input should have a <label> element linked via matching 'for' and 'id' attributes — this is critical for accessibility (screen readers announce the label when the input is focused). The <select> element creates dropdowns, <textarea> handles multi-line text, and <fieldset> with <legend> groups related inputs. HTML5 form validation attributes (required, minlength, maxlength, pattern, min, max) let you validate user input without any JavaScript — the browser handles error messages and prevents submission of invalid forms. Understanding form data flow is essential: when a user submits a form, the browser collects all named input values and sends them as key-value pairs to the server. This is the foundation of all user input handling in web development.",
+    "whyItMatters": "Forms are the primary mechanism for user input on the web. Every authentication system, search feature, e-commerce checkout, and data entry interface uses forms. HTML5 validation reduces JavaScript code and improves user experience with native browser validation UI. Proper form accessibility is a legal requirement in many jurisdictions.",
+    "eli5": "A form is like a worksheet at school. Each blank space you fill in is an <input>. The label next to each blank tells you what to write (that's the <label>). Some blanks only accept numbers, some only accept dates — that's like having different input types. When you're done, you hand in the worksheet (submit the form). The teacher (server) then reads your answers!",
+    "subtopics": [
+      "The <form> Element: action, method (GET vs POST)",
+      "Text Inputs: text, email, password, search, url, tel",
+      "Numeric Inputs: number, range",
+      "Date/Time Inputs: date, time, datetime-local, month",
+      "Selection Inputs: checkbox, radio, select, datalist",
+      "Special Inputs: color, file, hidden",
+      "Labels, Placeholders & Accessibility",
+      "Textarea for Multi-line Text",
+      "Fieldset & Legend for Grouping",
+      "HTML5 Validation: required, pattern, min/max, minlength",
+      "Submit & Reset Buttons",
+      "Form Data: How Browsers Collect and Send Data"
+    ],
+    "codeExamples": [
+      {
+        "title": "Contact Form with Validation",
+        "language": "html",
+        "code": "<form action=\"/submit\" method=\"POST\">\n  <fieldset>\n    <legend>Contact Information</legend>\n    \n    <label for=\"name\">Full Name *</label>\n    <input type=\"text\" id=\"name\" name=\"name\" \n           required minlength=\"2\" maxlength=\"50\"\n           placeholder=\"John Doe\">\n    \n    <label for=\"email\">Email *</label>\n    <input type=\"email\" id=\"email\" name=\"email\" \n           required placeholder=\"john@example.com\">\n    \n    <label for=\"phone\">Phone</label>\n    <input type=\"tel\" id=\"phone\" name=\"phone\" \n           pattern=\"[0-9]{10}\" placeholder=\"1234567890\">\n  </fieldset>\n  \n  <fieldset>\n    <legend>Your Message</legend>\n    \n    <label for=\"subject\">Subject</label>\n    <select id=\"subject\" name=\"subject\">\n      <option value=\"\">-- Choose --</option>\n      <option value=\"general\">General Inquiry</option>\n      <option value=\"support\">Technical Support</option>\n      <option value=\"feedback\">Feedback</option>\n    </select>\n    \n    <label for=\"message\">Message *</label>\n    <textarea id=\"message\" name=\"message\" \n              rows=\"5\" required minlength=\"10\"\n              placeholder=\"Write your message...\"></textarea>\n  </fieldset>\n  \n  <button type=\"submit\">Send Message</button>\n  <button type=\"reset\">Clear Form</button>\n</form>",
+        "explanation": "This form uses HTML5 validation: 'required' prevents empty submissions, 'type=email' validates email format, 'pattern' enforces a regex pattern. The browser shows built-in error messages — no JavaScript needed!"
+      },
+      {
+        "title": "Various Input Types",
+        "language": "html",
+        "code": "<!-- Checkboxes (select multiple) -->\n<label><input type=\"checkbox\" name=\"skills\" value=\"html\"> HTML</label>\n<label><input type=\"checkbox\" name=\"skills\" value=\"css\"> CSS</label>\n<label><input type=\"checkbox\" name=\"skills\" value=\"js\"> JavaScript</label>\n\n<!-- Radio buttons (select one) -->\n<label><input type=\"radio\" name=\"level\" value=\"beginner\"> Beginner</label>\n<label><input type=\"radio\" name=\"level\" value=\"intermediate\"> Intermediate</label>\n<label><input type=\"radio\" name=\"level\" value=\"advanced\"> Advanced</label>\n\n<!-- Specialized inputs -->\n<input type=\"date\" name=\"birthday\">\n<input type=\"color\" name=\"fav-color\" value=\"#6366f1\">\n<input type=\"range\" name=\"volume\" min=\"0\" max=\"100\" step=\"5\">\n<input type=\"file\" name=\"avatar\" accept=\"image/*\">\n<input type=\"number\" name=\"age\" min=\"1\" max=\"120\">",
+        "explanation": "HTML5 provides native UI for dates (calendar picker), colors (color wheel), ranges (slider), and files (upload dialog). Checkboxes allow multiple selections, radio buttons allow only one in a group."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "HTML Forms & Inputs Tutorial",
+        "url": "https://www.youtube.com/watch?v=fNcJuPIZ2WE",
+        "channel": "Web Dev Simplified"
+      },
+      {
+        "title": "HTML Form Validation",
+        "url": "https://www.youtube.com/watch?v=In0nB0ABaUk",
+        "channel": "Web Dev Simplified"
+      },
+      {
+        "title": "HTML Forms Full Course",
+        "url": "https://www.youtube.com/watch?v=2O8pkybH6po",
+        "channel": "Dave Gray"
+      }
+    ],
+    "references": [
+      {
+        "title": "Web Forms Guide — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/Forms"
+      },
+      {
+        "title": "HTML Input Types — W3Schools",
+        "url": "https://www.w3schools.com/html/html_form_input_types.asp"
+      },
+      {
+        "title": "Client-side Form Validation — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation"
+      }
+    ],
+    "prerequisites": ["html-document-structure"],
+    "tags": ["html", "forms", "inputs", "validation", "accessibility"]
+  },
+  {
+    "id": "html-tables",
+    "title": "Tables & Data Display",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 2,
+    "description": "HTML tables are designed for displaying tabular data — information that belongs in rows and columns, like spreadsheets, schedules, comparison charts, or statistics. A table is built with <table> as the container, <tr> for each row, <th> for header cells (bold and centered by default), and <td> for data cells. Modern tables use three semantic sections: <thead> (header row), <tbody> (main data), and <tfoot> (footer/totals). The 'colspan' attribute lets a cell span multiple columns, and 'rowspan' lets it span multiple rows. The <caption> element provides an accessible title for the table. An important rule: tables should ONLY be used for tabular data, never for page layout — that's CSS's job (Flexbox, Grid). Using tables for layout was common in the early 2000s but is now an anti-pattern that hurts accessibility and responsiveness. For accessibility, use 'scope' attributes on header cells (scope='col' or scope='row') to associate headers with data cells, helping screen readers navigate complex tables. While CSS handles visual styling (borders, alternating row colors, hover effects), HTML provides the semantic structure that gives meaning to the data.",
+    "whyItMatters": "Data tables are everywhere — pricing pages, analytics dashboards, comparison tools, schedules, and leaderboards. Properly structured tables with semantic markup are accessible to screen readers and provide meaning to search engines. Understanding when to use tables (data) vs. when not to (layout) is a key professional skill.",
+    "eli5": "Think of an HTML table like a grid you draw in your notebook. The horizontal lines are rows (<tr>), and each box inside is a cell (<td>). The top row with column names is the header (<th>) — like writing 'Name', 'Age', 'City' at the top of each column. You can even make a cell stretch across two columns, like when you write a title that covers the whole row!",
+    "subtopics": [
+      "<table>, <tr>, <td>, <th> — Core Structure",
+      "<thead>, <tbody>, <tfoot> — Semantic Sections",
+      "colspan and rowspan — Merging Cells",
+      "<caption> — Table Title for Accessibility",
+      "scope Attribute on <th> for Screen Readers",
+      "Styling Tables with CSS (borders, stripes, hover)",
+      "Responsive Tables (horizontal scroll, stacking)",
+      "Tables vs CSS Layout — When to Use What"
+    ],
+    "codeExamples": [
+      {
+        "title": "Semantic Data Table",
+        "language": "html",
+        "code": "<table>\n  <caption>Student Grades — Spring 2025</caption>\n  <thead>\n    <tr>\n      <th scope=\"col\">Student</th>\n      <th scope=\"col\">Math</th>\n      <th scope=\"col\">Science</th>\n      <th scope=\"col\">English</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Alice</td>\n      <td>95</td>\n      <td>88</td>\n      <td>92</td>\n    </tr>\n    <tr>\n      <td>Bob</td>\n      <td>78</td>\n      <td>85</td>\n      <td>90</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <th scope=\"row\">Average</th>\n      <td>86.5</td>\n      <td>86.5</td>\n      <td>91</td>\n    </tr>\n  </tfoot>\n</table>",
+        "explanation": "The 'scope' attribute helps screen readers understand which headers relate to which data. <caption> provides an accessible title. <tfoot> is perfect for summaries and totals."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "HTML Tables Tutorial",
+        "url": "https://www.youtube.com/watch?v=iDA0kF5lrVk",
+        "channel": "Dave Gray"
+      },
+      {
+        "title": "HTML Tables — All You Need to Know",
+        "url": "https://www.youtube.com/watch?v=dK27jWKtJxs",
+        "channel": "Kevin Powell"
+      }
+    ],
+    "references": [
+      {
+        "title": "HTML Tables — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables"
+      },
+      {
+        "title": "Table Accessibility — W3C WAI",
+        "url": "https://www.w3.org/WAI/tutorials/tables/"
+      }
+    ],
+    "prerequisites": ["html-document-structure"],
+    "tags": ["html", "tables", "data", "accessibility"]
+  },
+  {
+    "id": "semantic-html5",
+    "title": "Semantic HTML5",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 4,
+    "description": "Semantic HTML means using HTML elements that clearly describe their meaning to both the browser and the developer. Instead of building everything with generic <div> elements, HTML5 introduced semantic elements that communicate the PURPOSE of the content. The <header> element marks the top section of a page or section (logos, navigation, titles). <nav> wraps navigation links. <main> contains the primary content (only one per page). <section> groups thematically related content. <article> marks self-contained content that could stand alone (blog posts, news articles, comments). <aside> marks tangential content (sidebars, related links, advertisements). <footer> marks the bottom section (copyright, contact info, additional links). <figure> and <figcaption> associate images with their captions. The <details> and <summary> elements create native collapsible sections without JavaScript — the browser handles the open/close interaction. <time> marks dates and times with machine-readable datetime attributes. Using semantic HTML has massive practical benefits: search engines understand your content better (improving SEO), screen readers can navigate by landmarks (improving accessibility), your code is more readable and maintainable, and browsers can apply better default styles. A page built with <div class='header'><div class='nav'> is functionally identical to <header><nav>, but the semantic version is objectively better in every measurable way.",
+    "whyItMatters": "Google's search algorithm gives preference to semantically structured pages. Screen readers use semantic landmarks to help visually impaired users navigate efficiently. Semantic HTML makes your code self-documenting — another developer (or future you) immediately understands the page structure. It's a core professional skill expected in every frontend job.",
+    "eli5": "Imagine organizing your room. You could throw everything into identical boxes labeled 'stuff.' OR you could use a bookshelf for books, a toy box for toys, a desk drawer for school supplies, and a hat rack for hats. Both ways work, but the second way is SO much easier to find things in! Semantic HTML is like using the right container for the right stuff — <nav> for navigation, <header> for the top, <footer> for the bottom. The computer can understand your page better when everything is in the right place!",
+    "subtopics": [
+      "<header> — Page or Section Header",
+      "<nav> — Navigation Links",
+      "<main> — Primary Page Content (only one per page)",
+      "<section> — Thematic Grouping",
+      "<article> — Self-Contained Content",
+      "<aside> — Sidebar or Tangential Content",
+      "<footer> — Page or Section Footer",
+      "<figure> and <figcaption> — Images with Captions",
+      "<details> and <summary> — Native Collapsible Sections",
+      "<time datetime=\"...\"> — Machine-Readable Dates",
+      "<mark> — Highlighted Text",
+      "Semantic vs Non-Semantic: <div> and <span>"
+    ],
+    "codeExamples": [
+      {
+        "title": "Complete Semantic Page Layout",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>My Blog</title>\n</head>\n<body>\n  <header>\n    <h1>CodeBlog</h1>\n    <nav>\n      <a href=\"/\">Home</a>\n      <a href=\"/about\">About</a>\n      <a href=\"/contact\">Contact</a>\n    </nav>\n  </header>\n\n  <main>\n    <article>\n      <h2>Learning Semantic HTML</h2>\n      <time datetime=\"2025-02-16\">February 16, 2025</time>\n      <p>Semantic HTML makes your code meaningful...</p>\n      \n      <figure>\n        <img src=\"diagram.png\" alt=\"HTML5 semantic elements diagram\">\n        <figcaption>The semantic elements of HTML5</figcaption>\n      </figure>\n    </article>\n\n    <aside>\n      <h3>Related Posts</h3>\n      <ul>\n        <li><a href=\"/css-guide\">CSS Guide</a></li>\n        <li><a href=\"/js-basics\">JS Basics</a></li>\n      </ul>\n    </aside>\n  </main>\n\n  <footer>\n    <p>&copy; 2025 CodeBlog. All rights reserved.</p>\n  </footer>\n</body>\n</html>",
+        "explanation": "Every section is clearly labeled: <header> for the top, <nav> for links, <main> for primary content, <article> for a blog post, <aside> for the sidebar, and <footer> for the bottom. Screen readers can jump between these landmarks!"
+      },
+      {
+        "title": "Interactive Semantic Elements",
+        "language": "html",
+        "code": "<!-- Native collapsible section — NO JavaScript needed! -->\n<details>\n  <summary>What is semantic HTML?</summary>\n  <p>Semantic HTML uses elements that clearly describe \n     their meaning: &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, \n     &lt;article&gt;, &lt;section&gt;, &lt;aside&gt;, &lt;footer&gt;.</p>\n</details>\n\n<details open>\n  <summary>Why does it matter?</summary>\n  <p>Better SEO, accessibility, and code readability.</p>\n</details>\n\n<!-- Highlighted text -->\n<p>The most important rule: <mark>always use semantic elements \n   over generic divs when possible</mark>.</p>",
+        "explanation": "<details> and <summary> create accordion-style collapsible sections with zero JavaScript! The browser handles the open/close animation. The 'open' attribute makes a section expanded by default."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Semantic HTML in 6 Minutes",
+        "url": "https://www.youtube.com/watch?v=kGW8Al_cga4",
+        "channel": "Web Dev Simplified"
+      },
+      {
+        "title": "Why & When to Use Semantic HTML",
+        "url": "https://www.youtube.com/watch?v=bOUhq46fd5g",
+        "channel": "Kevin Powell"
+      },
+      {
+        "title": "HTML5 Semantic Elements Explained",
+        "url": "https://www.youtube.com/watch?v=ZC0iMjSgocU",
+        "channel": "The Net Ninja"
+      }
+    ],
+    "references": [
+      {
+        "title": "Document and Website Structure — MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure"
+      },
+      {
+        "title": "HTML5 Semantic Elements — W3Schools",
+        "url": "https://www.w3schools.com/html/html5_semantic_elements.asp"
+      },
+      {
+        "title": "Content Sectioning — MDN Reference",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element#content_sectioning"
+      }
+    ],
+    "prerequisites": ["html-document-structure", "text-and-typography"],
+    "tags": ["html", "semantic", "accessibility", "seo", "html5"]
+  },
+  {
+    "id": "html-best-practices",
+    "title": "HTML Best Practices & Accessibility",
+    "phase": 0,
+    "difficulty": "beginner",
+    "estimatedHours": 4,
+    "description": "Writing HTML that works is easy. Writing HTML that is accessible, SEO-friendly, performant, and maintainable is a professional skill that separates hobbyists from career developers. Accessibility (a11y) means ensuring your website can be used by everyone, including people with visual, auditory, motor, or cognitive disabilities. Over 1 billion people worldwide have some form of disability, and in many countries (US, EU, UK), web accessibility is a legal requirement under laws like the ADA and EAA. ARIA (Accessible Rich Internet Applications) attributes add semantic information to elements that lack it — aria-label for invisible labels, aria-hidden for decorative elements, role for custom components. Every image needs descriptive alt text (not 'image1.png'). Every form input needs a label. Interactive elements must be keyboard-navigable. Color alone should never be the only way to convey information. SEO (Search Engine Optimization) starts with HTML: proper <title> tags, meta descriptions, heading hierarchy, structured data (JSON-LD), Open Graph tags for social sharing, and canonical URLs to prevent duplicate content issues. Performance best practices include minimizing DOM depth, using loading='lazy' on images, preloading critical fonts with <link rel='preload'>, and using async/defer on script tags to prevent render-blocking. Writing clean, validated HTML ensures cross-browser compatibility and future-proofs your code.",
+    "whyItMatters": "Accessibility is not optional — it's a legal requirement (ADA lawsuits have increased 300% since 2018) and a moral imperative. SEO determines whether people can find your website. Performance directly impacts user retention (53% of users leave if a page takes more than 3 seconds to load). These skills are tested in frontend interviews at every major company.",
+    "eli5": "Imagine you're building a playground. You wouldn't just build slides and swings — you'd also build ramps for wheelchairs, add Braille signs, and make sure the ground is safe. Web accessibility is the same idea: building websites that everyone can use, including people who can't see the screen (they use special software that reads the page out loud) or can't use a mouse (they use only the keyboard). Making your website accessible is like being a good architect who thinks about ALL the people who'll use the building!",
+    "subtopics": [
+      "Why Accessibility Matters (legal, ethical, business)",
+      "ARIA Attributes: aria-label, aria-hidden, aria-describedby, role",
+      "Alt Text Best Practices (descriptive, not 'image.png')",
+      "Keyboard Navigation and Focus Management",
+      "Color Contrast Requirements (WCAG AA/AAA)",
+      "SEO Basics: <title>, Meta Description, Heading Hierarchy",
+      "Open Graph Tags for Social Media Sharing",
+      "Structured Data with JSON-LD",
+      "Performance: async, defer, preload, lazy loading",
+      "HTML Validation (W3C Validator)",
+      "Cross-Browser Compatibility",
+      "Favicon and Mobile Icons"
+    ],
+    "codeExamples": [
+      {
+        "title": "Accessible & SEO-Optimized <head>",
+        "language": "html",
+        "code": "<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  \n  <!-- SEO -->\n  <title>Learn HTML — Free Beginner's Guide | CodeAtlas</title>\n  <meta name=\"description\" content=\"Master HTML5 from scratch with interactive examples, code snippets, and video tutorials.\">\n  <link rel=\"canonical\" href=\"https://codeatlas.dev/html\">\n  \n  <!-- Open Graph (social sharing) -->\n  <meta property=\"og:title\" content=\"Learn HTML — Free Beginner's Guide\">\n  <meta property=\"og:description\" content=\"Master HTML5 from scratch.\">\n  <meta property=\"og:image\" content=\"https://codeatlas.dev/og-image.jpg\">\n  <meta property=\"og:type\" content=\"website\">\n  \n  <!-- Performance -->\n  <link rel=\"preload\" href=\"/fonts/inter.woff2\" as=\"font\" crossorigin>\n  <link rel=\"stylesheet\" href=\"styles.css\">\n  <script src=\"app.js\" defer></script>\n  \n  <!-- Icons -->\n  <link rel=\"icon\" href=\"/favicon.ico\" sizes=\"32x32\">\n  <link rel=\"apple-touch-icon\" href=\"/apple-icon-180.png\">\n</head>",
+        "explanation": "'defer' loads the script without blocking page rendering. 'preload' fetches fonts early for faster text display. Open Graph tags control how your link appears when shared on social media."
+      },
+      {
+        "title": "ARIA & Accessibility Patterns",
+        "language": "html",
+        "code": "<!-- Skip navigation link (for keyboard users) -->\n<a href=\"#main-content\" class=\"skip-link\">Skip to main content</a>\n\n<!-- Accessible navigation -->\n<nav aria-label=\"Main navigation\">\n  <ul role=\"list\">\n    <li><a href=\"/\" aria-current=\"page\">Home</a></li>\n    <li><a href=\"/about\">About</a></li>\n  </ul>\n</nav>\n\n<main id=\"main-content\">\n  <!-- Accessible icon button -->\n  <button aria-label=\"Close dialog\">\n    <svg aria-hidden=\"true\"><!-- X icon --></svg>\n  </button>\n  \n  <!-- Image with good alt text -->\n  <img src=\"chart.png\" \n       alt=\"Bar chart showing 60% of users prefer dark mode, 40% light mode\">\n  \n  <!-- Decorative image (no alt text needed) -->\n  <img src=\"decorative-line.svg\" alt=\"\" role=\"presentation\">\n  \n  <!-- Accessible alert -->\n  <div role=\"alert\">Form submitted successfully!</div>\n</main>",
+        "explanation": "aria-label provides invisible labels for screen readers. aria-hidden='true' hides decorative icons from assistive tech. role='alert' announces messages to screen readers. Skip links let keyboard users bypass navigation."
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Web Accessibility in 6 Minutes",
+        "url": "https://www.youtube.com/watch?v=aqM6rV5IBlg",
+        "channel": "Web Dev Simplified"
+      },
+      {
+        "title": "SEO for Developers in 100 Seconds",
+        "url": "https://www.youtube.com/watch?v=-B58GgsehKQ",
+        "channel": "Fireship"
+      },
+      {
+        "title": "HTML Tips for Beginners",
+        "url": "https://www.youtube.com/watch?v=NaWqEODBCtA",
+        "channel": "Kevin Powell"
+      }
+    ],
+    "references": [
+      {
+        "title": "Web Accessibility Introduction — W3C WAI",
+        "url": "https://www.w3.org/WAI/fundamentals/accessibility-intro/"
+      },
+      {
+        "title": "ARIA Authoring Practices — W3C",
+        "url": "https://www.w3.org/WAI/ARIA/apg/"
+      },
+      {
+        "title": "W3C HTML Validator",
+        "url": "https://validator.w3.org/"
+      },
+      {
+        "title": "Open Graph Protocol",
+        "url": "https://ogp.me/"
+      }
+    ],
+    "prerequisites": ["semantic-html5"],
+    "tags": ["html", "accessibility", "a11y", "seo", "aria", "performance"]
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "title": "Web Development Roadmap",
+  "subtitle": "From Zero to Full-Stack Developer",
+  "totalPhases": 3,
+  "phases": [
+    {
+      "id": 0,
+      "slug": "html5",
+      "title": "HTML5 Fundamentals",
+      "shortTitle": "HTML5",
+      "description": "Master the foundation of every website — HTML5. Learn to structure web pages with semantic elements, forms, media, tables, and accessibility best practices.",
+      "icon": "FaHtml5",
+      "color": "#E44D26",
+      "gradientFrom": "#E44D26",
+      "gradientTo": "#F16529",
+      "difficulty": "beginner",
+      "estimatedWeeks": 3,
+      "topicCount": 8
+    },
+    {
+      "id": 1,
+      "slug": "css3",
+      "title": "CSS3 & Modern Styling",
+      "shortTitle": "CSS3",
+      "description": "Transform plain HTML into stunning, responsive designs. Master selectors, the box model, Flexbox, Grid, animations, and modern CSS techniques.",
+      "icon": "FaCss3Alt",
+      "color": "#264DE4",
+      "gradientFrom": "#264DE4",
+      "gradientTo": "#2965F1",
+      "difficulty": "beginner",
+      "estimatedWeeks": 4,
+      "topicCount": 9
+    },
+    {
+      "id": 2,
+      "slug": "javascript",
+      "title": "JavaScript Essentials",
+      "shortTitle": "JavaScript",
+      "description": "Bring your web pages to life with JavaScript. Learn programming fundamentals, DOM manipulation, events, async programming, and build real interactive projects.",
+      "icon": "FaJsSquare",
+      "color": "#F7DF1E",
+      "gradientFrom": "#F7DF1E",
+      "gradientTo": "#E8D44D",
+      "difficulty": "beginner",
+      "estimatedWeeks": 6,
+      "topicCount": 10
+    }
+  ]
+}

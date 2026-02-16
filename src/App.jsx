@@ -1,5 +1,10 @@
 import React, { Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Layout from "./components/Layout";
 import useProgressStore from "./store/useProgressStore";
 import "./index.css";
@@ -11,6 +16,9 @@ const TopicPage = React.lazy(() => import("./pages/TopicPage"));
 const DsaHome = React.lazy(() => import("./pages/DsaHome"));
 const DsaSectionPage = React.lazy(() => import("./pages/DsaSectionPage"));
 const ComingSoonPage = React.lazy(() => import("./pages/ComingSoonPage"));
+const DevHome = React.lazy(() => import("./pages/DevHome"));
+const DevPhasePage = React.lazy(() => import("./pages/DevPhasePage"));
+const DevTopicPage = React.lazy(() => import("./pages/DevTopicPage"));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -58,7 +66,15 @@ function App() {
 
             {/* DSA Track */}
             <Route path="/dsa" element={<DsaHome />} />
-            <Route path="/dsa/section/:sectionId" element={<DsaSectionPage />} />
+            <Route
+              path="/dsa/section/:sectionId"
+              element={<DsaSectionPage />}
+            />
+
+            {/* Development Track */}
+            <Route path="/dev" element={<DevHome />} />
+            <Route path="/dev/phase/:phaseId" element={<DevPhasePage />} />
+            <Route path="/dev/topic/:topicId" element={<DevTopicPage />} />
 
             {/* Coming Soon tracks */}
             <Route path="/track/:trackId" element={<ComingSoonPage />} />

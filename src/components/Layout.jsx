@@ -25,7 +25,10 @@ const Layout = ({ children }) => {
   const currentTrack = activeTrack
     ? tracks.find((t) => t.id === activeTrack) || null
     : null;
-  const hasSidebar = activeTrack === "aiml" || activeTrack === "dsa";
+  const hasSidebar =
+    activeTrack === "aiml" ||
+    activeTrack === "dsa" ||
+    activeTrack === "development";
 
   useEffect(() => {
     if (!onboardingSeen) {
