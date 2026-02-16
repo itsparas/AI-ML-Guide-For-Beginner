@@ -7,7 +7,7 @@ import useProgressStore from "../store/useProgressStore";
 import { HiMenuAlt2, HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
 import { FaHome } from "react-icons/fa";
 import { tracks } from "../data/tracks";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 const Layout = ({ children }) => {
   const {
@@ -32,7 +32,9 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     if (!onboardingSeen) {
-      setShowOnboarding(true);
+      // Delay to avoid "setState during render" warning
+      const timer = setTimeout(() => setShowOnboarding(true), 0);
+      return () => clearTimeout(timer);
     }
   }, [onboardingSeen]);
 
