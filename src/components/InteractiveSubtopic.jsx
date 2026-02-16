@@ -14,8 +14,13 @@ const InteractiveSubtopic = ({ topicId, subtopic, index, phaseColor }) => {
   const complete = isSubtopicComplete(topicId, index);
   const expanded = isSubtopicExpanded(topicId, index);
 
-  const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(subtopic + " tutorial")}`;
-  const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(subtopic + " explained")}`;
+  // Support both string and object subtopic formats
+  const isObject = typeof subtopic === "object" && subtopic !== null;
+  const name = isObject ? subtopic.name : subtopic;
+  const explanation = isObject ? subtopic.explanation : null;
+
+  const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(name + " tutorial")}`;
+  const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(name + " explained")}`;
 
   return (
     <motion.div
@@ -58,7 +63,9 @@ const InteractiveSubtopic = ({ topicId, subtopic, index, phaseColor }) => {
         <div
           className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0"
           style={{
-            backgroundColor: complete ? "rgba(16, 185, 129, 0.1)" : `${phaseColor}15`,
+            backgroundColor: complete
+              ? "rgba(16, 185, 129, 0.1)"
+              : `${phaseColor}15`,
             color: complete ? "#10b981" : phaseColor,
           }}
         >
@@ -72,10 +79,12 @@ const InteractiveSubtopic = ({ topicId, subtopic, index, phaseColor }) => {
         >
           <span
             className={`text-sm font-medium transition-colors ${
-              complete ? "text-emerald-400 line-through opacity-70" : "text-surface-200"
+              complete
+                ? "text-emerald-400 line-through opacity-70"
+                : "text-surface-200"
             }`}
           >
-            {subtopic}
+            {name}
           </span>
         </button>
 
@@ -101,12 +110,27 @@ const InteractiveSubtopic = ({ topicId, subtopic, index, phaseColor }) => {
             className="overflow-hidden"
           >
             <div className="px-4 pb-4 pt-1 ml-0 md:ml-[4.25rem]">
-              {/* Quick tip */}
-              <div className="flex items-start gap-2 mb-3 p-3 rounded-lg bg-primary-500/5 border border-primary-500/10">
-                <FaLightbulb className="text-amber-400 text-sm flex-shrink-0 mt-0.5" />
+              {/* Explanation or fallback tip */}
+              <div
+                className={`flex items-start gap-2.5 mb-3 p-3 rounded-lg ${
+                  explanation
+                    ? "bg-white/[0.03] border border-white/[0.06]"
+                    : "bg-primary-500/5 border border-primary-500/10"
+                }`}
+              >
+                <FaLightbulb
+                  className={`text-sm flex-shrink-0 mt-0.5 ${
+                    explanation ? "text-violet-400" : "text-amber-400"
+                  }`}
+                />
                 <p className="text-sm text-surface-300 leading-relaxed">
-                  Learn <strong className="text-surface-200">{subtopic}</strong> to strengthen your understanding of this topic.
-                  Practice with real examples and projects for best results.
+                  {explanation || (
+                    <>
+                      Learn <strong className="text-surface-200">{name}</strong>{" "}
+                      to strengthen your understanding of this topic. Practice
+                      with real examples and projects for best results.
+                    </>
+                  )}
                 </p>
               </div>
 

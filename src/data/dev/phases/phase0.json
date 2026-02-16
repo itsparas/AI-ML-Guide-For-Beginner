@@ -9,16 +9,46 @@
     "whyItMatters": "Every web technology you'll learn is built on top of this client-server architecture. Understanding how browsers fetch and render pages helps you debug issues, optimize performance, and make informed decisions about how to structure your code. Interviewers frequently ask about HTTP, DNS, and the request-response cycle.",
     "eli5": "Imagine you're ordering a pizza. You (the browser) call the pizza shop (the server) and ask for a pepperoni pizza (the web page). The pizza shop makes your pizza and delivers it to your door. The phone number you dial is like a URL, the phone company that connects your call is like DNS, and the pizza delivery is like the HTTP response bringing the website to your screen. HTTPS is like ordering through a secret code so no one can steal your pizza order!",
     "subtopics": [
-      "What is the Internet vs the World Wide Web",
-      "Client-Server Model",
-      "How DNS Works (Domain → IP Address)",
-      "HTTP Request & Response Cycle",
-      "HTTP Methods (GET, POST, PUT, DELETE)",
-      "HTTP Status Codes (200, 301, 404, 500)",
-      "HTTPS & SSL/TLS Encryption",
-      "How Browsers Render Web Pages",
-      "Web Hosting & Domain Names",
-      "Developer Tools: Network Tab"
+      {
+        "name": "What is the Internet vs the World Wide Web",
+        "explanation": "The Internet is the global network of interconnected computers — the physical infrastructure of cables, routers, and servers that connects billions of devices worldwide. The World Wide Web (WWW) is just one service that runs ON TOP of the Internet, using HTTP/HTTPS to serve web pages. Other services also use the Internet: email (SMTP), file transfer (FTP), and video calls (WebRTC). Think of the Internet as the road system and the Web as just one type of vehicle driving on it. Tim Berners-Lee invented the Web in 1989 at CERN, but the Internet itself dates back to ARPANET in the 1960s."
+      },
+      {
+        "name": "Client-Server Model",
+        "explanation": "The client-server model is the fundamental architecture of the web. The 'client' is your browser (Chrome, Firefox, Safari) — it sends requests for data. The 'server' is a remote computer that stores websites and responds with the requested files (HTML, CSS, JS, images). When you visit google.com, your browser (client) sends an HTTP request to Google's server, which processes it and sends back the webpage. This is a one-way initiation: the client always asks first, the server always responds. Think of it like a restaurant: you (client) place an order, and the kitchen (server) prepares and delivers your food."
+      },
+      {
+        "name": "How DNS Works (Domain → IP Address)",
+        "explanation": "DNS (Domain Name System) translates human-readable domain names like 'google.com' into machine-readable IP addresses like '142.250.190.14'. Computers communicate using IP addresses, but humans prefer memorable names. When you type a URL, your browser first checks its local DNS cache, then your operating system's cache, then your ISP's DNS server, and finally authoritative DNS servers to resolve the domain. The whole process typically takes 20-120 milliseconds. DNS is essentially the internet's phone book — you look up a name and get a number to call."
+      },
+      {
+        "name": "HTTP Request & Response Cycle",
+        "explanation": "Every interaction on the web follows a request-response cycle. When you click a link or type a URL: (1) Your browser creates an HTTP request with a method (GET, POST, etc.), headers (metadata), and optional body (data). (2) The request travels through the internet to the web server. (3) The server processes the request — it might read a file, query a database, or run application logic. (4) The server sends back an HTTP response containing a status code (200 OK, 404 Not Found, etc.), headers, and the response body (usually HTML). (5) Your browser receives the response and renders the page. This entire cycle typically takes 100ms-2 seconds."
+      },
+      {
+        "name": "HTTP Methods (GET, POST, PUT, DELETE)",
+        "explanation": "HTTP methods tell the server what action you want to perform. GET retrieves data (loading a webpage, fetching an API response) — it should never modify data. POST sends data to create something new (submitting a form, creating an account). PUT updates an existing resource completely (replacing a user's profile). PATCH partially updates a resource (changing just the email). DELETE removes a resource. These map to CRUD operations: Create=POST, Read=GET, Update=PUT/PATCH, Delete=DELETE. When you load a webpage, your browser sends a GET request. When you submit a login form, it sends a POST request."
+      },
+      {
+        "name": "HTTP Status Codes (200, 301, 404, 500)",
+        "explanation": "Status codes are three-digit numbers the server sends back to indicate what happened. They fall into five categories: 1xx (Informational), 2xx (Success — 200 OK means everything worked, 201 Created means a new resource was made), 3xx (Redirects — 301 Moved Permanently, 302 Found/Temporary Redirect), 4xx (Client Errors — 400 Bad Request means you sent invalid data, 401 Unauthorized means you need to log in, 403 Forbidden means you don't have permission, 404 Not Found means the page doesn't exist), 5xx (Server Errors — 500 Internal Server Error means something broke on the server, 503 Service Unavailable means the server is down). Knowing these helps you debug issues quickly."
+      },
+      {
+        "name": "HTTPS & SSL/TLS Encryption",
+        "explanation": "HTTPS is HTTP with encryption added via SSL/TLS (Secure Sockets Layer / Transport Layer Security). When you visit an HTTPS site, your browser and the server perform a 'TLS handshake': they agree on an encryption method and exchange cryptographic keys. After that, all data flowing between you and the server is encrypted — even if someone intercepts it, they can't read it. This protects passwords, credit card numbers, and personal data. The padlock icon in your browser's address bar indicates HTTPS is active. SSL certificates are issued by Certificate Authorities (CAs) like Let's Encrypt (free) or DigiCert. Today, HTTPS is expected on ALL websites — Google even ranks HTTPS sites higher in search results."
+      },
+      {
+        "name": "How Browsers Render Web Pages",
+        "explanation": "When your browser receives HTML from a server, it goes through a multi-step rendering pipeline: (1) Parse HTML to build the DOM (Document Object Model) — a tree structure representing every element on the page. (2) Parse CSS to build the CSSOM (CSS Object Model) — all the style rules. (3) Combine DOM + CSSOM into the Render Tree — only visible elements with their computed styles. (4) Layout — calculate the exact position and size of every element on the page. (5) Paint — draw pixels to the screen (text, colors, images, borders). (6) Composite — combine layers for the final visual output. JavaScript can modify the DOM and CSSOM, triggering re-layouts and re-paints. Understanding this pipeline helps you write performant code that avoids unnecessary re-renders."
+      },
+      {
+        "name": "Web Hosting & Domain Names",
+        "explanation": "Web hosting is renting server space to store your website's files so they're accessible 24/7 on the internet. Hosting types include: Shared hosting (cheapest, your site shares a server with others), VPS (Virtual Private Server — a dedicated portion of a server), Cloud hosting (AWS, Google Cloud, Azure — scalable and pay-per-use), and Static hosting (Netlify, Vercel, GitHub Pages — free for simple sites). A domain name (like 'mysite.com') is a human-readable address you purchase from a registrar (like Namecheap or Google Domains). You connect your domain to your hosting by updating DNS records (A record pointing to your server's IP address). Together, hosting + domain = your website is live on the internet."
+      },
+      {
+        "name": "Developer Tools: Network Tab",
+        "explanation": "Every modern browser has built-in Developer Tools (press F12 or Ctrl+Shift+I). The Network tab is essential for web development — it shows every HTTP request your page makes in real-time. For each request, you can see: the URL, HTTP method, status code, response time, file size, headers, and response body. This is invaluable for debugging: you can see if an API call failed (4xx/5xx status), if images are loading too slowly (large file sizes), or if requests are being blocked (CORS errors). You can also throttle your network speed to test how your site performs on slow connections. The Network tab is one of the most-used tools in a professional web developer's daily workflow."
+      }
     ],
     "codeExamples": [
       {
@@ -78,18 +108,54 @@
     "whyItMatters": "HTML structure is the foundation of absolutely everything on the web. Every CSS style targets HTML elements. Every JavaScript interaction manipulates HTML elements. Every framework generates HTML. Getting the structure right affects SEO rankings, accessibility for screen readers, and how browsers render your page.",
     "eli5": "Think of HTML like building with LEGO blocks. Each LEGO piece is a 'tag' — there are different shapes for different things. The <h1> block is a big heading, the <p> block is a paragraph of text, and the <img> block shows a picture. You stack these blocks inside each other to build your web page, just like stacking LEGO to build a house. The <head> is like the instruction manual that comes with the LEGO set — it's important but you don't see it in the finished building!",
     "subtopics": [
-      "What is HTML? Markup vs Programming Language",
-      "<!DOCTYPE html> Declaration",
-      "The <html> Root Element & lang Attribute",
-      "The <head> Section (title, meta, link, script)",
-      "Character Encoding with <meta charset='UTF-8'>",
-      "The <body> Section",
-      "Tags, Elements & Attributes",
-      "Opening Tags, Closing Tags & Self-Closing Tags",
-      "Nesting Elements Properly",
-      "HTML Comments <!-- -->",
-      "Setting Up VS Code for HTML Development",
-      "Emmet Shortcuts for Fast HTML Writing"
+      {
+        "name": "What is HTML? Markup vs Programming Language",
+        "explanation": "HTML (HyperText Markup Language) is NOT a programming language — it's a markup language. Programming languages (JavaScript, Python) have logic: variables, loops, conditions. HTML has none of that. It only describes STRUCTURE and CONTENT using tags. '<h1>' says 'this is a heading,' '<p>' says 'this is a paragraph.' HTML tells the browser WHAT to display, not HOW to process data. Think of it like a blueprint: it shows where the walls, doors, and windows go, but doesn't describe how to build them. CSS handles appearance, JavaScript handles behavior — HTML handles structure."
+      },
+      {
+        "name": "<!DOCTYPE html> Declaration",
+        "explanation": "The very first line of every modern web page must be '<!DOCTYPE html>'. This tells the browser: 'This document uses HTML5.' Without it, the browser enters 'quirks mode,' which emulates older rendering behavior from the IE5/Netscape era — your CSS will behave unpredictably and layouts may break. With the DOCTYPE, the browser uses 'standards mode,' following the HTML5 specification correctly. In older versions of HTML, the DOCTYPE was long and complex (like '<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\">'). HTML5 simplified it to just '<!DOCTYPE html>'. Always put it first — before any whitespace or comments."
+      },
+      {
+        "name": "The <html> Root Element & lang Attribute",
+        "explanation": "The '<html>' element wraps everything on your page — it's the 'root' of the document tree. Everything visible and invisible is a descendant of this element. The 'lang' attribute (e.g., '<html lang=\"en\">') tells browsers and screen readers what language the content is in. This is critical for accessibility (screen readers use it to pronounce text correctly), SEO (search engines serve the right language version), and translation tools. Always set it! For multilingual pages, you can use 'lang' on individual elements too (e.g., '<p lang=\"fr\">Bonjour</p>')."
+      },
+      {
+        "name": "The <head> Section (title, meta, link, script)",
+        "explanation": "The '<head>' section contains metadata — information ABOUT the page that isn't visible to users. Key elements include: '<title>' (the text shown in the browser tab and search results — critical for SEO), '<meta>' tags (character encoding, viewport settings for mobile, page description for search engines), '<link>' (connecting external CSS stylesheets and favicons), and '<script>' (loading JavaScript files). The '<head>' is processed BEFORE the '<body>' renders, so putting large resources here without 'defer' or 'async' can slow down page loading. Think of '<head>' as the backstage crew — invisible to the audience but essential for the show."
+      },
+      {
+        "name": "Character Encoding with <meta charset='UTF-8'>",
+        "explanation": "Character encoding determines how the bytes in your file are translated into human-readable characters. UTF-8 is the universal standard that supports virtually every character from every language — English, Chinese, Arabic, emoji (🎉), mathematical symbols (∑), and more. Without '<meta charset=\"UTF-8\">', special characters might appear as garbled text (mojibake). For example, 'café' might display as 'cafÃ©'. Always include this meta tag as the FIRST element inside '<head>', before '<title>', to ensure the browser knows how to decode the file from the very start."
+      },
+      {
+        "name": "The <body> Section",
+        "explanation": "The '<body>' element contains everything visible to the user: text, images, buttons, forms, videos, and all interactive content. There can only be ONE '<body>' element per page, and it's a direct child of '<html>'. All your headings, paragraphs, divs, sections, and other visible elements go inside '<body>'. The browser reads '<body>' from top to bottom, rendering elements in the order they appear (the 'document flow'). CSS can change how elements look and where they're positioned, but the HTML source order in '<body>' determines the default layout and reading order for screen readers."
+      },
+      {
+        "name": "Tags, Elements & Attributes",
+        "explanation": "Understanding HTML vocabulary is essential. A TAG is the code itself: '<p>', '</p>'. An ELEMENT is the complete unit: the opening tag + content + closing tag together ('<p>Hello</p>'). ATTRIBUTES are extra information added to the opening tag: '<a href=\"url\" target=\"_blank\">'. Attributes always follow the name=\"value\" format. Some common global attributes work on any element: 'id' (unique identifier), 'class' (for CSS styling), 'style' (inline CSS), 'title' (tooltip text), 'data-*' (custom data attributes). Boolean attributes like 'disabled', 'required', and 'hidden' don't need a value — just their presence activates them."
+      },
+      {
+        "name": "Opening Tags, Closing Tags & Self-Closing Tags",
+        "explanation": "Most HTML elements have an opening tag and a closing tag: '<div>content</div>'. The closing tag has a forward slash before the tag name. Some elements are 'void' or 'self-closing' — they have no content and no closing tag: '<img>', '<br>', '<hr>', '<input>', '<meta>', '<link>'. In HTML5, the trailing slash is optional ('<img />' and '<img>' are both valid), but many style guides recommend including it for clarity. NEVER forget a closing tag on a non-void element — '<div>Hello' without '</div>' can cause the browser to misinterpret everything that follows, leading to broken layouts."
+      },
+      {
+        "name": "Nesting Elements Properly",
+        "explanation": "Nesting means placing elements inside other elements: '<div><p>Hello <strong>world</strong></p></div>'. Proper nesting follows a strict rule: tags must close in the REVERSE order they opened (like Russian dolls). WRONG: '<p><strong>text</p></strong>' (p closes before strong). RIGHT: '<p><strong>text</strong></p>' (strong closes before p). Improper nesting causes bugs: broken layouts, accessibility issues, and unpredictable browser behavior. Browsers try to fix bad nesting silently, but the result is often not what you intended. Use consistent indentation (2 or 4 spaces per level) to visually track nesting levels."
+      },
+      {
+        "name": "HTML Comments <!-- -->",
+        "explanation": "HTML comments are written as '<!-- This is a comment -->' and are completely invisible on the webpage. They're useful for: explaining complex code sections, temporarily disabling HTML without deleting it, leaving notes for other developers (or future you), and creating section dividers in long files. Comments can span multiple lines. However, be aware: comments ARE visible in the page source (View Page Source or DevTools). Never put sensitive information (passwords, API keys, internal notes about clients) in HTML comments. For temporary debugging, comments are faster than deleting and rewriting code."
+      },
+      {
+        "name": "Setting Up VS Code for HTML Development",
+        "explanation": "VS Code is the most popular code editor for web development (used by 73% of developers). Essential setup for HTML: Install the 'Live Server' extension to preview your page in the browser with auto-reload on save. Install 'Prettier' for automatic code formatting. Install 'Auto Rename Tag' to rename matching opening/closing tags simultaneously. Enable 'Format On Save' in Settings. The built-in Emmet support lets you write HTML shortcuts and expand them with Tab. Turn on 'Bracket Pair Colorization' to visually match nested elements. Use Ctrl+Shift+P to access the command palette for any action."
+      },
+      {
+        "name": "Emmet Shortcuts for Fast HTML Writing",
+        "explanation": "Emmet is a built-in VS Code feature that lets you write HTML incredibly fast using shortcuts. Type '!' and press Tab to generate a complete HTML5 boilerplate. Type 'div.container' + Tab to get '<div class=\"container\"></div>'. Type 'ul>li*5' + Tab to get a list with 5 items. Type 'h1+p+p' + Tab to get a heading followed by two paragraphs. Type 'div>h2+p{Lorem ipsum}' for nested elements with text. Emmet also works with CSS. Learning 10-15 common Emmet shortcuts can save hours of typing over a project. It's one of the biggest productivity boosters for web developers."
+      }
     ],
     "codeExamples": [
       {
@@ -149,16 +215,46 @@
     "whyItMatters": "Proper text markup directly impacts SEO — search engines weight <h1> content heavily for page relevance. Screen readers navigate pages by heading hierarchy, so incorrect heading levels make your site inaccessible. Semantic text elements ensure your content works everywhere: browsers, search engines, screen readers, RSS feeds, and AI scrapers.",
     "eli5": "When you write a school essay, you have a title at the top (that's <h1>), chapter names (<h2>), regular paragraphs (<p>), and maybe a list of supplies (<ul> with <li> items). HTML text tags are just labels that tell the computer what kind of text something is. It's like color-coding your notes — headings in red, important words in bold, regular text in black. The computer doesn't see the colors, but the labels help it understand your page!",
     "subtopics": [
-      "Heading Hierarchy: <h1> through <h6>",
-      "Paragraphs <p> and Line Breaks <br>",
-      "Bold (<strong>) vs Italic (<em>) — Semantic Meaning",
-      "Ordered Lists <ol> and Unordered Lists <ul>",
-      "Description Lists <dl>, <dt>, <dd>",
-      "Blockquotes <blockquote> and Citations <cite>",
-      "Preformatted Text <pre> and Inline Code <code>",
-      "Subscript <sub>, Superscript <sup>, and Abbreviations <abbr>",
-      "Horizontal Rules <hr> and Thematic Breaks",
-      "Special Characters & HTML Entities (&amp; &lt; &gt; &nbsp;)"
+      {
+        "name": "Heading Hierarchy: <h1> through <h6>",
+        "explanation": "HTML has six heading levels: <h1> (most important) through <h6> (least important). Use ONE <h1> per page as the main title — search engines use it heavily for SEO. <h2> marks major sections, <h3> subsections within <h2>, and so on. NEVER skip levels (e.g., jumping from <h1> to <h4>) — screen readers use the hierarchy to create a navigable outline of your page. Don't use headings just to make text big (use CSS for that). Think of headings like a book's table of contents — they create a logical structure that helps readers (and search engines) understand your content."
+      },
+      {
+        "name": "Paragraphs <p> and Line Breaks <br>",
+        "explanation": "The <p> element wraps a block of text into a paragraph. Browsers automatically add vertical spacing (margin) between paragraphs. The <br> (line break) element forces a new line within the same paragraph — use it sparingly, only where a line break is semantically meaningful (like in poems, song lyrics, or addresses). A common beginner mistake is using multiple <br><br> tags for spacing — always use CSS margin/padding instead. Paragraphs are 'block-level' elements, meaning each one starts on a new line and takes the full available width."
+      },
+      {
+        "name": "Bold (<strong>) vs Italic (<em>) — Semantic Meaning",
+        "explanation": "<strong> and <em> look like bold and italic, but they carry SEMANTIC meaning. <strong> means 'this text is important' — screen readers announce it with emphasis. <em> means 'this text is stressed' — screen readers change their intonation. By contrast, <b> and <i> are purely visual (bold/italic without meaning). Use <strong> when the text is genuinely important ('Warning: <strong>Do not delete this file</strong>'). Use <em> for emphasis that changes the meaning of a sentence ('I <em>never</em> said that' vs 'I never <em>said</em> that'). This distinction matters for accessibility and SEO."
+      },
+      {
+        "name": "Ordered Lists <ol> and Unordered Lists <ul>",
+        "explanation": "Lists are used everywhere on the web: navigation menus, feature lists, steps in a tutorial. <ul> (unordered list) creates bulleted lists where order doesn't matter (ingredients, features). <ol> (ordered list) creates numbered lists where sequence matters (instructions, rankings). Each item is wrapped in <li> (list item). Lists can be nested: put a <ul> inside an <li> to create sub-lists. The 'type' attribute on <ol> controls numbering style (1, A, a, I, i). CSS can completely change how lists look — removing bullets, making them horizontal for navigation bars, or creating custom markers."
+      },
+      {
+        "name": "Description Lists <dl>, <dt>, <dd>",
+        "explanation": "Description lists (<dl>) are the least-known list type but very useful. They create term-definition pairs: <dt> (description term) holds the word or phrase being defined, and <dd> (description details) holds the definition. Use cases include: glossaries, FAQ pages, metadata displays (like 'Author: John', 'Date: Feb 2025'), and key-value pairs. Multiple <dd> elements can follow a single <dt> for multiple definitions. Unlike <ul>/<ol>, description lists don't have bullets or numbers — they use indentation by default. They're semantically the correct choice whenever you're pairing labels with values."
+      },
+      {
+        "name": "Blockquotes <blockquote> and Citations <cite>",
+        "explanation": "<blockquote> marks quoted text from another source. Browsers typically render it indented. Always use it when quoting external content — it's semantically correct and screen readers identify it as a quotation. The 'cite' attribute on <blockquote> can hold the source URL (invisible to users but useful for SEO and accessibility). The <cite> element marks the title of a cited work (book, article, film) — it's typically rendered in italic. For inline quotes within a paragraph, use <q> instead of <blockquote> — browsers automatically add quotation marks around <q> content."
+      },
+      {
+        "name": "Preformatted Text <pre> and Inline Code <code>",
+        "explanation": "<pre> (preformatted text) preserves ALL whitespace and line breaks exactly as written in the HTML source. Normal HTML collapses multiple spaces into one — <pre> doesn't. It uses a monospace font by default. <code> marks inline code within a sentence: 'Use the <code>console.log()</code> function.' For multi-line code blocks, combine them: <pre><code>your code here</code></pre>. This combination is what syntax highlighters like Prism.js and Highlight.js look for. <pre> is also useful for displaying ASCII art, poetry with specific formatting, or any content where exact whitespace matters."
+      },
+      {
+        "name": "Subscript <sub>, Superscript <sup>, and Abbreviations <abbr>",
+        "explanation": "<sub> renders text as subscript (below the baseline) — used in chemical formulas like H<sub>2</sub>O and mathematical variables like x<sub>i</sub>. <sup> renders text as superscript (above the baseline) — used in exponents like E=MC<sup>2</sup>, footnote references like 'fact<sup>[1]</sup>', and ordinals like '1<sup>st</sup>'. <abbr> marks abbreviations: '<abbr title=\"HyperText Markup Language\">HTML</abbr>'. The 'title' attribute provides the full expansion — hovering over it shows a tooltip, and screen readers can announce the full form. These elements add precision and accessibility to technical content."
+      },
+      {
+        "name": "Horizontal Rules <hr> and Thematic Breaks",
+        "explanation": "The <hr> element creates a horizontal line across the page (a 'horizontal rule'). In HTML5, its semantic meaning changed: it now represents a 'thematic break' — a shift in topic or section within the same content. Think of it like a scene break in a novel (the '***' between sections). It's a void element (self-closing, no content). CSS can style it extensively: change the color, width, style (dashed, dotted), or even make it invisible. Don't use <hr> for pure visual decoration — use CSS borders instead. Use <hr> when there's a genuine thematic shift in your content."
+      },
+      {
+        "name": "Special Characters & HTML Entities (&amp; &lt; &gt; &nbsp;)",
+        "explanation": "Some characters have special meaning in HTML: '<' and '>' define tags, '&' starts entities. To display these literally, use HTML entities: '&lt;' for <, '&gt;' for >, '&amp;' for &, '&quot;' for \", '&apos;' for '. '&nbsp;' is a non-breaking space — it prevents the browser from breaking a line between two words (useful in '100&nbsp;km' to keep the number with its unit). '&copy;' displays ©, '&trade;' displays ™. You can also use numeric entities: '&#169;' for ©, '&#128512;' for 😀. Entities are essential for displaying code examples in HTML and for typographic control."
+      }
     ],
     "codeExamples": [
       {
@@ -209,18 +305,54 @@
     "whyItMatters": "Links are literally what make the 'web' a web — they connect everything together. Images make content engaging and shareable. Proper alt text is legally required for accessibility compliance in many countries. Understanding media optimization directly impacts page load speed, which affects SEO rankings and user experience.",
     "eli5": "Links are like magic doors in a video game — click on one and you teleport to somewhere else! The <a> tag creates these doors. Images (<img>) are like stickers you paste onto your page. Videos (<video>) are like embedding a TV screen right in your page. And an iframe is like putting a window into your wall so you can see another room (another website) through it!",
     "subtopics": [
-      "Anchor Tag <a> and href Attribute",
-      "Absolute vs Relative URLs",
-      "Opening Links in New Tab (target='_blank' rel='noopener')",
-      "Linking to Page Sections with Fragment IDs (#)",
-      "Email Links (mailto:) and Phone Links (tel:)",
-      "Image Tag <img>: src, alt, width, height",
-      "Image Formats: JPEG, PNG, SVG, WebP, AVIF",
-      "Responsive Images: srcset and <picture>",
-      "Lazy Loading Images (loading='lazy')",
-      "Video Element <video> with Controls",
-      "Audio Element <audio>",
-      "Embedding Content with <iframe> (YouTube, Maps)"
+      {
+        "name": "Anchor Tag <a> and href Attribute",
+        "explanation": "The <a> (anchor) tag is what makes the 'web' a web — it creates clickable links. The 'href' (hypertext reference) attribute specifies where the link goes. Example: '<a href=\"https://google.com\">Google</a>'. Without href, the <a> tag is just regular text. The link text between opening and closing tags should be descriptive — 'Learn more about CSS' is better than 'click here' for accessibility and SEO. You can also wrap images, divs, and other elements inside <a> tags to make them clickable. Links are inline elements by default, meaning they flow with surrounding text."
+      },
+      {
+        "name": "Absolute vs Relative URLs",
+        "explanation": "An absolute URL includes the full address: 'https://example.com/about.html' — it works from anywhere. A relative URL is relative to the current page: 'about.html' (same folder), './images/logo.png' (subfolder), '../contact.html' (parent folder). Use absolute URLs for external links (other websites). Use relative URLs for internal links (pages on your own site) — they keep working even if your domain changes. Protocol-relative URLs like '//example.com' inherit the current page's HTTP/HTTPS protocol but are now discouraged — always use HTTPS."
+      },
+      {
+        "name": "Opening Links in New Tab (target='_blank' rel='noopener')",
+        "explanation": "By default, links open in the same tab. Adding target='_blank' opens the link in a new tab. However, this creates a security vulnerability: the new page can access your page via 'window.opener' and redirect it to a phishing site. Adding rel='noopener noreferrer' prevents this. 'noopener' blocks window.opener access, and 'noreferrer' hides the referrer header. Modern browsers add noopener automatically for target='_blank', but it's best practice to include it explicitly. Only use target='_blank' for external links — internal navigation should stay in the same tab for better UX."
+      },
+      {
+        "name": "Linking to Page Sections with Fragment IDs (#)",
+        "explanation": "Fragment links (also called anchor links or hash links) jump to a specific section on the same page. Give any element an 'id' attribute, then link to it with '#id': '<a href=\"#contact\">Go to Contact</a>' scrolls to '<section id=\"contact\">'. You can also link to sections on other pages: 'about.html#team'. The browser adds scroll behavior automatically. Adding 'scroll-behavior: smooth' in CSS makes it animate smoothly instead of jumping instantly. Fragment IDs are also used in single-page applications for routing and in documentation sites for deep-linking to specific headings."
+      },
+      {
+        "name": "Email Links (mailto:) and Phone Links (tel:)",
+        "explanation": "'mailto:' links open the user's default email client with a pre-filled address: '<a href=\"mailto:hello@example.com\">Email Us</a>'. You can pre-fill subject and body too: 'mailto:hello@example.com?subject=Hello&body=Hi there'. 'tel:' links trigger phone dialers on mobile devices: '<a href=\"tel:+1234567890\">Call Us</a>'. Always use the international format (+country code). These are essential for contact pages and mobile-friendly sites. Note: on desktops, 'tel:' links may open apps like Skype or FaceTime, depending on the user's setup."
+      },
+      {
+        "name": "Image Tag <img>: src, alt, width, height",
+        "explanation": "The <img> tag is self-closing and displays an image. 'src' specifies the image file path or URL. 'alt' provides alternative text — it's shown if the image fails to load, read by screen readers, and used by search engines. Always write descriptive alt text: 'Golden retriever playing fetch in a park' not 'dog.jpg'. Setting explicit 'width' and 'height' attributes prevents layout shift (CLS) — the browser reserves space before the image loads, so the page doesn't jump around. This is a key performance metric that affects Google rankings."
+      },
+      {
+        "name": "Image Formats: JPEG, PNG, SVG, WebP, AVIF",
+        "explanation": "Choosing the right image format dramatically affects page performance. JPEG: best for photographs, supports millions of colors, lossy compression (small files but quality degrades). PNG: best for graphics with transparency (logos, icons), lossless but larger files. SVG: vector format for icons, logos, and illustrations — scales to any size without pixelation, tiny file size, can be styled with CSS. WebP: Google's modern format, 25-35% smaller than JPEG at the same quality, supports transparency. AVIF: newest format, 50% smaller than JPEG, excellent quality. Use WebP/AVIF with JPEG/PNG fallbacks for maximum compatibility."
+      },
+      {
+        "name": "Responsive Images: srcset and <picture>",
+        "explanation": "Responsive images serve different file sizes based on the user's screen. 'srcset' lets you list multiple image sizes: '<img srcset=\"small.jpg 400w, medium.jpg 800w, large.jpg 1200w\" sizes=\"(max-width: 600px) 400px, 800px\">'. The browser picks the best size automatically — a phone gets the 400px image, a desktop gets the 1200px version. The <picture> element goes further, allowing different image FORMATS or completely different images for different screen sizes using <source> elements with media queries. This can reduce page size by 40-60% on mobile devices."
+      },
+      {
+        "name": "Lazy Loading Images (loading='lazy')",
+        "explanation": "By default, browsers load ALL images on a page immediately — even ones far below the visible area (below the fold). The 'loading=\"lazy\"' attribute tells the browser to defer loading off-screen images until the user scrolls near them. This dramatically improves initial page load speed and saves bandwidth. Usage: '<img src=\"photo.jpg\" alt=\"...\" loading=\"lazy\">'. Don't lazy-load images that are visible immediately (above the fold) — those should load instantly. Also applies to <iframe> elements. This single attribute can reduce initial page load by 30-50% on image-heavy pages."
+      },
+      {
+        "name": "Video Element <video> with Controls",
+        "explanation": "HTML5's <video> element plays video natively without plugins (goodbye Flash!). Key attributes: 'controls' shows play/pause/volume/fullscreen buttons, 'autoplay' starts automatically (requires 'muted' on most browsers), 'loop' repeats endlessly, 'poster' shows a thumbnail before playback, 'preload' controls when video data is fetched. Multiple <source> elements provide format fallbacks: MP4 (most compatible), WebM (smaller, open format). Text between the tags shows if the browser doesn't support video. Always provide controls — autoplay without user consent is bad UX and blocked by most browsers."
+      },
+      {
+        "name": "Audio Element <audio>",
+        "explanation": "The <audio> element works like <video> but for sound. It supports controls (play/pause/volume), autoplay, loop, and preload attributes. Common formats: MP3 (universal support), OGG (open format), WAV (uncompressed, large files). Like video, use multiple <source> elements for format fallbacks. Audio is used for: music players, podcast embeds, notification sounds, and interactive web apps. The Web Audio API (JavaScript) provides advanced audio processing — visualizations, effects, spatial audio — but the basic <audio> element handles simple playback needs without any JavaScript."
+      },
+      {
+        "name": "Embedding Content with <iframe> (YouTube, Maps)",
+        "explanation": "The <iframe> (inline frame) element embeds another webpage inside your page. Most commonly used for: YouTube videos (embed URL from share menu), Google Maps (embed from the map's share feature), third-party widgets (payment forms, social feeds), and code playgrounds (CodePen, JSFiddle). Key attributes: 'src' (the URL to embed), 'width'/'height', 'title' (required for accessibility), 'allowfullscreen', 'loading=\"lazy\"'. Security: the 'sandbox' attribute restricts what the embedded page can do. Be cautious with iframes — they add HTTP requests and can slow your page. Never embed untrusted content without sandboxing."
+      }
     ],
     "codeExamples": [
       {
@@ -275,18 +407,54 @@
     "whyItMatters": "Forms are the primary mechanism for user input on the web. Every authentication system, search feature, e-commerce checkout, and data entry interface uses forms. HTML5 validation reduces JavaScript code and improves user experience with native browser validation UI. Proper form accessibility is a legal requirement in many jurisdictions.",
     "eli5": "A form is like a worksheet at school. Each blank space you fill in is an <input>. The label next to each blank tells you what to write (that's the <label>). Some blanks only accept numbers, some only accept dates — that's like having different input types. When you're done, you hand in the worksheet (submit the form). The teacher (server) then reads your answers!",
     "subtopics": [
-      "The <form> Element: action, method (GET vs POST)",
-      "Text Inputs: text, email, password, search, url, tel",
-      "Numeric Inputs: number, range",
-      "Date/Time Inputs: date, time, datetime-local, month",
-      "Selection Inputs: checkbox, radio, select, datalist",
-      "Special Inputs: color, file, hidden",
-      "Labels, Placeholders & Accessibility",
-      "Textarea for Multi-line Text",
-      "Fieldset & Legend for Grouping",
-      "HTML5 Validation: required, pattern, min/max, minlength",
-      "Submit & Reset Buttons",
-      "Form Data: How Browsers Collect and Send Data"
+      {
+        "name": "The <form> Element: action, method (GET vs POST)",
+        "explanation": "The <form> element wraps all form inputs and controls how the data is submitted. The 'action' attribute specifies the URL where form data is sent (e.g., action='/api/submit'). The 'method' attribute determines HOW it's sent: GET appends data to the URL as query parameters (visible, bookmarkable, limited to ~2000 characters — use for search, filters). POST sends data in the request body (hidden, no size limit — use for passwords, file uploads, creating data). Without a method, forms default to GET. Without an action, the form submits to the current page URL. Forms can also use 'enctype' to specify encoding — 'multipart/form-data' is required for file uploads."
+      },
+      {
+        "name": "Text Inputs: text, email, password, search, url, tel",
+        "explanation": "Text-based inputs are the most common form controls. type='text' is the generic single-line input. type='email' adds built-in email format validation. type='password' masks characters with dots for security. type='search' shows a clear button and may style differently on mobile. type='url' validates URL format (must include http:// or https://). type='tel' shows a numeric keypad on mobile phones. Each type triggers different on-screen keyboards on mobile devices and enables different built-in validation, reducing the need for JavaScript. Always pair inputs with <label> elements for accessibility."
+      },
+      {
+        "name": "Numeric Inputs: number, range",
+        "explanation": "type='number' creates a text field with up/down spinner arrows, accepting only numeric values. Key attributes: 'min' and 'max' set the allowed range, 'step' controls the increment (step='0.01' for currency, step='5' for multiples of 5). On mobile, it shows a numeric keypad. type='range' creates a slider control — visually intuitive for values like volume (0-100) or brightness. Range inputs always have a value even without user interaction (default is the midpoint). Pair range inputs with an <output> element or JavaScript to display the current value, since sliders don't show their numeric value by default."
+      },
+      {
+        "name": "Date/Time Inputs: date, time, datetime-local, month",
+        "explanation": "HTML5 introduced native date/time pickers that work without JavaScript libraries. type='date' shows a calendar picker (format varies by browser/locale). type='time' shows a time picker with hours and minutes. type='datetime-local' combines date and time. type='month' selects a month and year. type='week' selects a week number. These inputs use the 'min', 'max', and 'step' attributes. The value is always in ISO 8601 format ('2025-02-16' for date, '14:30' for time) regardless of how it's displayed. These eliminate the need for bulky third-party date picker libraries for simple use cases."
+      },
+      {
+        "name": "Selection Inputs: checkbox, radio, select, datalist",
+        "explanation": "type='checkbox' creates a toggle that can be checked or unchecked — use for individual yes/no choices or multiple selections from a group. type='radio' creates exclusive options — only ONE can be selected within a group (all radios with the same 'name' attribute form a group). <select> creates a dropdown menu with <option> elements. The 'multiple' attribute allows multi-selection. <datalist> creates an autocomplete suggestion list: '<input list=\"fruits\"><datalist id=\"fruits\"><option value=\"Apple\"></datalist>'. The user can type freely but sees suggestions. Each serves a different UX purpose: checkboxes for multi-select, radios for single-select, dropdowns for long lists."
+      },
+      {
+        "name": "Special Inputs: color, file, hidden",
+        "explanation": "type='color' opens a native color picker — returns a hex value like '#6366f1'. Great for theme customization or design tools. type='file' opens the system file dialog. The 'accept' attribute filters file types: accept='image/*' for images, accept='.pdf,.doc' for documents. The 'multiple' attribute allows multi-file selection. type='hidden' creates an invisible input that submits data without user interaction — used for CSRF tokens, user IDs, or tracking data. Hidden inputs are NOT secure (visible in page source/DevTools) — never use them for sensitive secrets. Each of these specialized inputs leverages native OS functionality."
+      },
+      {
+        "name": "Labels, Placeholders & Accessibility",
+        "explanation": "Every form input MUST have a <label> for accessibility. Two ways to associate them: explicit (using 'for' and 'id': '<label for=\"email\">Email</label><input id=\"email\">') or implicit (wrapping the input: '<label>Email <input></label>'). Labels make the click target larger — clicking the label focuses/checks the input. Placeholders (placeholder='Enter email') are hints inside the input that disappear on focus — they are NOT replacements for labels. Screen readers may not announce placeholders. Many users mistake placeholder text for pre-filled values. Best practice: always use labels AND placeholders together."
+      },
+      {
+        "name": "Textarea for Multi-line Text",
+        "explanation": "<textarea> creates a multi-line text input for longer content like comments, messages, or bios. Unlike <input>, textarea has a closing tag — default text goes between the tags, not in a 'value' attribute. Key attributes: 'rows' sets the visible height, 'cols' sets the width (but CSS is better for sizing). 'maxlength' limits characters, 'minlength' enforces a minimum. 'resize' CSS property controls whether users can drag to resize (set to 'none' to prevent). Content inside <textarea> preserves whitespace. Always include a <label> and consider adding a character counter for better UX."
+      },
+      {
+        "name": "Fieldset & Legend for Grouping",
+        "explanation": "<fieldset> groups related form controls visually (with a border) and semantically. <legend> provides a caption for the group. This is especially important for radio buttons and checkboxes: '<fieldset><legend>Gender</legend><label><input type=\"radio\" name=\"gender\" value=\"male\"> Male</label>...</fieldset>'. Screen readers announce the legend when these inputs are focused, providing context. Without fieldset/legend, screen readers just say 'radio button, Male' — with it, they say 'Gender, radio button, Male'. The 'disabled' attribute on <fieldset> disables ALL inputs inside it at once."
+      },
+      {
+        "name": "HTML5 Validation: required, pattern, min/max, minlength",
+        "explanation": "HTML5 provides client-side validation without any JavaScript. 'required' prevents form submission if the field is empty. 'minlength'/'maxlength' enforce text length. 'min'/'max' enforce numeric/date ranges. 'pattern' uses regex for custom validation: pattern='[A-Za-z]{3,}' requires at least 3 letters. The browser shows built-in error messages and styles invalid inputs with the ':invalid' CSS pseudo-class. The ':valid' pseudo-class styles valid inputs. Use the 'title' attribute alongside 'pattern' to explain the expected format. Note: ALWAYS also validate on the server — client-side validation can be bypassed."
+      },
+      {
+        "name": "Submit & Reset Buttons",
+        "explanation": "Forms are submitted with '<button type=\"submit\">Submit</button>' or '<input type=\"submit\" value=\"Submit\">'. The <button> element is preferred because it can contain HTML (icons, styled text). type='reset' clears all form inputs to their default values — use sparingly, as users rarely want this and it can cause accidental data loss. type='button' does nothing by default — use it for JavaScript-driven actions that shouldn't trigger form submission. Default type for <button> inside a form is 'submit', so always specify type='button' if you don't want it to submit. You can also submit forms programmatically with form.submit() in JavaScript."
+      },
+      {
+        "name": "Form Data: How Browsers Collect and Send Data",
+        "explanation": "When a user clicks Submit, the browser collects all input values using their 'name' attributes as keys. Inputs WITHOUT 'name' are ignored — a common bug when form data is missing. For GET requests, data becomes URL query parameters: '/search?q=javascript&sort=recent'. For POST requests, data is encoded in the request body. Checkboxes only send their value when checked. Disabled inputs are never included. The 'FormData' API in JavaScript lets you read, modify, and send form data programmatically — essential for AJAX form submissions. Understanding this flow is critical for debugging why data isn't reaching your server."
+      }
     ],
     "codeExamples": [
       {
@@ -346,14 +514,38 @@
     "whyItMatters": "Data tables are everywhere — pricing pages, analytics dashboards, comparison tools, schedules, and leaderboards. Properly structured tables with semantic markup are accessible to screen readers and provide meaning to search engines. Understanding when to use tables (data) vs. when not to (layout) is a key professional skill.",
     "eli5": "Think of an HTML table like a grid you draw in your notebook. The horizontal lines are rows (<tr>), and each box inside is a cell (<td>). The top row with column names is the header (<th>) — like writing 'Name', 'Age', 'City' at the top of each column. You can even make a cell stretch across two columns, like when you write a title that covers the whole row!",
     "subtopics": [
-      "<table>, <tr>, <td>, <th> — Core Structure",
-      "<thead>, <tbody>, <tfoot> — Semantic Sections",
-      "colspan and rowspan — Merging Cells",
-      "<caption> — Table Title for Accessibility",
-      "scope Attribute on <th> for Screen Readers",
-      "Styling Tables with CSS (borders, stripes, hover)",
-      "Responsive Tables (horizontal scroll, stacking)",
-      "Tables vs CSS Layout — When to Use What"
+      {
+        "name": "<table>, <tr>, <td>, <th> — Core Structure",
+        "explanation": "Every HTML table is built from four core elements. <table> is the container that wraps the entire table. <tr> (table row) creates a horizontal row. <td> (table data) creates a data cell — each <td> inside a <tr> is a column. <th> (table header) is like <td> but for header cells — text is bold and centered by default. Example: '<table><tr><th>Name</th><th>Age</th></tr><tr><td>Alice</td><td>25</td></tr></table>'. The number of <td>/<th> elements in each <tr> determines the number of columns. All rows should have the same number of cells for proper alignment."
+      },
+      {
+        "name": "<thead>, <tbody>, <tfoot> — Semantic Sections",
+        "explanation": "These three elements divide a table into logical sections. <thead> wraps header rows (column titles) — screen readers announce these headers when navigating data cells. <tbody> wraps the main data rows — browsers add <tbody> implicitly even if you don't write it. <tfoot> wraps footer rows (totals, summaries) — it can be placed BEFORE <tbody> in the source code, and browsers will still render it at the bottom. These semantic sections enable: sticky table headers (CSS position: sticky on thead), separate styling for each section, better accessibility navigation, and proper printing (headers repeat on each printed page)."
+      },
+      {
+        "name": "colspan and rowspan — Merging Cells",
+        "explanation": "'colspan' makes a cell span multiple columns: '<td colspan=\"3\">' creates a cell as wide as 3 normal cells. 'rowspan' makes a cell span multiple rows: '<td rowspan=\"2\">' creates a cell as tall as 2 rows. These are commonly used for: table titles spanning the full width, category headers grouping related columns, or cells that logically belong to multiple rows. When using rowspan, remember that the spanned rows need fewer <td> elements. Complex merging can make tables hard to maintain — use sparingly and consider whether the data could be restructured instead."
+      },
+      {
+        "name": "<caption> — Table Title for Accessibility",
+        "explanation": "<caption> provides an accessible, visible title for the table. It must be the FIRST child element inside <table>. Screen readers announce it when users encounter the table, giving context about what data the table contains. Example: '<table><caption>Student Grades — Spring 2025</caption>...'. Without a caption, screen readers just announce 'table with X rows and Y columns' with no context. CSS can position the caption above or below the table using 'caption-side: bottom'. A good caption describes the table's content concisely — it's essentially the table's heading."
+      },
+      {
+        "name": "scope Attribute on <th> for Screen Readers",
+        "explanation": "The 'scope' attribute on <th> tells screen readers whether a header applies to its column or row. scope='col' means the header describes the column below it (e.g., 'Name', 'Price'). scope='row' means the header describes the row beside it (e.g., row labels in the first column). For complex tables with multi-level headers, use 'headers' and 'id' attributes to explicitly link data cells to their headers. Without 'scope', screen readers try to guess the relationship — which often fails in complex tables, making the data incomprehensible to visually impaired users."
+      },
+      {
+        "name": "Styling Tables with CSS (borders, stripes, hover)",
+        "explanation": "Tables need CSS to look professional. Common patterns: 'border-collapse: collapse' on the table element merges cell borders into single lines (default is separated). Alternating row colors (zebra stripes) with 'tr:nth-child(even) { background: #f9f9f9; }' improve readability. Hover effects with 'tr:hover { background: #e0e0e0; }' help users track rows. Padding on td/th adds breathing room. A consistent header style (different background color, bold text) distinguishes headers from data. For responsive tables on mobile, consider horizontal scrolling with 'overflow-x: auto' on a wrapper div."
+      },
+      {
+        "name": "Responsive Tables (horizontal scroll, stacking)",
+        "explanation": "Tables with many columns break on small screens. Solutions include: wrapping the table in a div with 'overflow-x: auto' for horizontal scrolling (simplest), using CSS to transform rows into card-style blocks on mobile (each row becomes a vertical card with label-value pairs), hiding less-important columns with 'display: none' at certain breakpoints, or using the 'data-label' attribute on cells combined with CSS pseudo-elements to show column headers inline. Libraries like DataTables handle this automatically. Choose the approach based on data importance — critical data should always be visible without scrolling."
+      },
+      {
+        "name": "Tables vs CSS Layout — When to Use What",
+        "explanation": "The golden rule: use HTML tables ONLY for tabular data (spreadsheets, schedules, comparison charts, statistics). NEVER use tables for page layout — that was common in the early 2000s but is now a major anti-pattern. Why? Layout tables break screen reader navigation, don't adapt to different screen sizes, mix content with presentation, and are harder to maintain. For page layout, use CSS Flexbox (one-dimensional layouts) or CSS Grid (two-dimensional layouts). A good test: if the data makes sense in a spreadsheet, use a table. If you're just trying to position things side by side, use CSS."
+      }
     ],
     "codeExamples": [
       {
@@ -398,18 +590,54 @@
     "whyItMatters": "Google's search algorithm gives preference to semantically structured pages. Screen readers use semantic landmarks to help visually impaired users navigate efficiently. Semantic HTML makes your code self-documenting — another developer (or future you) immediately understands the page structure. It's a core professional skill expected in every frontend job.",
     "eli5": "Imagine organizing your room. You could throw everything into identical boxes labeled 'stuff.' OR you could use a bookshelf for books, a toy box for toys, a desk drawer for school supplies, and a hat rack for hats. Both ways work, but the second way is SO much easier to find things in! Semantic HTML is like using the right container for the right stuff — <nav> for navigation, <header> for the top, <footer> for the bottom. The computer can understand your page better when everything is in the right place!",
     "subtopics": [
-      "<header> — Page or Section Header",
-      "<nav> — Navigation Links",
-      "<main> — Primary Page Content (only one per page)",
-      "<section> — Thematic Grouping",
-      "<article> — Self-Contained Content",
-      "<aside> — Sidebar or Tangential Content",
-      "<footer> — Page or Section Footer",
-      "<figure> and <figcaption> — Images with Captions",
-      "<details> and <summary> — Native Collapsible Sections",
-      "<time datetime=\"...\"> — Machine-Readable Dates",
-      "<mark> — Highlighted Text",
-      "Semantic vs Non-Semantic: <div> and <span>"
+      {
+        "name": "<header> — Page or Section Header",
+        "explanation": "The <header> element represents introductory content for its nearest ancestor section or the page as a whole. Page-level <header> typically contains the site logo, site title, and main navigation. Section-level <header> might contain a section title and subtitle. You CAN have multiple <header> elements on a page — one for the page and one inside each <article> or <section>. It replaces the old '<div class=\"header\">' pattern. Screen readers identify it as a landmark region, allowing users to jump directly to the header. Don't confuse <header> with <head> — <head> is for metadata, <header> is for visible introductory content."
+      },
+      {
+        "name": "<nav> — Navigation Links",
+        "explanation": "The <nav> element wraps a section of navigation links. Use it for major navigation blocks: the main site menu, breadcrumbs, table of contents, or pagination. Don't use <nav> for every group of links — only for primary navigation sections. Screen readers announce 'navigation' regions, letting users skip them or jump to them. If you have multiple <nav> elements, use aria-label to distinguish them: '<nav aria-label=\"Main\">...</nav>' and '<nav aria-label=\"Footer\">...</nav>'. Inside <nav>, use an unordered list (<ul>) of links — this is the standard pattern that CSS can easily style into horizontal menus, dropdown menus, or mobile hamburger menus."
+      },
+      {
+        "name": "<main> — Primary Page Content (only one per page)",
+        "explanation": "The <main> element wraps the primary, unique content of the page — the content that's different on each page. There must be ONLY ONE <main> per page, and it should NOT be nested inside <header>, <nav>, <footer>, or <aside>. Content that repeats across pages (like navigation and footer) goes OUTSIDE <main>. Screen readers can jump directly to <main>, skipping repetitive headers and navigation — this is one of the most important accessibility landmarks. Example layout: <header> → <nav> → <main> → <footer>. The <main> element makes the skip-to-content pattern work correctly."
+      },
+      {
+        "name": "<section> — Thematic Grouping",
+        "explanation": "<section> groups thematically related content — like a chapter in a book. It should generally have a heading (<h2>, <h3>, etc.) as its first child to describe what the section is about. Use <section> for: page sections (About, Services, Contact), tabs in a tabbed interface, or grouped form fields. Don't use <section> as a generic wrapper — use <div> for that. The key question: does this chunk of content have a specific theme or purpose? If yes, use <section>. If you just need a container for styling, use <div>. <section> creates an implicit ARIA region landmark when it has an accessible name."
+      },
+      {
+        "name": "<article> — Self-Contained Content",
+        "explanation": "<article> marks content that is self-contained and independently distributable — meaning it would make sense on its own, outside the context of the page. Examples: a blog post, a news article, a user comment, a tweet embed, a product card, or a forum post. Articles can be nested (an article containing comment articles). Each <article> should have a heading. The key test: could this content appear in an RSS feed or be syndicated to another site and still make sense? If yes, use <article>. Search engines treat <article> content as the primary content of the page, which can enhance SEO."
+      },
+      {
+        "name": "<aside> — Sidebar or Tangential Content",
+        "explanation": "<aside> marks content that is tangentially related to the surrounding content — a sidebar, pull quotes, advertising, related links, author bios, or glossary definitions. It's content that could be removed without reducing the meaning of the main content. At the page level, <aside> typically represents a sidebar. Inside an <article>, it represents content related to that specific article. Screen readers announce it as a 'complementary' landmark. Don't use <aside> for primary content — if removing it would leave the page incomplete, it should be in <main> or <section> instead."
+      },
+      {
+        "name": "<footer> — Page or Section Footer",
+        "explanation": "The <footer> element represents the closing content for its nearest ancestor section or the page. Page-level <footer> typically contains: copyright notice, contact info, links to privacy policy/terms, social media links, and a secondary navigation menu. Like <header>, you can have multiple footers — one for the page and one inside each <article> or <section>. A section <footer> might contain the author name, publish date, or share buttons. Screen readers identify footers as 'contentinfo' landmarks. Don't confuse with 'footer' styling — <footer> is about semantic meaning, not visual position."
+      },
+      {
+        "name": "<figure> and <figcaption> — Images with Captions",
+        "explanation": "<figure> wraps self-contained content that is referenced from the main flow — typically images, diagrams, code listings, or charts. <figcaption> provides a caption for the figure. The caption can be placed before or after the content inside <figure>. Example: '<figure><img src=\"chart.png\" alt=\"Sales data\"><figcaption>Figure 1: Quarterly sales growth</figcaption></figure>'. <figure> can contain multiple images or even tables and code blocks. The key purpose: it associates a caption with content and marks it as a unit that could be moved (like figures in textbooks that say 'see Figure 3'). This is semantically richer than just putting an image with a <p> tag below it."
+      },
+      {
+        "name": "<details> and <summary> — Native Collapsible Sections",
+        "explanation": "<details> creates an interactive disclosure widget — a collapsible section that users can open and close by clicking. <summary> is the always-visible label/title. Everything else inside <details> is hidden until the user clicks <summary>. No JavaScript or CSS needed! The 'open' attribute makes it expanded by default. Multiple <details> elements create an accordion-style FAQ. You can style it with CSS: remove the default triangle marker, add animations, or change colors. Use cases: FAQs, troubleshooting steps, additional info that most users don't need, or chapter summaries. This is one of the most practical HTML5 elements — it replaces dozens of lines of JavaScript."
+      },
+      {
+        "name": "<time datetime=\"...\"> — Machine-Readable Dates",
+        "explanation": "The <time> element marks dates and times in content. The 'datetime' attribute provides the machine-readable format (ISO 8601), while the human-readable text goes between the tags. Example: '<time datetime=\"2025-02-16\">February 16, 2025</time>' or '<time datetime=\"14:30\">2:30 PM</time>'. This helps search engines understand dates (Google shows them in search results), enables date-based filtering, and allows browsers/extensions to add calendar events. Without <time>, 'February 16' is just text — with <time>, search engines know it's a date. Use it for publishing dates, event times, and any date reference."
+      },
+      {
+        "name": "<mark> — Highlighted Text",
+        "explanation": "<mark> highlights text to indicate relevance in the current context — like using a highlighter on a textbook. It renders with a yellow background by default. Common use cases: highlighting search terms in results (showing where the query matches), marking important passages in quoted text, or indicating changed/relevant content in a document. Unlike <strong> (important) or <em> (emphasized), <mark> means 'contextually relevant' — the text is highlighted because it's relevant NOW, not because it's inherently important. Screen readers announce marked text as 'highlighted', helping visually impaired users understand the emphasis."
+      },
+      {
+        "name": "Semantic vs Non-Semantic: <div> and <span>",
+        "explanation": "<div> and <span> are the two NON-semantic HTML elements — they have zero inherent meaning. <div> is a block-level generic container (starts on a new line, takes full width). <span> is an inline generic container (flows within text). Use them ONLY when no semantic element fits: for CSS styling hooks or JavaScript targets. Example: '<span class=\"price-highlight\">$19.99</span>' — there's no semantic element for 'price'. The goal is to use semantic elements first (<section>, <article>, <header>, etc.) and fall back to <div>/<span> only when nothing else makes sense. A page full of <div>s is called 'div soup' — hard to read, debug, and maintain."
+      }
     ],
     "codeExamples": [
       {
@@ -469,18 +697,54 @@
     "whyItMatters": "Accessibility is not optional — it's a legal requirement (ADA lawsuits have increased 300% since 2018) and a moral imperative. SEO determines whether people can find your website. Performance directly impacts user retention (53% of users leave if a page takes more than 3 seconds to load). These skills are tested in frontend interviews at every major company.",
     "eli5": "Imagine you're building a playground. You wouldn't just build slides and swings — you'd also build ramps for wheelchairs, add Braille signs, and make sure the ground is safe. Web accessibility is the same idea: building websites that everyone can use, including people who can't see the screen (they use special software that reads the page out loud) or can't use a mouse (they use only the keyboard). Making your website accessible is like being a good architect who thinks about ALL the people who'll use the building!",
     "subtopics": [
-      "Why Accessibility Matters (legal, ethical, business)",
-      "ARIA Attributes: aria-label, aria-hidden, aria-describedby, role",
-      "Alt Text Best Practices (descriptive, not 'image.png')",
-      "Keyboard Navigation and Focus Management",
-      "Color Contrast Requirements (WCAG AA/AAA)",
-      "SEO Basics: <title>, Meta Description, Heading Hierarchy",
-      "Open Graph Tags for Social Media Sharing",
-      "Structured Data with JSON-LD",
-      "Performance: async, defer, preload, lazy loading",
-      "HTML Validation (W3C Validator)",
-      "Cross-Browser Compatibility",
-      "Favicon and Mobile Icons"
+      {
+        "name": "Why Accessibility Matters (legal, ethical, business)",
+        "explanation": "Web accessibility (a11y) ensures that websites can be used by everyone, including the 1+ billion people worldwide with disabilities — visual, auditory, motor, and cognitive. Legally, it's required: in the US, the ADA (Americans with Disabilities Act) applies to websites, and lawsuits have increased 300% since 2018. The EU's European Accessibility Act (EAA) requires compliance by 2025. Ethically, the web was designed to be for everyone (Tim Berners-Lee). Business-wise, accessible sites reach more users, rank better in SEO, and have better overall UX — curb cuts benefit everyone, and so do accessibility features."
+      },
+      {
+        "name": "ARIA Attributes: aria-label, aria-hidden, aria-describedby, role",
+        "explanation": "ARIA (Accessible Rich Internet Applications) attributes add semantic information to elements that lack it. aria-label provides an invisible text label: '<button aria-label=\"Close\"><svg>...</svg></button>' — screen readers say 'Close button' instead of nothing. aria-hidden='true' hides decorative elements from screen readers (decorative icons, background images). aria-describedby links to an element that provides additional description. The 'role' attribute overrides an element's semantic role: role='alert' makes a div announce its content to screen readers. The golden rule: use native HTML elements first (<button>, <nav>). Only use ARIA when native semantics aren't sufficient."
+      },
+      {
+        "name": "Alt Text Best Practices (descriptive, not 'image.png')",
+        "explanation": "Alt text is the text alternative for images, read by screen readers and shown when images fail to load. Good alt text describes the IMAGE, not the file: 'Golden retriever catching a frisbee in a park' not 'dog.jpg' or 'image'. For informative images, describe what's shown. For functional images (links/buttons), describe the action: 'Search' for a magnifying glass icon. For decorative images, use empty alt: alt='' with role='presentation'. For complex images (charts, graphs), provide a detailed description or link to a data table. Alt text should be under 125 characters. Never start with 'Image of...' — screen readers already announce 'image'."
+      },
+      {
+        "name": "Keyboard Navigation and Focus Management",
+        "explanation": "All interactive elements must be usable with a keyboard alone — many users can't use a mouse. Native HTML elements (<button>, <a>, <input>) are keyboard-accessible by default: Tab moves focus, Enter/Space activates. Custom interactive elements built with <div> need tabindex='0' to be focusable and JavaScript keydown handlers. The focus order should follow the visual reading order. Visible focus indicators (the outline when an element is focused) must NEVER be removed with 'outline: none' — style them differently instead. Use ':focus-visible' CSS to show focus rings only for keyboard users, not mouse clicks. Skip links allow users to bypass navigation."
+      },
+      {
+        "name": "Color Contrast Requirements (WCAG AA/AAA)",
+        "explanation": "WCAG (Web Content Accessibility Guidelines) requires minimum color contrast ratios between text and background. Level AA (minimum standard): 4.5:1 for regular text, 3:1 for large text (18px+ bold or 24px+). Level AAA (enhanced): 7:1 for regular text, 4.5:1 for large text. Use contrast checker tools (WebAIM, Chrome DevTools) to verify ratios. Color should NEVER be the only way to convey information — adding icons, patterns, or text alongside color indicators ensures colorblind users (8% of men) can understand the content. Example: don't mark errors with only red text — add an error icon and descriptive message too."
+      },
+      {
+        "name": "SEO Basics: <title>, Meta Description, Heading Hierarchy",
+        "explanation": "SEO (Search Engine Optimization) starts with HTML structure. <title> appears in browser tabs and search results — keep it under 60 characters, put the most important keyword first. Meta description (<meta name='description' content='...'>) appears below the title in search results — keep it under 155 characters, make it compelling. Heading hierarchy: one <h1> per page (the main topic), followed by <h2> for sections, <h3> for subsections. Never skip heading levels (h1 → h3). This creates an outline that search engines and screen readers use to understand content structure and importance."
+      },
+      {
+        "name": "Open Graph Tags for Social Media Sharing",
+        "explanation": "Open Graph (OG) tags control how your link appears when shared on Facebook, LinkedIn, Twitter, Slack, and other platforms. Without them, platforms guess (poorly) which title, description, and image to show. Key tags: og:title (the title shown), og:description (the snippet), og:image (the preview image — should be at least 1200×630px), og:url (the canonical URL), og:type (website, article, product). Place them in <head> as <meta property='og:title' content='...'/>. Twitter uses its own twitter:card, twitter:title, twitter:image tags. Test using Facebook's Sharing Debugger or Twitter's Card Validator."
+      },
+      {
+        "name": "Structured Data with JSON-LD",
+        "explanation": "Structured data (Schema.org markup) tells search engines EXACTLY what your content represents — not just text, but specific types like 'Recipe', 'Product', 'Event', 'Article', or 'FAQ'. JSON-LD (JavaScript Object Notation for Linked Data) is the recommended format: '<script type=\"application/ld+json\">{\"@context\": \"https://schema.org\", \"@type\": \"Article\", \"headline\": \"...\"}</script>'. This enables rich search results: star ratings on products, recipe cards with cooking times, event dates, FAQ accordions directly in Google. Google's Rich Results Test validates your structured data."
+      },
+      {
+        "name": "Performance: async, defer, preload, lazy loading",
+        "explanation": "How you load resources affects page speed dramatically. Scripts: 'defer' loads the script in parallel but executes AFTER HTML parsing (use for most scripts). 'async' loads and executes as soon as ready (use for independent scripts like analytics). Without either, scripts BLOCK HTML parsing (the page freezes until the script downloads and runs). Preload with '<link rel=\"preload\" href=\"font.woff2\" as=\"font\">' fetches critical resources early. 'loading=\"lazy\"' on images/iframes delays loading until they're near the viewport. These techniques can reduce page load time by 50-80% — crucial since 53% of users leave if a page takes more than 3 seconds."
+      },
+      {
+        "name": "HTML Validation (W3C Validator)",
+        "explanation": "The W3C HTML Validator (validator.w3.org) checks your HTML against the official specification and reports errors: missing closing tags, invalid attributes, deprecated elements, improper nesting, and more. Valid HTML ensures: consistent rendering across browsers, better accessibility (screen readers rely on proper markup), and fewer unexpected bugs. Run your pages through the validator during development. Common errors: unclosed tags, duplicate IDs (IDs must be unique), block elements inside inline elements (a <div> inside a <span>), missing 'alt' on images. Some errors are harmless but indicate sloppy code; others cause real rendering problems."
+      },
+      {
+        "name": "Cross-Browser Compatibility",
+        "explanation": "Different browsers (Chrome, Firefox, Safari, Edge) can render the same HTML differently. Ensuring cross-browser compatibility means testing your site across major browsers and platforms. Use caniuse.com to check feature support before using newer HTML/CSS features. Common issues: Safari on iOS has unique bugs, Firefox may handle forms differently, older browsers don't support newer elements. Strategies: use HTML5 doctype, include proper meta charset and viewport tags, provide fallbacks for newer features, and use CSS resets or normalize.css to create a consistent baseline. Test on both desktop and mobile browsers."
+      },
+      {
+        "name": "Favicon and Mobile Icons",
+        "explanation": "The favicon is the small icon shown in browser tabs, bookmarks, and history. Minimum requirement: a 32×32 .ico file linked with '<link rel=\"icon\" href=\"/favicon.ico\">'. For modern browsers, use SVG favicons: '<link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\">'. For iOS devices, provide an apple-touch-icon (180×180 PNG): '<link rel=\"apple-touch-icon\" href=\"/apple-icon-180.png\">'. For Android, a web manifest file (manifest.json) defines icons for the home screen. A professional website always has a custom favicon — the default generic icon looks unprofessional and makes it hard to find your tab among many open tabs."
+      }
     ],
     "codeExamples": [
       {

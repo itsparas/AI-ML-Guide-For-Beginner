@@ -9,18 +9,54 @@
     "whyItMatters": "CSS is one of the three core web technologies alongside HTML and JavaScript. Every website you've ever visited uses CSS. Understanding selectors and specificity prevents the #1 frustration beginners face: 'why isn't my style applying?' Knowing which selector to use makes your CSS efficient, maintainable, and performant.",
     "eli5": "If HTML is the skeleton of a web page, CSS is the skin, clothes, and makeup! It decides what color things are, how big they are, where they sit on the page, and what happens when you hover over them. A CSS selector is like pointing at something and saying 'YOU — be red!' You can point at all paragraphs (<p>), or just the ones with a special class name (.special), or one specific element (#unique).",
     "subtopics": [
-      "What is CSS? The Role of Styling",
-      "CSS Syntax: Selectors, Properties, Values",
-      "Three Ways to Add CSS: Inline, Internal, External",
-      "Element Selectors (h1, p, div, a)",
-      "Class Selectors (.classname) and ID Selectors (#id)",
-      "Descendant & Child Selectors (div p vs div > p)",
-      "Grouping Selectors (h1, h2, h3 { })",
-      "Attribute Selectors ([type='text'], [href^='https'])",
-      "Pseudo-Classes (:hover, :focus, :first-child, :nth-child)",
-      "Pseudo-Elements (::before, ::after, ::first-letter)",
-      "Specificity & The Cascade",
-      "The !important Rule (and why to avoid it)"
+      {
+        "name": "What is CSS? The Role of Styling",
+        "explanation": "CSS (Cascading Style Sheets) is the language that controls how HTML elements look in the browser — colors, fonts, spacing, layout, and animations. While HTML provides structure and content (what a page contains), CSS provides presentation (how it looks). Without CSS, every webpage would look like a plain text document with Times New Roman font and blue links. CSS is one of the three core web technologies: HTML (structure), CSS (presentation), and JavaScript (interactivity). Every website you've ever visited uses CSS. It can transform the same HTML into completely different visual experiences."
+      },
+      {
+        "name": "CSS Syntax: Selectors, Properties, Values",
+        "explanation": "A CSS rule has two parts: a selector (which elements to style) and a declaration block (what styles to apply). Syntax: 'selector { property: value; }'. Example: 'p { color: blue; font-size: 16px; }' — this targets all <p> elements and makes them blue with 16px text. Each 'property: value;' pair is a declaration, and the curly braces contain the declaration block. Properties are predefined CSS keywords (color, margin, display), and values depend on the property. Semicolons separate declarations. Comments use /* ... */ syntax. Understanding this syntax is the foundation for everything else in CSS."
+      },
+      {
+        "name": "Three Ways to Add CSS: Inline, Internal, External",
+        "explanation": "Inline CSS uses the style attribute: '<p style=\"color: red;\">'. It applies to one element only and has the highest specificity, but is hard to maintain — don't use it for production code. Internal CSS uses a <style> tag in the <head>: '<style>p { color: red; }</style>'. It applies to one page only — useful for prototyping or email templates. External CSS uses a separate .css file linked via '<link rel=\"stylesheet\" href=\"styles.css\">'. This is the industry standard: one CSS file can style multiple pages, browsers can cache it, and it separates concerns (HTML for content, CSS for style). Always use external CSS for real projects."
+      },
+      {
+        "name": "Element Selectors (h1, p, div, a)",
+        "explanation": "Element selectors (also called type selectors) target ALL instances of an HTML tag. 'p { color: #333; }' styles every <p> on the page. 'a { text-decoration: none; }' removes underlines from every link. Common element selectors: body (global defaults), h1-h6 (headings), p (paragraphs), a (links), ul/ol/li (lists), img (images), div (containers). Element selectors have the lowest specificity (0-0-1), meaning they're easily overridden by class or ID selectors. Use them for base/default styles (body font, link color) but prefer class selectors for component-specific styles."
+      },
+      {
+        "name": "Class Selectors (.classname) and ID Selectors (#id)",
+        "explanation": "Class selectors target elements with a specific class attribute: '.highlight { background: yellow; }' styles any element with class='highlight'. Classes are reusable — multiple elements can share the same class, and one element can have multiple classes (class='card featured large'). ID selectors target a UNIQUE element: '#hero-section { height: 100vh; }' targets the single element with id='hero-section'. IDs must be unique per page. In practice, use classes for almost everything — they're flexible and reusable. Reserve IDs for: JavaScript hooks, anchor links (href='#section'), and form label associations. IDs have 10x the specificity of classes."
+      },
+      {
+        "name": "Descendant & Child Selectors (div p vs div > p)",
+        "explanation": "Descendant selectors target elements nested ANYWHERE inside a parent: '.nav a { color: white; }' targets all <a> tags inside .nav, even deeply nested ones. Child selectors (>) target only DIRECT children: '.nav > a { color: white; }' targets only <a> tags that are immediate children of .nav, not grandchildren. The difference matters: if .nav contains a <ul> with <li><a>, descendant selector targets those links, but child selector doesn't. Sibling selectors also exist: '+' (adjacent sibling — immediately after) and '~' (general sibling — any following sibling). These combinators let you target elements by their relationship in the DOM tree."
+      },
+      {
+        "name": "Grouping Selectors (h1, h2, h3 { })",
+        "explanation": "Grouping selectors apply the same styles to multiple selectors at once, separated by commas. 'h1, h2, h3 { font-family: \"Inter\", sans-serif; color: #0f172a; }' applies the same font and color to all three heading levels. Without grouping, you'd repeat the same declarations three times — violating the DRY (Don't Repeat Yourself) principle. You can mix selector types: '.btn, .link, a { cursor: pointer; }'. Each selector in the group is independent — if one is invalid, modern browsers still apply the others (though older behavior would invalidate the entire rule). Grouping keeps your CSS shorter and more maintainable."
+      },
+      {
+        "name": "Attribute Selectors ([type='text'], [href^='https'])",
+        "explanation": "Attribute selectors target elements based on their HTML attributes. [type='text'] targets inputs with type='text'. Advanced matchers: [href^='https'] (starts with), [href$='.pdf'] (ends with), [href*='example'] (contains), [data-theme='dark'] (exact match). These are incredibly powerful for styling form inputs by type, external vs internal links, or custom data attributes. Example: 'a[target=\"_blank\"]::after { content: \" ↗\"; }' adds an icon after all links that open in new tabs. Attribute selectors have the same specificity as class selectors (0-1-0). They reduce the need for extra classes by targeting elements based on attributes they already have."
+      },
+      {
+        "name": "Pseudo-Classes (:hover, :focus, :first-child, :nth-child)",
+        "explanation": "Pseudo-classes target elements in a specific STATE or POSITION. State-based: :hover (mouse over), :focus (keyboard focused — critical for accessibility), :active (being clicked), :visited (link was visited), :checked (checkbox/radio selected), :disabled (form element disabled). Position-based: :first-child (first element among siblings), :last-child (last element), :nth-child(2) (second element), :nth-child(odd/even) for zebra striping tables. Functional: :not(.hidden) excludes elements, :nth-child(3n) targets every third element. Pseudo-classes don't add extra HTML — they let you style based on context and interaction states."
+      },
+      {
+        "name": "Pseudo-Elements (::before, ::after, ::first-letter)",
+        "explanation": "Pseudo-elements create virtual elements that don't exist in the HTML. ::before inserts content BEFORE an element's content, ::after inserts AFTER. Both require the 'content' property (even if empty: content: ''). They're commonly used for: decorative icons (content: '★'), tooltip arrows, overlay effects, custom bullet points, and clearfix hacks. ::first-letter targets the first letter (for drop-caps in articles), ::first-line targets the first line. ::placeholder styles form placeholder text. ::selection styles highlighted/selected text. Note the double colon (::) — single colon (:before) is the old syntax that still works but is deprecated."
+      },
+      {
+        "name": "Specificity & The Cascade",
+        "explanation": "When multiple CSS rules target the same element, specificity determines which wins. The specificity scoring system: inline styles = 1000 points, each ID selector = 100, each class/attribute/pseudo-class = 10, each element/pseudo-element = 1. '.card .title' (0-2-0=20) beats 'div h2' (0-0-2=2). '#intro .title' (1-1-0=110) beats '.card .title' (0-2-0=20). The 'cascade' part means: equal specificity → last rule wins (order matters). Inherited styles (like color on body flowing to children) have the lowest priority. Understanding specificity prevents the #1 beginner frustration: 'why isn't my CSS working?!' Use DevTools to see which rule is winning and why."
+      },
+      {
+        "name": "The !important Rule (and why to avoid it)",
+        "explanation": "'!important' overrides ALL specificity calculations: 'color: red !important;' will beat even inline styles. It sounds useful but creates unmanageable CSS — once you use !important, the only way to override it is with ANOTHER !important with higher specificity, creating an escalation war. Debugging becomes nearly impossible because the normal cascade rules no longer apply. Legitimate uses: accessibility styles (user stylesheets), utility classes in CSS frameworks (like Tailwind's !important prefix), and overriding third-party library styles you can't modify. For your own code, if you need !important, it's a sign your specificity architecture needs refactoring. Fix the root cause instead."
+      }
     ],
     "codeExamples": [
       {
@@ -80,18 +116,54 @@
     "whyItMatters": "Color and typography account for about 90% of how users perceive your website's quality. Professional designers spend hours choosing the right font pairing and color palette. Understanding CSS color models, font loading, and text styling is essential for creating visually appealing, readable websites.",
     "eli5": "Colors in CSS are like having a giant box of crayons. You can pick colors by name ('red'), by a secret code ('#FF0000'), or by mixing how much red, green, and blue you want (rgb). Fonts are like different handwriting styles — you can make text look like a newspaper, a handwritten letter, or a computer screen. You can also make text bigger, smaller, bold, italic, or even ALL CAPS!",
     "subtopics": [
-      "Color Formats: Named, Hex, RGB, RGBA, HSL, HSLA",
-      "Choosing Color Palettes (tools: Coolors, Adobe Color)",
-      "font-family and Font Stacks",
-      "Loading Google Fonts (@import vs <link>)",
-      "Font Size Units: px, em, rem, vw, clamp()",
-      "font-weight (100-900), font-style (italic)",
-      "line-height for Readability",
-      "text-align, text-transform, text-decoration",
-      "letter-spacing and word-spacing",
-      "Background Colors and Gradients",
-      "opacity and RGBA Transparency",
-      "CSS Color Functions: oklch(), color-mix()"
+      {
+        "name": "Color Formats: Named, Hex, RGB, RGBA, HSL, HSLA",
+        "explanation": "CSS supports multiple color formats. Named colors (red, blue, coral — 147 total) are readable but limited. Hexadecimal (#FF5733 or shorthand #F53) uses 0-F for red/green/blue channels. RGB (rgb(255, 87, 51)) specifies each channel 0-255. RGBA (rgba(255, 87, 51, 0.5)) adds an alpha channel for transparency (0 = fully transparent, 1 = fully opaque). HSL (hsl(14, 100%, 60%)) uses Hue (0-360° color wheel), Saturation (0-100%), Lightness (0-100%) — more intuitive for adjusting colors. HSLA adds transparency. Most developers prefer hex for static colors and RGBA/HSLA when transparency is needed."
+      },
+      {
+        "name": "Choosing Color Palettes (tools: Coolors, Adobe Color)",
+        "explanation": "Professional websites use cohesive color palettes, not random colors. A typical palette includes: a primary color (brand color), secondary color (complementary), neutral colors (grays for text/backgrounds), accent colors (calls-to-action, highlights), and semantic colors (green=success, red=error, yellow=warning). Tools like Coolors.co generate harmonious palettes with one click. Adobe Color provides color wheel exploration. Other useful tools: Realtime Colors (preview palettes on a live site), Contrast Checker (ensure accessibility). The 60-30-10 rule works well: 60% neutral, 30% primary, 10% accent."
+      },
+      {
+        "name": "font-family and Font Stacks",
+        "explanation": "font-family sets the typeface for text. Always provide a fallback stack — a comma-separated list of fonts in order of preference: 'font-family: \"Inter\", \"Helvetica Neue\", Arial, sans-serif;'. The browser tries each font in order, falling back to the next if unavailable. The last should be a generic family: serif, sans-serif, monospace, cursive, or fantasy. System font stacks like 'font-family: system-ui, -apple-system, sans-serif;' use each OS's native fonts — fast loading with no downloads. For web fonts (Google Fonts, Adobe Fonts), you need to load them before using them in CSS."
+      },
+      {
+        "name": "Loading Google Fonts (@import vs <link>)",
+        "explanation": "Google Fonts offers 1500+ free web fonts. Two loading methods: The <link> tag in HTML <head> is preferred — '<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap\" rel=\"stylesheet\">'. This loads in parallel with other resources. The @import rule at the top of your CSS — '@import url(\"...\");' — is simpler but slower because the browser must download your CSS first, then discover and download the font. The 'display=swap' parameter ensures text is visible immediately in a fallback font, then swaps to the web font once loaded. For performance-critical sites, self-host fonts instead of loading from Google."
+      },
+      {
+        "name": "Font Size Units: px, em, rem, vw, clamp()",
+        "explanation": "px (pixels) is fixed — '16px' is always 16px regardless of context. Easy to understand but doesn't respect user zoom preferences. em is relative to the PARENT element's font size — '1.5em' = 1.5× parent size. Can compound unpredictably when nested. rem (root em) is relative to the HTML root element (default 16px) — '1.5rem' = 24px. Consistent and predictable — the industry standard for font sizes. vw (viewport width) scales with screen size — '4vw' = 4% of viewport width. Good for responsive headings. clamp() combines min, preferred, and max: 'clamp(1rem, 2.5vw, 2rem)' = never smaller than 1rem, never larger than 2rem, smoothly scales between. Use rem for most sizes."
+      },
+      {
+        "name": "font-weight (100-900), font-style (italic)",
+        "explanation": "font-weight controls text thickness on a 100-900 scale: 100 (Thin), 200 (Extra Light), 300 (Light), 400 (Normal/Regular), 500 (Medium), 600 (Semi-Bold), 700 (Bold), 800 (Extra Bold), 900 (Black). Keywords: 'normal' = 400, 'bold' = 700. The font file must include the weight you specify — if you set 600 but only loaded 400 and 700, the browser picks the closest available weight. Variable fonts support any weight in a range. font-style controls italics: 'italic' (designed italic version), 'oblique' (mechanically slanted), 'normal' (upright). Always load the weights you need from Google Fonts to match your design."
+      },
+      {
+        "name": "line-height for Readability",
+        "explanation": "line-height sets the vertical distance between lines of text. It's one of the most impactful readability properties. For body text, use 1.5 to 1.7 (unitless values that multiply by the font size — 16px × 1.6 = 25.6px line height). Headings can use tighter values (1.1-1.3) since they're short. Values that are too tight make text feel cramped; too loose makes it hard to track across to the next line. Use unitless values (1.6) instead of fixed units (25px) so line-height scales with font size. WCAG accessibility guidelines recommend at least 1.5 for body text. This single property dramatically improves the look of any website."
+      },
+      {
+        "name": "text-align, text-transform, text-decoration",
+        "explanation": "text-align controls horizontal text position: 'left' (default for LTR), 'center', 'right', 'justify' (stretches to fill width — avoid for web, it creates uneven word spacing). text-transform changes capitalization: 'uppercase' (ALL CAPS), 'lowercase', 'capitalize' (First Letter Of Each Word). Use CSS for capitalization instead of hardcoding in HTML — it's easier to change. text-decoration controls underlines: 'none' (remove default link underlines), 'underline', 'line-through' (strikethrough for deleted prices). Modern properties: 'text-decoration-color', 'text-decoration-thickness', 'text-underline-offset' let you style underlines precisely."
+      },
+      {
+        "name": "letter-spacing and word-spacing",
+        "explanation": "letter-spacing (also called tracking in design) adjusts space between characters. Positive values spread letters apart — useful for uppercase text, logos, and small captions: '.label { letter-spacing: 0.1em; text-transform: uppercase; }'. Negative values tighten spacing — useful for large headings: 'h1 { letter-spacing: -0.025em; }'. Use em units so spacing scales with font size. word-spacing adjusts space between words — rarely needed, as default word spacing is well-designed in most fonts. Common pattern: tight letter-spacing on headings + loose letter-spacing on uppercase labels creates visual hierarchy. Small adjustments (±0.01-0.05em) make a big difference."
+      },
+      {
+        "name": "Background Colors and Gradients",
+        "explanation": "background-color sets a solid background: 'background-color: #f8fafc;'. The background shorthand can combine color, image, gradient, and more. Linear gradients transition between colors along a line: 'background: linear-gradient(135deg, #6366f1, #a855f7);'. You can specify direction (to right, 135deg, to bottom right), add multiple color stops, and control stop positions. Radial gradients radiate from a center point: 'background: radial-gradient(circle at top left, #6366f1, transparent);'. Conic gradients rotate around a center point — good for pie charts. Gradients can be layered: 'background: linear-gradient(...), url(bg.jpg);'. They are one of the easiest ways to make a site look polished."
+      },
+      {
+        "name": "opacity and RGBA Transparency",
+        "explanation": "Two ways to add transparency in CSS. The 'opacity' property affects the ENTIRE element including its children: 'opacity: 0.5;' makes everything 50% transparent — text, borders, backgrounds, child elements, everything. RGBA/HSLA transparency affects ONLY the specific color: 'background: rgba(0, 0, 0, 0.5);' creates a semi-transparent background while keeping text fully opaque. For overlays and glass effects, use RGBA backgrounds + backdrop-filter: blur(). Common gotcha: setting 'opacity: 0' hides an element but it still takes up space and is still interactive — unlike 'display: none' which removes it from layout entirely. For fade-in animations, animate opacity from 0 to 1."
+      },
+      {
+        "name": "CSS Color Functions: oklch(), color-mix()",
+        "explanation": "Modern CSS introduces perceptually uniform color functions. oklch(lightness, chroma, hue) defines colors using human perception — changing lightness by the same amount always looks like the same change, unlike HSL where 'lightness' can look inconsistent across hues. This makes it ideal for design systems: 'color: oklch(70% 0.15 260);'. color-mix() blends two colors: 'color: color-mix(in srgb, #6366f1 60%, white);' creates a lighter shade. This replaces the need for manually calculating intermediate colors. These functions are supported in all modern browsers and represent the future of CSS color — they make creating accessible, consistent color palettes much easier."
+      }
     ],
     "codeExamples": [
       {
@@ -146,16 +218,46 @@
     "whyItMatters": "The box model controls ALL spacing and sizing in CSS. 90% of 'my layout is broken' bugs come from not understanding the box model. box-sizing: border-box is used in every professional project. Margin collapse causes confusion for years if not understood early. This is tested in virtually every frontend interview.",
     "eli5": "Imagine your content is a gift inside a box. The padding is the bubble wrap around the gift (inside the box). The border is the cardboard box itself. The margin is the space between this box and other boxes on the shelf. If you measure how big the package is, you need to count the gift + bubble wrap + cardboard. That's the box model! The 'border-box' trick is like saying 'this box must be 30cm, no matter how much bubble wrap I use.'",
     "subtopics": [
-      "Content, Padding, Border, Margin — Four Layers",
-      "width, height and min-width/max-width",
-      "padding: shorthand (top right bottom left)",
-      "margin: shorthand and auto for centering",
-      "Border: width, style, color, radius",
-      "box-sizing: content-box vs border-box",
-      "The Universal Box-Sizing Reset (* { box-sizing: border-box })",
-      "Margin Collapse — Why Vertical Margins Merge",
-      "Outline vs Border (outline doesn't take space)",
-      "Using DevTools Box Model Inspector"
+      {
+        "name": "Content, Padding, Border, Margin — Four Layers",
+        "explanation": "Every HTML element is a box with four layers. Content is the innermost area — where text and images live. Padding is the space between the content and the border — it's inside the element and shares the element's background color. Border is the edge of the element — configurable width, style (solid, dashed, dotted), color, and radius. Margin is the space outside the border — it's always transparent and creates distance between elements. Think of it like a picture in a frame: the picture is content, the matting is padding, the frame is the border, and the wall space between frames is the margin."
+      },
+      {
+        "name": "width, height and min-width/max-width",
+        "explanation": "width and height set an element's size. By default, block elements are 100% width and auto height (expands to fit content). Setting a fixed width like 'width: 300px' can cause overflow on small screens. min-width/max-width set boundaries: 'max-width: 1200px' caps the width on large screens while allowing shrinking on small screens. 'width: 100%; max-width: 800px;' creates a responsive container. min-height ensures a minimum height without preventing growth. auto is the default for both dimensions and means 'figure it out based on content'. Height: 100vh makes an element exactly the viewport height."
+      },
+      {
+        "name": "padding: shorthand (top right bottom left)",
+        "explanation": "Padding adds space INSIDE an element, between its content and border. Four formats: 'padding: 10px;' (all sides), 'padding: 10px 20px;' (top/bottom 10, left/right 20), 'padding: 10px 20px 15px;' (top 10, left/right 20, bottom 15), 'padding: 10px 20px 15px 5px;' (top, right, bottom, left — clockwise). Individual sides: padding-top, padding-right, padding-bottom, padding-left. Padding is affected by box-sizing — with content-box (default), padding ADDS to the element's width. With border-box, padding is INCLUDED in the width. Use logical properties for international support: padding-inline (left/right), padding-block (top/bottom)."
+      },
+      {
+        "name": "margin: shorthand and auto for centering",
+        "explanation": "Margin creates space OUTSIDE an element, between it and neighboring elements. Same shorthand as padding: 'margin: 10px 20px;' etc. The special value 'auto' tells the browser to calculate the margin: 'margin: 0 auto;' horizontally centers a block element (left and right margins split the remaining space equally). This only works on block elements with a defined width. Negative margins are valid and pull elements closer: 'margin-top: -20px;' makes an element overlap the one above it. Margin doesn't have a background — it's always transparent. Unlike padding, margin doesn't increase the element's clickable/visible area."
+      },
+      {
+        "name": "Border: width, style, color, radius",
+        "explanation": "Borders sit between padding and margin. The shorthand 'border: 2px solid #e2e8f0;' sets width, style, and color. Styles include: solid, dashed, dotted, double, groove, ridge, inset, outset, none. Individual sides: border-top, border-right, etc. border-radius creates rounded corners: 'border-radius: 8px;' rounds all corners equally, 'border-radius: 50%;' creates a circle (on a square element). You can set each corner independently: 'border-radius: 20px 0 0 20px;' (top-left and bottom-left only). Modern trick: create pill-shaped buttons with 'border-radius: 9999px;'. Borders take up space in the layout (unless using border-box sizing)."
+      },
+      {
+        "name": "box-sizing: content-box vs border-box",
+        "explanation": "This property changes HOW width and height are calculated. content-box (default): width/height ONLY measure the content area. A 300px-wide div with 20px padding and 2px border actually renders at 344px (300 + 20×2 + 2×2). This is confusing and makes layouts unpredictable. border-box: width/height INCLUDE padding AND border. A 300px-wide div with padding and border stays exactly 300px — the content area shrinks to accommodate. This is intuitive and predictable. Every professional project uses border-box. The difference causes 90% of 'my layout is broken' bugs for beginners."
+      },
+      {
+        "name": "The Universal Box-Sizing Reset (* { box-sizing: border-box })",
+        "explanation": "The universal reset '*, *::before, *::after { box-sizing: border-box; }' applies border-box to EVERY element, including pseudo-elements. This is the first thing in virtually every professional CSS file, framework, and CSS reset. Without it, every element defaults to content-box, making width calculations unpredictable. Including ::before and ::after ensures pseudo-elements (commonly used for decorative content) also use border-box. This single rule prevents countless layout bugs. Some developers also include 'margin: 0; padding: 0;' in their reset to remove default browser spacing on elements like body, h1-h6, p, and ul."
+      },
+      {
+        "name": "Margin Collapse — Why Vertical Margins Merge",
+        "explanation": "When two vertical margins touch (the bottom margin of one element meets the top margin of the next), they DON'T stack — they COLLAPSE into one margin equal to the larger of the two. Example: if element A has margin-bottom: 30px and element B has margin-top: 20px, the gap between them is 30px, not 50px. This only happens with vertical margins, never horizontal. Margin collapse also happens between parent and first/last child margins when there's no padding, border, or content separating them. Ways to prevent collapse: add padding or border to the parent, use overflow: hidden on the parent, or use Flexbox/Grid layouts (they don't collapse margins)."
+      },
+      {
+        "name": "Outline vs Border (outline doesn't take space)",
+        "explanation": "Outline looks like border but has key differences. Border takes up space in the box model — adding border changes the element's size. Outline sits OUTSIDE the border and does NOT take space — it overlaps surrounding content without affecting layout. Outline can't be applied to individual sides (no outline-top). It doesn't follow border-radius (though outline-offset helps). The primary use of outline is focus indicators — when you Tab to a button, the browser shows an outline. NEVER remove outlines without providing an alternative focus indicator: 'button:focus { outline: none; }' is an accessibility violation. Instead, customize it: 'button:focus-visible { outline: 2px solid #6366f1; outline-offset: 2px; }'."
+      },
+      {
+        "name": "Using DevTools Box Model Inspector",
+        "explanation": "Every browser's DevTools includes a visual Box Model inspector (right-click → Inspect → click an element). It shows a color-coded diagram: content (blue), padding (green), border (yellow/brown), margin (orange). Hovering over each section highlights it on the page. You can EDIT values directly by clicking on them — instant feedback for debugging layout issues. The Computed tab shows the FINAL calculated sizes after all CSS rules are applied. This tool answers questions like: 'Why is there extra space here?' (unexpected margin), 'Why is this wider than expected?' (content-box sizing), 'Why is this misaligned?' (padding differences). Use it constantly during development."
+      }
     ],
     "codeExamples": [
       {
@@ -200,17 +302,50 @@
     "whyItMatters": "Display and positioning control the fundamental behavior of every element on the page. Understanding the difference between block/inline is essential for layout. Position: absolute and fixed are used constantly for dropdowns, modals, tooltips, sticky headers, and floating buttons. These concepts trip up beginners more than almost anything else.",
     "eli5": "Imagine blocks are like paragraphs in a book — each starts on a new line and takes up the whole width. Inline elements are like words in a sentence — they sit next to each other. Positioning is like sticking sticky notes on a bulletin board: 'relative' moves the note slightly from where it normally goes, 'absolute' lets you stick it anywhere on the board, and 'fixed' makes the note follow you as you walk around the room (it never moves when you scroll)!",
     "subtopics": [
-      "display: block, inline, inline-block",
-      "display: none vs visibility: hidden",
-      "position: static (default flow)",
-      "position: relative (offset from normal)",
-      "position: absolute (remove from flow)",
-      "position: fixed (relative to viewport)",
-      "position: sticky (scroll-triggered fixing)",
-      "top, right, bottom, left offset properties",
-      "z-index and Stacking Contexts",
-      "overflow: hidden, scroll, auto",
-      "float and clear (legacy technique)"
+      {
+        "name": "display: block, inline, inline-block",
+        "explanation": "The display property controls how an element behaves in the page flow. Block elements (<div>, <h1>, <p>) take up the full width available, stack vertically, and accept width/height. Inline elements (<span>, <a>, <strong>) flow with text horizontally, only as wide as their content, and IGNORE width/height properties. Inline-block is the best of both: flows horizontally like inline but accepts width/height like block — perfect for badges, tags, and buttons in a row. Understanding this is fundamental: if your width isn't applying, the element is probably inline."
+      },
+      {
+        "name": "display: none vs visibility: hidden",
+        "explanation": "Both hide elements, but differently. 'display: none' completely removes the element from the layout — it takes up no space, and surrounding elements fill the gap as if it doesn't exist. 'visibility: hidden' makes the element invisible but it STILL occupies space — there's a blank gap where it should be. Additionally, 'opacity: 0' makes an element fully transparent but it still takes space AND remains interactive (clickable). Use 'display: none' for toggling menus/modals, 'visibility: hidden' for maintaining layout (like a placeholder), and 'opacity: 0' for fade-in animations."
+      },
+      {
+        "name": "position: static (default flow)",
+        "explanation": "position: static is the DEFAULT — every element starts with this. Static elements follow the normal document flow: block elements stack vertically in source order, inline elements flow left-to-right with text. Top, right, bottom, left, and z-index properties have NO effect on static elements. This is important to know because position: absolute positions itself relative to the nearest NON-STATIC ancestor. If no ancestor has positioning set, absolute elements position relative to the document body."
+      },
+      {
+        "name": "position: relative (offset from normal)",
+        "explanation": "position: relative moves an element from its normal position using top/right/bottom/left offsets, BUT its original space in the layout is preserved — other elements don't move to fill the gap. 'position: relative; top: 10px; left: 20px;' shifts the element 10px down and 20px right from where it would normally be. The most common use of relative isn't actually moving the element itself — it's creating a positioning context for absolute children. Setting 'position: relative' on a parent makes it the reference point for any 'position: absolute' children."
+      },
+      {
+        "name": "position: absolute (remove from flow)",
+        "explanation": "position: absolute removes an element from the normal flow entirely — other elements ignore its existence and fill the space it would have occupied. It positions itself relative to the nearest ancestor that has positioning (relative, absolute, fixed, or sticky). If no ancestor is positioned, it uses the document body. Use top/right/bottom/left to place it precisely. Common uses: dropdown menus positioned below a button, tooltip popups, notification badges on icons, and overlay elements. The classic pattern: parent gets 'position: relative', child gets 'position: absolute' with exact placement."
+      },
+      {
+        "name": "position: fixed (relative to viewport)",
+        "explanation": "position: fixed positions an element relative to the browser viewport (the visible area). It stays in exactly the same place even when the user scrolls. Common uses: fixed navigation headers that stay visible at the top, floating action buttons (like a chat widget in the bottom-right), cookie consent banners stuck to the bottom, and back-to-top buttons. Fixed elements are removed from the flow (like absolute). Always add z-index to fixed elements so they appear above scrolling content. Be careful on mobile: fixed positioning can behave unexpectedly when virtual keyboards open."
+      },
+      {
+        "name": "position: sticky (scroll-triggered fixing)",
+        "explanation": "position: sticky is a hybrid between relative and fixed. The element behaves as relative within its parent container, but becomes fixed when it reaches a specified scroll position. 'position: sticky; top: 0;' means 'act normally until you're about to scroll off the top of the viewport, then stick there.' It unsticks when the parent container scrolls out of view. Perfect for: table headers that stay visible while scrolling, section headings in a long article, sidebar elements that follow you down the page. The parent must not have overflow: hidden, or sticky won't work."
+      },
+      {
+        "name": "top, right, bottom, left offset properties",
+        "explanation": "These properties specify the offset from each edge for positioned elements (relative, absolute, fixed, sticky). They have NO effect on static elements. For absolute/fixed: 'top: 0; left: 0;' puts the element at the top-left of its positioning context. 'top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);' perfectly centers it. Setting both left and right (or top and bottom) stretches the element: 'left: 0; right: 0;' makes it full width within its container. For relative: offsets move the element from its normal position. For sticky: the offset defines where the element 'sticks'."
+      },
+      {
+        "name": "z-index and Stacking Contexts",
+        "explanation": "z-index controls which elements appear on top when they overlap, like layers in Photoshop. Higher z-index = more in front. It ONLY works on positioned elements (not static). A stacking context is like a group — elements within a stacking context can only compete with each other, not with elements in other contexts. New stacking contexts are created by: position + z-index, opacity < 1, transform, filter, and more. This is why z-index: 999999 sometimes doesn't work — the element is in a stacking context that's behind another context. Common values: content = auto/0, dropdowns = 10, sticky headers = 100, modals = 1000, tooltips = 1100."
+      },
+      {
+        "name": "overflow: hidden, scroll, auto",
+        "explanation": "overflow controls what happens when content is bigger than its container. 'visible' (default): content overflows and is visible outside the container. 'hidden': content is clipped at the container's edges — invisible and inaccessible. 'scroll': always shows scrollbars. 'auto': shows scrollbars only when needed (the best choice for most cases). You can set overflow-x and overflow-y independently. overflow: hidden is commonly used for: creating rounded corner containers (prevents child overflow), clearing floats, and hiding text that's too long (text-overflow: ellipsis). 'overflow: hidden' on a parent also prevents margin collapse."
+      },
+      {
+        "name": "float and clear (legacy technique)",
+        "explanation": "Before Flexbox and Grid, float was the primary layout tool. 'float: left;' makes an element float to the left and text wraps around it — originally designed for images in articles. Developers hacked floats for multi-column layouts, which was fragile and required 'clearfix' hacks. 'clear: both;' on a sibling prevents it from wrapping alongside floated elements. Float is still useful for wrapping text around images (its original purpose), but for layout, always use Flexbox or Grid instead. Understanding float is important for maintaining legacy code and for interview knowledge, but you should never use it for new layout work."
+      }
     ],
     "codeExamples": [
       {
@@ -265,17 +400,50 @@
     "whyItMatters": "Flexbox is used in virtually every modern website and framework. React, Vue, and Angular components all use Flexbox internally. It's the #1 CSS skill tested in frontend interviews. Before Flexbox, even simple vertical centering required hacks. Flexbox makes responsive layouts natural and intuitive.",
     "eli5": "Imagine you have a shelf (the flex container) and you're arranging books (flex items) on it. Flexbox lets you say: 'put the books in a row, center them on the shelf, and space them evenly.' You can also say 'if there are too many books, wrap them to the next shelf.' Without Flexbox, you'd have to measure and calculate each book's position manually. With Flexbox, you just describe what you want and the browser figures out the math!",
     "subtopics": [
-      "display: flex — Creating a Flex Container",
-      "flex-direction: row, column, row-reverse, column-reverse",
-      "justify-content: center, space-between, space-around, space-evenly",
-      "align-items: center, stretch, flex-start, flex-end, baseline",
-      "flex-wrap: wrap, nowrap",
-      "gap — Spacing Between Items",
-      "flex-grow, flex-shrink, flex-basis (flex shorthand)",
-      "align-self — Override Alignment for One Item",
-      "order — Rearrange Items Without Changing HTML",
-      "Centering Anything with Flexbox",
-      "Common Flexbox Patterns: Navbar, Cards, Holy Grail Layout"
+      {
+        "name": "display: flex — Creating a Flex Container",
+        "explanation": "Adding 'display: flex;' to a container transforms it into a flex container, and its direct children become flex items. This single property immediately changes how children are arranged: instead of stacking vertically (block behavior), they line up in a row by default. The container controls the layout; children respond. Inline-flex ('display: inline-flex;') creates a flex container that flows inline with surrounding content rather than taking full width. Once you set display: flex, you unlock all the powerful alignment and distribution properties (justify-content, align-items, flex-wrap, gap, etc.)."
+      },
+      {
+        "name": "flex-direction: row, column, row-reverse, column-reverse",
+        "explanation": "flex-direction sets the main axis — the direction items flow. 'row' (default): items flow left to right horizontally. 'column': items stack top to bottom vertically (like normal block elements, but with Flexbox alignment powers). 'row-reverse': items flow right to left. 'column-reverse': items stack bottom to top. This property is crucial because it determines what 'justify-content' and 'align-items' affect. In 'row', justify-content works horizontally and align-items vertically. In 'column', they swap — justify-content works vertically and align-items horizontally."
+      },
+      {
+        "name": "justify-content: center, space-between, space-around, space-evenly",
+        "explanation": "justify-content aligns items along the MAIN axis (horizontal for row, vertical for column). 'flex-start' (default): items pack to the start. 'center': items group in the center. 'flex-end': items pack to the end. 'space-between': first item at start, last at end, remaining space distributed evenly between items. 'space-around': equal space around each item (half-space at edges). 'space-evenly': perfectly equal space between and around all items. The difference between space-around and space-evenly is subtle but important — space-evenly has equal gaps everywhere, while space-around has half-gaps at edges."
+      },
+      {
+        "name": "align-items: center, stretch, flex-start, flex-end, baseline",
+        "explanation": "align-items aligns items along the CROSS axis (vertical for row, horizontal for column). 'stretch' (default): items expand to fill the container's cross-axis height. 'center': items center vertically. 'flex-start': items align to the top. 'flex-end': items align to the bottom. 'baseline': items align by their text baselines — useful when items have different font sizes but you want their text to line up. The combination of 'justify-content: center' + 'align-items: center' on a flex container is the easiest way to perfectly center content — just 3 lines of CSS."
+      },
+      {
+        "name": "flex-wrap: wrap, nowrap",
+        "explanation": "By default, flex items try to fit on a single line (nowrap), shrinking to fit even if they're too wide. 'flex-wrap: wrap;' allows items to flow onto multiple lines when they don't fit. 'flex-wrap: wrap-reverse;' wraps in reverse order. Without wrap, items will shrink below their natural width rather than wrapping. With wrap, items maintain their size and overflow to new lines. The shorthand 'flex-flow' combines direction and wrap: 'flex-flow: row wrap;'. Wrapping is essential for responsive card grids: items on one line on desktop, wrapping to fewer columns on mobile."
+      },
+      {
+        "name": "gap — Spacing Between Items",
+        "explanation": "gap creates consistent space between flex items without using margins. 'gap: 24px;' adds 24px between all items (but NOT at the edges — unlike margin). You can set row and column gaps separately: 'gap: 16px 24px;' (row gap, column gap). Before gap, developers used margin and negative margins (margin: -12px on container + margin: 12px on items) — ugly and error-prone. gap works with both Flexbox and Grid. It's the clean, modern way to space items. Note: gap between flex items is fully supported in all modern browsers since 2021."
+      },
+      {
+        "name": "flex-grow, flex-shrink, flex-basis (flex shorthand)",
+        "explanation": "These three properties control how flex items size themselves. flex-grow: how much an item grows to fill extra space (0 = don't grow, 1 = grow equally). flex-shrink: how much an item shrinks when space is tight (0 = don't shrink, 1 = shrink equally). flex-basis: the starting size before growing/shrinking (like width, but flexible). The shorthand: 'flex: 1;' means 'flex-grow: 1; flex-shrink: 1; flex-basis: 0%;' — grow and shrink equally from zero. 'flex: 0 0 300px;' means 'fixed 300px, don't grow or shrink'. 'flex: 1 1 300px;' means 'start at 300px, then grow/shrink to fill space.'"
+      },
+      {
+        "name": "align-self — Override Alignment for One Item",
+        "explanation": "align-self overrides the container's align-items for a SINGLE item. If the container has 'align-items: flex-start' but you want one item centered, apply 'align-self: center;' to that specific item. Values are the same as align-items: auto (follow container), flex-start, flex-end, center, baseline, stretch. Common use case: in a row of items aligned to the top, making one item align to the bottom. There is no 'justify-self' in Flexbox (unlike Grid) — to push a single item to the other end, use 'margin-left: auto;' (or margin-right for right-to-left)."
+      },
+      {
+        "name": "order — Rearrange Items Without Changing HTML",
+        "explanation": "The 'order' property changes the visual order of flex items without modifying the HTML source. Default order is 0 for all items. Lower numbers appear first: 'order: -1;' moves an item to the front, 'order: 1;' moves it to the end. This is useful for responsive design: on mobile, you might want a sidebar to appear after the main content, even though it comes first in HTML. However, use with caution — screen readers and keyboard navigation follow the SOURCE order, not the visual order. Overusing order can create accessibility issues where the visual tab order doesn't match the logical order."
+      },
+      {
+        "name": "Centering Anything with Flexbox",
+        "explanation": "The most celebrated Flexbox feature is effortless centering. Horizontal + vertical centering: 'display: flex; justify-content: center; align-items: center;' — just 3 lines for something that was notoriously difficult before Flexbox. For a full-page centered element, add 'min-height: 100vh;'. To center only horizontally: 'display: flex; justify-content: center;'. To center only vertically: 'display: flex; align-items: center;'. Even a single child element is perfectly centered. This replaces dozens of hacks: margin: auto, absolute positioning + transforms, table-cell + vertical-align, and line-height tricks."
+      },
+      {
+        "name": "Common Flexbox Patterns: Navbar, Cards, Holy Grail Layout",
+        "explanation": "Navbar: 'display: flex; justify-content: space-between; align-items: center;' — logo left, links right, everything vertically centered. Card row: 'display: flex; flex-wrap: wrap; gap: 24px;' with each card at 'flex: 1 1 300px;' — cards fill space evenly and wrap on small screens. Sticky footer: 'display: flex; flex-direction: column; min-height: 100vh;' with 'flex: 1;' on the main content pushes footer to the bottom. Holy Grail Layout (header, footer, left sidebar, right sidebar, main content): combine flex-direction: column for the page with flex-direction: row for the middle section."
+      }
     ],
     "codeExamples": [
       {
@@ -335,18 +503,54 @@
     "whyItMatters": "CSS Grid fundamentally changed web layout — tasks that required complex frameworks (Bootstrap grids, float-based grids) now take a few lines of CSS. Dashboard layouts, image galleries, magazine-style designs, and responsive page structures all use Grid. Together with Flexbox, it forms the complete modern CSS layout toolkit.",
     "eli5": "CSS Grid is like graph paper. You draw lines to create rows and columns, and then place your content into the boxes. You can say 'this picture takes up 2 boxes wide' or 'this sidebar is 1 column and the main content is 3 columns.' It's like playing Tetris — you have a grid and you place your blocks where you want them. The really cool part? You can tell the grid 'make as many columns as fit' and it automatically adjusts as the screen gets bigger or smaller!",
     "subtopics": [
-      "display: grid — Creating a Grid Container",
-      "grid-template-columns and grid-template-rows",
-      "The fr Unit (Fractional Units)",
-      "repeat(), minmax(), and auto-fill / auto-fit",
-      "gap (row-gap, column-gap)",
-      "Placing Items: grid-column, grid-row",
-      "Spanning Items: grid-column: span 2",
-      "Grid Template Areas (named regions)",
-      "Implicit vs Explicit Grids",
-      "justify-items, align-items, place-items",
-      "Responsive Grids Without Media Queries",
-      "Grid vs Flexbox — When to Use Which"
+      {
+        "name": "display: grid — Creating a Grid Container",
+        "explanation": "Adding 'display: grid;' transforms a container into a grid container and its direct children into grid items. Unlike Flexbox (one-dimensional), Grid is two-dimensional — it controls both rows AND columns simultaneously. By itself, 'display: grid;' stacks items vertically (like block layout), but once you define columns with grid-template-columns, items fill cells in a grid pattern. 'display: inline-grid;' creates a grid container that flows inline. Grid is ideal for page-level layouts (header, sidebar, content, footer) and any design where you need precise two-dimensional control."
+      },
+      {
+        "name": "grid-template-columns and grid-template-rows",
+        "explanation": "These properties define the number and size of columns and rows. 'grid-template-columns: 200px 1fr 200px;' creates three columns: 200px fixed, flexible middle, 200px fixed. 'grid-template-rows: 60px auto 50px;' creates three rows: 60px header, auto-expanding content, 50px footer. You can mix units: px (fixed), % (percentage), fr (fractional), auto (content-sized), and min/max functions. Without grid-template-rows, rows are created automatically (implicit grid) as content needs them. These two properties are the foundation of every grid layout."
+      },
+      {
+        "name": "The fr Unit (Fractional Units)",
+        "explanation": "The 'fr' unit distributes AVAILABLE space proportionally — it's Grid's killer feature. '1fr 2fr 1fr' creates three columns where the middle is twice the width of the sides (they share space in a 1:2:1 ratio). Unlike percentages, fr accounts for gaps: 'grid-template-columns: 1fr 1fr; gap: 20px;' gives each column exactly half the space MINUS the gap, without you doing any math. You can mix fr with fixed units: '250px 1fr' gives the sidebar a fixed 250px and the main content takes ALL remaining space. This makes responsive layouts trivial."
+      },
+      {
+        "name": "repeat(), minmax(), and auto-fill / auto-fit",
+        "explanation": "repeat() avoids repetition: 'repeat(3, 1fr)' = '1fr 1fr 1fr'. minmax() sets a size range: 'minmax(250px, 1fr)' means 'at least 250px, at most 1fr'. The magic combination: 'grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));' creates a FULLY RESPONSIVE grid without media queries — the browser automatically calculates how many 280px+ columns fit, adding/removing columns as the viewport changes. auto-fill creates empty tracks when space is available; auto-fit collapses empty tracks. Use auto-fit for most cases."
+      },
+      {
+        "name": "gap (row-gap, column-gap)",
+        "explanation": "gap creates consistent gutters between grid cells. 'gap: 24px;' sets both row and column gaps. 'gap: 16px 24px;' sets row-gap to 16px and column-gap to 24px separately. Individual properties: row-gap and column-gap. The old syntax used 'grid-gap', 'grid-row-gap', 'grid-column-gap' — these still work but the unprefixed versions are preferred. gap only adds space BETWEEN cells, not at the edges — unlike padding on the container. This makes it perfect for card grids, image galleries, and dashboard layouts."
+      },
+      {
+        "name": "Placing Items: grid-column, grid-row",
+        "explanation": "By default, grid items fill cells left-to-right, top-to-bottom (auto-placement). grid-column and grid-row let you explicitly place items using line numbers. Grid lines are numbered starting from 1 (the first line, before the first column). 'grid-column: 1 / 3;' places an item from line 1 to line 3 (spanning columns 1 and 2). 'grid-row: 2 / 4;' places it from row line 2 to 4. Negative numbers count from the end: 'grid-column: 1 / -1;' spans the entire row. You can also use named lines defined in grid-template-columns."
+      },
+      {
+        "name": "Spanning Items: grid-column: span 2",
+        "explanation": "Instead of specifying exact line numbers, 'span' creates items that stretch across multiple cells. 'grid-column: span 2;' makes an item take up 2 columns from its current position. 'grid-row: span 3;' spans 3 rows. You can combine: 'grid-column: span 2; grid-row: span 2;' creates a 2×2 featured item in a gallery. This is more flexible than exact line numbers because the item can be auto-placed anywhere in the grid while still spanning. Great for masonry-style layouts, featured content cards, and dashboard widgets."
+      },
+      {
+        "name": "Grid Template Areas (named regions)",
+        "explanation": "grid-template-areas lets you name regions of your grid using a visual ASCII art syntax. Example: 'grid-template-areas: \"header header header\" \"sidebar main aside\" \"footer footer footer\";'. Each string represents a row, and each word a cell. Then assign elements: '.header { grid-area: header; }'. The layout is visible directly in your CSS — incredibly intuitive. A dot (.) creates an empty cell. Area names must form rectangles (no L-shapes). This is the most readable way to define complex page layouts and is easy to modify for responsive designs by redefining areas in media queries."
+      },
+      {
+        "name": "Implicit vs Explicit Grids",
+        "explanation": "The explicit grid is what you define with grid-template-columns and grid-template-rows. The implicit grid is what the browser creates automatically when items overflow beyond your defined tracks. If you define 3 columns but have 7 items, the browser creates implicit rows for the overflow. Control implicit track sizes with grid-auto-rows and grid-auto-columns: 'grid-auto-rows: 200px;' makes all auto-created rows 200px tall. 'grid-auto-rows: minmax(100px, auto);' makes them at least 100px but expandable. grid-auto-flow controls the direction of auto-placement: 'row' (default), 'column', or 'dense' (fills gaps)."
+      },
+      {
+        "name": "justify-items, align-items, place-items",
+        "explanation": "These properties control alignment of items WITHIN their grid cells. justify-items: horizontal alignment within cells (start, end, center, stretch). align-items: vertical alignment within cells (same values). place-items is the shorthand: 'place-items: center;' centers items both horizontally and vertically in their cells. Note the distinction from Flexbox: in Grid, justify/align-items work within CELLS, while justify-content/align-content work on the GRID within the container. 'place-items: center' on a grid cell is a quick way to center content without any extra wrappers."
+      },
+      {
+        "name": "Responsive Grids Without Media Queries",
+        "explanation": "One of Grid's greatest powers is creating responsive layouts without any media queries. The pattern: 'grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));' automatically adjusts the number of columns based on available space. On a 1200px screen: 4 columns. On a 600px screen: 2 columns. On a 320px screen: 1 column. All automatic! Combine with 'gap' for consistent spacing that works at every breakpoint. For text-heavy content, use 'minmax(min(100%, 300px), 1fr)' to prevent horizontal overflow on very small screens. This technique reduces CSS significantly."
+      },
+      {
+        "name": "Grid vs Flexbox — When to Use Which",
+        "explanation": "Grid and Flexbox are complementary, not competing. Rule of thumb: Flexbox for ONE-dimensional layout (a row of buttons, a navigation bar, card contents), Grid for TWO-dimensional layout (page structure, image galleries, dashboards). Flexbox when content size determines layout (items of varying widths arranging themselves), Grid when the layout determines content size (you define the grid, content fills it). In practice, most pages use BOTH: Grid for the overall page structure and component placement, Flexbox for alignment within individual components. They nest perfectly inside each other."
+      }
     ],
     "codeExamples": [
       {
@@ -406,17 +610,50 @@
     "whyItMatters": "Google uses mobile-first indexing — if your site isn't mobile-friendly, it ranks lower in search results. Over 60% of users will leave a site that doesn't work well on their phone. Responsive design is a non-negotiable requirement in every frontend job description and is heavily tested in interviews and portfolio reviews.",
     "eli5": "You know how water takes the shape of whatever container you pour it into? Responsive design makes your website work the same way — it reshapes itself to fit whatever screen it's viewed on. On a phone, a menu might become a hamburger button. On a big screen, three cards sit side by side. On a tablet, maybe two cards fit. You use 'media queries' to give the browser different instructions for different screen sizes: 'IF the screen is small, stack things vertically. IF the screen is big, put them side by side.'",
     "subtopics": [
-      "The Viewport Meta Tag",
-      "Media Queries: @media (min-width) and (max-width)",
-      "Mobile-First vs Desktop-First Approach",
-      "Common Breakpoints (640, 768, 1024, 1280px)",
-      "Responsive Typography with clamp()",
-      "Fluid Layout with Percentages and vw/vh",
-      "Responsive Images (srcset, sizes, <picture>)",
-      "Hamburger Menus for Mobile Navigation",
-      "CSS Container Queries (@container)",
-      "Testing with Browser DevTools Device Emulation",
-      "Responsive Frameworks Overview (Bootstrap, Tailwind)"
+      {
+        "name": "The Viewport Meta Tag",
+        "explanation": "The viewport meta tag '<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">' is REQUIRED for responsive design. Without it, mobile browsers render pages at a virtual desktop width (~980px) and then zoom out to fit the screen — making everything tiny and unreadable. 'width=device-width' tells the browser to match the page width to the actual device width. 'initial-scale=1.0' sets the initial zoom level. This tag goes in the <head> of every HTML page. It's so essential that every framework and boilerplate includes it by default. If your responsive styles aren't working on mobile, this is the first thing to check."
+      },
+      {
+        "name": "Media Queries: @media (min-width) and (max-width)",
+        "explanation": "Media queries apply CSS rules conditionally based on browser/device characteristics. '@media (min-width: 768px) { ... }' applies styles when the viewport is 768px or wider. '@media (max-width: 767px) { ... }' applies when narrower than 768px. You can combine conditions: '@media (min-width: 768px) and (max-width: 1023px)' targets tablets specifically. Beyond width, you can query: 'prefers-color-scheme: dark' (dark mode), 'prefers-reduced-motion: reduce' (accessibility), 'orientation: landscape', and 'hover: hover' (devices with a mouse). Media queries are the backbone of responsive design."
+      },
+      {
+        "name": "Mobile-First vs Desktop-First Approach",
+        "explanation": "Mobile-first: write base CSS for mobile screens (no media query), then ADD styles for larger screens using min-width queries. This is the industry standard because it forces you to prioritize content and progressively enhance. Starting small ensures the mobile experience is never an afterthought. Desktop-first: write base styles for desktops, then OVERRIDE with max-width queries for smaller screens. This often leads to bloated mobile CSS because you're undoing desktop styles. Mobile-first also loads less CSS on mobile devices (which have slower processors), improving performance where it matters most."
+      },
+      {
+        "name": "Common Breakpoints (640, 768, 1024, 1280px)",
+        "explanation": "Breakpoints are the viewport widths where your layout changes. Common values: 640px (large phones/small tablets), 768px (tablets), 1024px (small laptops), 1280px (desktops), 1536px (large desktops). These aren't tied to specific devices — they're where your DESIGN needs to change. Ideally, choose breakpoints based on where your content breaks, not device sizes. Tailwind CSS uses: sm(640), md(768), lg(1024), xl(1280), 2xl(1536). Bootstrap uses: sm(576), md(768), lg(992), xl(1200), xxl(1400). Don't overthink it — 2-3 breakpoints handle most designs."
+      },
+      {
+        "name": "Responsive Typography with clamp()",
+        "explanation": "clamp(min, preferred, max) creates fluid typography that smoothly scales with viewport width. 'font-size: clamp(1rem, 2.5vw, 2rem);' means: never smaller than 1rem (16px), never larger than 2rem (32px), scales at 2.5% of viewport width between those bounds. This replaces multiple media queries with a single line. Common pattern: headings with 'clamp(1.5rem, 4vw, 3rem)' and body text with 'clamp(0.875rem, 1.5vw, 1.125rem)'. The preferred value (middle) uses viewport units (vw) to scale smoothly. You can also use clamp() for spacing, padding, and margins to create fully fluid layouts."
+      },
+      {
+        "name": "Fluid Layout with Percentages and vw/vh",
+        "explanation": "Fluid layouts use relative units instead of fixed pixels so elements scale with the viewport. Percentages: 'width: 80%;' takes 80% of the parent. Viewport units: 'width: 50vw' = 50% of viewport width, 'height: 100vh' = full viewport height. 'vmin' uses the smaller viewport dimension, 'vmax' the larger. Dynamic viewport units (dvh, svh, lvh) account for mobile browser chrome (address bar) that changes height — 'height: 100dvh' is more reliable than 100vh on mobile. Combine fluid units with max-width for best results: 'width: 90%; max-width: 1200px; margin: 0 auto;' creates a responsive, centered container."
+      },
+      {
+        "name": "Responsive Images (srcset, sizes, <picture>)",
+        "explanation": "Responsive images serve different image files based on screen size and resolution, saving bandwidth on mobile. 'srcset' provides multiple image sources: '<img srcset=\"photo-400.jpg 400w, photo-800.jpg 800w, photo-1200.jpg 1200w\" sizes=\"(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px\" src=\"photo-800.jpg\" alt=\"...\">'. The browser picks the best size. The <picture> element provides art direction — completely different images for different breakpoints: '<picture><source media=\"(max-width: 768px)\" srcset=\"mobile.jpg\"><img src=\"desktop.jpg\" alt=\"...\"></picture>'. For retina displays, serve 2x images: 'srcset=\"photo.jpg 1x, photo@2x.jpg 2x\"'."
+      },
+      {
+        "name": "Hamburger Menus for Mobile Navigation",
+        "explanation": "Desktop navigation bars with many links don't fit on mobile screens. The hamburger menu (☰) is the standard solution: on mobile, nav links are hidden behind a button with three horizontal lines. When tapped, the menu slides in (from top, left, or as an overlay). Implementation: hide the nav links on mobile (display: none), show the hamburger button, then toggle a class (like .nav-open) to reveal links. Pure CSS hamburger menus use a hidden checkbox + the :checked pseudo-class. JavaScript versions offer more control (animations, trapping focus for accessibility). Always ensure the menu is keyboard-accessible and includes an aria-label."
+      },
+      {
+        "name": "CSS Container Queries (@container)",
+        "explanation": "Media queries respond to the VIEWPORT size, but container queries respond to the size of a specific PARENT container. This enables truly component-level responsive design. Define a container: '.card-wrapper { container-type: inline-size; }'. Then query it: '@container (min-width: 400px) { .card { display: flex; } }'. Now the card's layout changes based on its container's width, not the viewport — the same component can have different layouts depending on where it's placed. This is a game-changer for reusable components and design systems. Supported in all modern browsers since 2023."
+      },
+      {
+        "name": "Testing with Browser DevTools Device Emulation",
+        "explanation": "Every browser's DevTools includes device emulation for testing responsive designs. Open DevTools (F12), click the device toolbar icon (📱💻). Features: preset device sizes (iPhone, iPad, Pixel), custom dimensions, touch simulation, network throttling (test on slow 3G), and DPR (device pixel ratio) settings. Chrome DevTools also shows media query breakpoints visually in the ruler. Test your design at multiple widths — don't just test at preset device sizes. Also test what happens between breakpoints. Remember: emulators aren't perfect substitutes for real devices, especially for touch gestures and performance."
+      },
+      {
+        "name": "Responsive Frameworks Overview (Bootstrap, Tailwind)",
+        "explanation": "CSS frameworks provide pre-built responsive grid systems and components. Bootstrap (most popular): uses a 12-column grid with predefined breakpoints and responsive classes like 'col-md-6' (half-width on medium screens). Great for rapid prototyping. Tailwind CSS: a utility-first framework with responsive prefixes like 'md:flex lg:grid-cols-3'. More flexible but requires more classes in HTML. Other options: Foundation, Bulma, Material UI. Trade-offs: frameworks speed up development but add size (Bootstrap is ~150KB), limit design uniqueness, and add a learning curve. For learning, master vanilla CSS first — frameworks are easier to use when you understand the underlying concepts."
+      }
     ],
     "codeExamples": [
       {
@@ -476,18 +713,54 @@
     "whyItMatters": "Micro-animations differentiate a polished, professional website from a static one. Hover effects on buttons, smooth page transitions, loading animations, and scroll-triggered reveals all use these CSS properties. Framework libraries like Framer Motion and GSAP are built on these fundamental concepts. Understanding GPU-accelerated properties is essential for smooth 60fps animations.",
     "eli5": "Transitions are like magic eye drops — instead of a light switching from off to on instantly, it fades in smoothly. Transforms let you move, spin, grow, and shrink things. Keyframe animations are like flipbook cartoons — you draw the first frame and the last frame, and the computer fills in all the frames in between to make it look smooth!",
     "subtopics": [
-      "Transform Functions: translate, rotate, scale, skew",
-      "Transform Origin (rotation pivot point)",
-      "Transitions: Property, Duration, Timing, Delay",
-      "Timing Functions: ease, linear, ease-in-out, cubic-bezier",
-      "Hover Effects with Transitions",
-      "@keyframes — Defining Animation Steps",
-      "animation shorthand (name, duration, timing, iteration)",
-      "animation-fill-mode: forwards, backwards, both",
-      "animation-direction: normal, reverse, alternate",
-      "Combining Transforms (translate + rotate + scale)",
-      "Performance: Only Animate transform & opacity",
-      "prefers-reduced-motion for Accessibility"
+      {
+        "name": "Transform Functions: translate, rotate, scale, skew",
+        "explanation": "CSS transforms change an element's shape, position, and size without affecting the document flow. translate(x, y) moves an element: 'transform: translateX(50px);' shifts it 50px right. rotate(angle) spins it: 'transform: rotate(45deg);' rotates 45 degrees clockwise. scale(x, y) resizes: 'transform: scale(1.5);' makes it 150% larger, 'scale(0.5)' makes it 50%. skew(x, y) slants the element along an axis. Transforms are GPU-accelerated, making them the fastest way to animate — they don't trigger layout recalculations. The element's original space in the flow is preserved (like position: relative)."
+      },
+      {
+        "name": "Transform Origin (rotation pivot point)",
+        "explanation": "transform-origin sets the point around which transforms happen. Default is 'center center' (50% 50%). 'transform-origin: top left;' makes the element rotate/scale from its top-left corner. 'transform-origin: center bottom;' pivots from the bottom center. Values can be keywords (top, center, bottom, left, right), percentages, or px. This matters most for rotation and scaling: a card that rotates from its center spins in place, but one that rotates from the top-left swings like a door hinge. For 3D transforms, a third value sets the Z-axis origin."
+      },
+      {
+        "name": "Transitions: Property, Duration, Timing, Delay",
+        "explanation": "Transitions create smooth animations when a CSS property changes (like on :hover). The shorthand: 'transition: background-color 0.3s ease 0s;' = property, duration, timing function, delay. 'transition: all 0.3s ease;' animates ALL changed properties. You can specify multiple properties: 'transition: transform 0.3s ease, box-shadow 0.3s ease;'. Transitions need a trigger (hover, focus, class change via JS) — they only animate BETWEEN two states. Set the transition on the BASE state (not the :hover state) so it animates both directions. Duration between 200-400ms feels natural for most UI interactions."
+      },
+      {
+        "name": "Timing Functions: ease, linear, ease-in-out, cubic-bezier",
+        "explanation": "Timing functions control the SPEED CURVE of an animation — how fast it moves at different points. 'linear': constant speed (mechanical feel). 'ease' (default): starts slow, speeds up, slows down (natural). 'ease-in': starts slow, speeds up (good for exits). 'ease-out': starts fast, slows down (good for entrances). 'ease-in-out': slow start and end with faster middle. 'cubic-bezier(x1, y1, x2, y2)': custom curves — use cubic-bezier.com to design your own. The right timing function makes animations feel natural vs robotic. Material Design recommends 'cubic-bezier(0.4, 0, 0.2, 1)' for standard animations."
+      },
+      {
+        "name": "Hover Effects with Transitions",
+        "explanation": "Hover effects are the most common use of transitions. Button hover: 'background changes color + translateY(-2px) + box-shadow appears' makes it feel like it lifts off the page. Card hover: 'translateY(-8px) + stronger shadow' creates an elevation effect. Link hover: 'color change + underline slides in' provides visual feedback. Key pattern: set 'transition: ...' on the base selector, CSS changes on ':hover'. Don't forget ':active' (pressed/clicked state) — slightly squish with 'transform: scale(0.98)' for tactile feedback. These small animations significantly improve perceived quality of a website."
+      },
+      {
+        "name": "@keyframes — Defining Animation Steps",
+        "explanation": "@keyframes lets you define multi-step animations with any number of intermediate states. Syntax: '@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }' or with percentage steps: '@keyframes bounce { 0% { transform: translateY(0); } 50% { transform: translateY(-30px); } 100% { transform: translateY(0); } }'. You can add as many percentage keyframes as needed for complex sequences. Then apply it: '.element { animation: fadeIn 0.6s ease; }'. Unlike transitions (which only go between 2 states), keyframes can create complex, multi-step animations."
+      },
+      {
+        "name": "animation shorthand (name, duration, timing, iteration)",
+        "explanation": "The animation shorthand combines all animation properties: 'animation: spin 1s linear infinite;' = name, duration, timing, iteration-count. Full form: 'animation: name duration timing-function delay iteration-count direction fill-mode play-state;'. iteration-count: a number or 'infinite' for looping. Multiple animations: 'animation: fadeIn 0.5s ease, slideUp 0.8s ease;'. Individual properties: animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-play-state (running/paused — can be toggled with JavaScript for user control)."
+      },
+      {
+        "name": "animation-fill-mode: forwards, backwards, both",
+        "explanation": "fill-mode controls what happens BEFORE and AFTER an animation plays. 'none' (default): element returns to its original state after animation ends — like it never happened. 'forwards': element keeps the styles from the LAST keyframe (100%) — most commonly used. 'backwards': element takes the styles from the FIRST keyframe (0%) during the delay period. 'both': combines forwards and backwards. Example: a fade-in animation should use 'forwards' so the element stays visible after appearing. Without it, the element would snap back to opacity: 0 after the animation completes."
+      },
+      {
+        "name": "animation-direction: normal, reverse, alternate",
+        "explanation": "animation-direction controls the order of keyframe playback. 'normal' (default): plays 0% → 100% each iteration. 'reverse': plays 100% → 0% each iteration. 'alternate': plays 0% → 100% on odd iterations, then 100% → 0% on even iterations — creates a natural back-and-forth effect. 'alternate-reverse': same as alternate but starts in reverse. Alternate is perfect for: pulsing effects (scale up when going forward, scale down when going backward), swinging animations, and breathing effects (opacity fading in and out). Combine with 'infinite' for smooth perpetual animations."
+      },
+      {
+        "name": "Combining Transforms (translate + rotate + scale)",
+        "explanation": "Multiple transforms can be combined in a single 'transform' property: 'transform: translateY(-10px) rotate(5deg) scale(1.1);'. They're applied right to left (scale first, then rotate, then translate). ORDER MATTERS: 'translateX(100px) rotate(45deg)' moves THEN rotates (element ends up at 100px right, tilted). 'rotate(45deg) translateX(100px)' rotates FIRST, so the X-axis is now tilted — the element moves diagonally! For centered scaling: always scale from the center (default) to avoid elements jumping. Modern CSS also supports individual transform properties: 'translate: 0 -10px; rotate: 5deg; scale: 1.1;'."
+      },
+      {
+        "name": "Performance: Only Animate transform & opacity",
+        "explanation": "Animating different CSS properties has vastly different performance costs. Properties like width, height, margin, top, padding trigger LAYOUT recalculation (reflow) — the browser must recalculate positions of ALL affected elements every frame. Properties like color, background trigger PAINT — the browser must repaint pixels. transform and opacity trigger COMPOSITING only — handled by the GPU, isolated from other elements, achieving smooth 60fps easily. This means: animate 'transform: translateX' instead of 'left', 'transform: scale' instead of 'width', and opacity for fade effects. Use 'will-change: transform' to hint to the browser for further optimization."
+      },
+      {
+        "name": "prefers-reduced-motion for Accessibility",
+        "explanation": "Some users have vestibular disorders, motion sickness, or cognitive conditions that make animations uncomfortable or disorienting. The 'prefers-reduced-motion' media query lets you reduce or remove animations: '@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }'. This respects the user's OS-level setting (System Preferences → Accessibility → Reduce Motion). It's not about removing ALL motion — subtle fades are usually fine. Remove: parallax, auto-playing carousels, bouncing/spinning, and large-scale movement. This is a WCAG 2.1 accessibility requirement."
+      }
     ],
     "codeExamples": [
       {
@@ -551,18 +824,54 @@
     "whyItMatters": "CSS variables eliminate magic numbers and make themes/design systems trivially easy to implement. Dark mode with CSS variables is industry standard. calc() and clamp() replace media queries for many responsive patterns. These modern features show that CSS is a powerful, evolving language — not just 'the thing you learn before JavaScript.'",
     "eli5": "CSS variables are like labels on paint cans. Instead of writing 'this exact shade of blue #6366f1' fifty times, you label a paint can '--brand-color' and just say 'use the paint from the brand-color can.' If you want to change your brand color, you change ONE paint can and everything updates automatically! That's way easier than finding and changing fifty different places.",
     "subtopics": [
-      "CSS Custom Properties (--variable-name)",
-      "var() Function with Fallback Values",
-      "Global vs Component-Scoped Variables (:root vs .component)",
-      "Dark Mode Theming with CSS Variables",
-      "calc() for Mathematical Expressions",
-      "min(), max(), and clamp() Functions",
-      "Native CSS Nesting",
-      ":has() — The Parent Selector",
-      ":is() and :where() — Simplified Selectors",
-      "aspect-ratio Property",
-      "Container Queries (@container)",
-      "CSS Reset / Normalize Best Practices"
+      {
+        "name": "CSS Custom Properties (--variable-name)",
+        "explanation": "CSS Custom Properties (variables) let you define reusable values: ':root { --color-primary: #6366f1; }'. Define with double-dash prefix (--), use with var(): 'color: var(--color-primary);'. Unlike preprocessor variables (Sass $variable), CSS variables are LIVE — they cascade, inherit, and can be modified at runtime with JavaScript. Define globally on :root (the html element) or locally on any selector. Variable names are case-sensitive: --Color and --color are different. They accept any CSS value: colors, sizes, font stacks, even entire shorthand values. They're the foundation of modern theming and design systems."
+      },
+      {
+        "name": "var() Function with Fallback Values",
+        "explanation": "var() retrieves a custom property value. Syntax: 'var(--variable-name, fallback)'. The fallback is used if the variable isn't defined: 'color: var(--text-color, #333);' uses #333 if --text-color doesn't exist. Fallbacks can reference other variables: 'var(--brand, var(--default-brand, blue))'. This is useful for component-level defaults: a card component might use 'var(--card-bg, var(--surface-color, white))' — checking component-specific variable first, then design system variable, then hardcoded fallback. Fallback values only activate when the variable is undefined, NOT when it's set to an invalid value."
+      },
+      {
+        "name": "Global vs Component-Scoped Variables (:root vs .component)",
+        "explanation": "Variables defined on :root are global — available everywhere. Variables defined on a specific selector are scoped — only available to that element and its children. ':root { --spacing: 16px; }' is accessible globally. '.card { --card-padding: 24px; }' is only available inside .card. This enables component-level customization: '.card { --card-bg: white; background: var(--card-bg); }' then override for specific contexts: '.dark .card { --card-bg: #1e1b2e; }'. Scoping prevents naming collisions and creates self-contained components. Think of :root variables as design tokens and component variables as local configuration."
+      },
+      {
+        "name": "Dark Mode Theming with CSS Variables",
+        "explanation": "CSS variables make dark mode trivially easy. Define light theme: ':root { --bg: white; --text: #1e293b; --surface: #f8fafc; }'. Override for dark: '.dark { --bg: #0a0a0f; --text: #f1f5f9; --surface: #1e1b2e; }' or use a media query: '@media (prefers-color-scheme: dark) { :root { --bg: #0a0a0f; } }'. Every element using var(--bg) updates automatically — ZERO JavaScript needed for the actual color switching. Toggle by adding/removing the 'dark' class on <html> with one line of JavaScript. This is how every modern design system implements theming."
+      },
+      {
+        "name": "calc() for Mathematical Expressions",
+        "explanation": "calc() performs math in CSS, mixing units: 'width: calc(100% - 250px);' creates a fluid width minus a fixed sidebar. You can add (+), subtract (-), multiply (*), and divide (/). Spaces around + and - are REQUIRED (or it's treated as positive/negative). Nesting works: 'calc(calc(100% - 40px) / 3)'. Combine with variables: 'margin: calc(var(--spacing) * 2);'. Common patterns: 'height: calc(100vh - 60px);' (full height minus header), 'width: calc(33.333% - 16px);' (third-width minus gap), 'font-size: calc(1rem + 0.5vw);' (fluid text). calc() runs at render time, so it handles responsive calculations perfectly."
+      },
+      {
+        "name": "min(), max(), and clamp() Functions",
+        "explanation": "min() returns the smallest value: 'width: min(90%, 1200px);' takes whichever is smaller — responsive on large screens, fluid on small. max() returns the largest: 'font-size: max(1rem, 2vw);' ensures text never goes below 1rem. clamp(min, preferred, max) combines both: 'font-size: clamp(1rem, 2.5vw, 2rem);' scales between 1rem and 2rem. These functions replace many media queries with a single line. They work with any CSS unit and can be nested: 'width: min(calc(100% - 40px), 800px);'. Key use cases: responsive typography, fluid spacing, container widths that never get too wide or too narrow."
+      },
+      {
+        "name": "Native CSS Nesting",
+        "explanation": "CSS now supports nesting selectors inside each other — a feature that previously required Sass/Less. Syntax: '.card { color: #333; .title { font-weight: 700; } &:hover { transform: translateY(-4px); } }'. The '&' refers to the parent selector (required for pseudo-classes/elements and combinators). Without '&', a space is implied (descendant selector). Benefits: reduced repetition, better readability, styles grouped by component. Supported in all modern browsers since 2023. Migration from Sass: most Sass nesting just works, but the '&' symbol behavior differs slightly — in CSS, '& .child' and '.child' are equivalent when nested."
+      },
+      {
+        "name": ":has() — The Parent Selector",
+        "explanation": ":has() is the most requested CSS feature in history — it lets you style an element based on its CHILDREN. '.card:has(img)' targets cards that contain an image. '.form-group:has(input:invalid)' styles the group when a child input is invalid. '.nav:has(.dropdown:hover)' styles the nav when a dropdown is hovered. Before :has(), styling a parent based on its children was IMPOSSIBLE in CSS — you needed JavaScript. Use cases are endless: highlight form sections with errors, style containers differently based on content, create pure-CSS interactive components. ':has()' is supported in all modern browsers since late 2023."
+      },
+      {
+        "name": ":is() and :where() — Simplified Selectors",
+        "explanation": ":is() groups selectors and takes the HIGHEST specificity of its arguments: ':is(h1, h2, h3) { color: navy; }' replaces 'h1, h2, h3 { color: navy; }'. More powerful with complex selectors: '.card :is(h1, h2, h3)' targets any heading inside .card. :where() works identically but has ZERO specificity — making it perfect for base/reset styles that should be easily overridable: ':where(h1, h2, h3) { margin: 0; }'. Both accept any selector list and can be nested. The specificity difference is the key: use :is() when you want the specificity, :where() when you want easy overrides."
+      },
+      {
+        "name": "aspect-ratio Property",
+        "explanation": "aspect-ratio maintains a specific width-to-height ratio: 'aspect-ratio: 16 / 9;' creates a 16:9 rectangle (video standard). 'aspect-ratio: 1;' or 'aspect-ratio: 1 / 1;' creates a perfect square. Before this property, the 'padding-top hack' was used (padding-top: 56.25% for 16:9) — fragile and unintuitive. Now it's one line. Set width OR height and the other dimension auto-calculates. Combined with 'object-fit: cover;' on images, you get perfectly cropped responsive thumbnails. Common ratios: 1/1 (avatars), 4/3 (photos), 16/9 (videos), 21/9 (ultrawide banners). Works on any element, not just images."
+      },
+      {
+        "name": "Container Queries (@container)",
+        "explanation": "Container queries let components respond to their CONTAINER's size instead of the viewport. Define a container: '.sidebar { container-type: inline-size; container-name: sidebar; }'. Query it: '@container sidebar (min-width: 300px) { .widget { display: grid; grid-template-columns: 1fr 1fr; } }'. The widget's layout changes based on the sidebar's width, not the screen. This enables truly portable components — the same card component works in a narrow sidebar AND a wide main area with appropriate layouts for each. Container queries + CSS variables + :has() form the modern CSS component architecture. Keyword: container-type: inline-size (width only) or size (both dimensions)."
+      },
+      {
+        "name": "CSS Reset / Normalize Best Practices",
+        "explanation": "Browsers apply default styles (margins on body, padding on lists, different fonts) that vary between browsers. A CSS Reset removes ALL default styles: '* { margin: 0; padding: 0; box-sizing: border-box; }'. Normalize.css (by Nicolas Gallagher) takes a gentler approach: it makes defaults CONSISTENT across browsers while preserving useful defaults. Modern resets combine both approaches. Recommended minimum reset: '*, *::before, *::after { box-sizing: border-box; } body { margin: 0; } img { display: block; max-width: 100%; }'. Popular options: Josh Comeau's Custom CSS Reset, Andy Bell's Modern CSS Reset. Always include a reset at the top of your CSS before any other styles."
+      }
     ],
     "codeExamples": [
       {
